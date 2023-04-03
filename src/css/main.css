@@ -6,16 +6,13 @@
   
   :root {
     --custom-primary: #4c0000; /* aggie maroon  */
-    --custom-light: #CFFDE1;
-    --custom-secondary: #68B984;
-    --custom-teritiary: ;
-    --custom-dark: #3D5656;
+    --custom-light: #ce9f9f;
+    --custom-secondary: #f8cf00;
+    --custom-teritiary: #422437;
+    --custom-dark: #403636;
     --speed: 0.5s;
     font-family: 'Open Sans', sans-serif;
     background-color: rgb(243, 243, 243);
-  
-    background: linear-gradient(-45deg, #cccccc, #edeeef, #dee0e2, #d5d7d8);
-    background-size: 400% 400%;
   
     background-attachment: fixed;
     background-position: center;
