@@ -12,10 +12,28 @@
     --custom-dark: #403636;
     --speed: 0.5s;
     font-family: 'Open Sans', sans-serif;
-    background-color: rgb(243, 243, 243);
+    background-color: #f9f9f9;
   
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
+
+
+  
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--custom-primary);
+}
+
+footer {
+    background-color: var(--custom-primary);
+    color: var(--custom-secondary);
+    height: 5em;
+    width: 100%;
+
+    display:flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
