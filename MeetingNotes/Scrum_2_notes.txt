@@ -1,0 +1,12 @@
+Scrum Meeting 2 Agenda
+- Update each other on any progress
+- Discuss tech stack
+
+Scrum Meeting 2 Notes (3/31)
+- We have not made any new progress on tasks, but are working on continuing to plan out our tasks
+- We are also working on finalizing our tech stack
+- Planning on looking into Svelte and going through some of their tutorials to familiarize ourselves with it
+- Peter updated us following the scrum manager meeting
+- Most teams are using node/react/express and JavaScript
+- We are considering using Svelte to make it easier, since it is more lightweight
+- Confirmed goals of having a preliminary front end at the end of this sprint, can revise CSS and JavaScript later
