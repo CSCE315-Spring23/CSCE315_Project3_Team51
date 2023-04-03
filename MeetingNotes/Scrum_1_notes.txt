@@ -1,0 +1,23 @@
+Scrum Meeting 1 Agenda
+Discuss goals for Sprint 1
+Split up work for Sprint 1
+Discuss any changes to current implementation and design
+
+Scrum Meeting 1 Notes
+
+Our goals: 
+- Develop HTML/CSS for the GUI (no JavaScript/interactive functionalities)
+- Split the work roughly as follows:
+Anna : menu view
+Casey and Alan: customer view
+Harini: manager view
+Casey: server view
+- Backend will work on organzing database and planning for future sprint.
+Peter: refactor database
+Alan: get familiar with APIs
+Matthew: Figuring out Firebase
+
+
+Discussed git branching. We will make one branch per person/part
+
+Finish by Tuesday
