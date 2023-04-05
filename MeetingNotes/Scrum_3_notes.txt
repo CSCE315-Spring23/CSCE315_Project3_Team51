@@ -1,0 +1,9 @@
+Scrum Meeting 3 Agenda
+- Adjust sprint goals due to other classes
+- Go over new progress
+
+Scrum Meeting 3 Notes (4/3)
+- Anna shared Menu GUI which she completed
+- We explored ExpressJS since our last meeting
+- Are planning to dial back goals for this sprint, in order to accommodate for work in other classes
+- Want to have a basic outline done for all views, but will continue working on HTML/CSS into the next sprint
