@@ -31,7 +31,7 @@
                 <li><a class="nav-link link-home" href="">Rev's Grill</a></li>
             </div>
             <div class="nav-item">
-                <li><a class="nav-link" href="Manager_Inventory.html">Inventory</a></li>
+                <li><a class="nav-link nav-curr" href="Manager_Inventory.html">Inventory</a></li>
             </div>
             <div class="nav-item">
                 <li><a class="nav-link" href="Manager_Employee.html">Menu</a></li>
@@ -46,14 +46,23 @@
         <div class="i-form">
             <h2>Update Inventory</h2>
             <form>
-                <label for="itemname">Item name:</label>
-                <input type="text" id="itemname" name="itemname">
-                <br>
-                <label for="itemqty">Item quantity:</label>
-                <input type="text" id="itemqty" name="itemqty">
-                <br>
-                <label for="itemmin">Item minimum:</label>
-                <input type="text" id="itemmin" name="itemmin">
+                <table>
+                    <tr>
+                        <td><label for="itemname">Item name:</label></td>
+                        <td><input type="text" id="itemname" name="itemname"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="itemqty">Item quantity:</label></td>
+                        <td><input type="text" id="itemqty" name="itemqty"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="itemmin">Item minimum:</label></td>
+                        <td><input type="text" id="itemmin" name="itemmin"></td>
+                    </tr>
+                </table>
+                <div class="button-div">
+                    <button>Update Inventory</button>
+                </div>
             </form>
         </div>
         <div class="i-mostused">
@@ -65,6 +74,7 @@
             </ul> -->
         </div>
         <div class="i-display">
+            <h2>Display Inventory</h2>
             <p>inventory will display here</p>
         </div>
     </div>
