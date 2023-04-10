@@ -1,0 +1,18 @@
+{
+  "name": "rev-grill-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm i && npm --prefix ./frontend i && npm --prefix ./backend i",
+    "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client start\" \"yarn --cwd ./api start\"",
+    "dev-front": "yarn --prefix ./client start",
+    "dev-back": "yarn --prefix ./api start"
+  },
+  "keywords": [],
+  "author": "CSCE 315-331 Team 51",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
