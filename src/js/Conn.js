@@ -6,11 +6,12 @@ const app = express();
 const port = 3000;
 
 const pool = new Pool({
-    user: credentials.env.PSQL_USER,
-    database: credentials.env.PSQL_DATABASE,
+    user: "csce315331_team_51_master",
+    host: "csce-315-db.engr.tamu.edu",
+    database: "csce315331_team_51",
     password: "te@m_51",
     port: 5432,
-    host: credentials.env.PSQL_HOST
+    ssl: {rejectUnauthorized: false}
 });
 
 module.exports = {pool};
