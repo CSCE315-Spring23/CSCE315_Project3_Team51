@@ -1,4 +1,5 @@
 const {pool} = require("./Conn.js");
+const Item = require("./Item");
 
 
 async function lastOrderNumber() {
@@ -9,46 +10,6 @@ async function lastOrderNumber() {
         );
         console.log(res.rows[0]);
         return res.rows[0];
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-async function getIngredients(item) {
-    try {
-        if(typeof item == "string") {
-            console.log('Getting ingredients of ' + item);
-            const res = await pool.query(
-                "SELECT ingredients FROM menu_items WHERE item_name = $1",
-                [item]
-            );
-            console.log(res.rows[0]);
-            return res.rows;
-        } else if(typeof item == "number") {
-            console.log('Getting ingredients of item ' + item);
-            const res = await pool.query(
-                "SELECT ingredients FROM menu_items WHERE item_number = $1",
-                [item]
-            );
-            console.log(res.rows[0]);
-            return res.rows[0];
-        } else {
-            console.log("Bad input for getIngredients()");
-        }
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-async function getCategoryItems(category) {
-    try {
-        console.log('Getting menu items from category: ' + category);
-        const res = await pool.query(
-            "SELECT * FROM menu_items WHERE category = $1 ORDER BY item_number",
-            [category]
-        );
-        console.log(res.rows);
-        return res.rows;
     } catch (error) {
         console.error(error)
     }
@@ -67,7 +28,7 @@ async function updateInventory(orderNum) {
         let totalIngredients = new Map();
         for(let i = 0; i < orderRes.rows[0].items_ordered.length; i++) {
             console.log("Item " + orderRes.rows[0].items_ordered[i] + ":");
-            let ingr = await getIngredients(orderRes.rows[0].items_ordered[i]);
+            let ingr = await Item.getIngredients(orderRes.rows[0].items_ordered[i]);
             ingr = ingr.ingredients;
             for(let j = 0; j < ingr.length; j++) {
                 let quan = ingr[j].substring(0, ingr[j].indexOf(' '));
@@ -108,6 +69,5 @@ async function updateInventory(orderNum) {
     }
 }
 
-// getIngredients("Drip Coffee");
-// getIngredients(1);
-// updateInventory(1);
+exports.lastOrderNumber = lastOrderNumber;
+exports.updateInventory = updateInventory;
