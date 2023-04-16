@@ -44,7 +44,7 @@ async function getCategoryItems(category) {
     try {
         console.log('Getting menu items from category: ' + category);
         const res = await pool.query(
-            "SELECT * FROM menu_items WHERE category = $1",
+            "SELECT * FROM menu_items WHERE category = $1 ORDER BY item_number",
             [category]
         );
         console.log(res.rows);
