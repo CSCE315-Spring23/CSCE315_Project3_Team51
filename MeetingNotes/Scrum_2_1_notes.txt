@@ -1,0 +1,49 @@
+Agenda
+- Talk about sprint 2 
+- Talk about where we're at right now
+- Trello
+- Discuss presentation on April 10
+
+Notes
+
+Where we're at right now
+- Menu side: done (items hard coded)
+- Manager side: HTML and CSS will be done by this weekend
+- Customer side: Anna will help out Casey on some of the pages
+- Server side: Casey will be done this weekend
+- Alan: API to generate data will be done by Monday
+- Peter: Changed database names, working on javascript file that will have all SQL functions (taking time, won't be done by demo, will be done by sprint 2 middle)
+
+Goal for Sprint 2 : Deadline is the 18th
+- implement basic functionality
+    - navigating between tabs
+    - placing orders on Server and Customer side (no customizations yet)
+    - all of the manager reports
+    - load menu items from database
+
+Trello
+- drag tasks from sprint 2 to completed tasks once done
+- identify bugs and put in Bugs column, most of debugging will happen in third sprint
+
+Presentation
+- everyone will make their own slide based on assignments below. for overlaps, reach out to your partner to divy up work between you.
+- current status and future status for each task
+
+Peter - Database and SQL commands (all parts), Scrum Master 
+worked heavily with the database during Project 2
+
+Anna - Menu view + overall design (prototyping, frontend help on other parts) + Customer Side
+worked on the front-end for the previous part, made the wireframe diagrams for this part
+
+Alan - Weather API + Server Side + hosting
+worked with the Server Side during Project 2
+
+Harini - Manager side
+did a lot of work with the Manager side during Project 2
+
+Matthew - Log In (Firebase) + Google Translate API
+has experience with Firebase and other Google APIs
+
+Casey - Customer side + Server Side + file management
+handled much of the file management for Project 2
+worked on the Server Side during Project 2 (Customer Side is also similar to Server side)
