@@ -1,0 +1,133 @@
+/* NAV BAR */
+
+.nav {
+  background-color: var(--custom-primary);
+  position: static;
+  list-style-type: none;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  padding: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: white;
+  padding: 0px 10px;
+}
+
+.nav-link:hover {
+  color: var(--custom-light);
+}
+
+.nav-curr,
+.nav-curr:hover {
+  color: var(--custom-secondary);
+}
+
+.nav-home {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+}
+
+.link-home {
+  font-size: 25px;
+  letter-spacing: 3px;
+}
+
+/* FORM */
+
+label,
+input {
+  margin-bottom: 10%;
+}
+
+input {
+  margin-left: 5%;
+  width: 150%;
+}
+
+.button-div {
+  text-align: center;
+}
+
+button {
+  background-color: var(--custom-primary);
+  padding: 7px 8px;
+  border: 1px solid var(--custom-primary);
+  border-radius: 10px;
+  color: white;
+  margin: 10px 7px;
+}
+
+/* INVENTORY */
+
+.i-grid {
+  display: inline-grid;
+  grid-template-columns: 600px auto;
+  grid-template-rows: auto auto;
+  column-gap: 20px;
+  row-gap: 30px;
+  margin: 4% 10%;
+}
+
+.i-form {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column: 1;
+  /* background-color: var(--custom-light); */
+  padding: 0% 20%;
+}
+
+.i-mostused {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  /* background-color: var(--custom-light); */
+}
+
+.i-mostused ul {
+  padding-top: 10%;
+  list-style: none;
+}
+
+.i-grid li,
+h2 {
+  text-align: center;
+}
+
+.i-display {
+  height: 600px;
+  width: 600px;
+  /* background-color: var(--custom-light); */
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+}
+
+/* MENU / SALES */
+
+.ms-grid {
+  display: inline-grid;
+  grid-template-columns: 600px auto;
+  grid-template-rows: auto auto;
+  column-gap: 20px;
+  row-gap: 30px;
+  margin: 4% 10%;
+}
+
+.ms-display {
+  height: 550px;
+  width: 600px;
+}
+
+.m-form {
+  padding: 0% 20%;
+}
