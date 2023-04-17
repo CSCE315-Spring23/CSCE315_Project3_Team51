@@ -1,3 +1,5 @@
+Scrum Meeting 5 -- 4/17/2023
+
 Peter updated us on how the backend SQL functions are looking and how to call them from our other pages
 Matthew told us about log-in page updates (two separate log-ins, OAuth only for customers)
 - Still figuring out Google translate
