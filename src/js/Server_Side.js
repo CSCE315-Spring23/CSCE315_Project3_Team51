@@ -1,5 +1,6 @@
 const {pool} = require("./Conn.js");
 const Item = require("./Item");
+const Order = require("./Order");
 
 
 async function lastOrderNumber() {
@@ -71,3 +72,7 @@ async function updateInventory(orderNum) {
 
 exports.lastOrderNumber = lastOrderNumber;
 exports.updateInventory = updateInventory;
+exports.getIngredients = Item.getIngredients;
+exports.getCategoryItems = Item.getCategoryItems;
+exports.getMenu = Item.getMenu;
+exports.getOrders = Order.getOrders;
