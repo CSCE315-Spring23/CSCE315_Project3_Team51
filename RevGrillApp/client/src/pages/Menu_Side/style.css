@@ -28,6 +28,8 @@
     width: 100px !important;
     flex-grow: 5;
     margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
 }
 .welcome {
     display: flex;
@@ -77,6 +79,7 @@
     font-family: Poppins, sans-serif;
     color: #9d5c5c;
     text-shadow: 1px 1px 2px #732626;
+    display: flex;
 }
 .text {
     justify-content: center;
@@ -92,6 +95,7 @@
 }
 .row {
     display: flex;
+    padding: 20px;
 }
 .smaller-card {
     margin-left: 30px;
