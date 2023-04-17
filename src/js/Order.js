@@ -1,0 +1,31 @@
+const {pool} = require("./Conn.js");
+
+
+async function getOrders() {
+    try {
+        console.log('Getting all orders');
+        const res = await pool.query(
+            "SELECT * FROM orders ORDER BY order_number"
+        );
+        console.log(res.rows);
+        return res.rows;
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+async function getSales() {
+    try {
+        console.log('Getting total sales from today');
+        const res = await pool.query(
+            "SELECT ROUND(CAST(SUM(total_price) AS numeric), 2) AS total_sales FROM orders WHERE current_day = TRUE"
+        );
+        console.log(res.rows[0]);
+        return res.rows[0];
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+exports.getOrders = getOrders;
+exports.getSales = getSales;

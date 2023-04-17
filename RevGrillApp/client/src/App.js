@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 function App() {
 
   const [hello, setHello] = useState('No data')
+  const [hello2, setHello2] = useState('No data2')
 
   const callAPI = () => {
     fetch("http://localhost:9000/newroute")
@@ -14,8 +15,20 @@ function App() {
       });
   }
 
+  const callAPI2 = () => {
+    fetch("http://localhost:9000/users")
+      .then(r => r.text())
+      .then(resp => {
+        setHello2(resp)
+      });
+  }
+
   useEffect(() => {
     callAPI()
+  }, [])
+
+  useEffect(() => {
+    callAPI2()
   }, [])
 
   return (
@@ -34,6 +47,8 @@ function App() {
           Learn React
         </a>
         <p>{hello}</p>
+        <p>{hello2}</p>
+        
       </header>
     </div>
   );
