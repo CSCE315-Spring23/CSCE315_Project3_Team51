@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { useContext } from "react";
 import { auth } from "./innit-firebase";
-
+import {isEmployee, isManager} from "../../../../../src/js/Employee.js"
 
 const authContext = createContext();
 
@@ -33,15 +33,21 @@ export function Auth_context({children}) {
       return auth.signOut()
     }
     
-     
-      
+    function empLogIn() {
+      return isEmployee(id)
+    } 
+    
+    function mannLogIn() {
+      return isManager(id)
+    } 
 
     const value = {
         currentUser,
         signup,
         login,
         logout,
-   
+        empLogIn,
+        mannLogIn
     }
     return(
         <Auth_context.Provider value = {value}>

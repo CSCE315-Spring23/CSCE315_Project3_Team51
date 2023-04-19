@@ -1,0 +1,108 @@
+import React, {useRef} from 'react'
+import { useAuth } from './auth_context';
+
+
+
+export default function Login() {
+  const emailRef = useRef();
+  const passRef = useRef();
+  const idRef = useRef();
+
+  const {login,empLogIn,mannLogIn} = useAuth();
+
+  const [error,setError] = useState("");
+  const [loading,setLoading] = useState(false);
+
+  async function sumbit(e) {
+    e.preventDefault();
+    
+    try {
+      setLoading(true);
+      setError('');
+      await empLogIn(emailRef.current.value,passRef.current.value);
+    } catch {
+      setError("Customer Log In Failed")
+    }
+    setLoading(false);
+  }
+
+  async function servSub(e) {
+    e.preventDefault();
+    try {
+        setLoading(true);
+        setError('');
+        await empLogIn(idRef.current.value);
+      } catch {
+        setError("Server Log In Failed")
+      }
+      setLoading(false);
+  } 
+
+  async function manSub(e) {
+    e.preventDefault();
+    try {
+        setLoading(true);
+        setError('');
+        await mannLogIn(idRef.current.value);
+      } catch {
+        setError("Manager Log In Failed")
+      }
+      setLoading(false);
+  } 
+
+
+  return (
+    <>
+      <div className = "signup_wrap">
+        <form>
+        {error && alert(error)}
+        
+        <label id = "username_box">
+          Email: 
+          <input 
+            type = "email"
+            ref = {emailRef}
+            
+          />
+        </label>
+
+        <label id = "pass_reg_box">
+          Password: 
+          <input 
+            type = "password"
+            ref = {passRef}
+            
+          />
+        </label>  
+
+
+        <button disabled = {loading} onClick = {submit} id = "signup-but" type = "signup">
+          Log In!
+        </button>
+
+        <button>
+            OAuth
+        </button>
+
+        <label id = "emp_auth">
+            Employee ID:
+            <input 
+                type = "number"
+                ref = {idRef}
+            />
+        </label>
+        <div className = "empButtons">
+            <button disabled = {loading} onClick = {servSub} id = "signup-but" type = "signup">
+                Server
+            </button>
+            <button disabled = {loading} onClick = {manSub} id = "signup-but" type = "signup">
+                Manager
+            </button>
+        </div>
+        
+
+        </form>
+      </div>
+    </>
+  )
+}
