@@ -13,7 +13,7 @@ export default function Login() {
   const [error,setError] = useState("");
   const [loading,setLoading] = useState(false);
 
-  async function sumbit(e) {
+  async function submit(e) {
     e.preventDefault();
     
     try {
