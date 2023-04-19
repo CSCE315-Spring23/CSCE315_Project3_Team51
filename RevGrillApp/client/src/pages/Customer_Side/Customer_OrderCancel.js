@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "style_menu.css";
 
 export class Customer_OrderCancel extends Component {
 
