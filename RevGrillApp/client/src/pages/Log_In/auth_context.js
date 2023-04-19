@@ -2,6 +2,9 @@ import React, { createContext } from "react";
 import { useContext } from "react";
 import { auth } from "./innit-firebase";
 import {isEmployee, isManager} from "../../../../../src/js/Employee.js"
+import { GoogleAuthProvider } from "firebase/auth";
+
+
 
 const authContext = createContext();
 
@@ -33,13 +36,23 @@ export function Auth_context({children}) {
       return auth.signOut()
     }
     
-    function empLogIn() {
+    function empLogIn(id) {
       return isEmployee(id)
     } 
     
-    function mannLogIn() {
+    function mannLogIn(id) {
       return isManager(id)
-    } 
+    }
+    
+    function oAuth() {
+      const google = new GoogleAuthProvider;
+    
+      const signInGoog = async() => {
+          const res = await signInWithPopup(auth, googleProvider);
+        } 
+        
+      return signInGoog;
+    }
 
     const value = {
         currentUser,
@@ -47,7 +60,8 @@ export function Auth_context({children}) {
         login,
         logout,
         empLogIn,
-        mannLogIn
+        mannLogIn,
+        oAuth
     }
     return(
         <Auth_context.Provider value = {value}>

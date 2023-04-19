@@ -8,7 +8,7 @@ export default function Login() {
   const passRef = useRef();
   const idRef = useRef();
 
-  const {login,empLogIn,mannLogIn} = useAuth();
+  const {login,empLogIn,mannLogIn,oAuth} = useAuth();
 
   const [error,setError] = useState("");
   const [loading,setLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function Login() {
     try {
       setLoading(true);
       setError('');
-      await empLogIn(emailRef.current.value,passRef.current.value);
+      await login(emailRef.current.value,passRef.current.value);
     } catch {
       setError("Customer Log In Failed")
     }
@@ -46,6 +46,18 @@ export default function Login() {
         await mannLogIn(idRef.current.value);
       } catch {
         setError("Manager Log In Failed")
+      }
+      setLoading(false);
+  } 
+
+  async function oAuthSub(e) {
+    e.preventDefault();
+    try {
+        setLoading(true);
+        setError('');
+        await oAuth();
+      } catch {
+        setError("OAUTH Log In Failed")
       }
       setLoading(false);
   } 
