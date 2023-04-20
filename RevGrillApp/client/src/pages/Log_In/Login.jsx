@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-export class Customer_Categories extends Component {
+export class Login extends Component {
 
   render() {
     return(
     <h1>
-      Customer Categories (home)
+      Login
     </h1>
     )
   }
