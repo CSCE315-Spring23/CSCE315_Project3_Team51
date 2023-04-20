@@ -1,17 +1,16 @@
-import React, {useRef} from 'react'
-import { useAuth } from './auth_context';
-
-
+import React, {useRef,useState} from 'react'
+import { useAuth2 } from './auth_context';
 
 export default function Signup() {
   const emailRef = useRef();
   const passRef = useRef();
   const passRefCon = useRef();
-  const {signup} = useAuth();
+  const {createAccount} = useAuth2();
 
   const [error,setError] = useState("");
   const [loading,setLoading] = useState(false);
 
+  
   async function sumbit(e) {
     e.preventDefault();
     if(passRef.current.value != passRefCon.current.value) {
@@ -20,8 +19,9 @@ export default function Signup() {
     try {
       setLoading(true);
       setError('');
-      await signup(emailRef.current.value,passRef.current.value);
-    } catch {
+      await createAccount(emailRef.current.value,passRef.current.value);
+    } catch (error) {
+      console.log(error);
       setError("Account Creation Failed")
     }
     setLoading(false);
@@ -30,6 +30,7 @@ export default function Signup() {
 
   return (
     <>
+      Oranges
       <div className = "signup_wrap">
         <form onSubmit = {sumbit}>
         {error && alert(error)}

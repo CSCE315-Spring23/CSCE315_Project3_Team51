@@ -1,5 +1,5 @@
-import firebase from "firebase/auth"
-import "firebase/auth"
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 
 var firebaseConfig = {
@@ -12,7 +12,6 @@ var firebaseConfig = {
     measurementId: "G-12HNFRGKQH"
   };
 
-  const proj = firebase.initializeAuth(firebaseConifg);
-    
-  export const auth = proj.auth();
+  const proj = initializeApp(firebaseConfig);
+  export const auth = getAuth(proj);
   export default proj;

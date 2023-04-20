@@ -1,5 +1,5 @@
-import React, {useRef} from 'react'
-import { useAuth } from './auth_context';
+import React, {useRef,useState} from 'react'
+import { useAuth2 } from './auth_context';
 
 
 
@@ -8,7 +8,7 @@ export default function Login() {
   const passRef = useRef();
   const idRef = useRef();
 
-  const {login,empLogIn,mannLogIn,oAuth} = useAuth();
+  const {login,empLogIn,mannLogIn,oAuth} = useAuth2();
 
   const [error,setError] = useState("");
   const [loading,setLoading] = useState(false);
@@ -23,6 +23,7 @@ export default function Login() {
     } catch {
       setError("Customer Log In Failed")
     }
+    alert("Log In Success");
     setLoading(false);
   }
 
@@ -35,6 +36,7 @@ export default function Login() {
       } catch {
         setError("Server Log In Failed")
       }
+      
       setLoading(false);
   } 
 
@@ -92,7 +94,7 @@ export default function Login() {
           Log In!
         </button>
 
-        <button>
+        <button disabled = {loading} onClick = {oAuthSub} id = "oauth-but" type = "submit">
             OAuth
         </button>
 
