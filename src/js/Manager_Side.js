@@ -7,6 +7,7 @@ const Order = require("./Order");
 
 async function getMostUsedItems() {
     console.log("Work in progress");
+    return 3;
 }
 
 async function getSellsTogether() {
