@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "npm i && npm --prefix ./frontend i && npm --prefix ./backend i",
     "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client start\" \"yarn --cwd ./api start\"",
-    "dev-front": "yarn --prefix ./client start",
+    "dev-front": "yarn --cwd ./client start",
     "dev-back": "yarn --prefix ./api start"
   },
   "keywords": [],
