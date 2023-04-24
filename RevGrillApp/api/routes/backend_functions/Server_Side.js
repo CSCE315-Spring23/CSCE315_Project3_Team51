@@ -1,6 +1,6 @@
 const {pool} = require("./Conn.js");
-const Item = require("./Item");
-const Order = require("./Order");
+const Item = require("./Item.js");
+const Order = require("./Order.js");
 
 
 async function lastOrderNumber() {
