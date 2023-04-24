@@ -10,5 +10,5 @@ export class Customer_Categories extends Component {
     </h1>
     )
   }
-
+  299.576
 }
