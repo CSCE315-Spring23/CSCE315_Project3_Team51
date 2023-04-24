@@ -48,9 +48,10 @@ function App() {
           <li><button href="/menu">Menu</button></li>
           <li><button href="/customer">Customer</button></li>
           <li><button href="/server">Server</button></li>
-          <li><button href="/server">Manager</button></li>
+          <li><button href="/manager">Manager</button></li>
         </ul>
         <Route path="/" render={() => <h1>Welcome!</h1>} />
+        <Route render={() => <h1>404: page not found</h1>} />
         </Router> */}
         <p>{hello}</p>
         <p>{hello2}</p>
