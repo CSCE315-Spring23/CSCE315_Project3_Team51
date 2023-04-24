@@ -1,5 +1,5 @@
 function getMostUsedItems() {
-    window.alert("Work in progress");
+    // window.alert("Work in progress");
     return 3;
 }
 

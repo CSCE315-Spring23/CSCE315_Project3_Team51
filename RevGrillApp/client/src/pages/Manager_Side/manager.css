@@ -141,8 +141,8 @@ h2 {
   margin: auto;
 }
 
-.s-form label {
-  padding-top: 80%;
+.s-form {
+  text-align: left;
 }
 
 .s-form button {
@@ -151,5 +151,6 @@ h2 {
 
 .s-form h2 {
   text-align: left;
+  margin-bottom: 3%;
   margin-left: 27%;
 }

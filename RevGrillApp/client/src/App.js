@@ -2,8 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import './pages/Manager_Side/Manager_Employee'
+import './pages/Manager_Side/Manager_Employee';
+import './pages/Manager_Side/Manager_Inventory';
+import './pages/Manager_Side/Manager_Sales';
 import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
+import { Manager_Inventory } from './pages/Manager_Side/Manager_Inventory';
+import {Manager_Sales} from './pages/Manager_Side/Manager_Sales';
 import './pages/Manager_Side/manager.css';
 
 function App() {
@@ -37,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <Manager_Employee></Manager_Employee>
+      <Manager_Sales></Manager_Sales>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>What are you doing here today?</h1>
