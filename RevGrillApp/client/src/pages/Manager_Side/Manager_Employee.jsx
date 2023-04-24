@@ -31,27 +31,27 @@ export class Manager_Employee extends Component {
                         <table>
                             <tr>
                                 <td><label for="item_num">Item number:</label></td>
-                                <td><input type="text" id="item_num" name="item_num"></td>
+                                <td><input type="text" id="item_num" name="item_num"/></td>
                             </tr>
                             <tr>
                                 <td><label for="item_name">Item name:</label></td>
-                                <td><input type="text" id="item_name" name="item_name"></td>
+                                <td><input type="text" id="item_name" name="item_name"/></td>
                             </tr>
                             <tr>
                                 <td><label for="item_price">Item price:</label></td>
-                                <td><input type="text" id="item_price" name="item_price"></td>
+                                <td><input type="text" id="item_price" name="item_price"/></td>
                             </tr>
                             <tr>
                                 <td><label for="item_category">Item category:</label></td>
-                                <td><input type="text" id="item_category" name="item_category"></td>
+                                <td><input type="text" id="item_category" name="item_category"/></td>
                             </tr>
                             <tr>
                                 <td><label for="ing_list">Ingredient list:</label></td>
-                                <td><input type="text" id="ing_list" name="ing_list" placeholder="<Ingredient, Ingredient, ...>"></td>
+                                <td><input type="text" id="ing_list" name="ing_list" placeholder="<Ingredient, Ingredient, ...>"/></td>
                             </tr>
                             <tr>
                                 <td><label for="ing_list">Amount list:</label></td>
-                                <td><input type="text" id="ing_list" name="ing_list" placeholder="<Amount, Amount, ...>"></td>
+                                <td><input type="text" id="ing_list" name="ing_list" placeholder="<Amount, Amount, ...>"/></td>
                             </tr>
                         </table>
                         <div className="button-div">
