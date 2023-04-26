@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './pages/Manager_Side/Manager_Employee'
 import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
 import './pages/Manager_Side/manager.css';
+import { Manager_Inventory} from './pages/Manager_Side/Manager_Inventory.jsx';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <Manager_Employee></Manager_Employee>
+      <Manager_Inventory></Manager_Inventory>
       <header className="App-header">
         <h1>Example of accessing all the tables:</h1>
       </header>

@@ -1,8 +1,8 @@
 const {pool} = require("./Conn.js");
-const Item = require("./Item");
-const Ingredient = require("./Ingredient");
-const Employee = require("./Employee");
-const Order = require("./Order");
+const Item = require("./Item.js");
+const Ingredient = require("./Ingredient.js");
+const Employee = require("./Employee.js");
+const Order = require("./Order.js");
 
 
 async function getMostUsedItems() {

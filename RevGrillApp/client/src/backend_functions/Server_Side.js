@@ -7,7 +7,7 @@ async function lastOrderNumber() {
     try {
         console.log('Getting last order number');
         const res = await pool.query(
-            "SELECT MAX(order_number) FROM orders"
+            "SELECT MAX(order_number) as last_number FROM orders"
         );
         console.log(res.rows[0]);
         return res.rows[0];
@@ -15,6 +15,8 @@ async function lastOrderNumber() {
         console.error(error)
     }
 }
+
+lastOrderNumber();
 
 async function updateInventory(orderNum) {
     try {
@@ -70,9 +72,25 @@ async function updateInventory(orderNum) {
     }
 }
 
+async function createNewOrder() {
+    try {
+        console.log('Creating new order');
+        let newNum = lastOrderNumber
+        const res = await pool.query(
+            "SELECT * FROM orders WHERE order_number = $1",
+            [orderNum]
+        );
+        console.log(res.rows[0]);
+        return res.rows[0];
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 exports.lastOrderNumber = lastOrderNumber;
 exports.updateInventory = updateInventory;
 exports.getIngredients = Item.getIngredients;
 exports.getCategoryItems = Item.getCategoryItems;
 exports.getMenu = Item.getMenu;
 exports.getOrders = Order.getOrders;
+exports.getOrderByNum = Order.getOrderByNum;
