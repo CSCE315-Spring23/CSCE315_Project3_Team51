@@ -1,7 +1,7 @@
 import React, { createContext } from "react";
 import { useContext, useState, useEffect } from "react";
 import { auth } from "./innit-firebase";
-import {isEmployee, isManager} from "../../../../../src/js/Employee.js"
+//import {isEmployee, isManager} from "../../../../../src/js/Employee.js"
 import { GoogleAuthProvider,signInWithPopup,createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 
 

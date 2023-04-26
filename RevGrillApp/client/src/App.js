@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
-
+import Signup from './pages/Log_In/signup'
 function App() {
 
   const [hello, setHello] = useState('No data')
@@ -48,6 +48,7 @@ function App() {
         </a>
         <p>{hello}</p>
         <p>{hello2}</p>
+        <Signup/>
         
       </header>
     </div>
