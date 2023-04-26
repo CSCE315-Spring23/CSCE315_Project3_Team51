@@ -1,0 +1,14 @@
+Scrum Meeting 5 -- 4/17/2023
+
+Peter updated us on how the backend SQL functions are looking and how to call them from our other pages
+Matthew told us about log-in page updates (two separate log-ins, OAuth only for customers)
+- Still figuring out Google translate
+Anna updated us on front-end, she has almost finished the Customer side HTML/CSS, but still needs to do JS 
+Harini also still needs to do JS for the Manager side and add to the Sales page’s HTML/CSS
+Casey has been moving things over to React/JS (she is working on the Customer side now) and worked on the backend (with Express)
+Alan is working on learning more about hosting right now
+Planning for the next mini-sprints
+- Converting from HTML/CSS to React components
+- Setting up routing 
+- Hosting
+On Wednesday, we will make more detailed deadlines for the rest of the project

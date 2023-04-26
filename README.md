@@ -1,5 +1,5 @@
 # CSCE315_Project3_51
-Team 51's All-inclusive Restraut GUI for Rev's Grill 🐕‍🦺
+Team 51's All-inclusive Restaurant GUI for Rev's Grill 🐕‍🦺
 
 ## General Project Structure
 

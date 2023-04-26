@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import './pages/Manager_Side/Manager_Employee'
+import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
+import './pages/Manager_Side/manager.css';
 
 function App() {
 
@@ -33,19 +37,21 @@ function App() {
 
   return (
     <div className="App">
+      <Manager_Employee></Manager_Employee>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>What are you doing here today?</h1>
+        
+        {/* <Router>
+        <ul>
+          <li><button href="/">Main</button></li>
+          <li><button href="/menu">Menu</button></li>
+          <li><button href="/customer">Customer</button></li>
+          <li><button href="/server">Server</button></li>
+          <li><button href="/server">Manager</button></li>
+        </ul>
+        <Route path="/" render={() => <h1>Welcome!</h1>} />
+        </Router> */}
         <p>{hello}</p>
         <p>{hello2}</p>
         
