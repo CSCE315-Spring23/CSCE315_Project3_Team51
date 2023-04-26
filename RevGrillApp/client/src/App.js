@@ -1,15 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
-<<<<<<< HEAD
 import Signup from './pages/Log_In/signup'
-=======
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './pages/Manager_Side/Manager_Employee'
 import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
 import './pages/Manager_Side/manager.css';
 
->>>>>>> 7bcbb3a0a989135ceaa3cffb9a8759b65097a66d
 function App() {
 
   const [hello, setHello] = useState('No data')
