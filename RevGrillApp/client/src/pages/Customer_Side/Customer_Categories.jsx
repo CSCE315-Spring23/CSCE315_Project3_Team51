@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style_menu.css';
 
 export class Customer_Categories extends Component {
 
@@ -9,5 +10,5 @@ export class Customer_Categories extends Component {
     </h1>
     )
   }
-
+  299.576
 }
