@@ -22,19 +22,19 @@ process.on('SIGINT', function() {
 });
 
 router.get('/', (req, res, next) => {
-  teammembers = []
+  ingredients = []
   pool
-    .query('SELECT * FROM teammembers;')
+    .query("SELECT * FROM inventory_data ORDER BY ingredient_name;")
     .then(query_res => {
       for (let i = 0; i < query_res.rowCount; i++){
-        teammembers.push(query_res.rows[i]);
+        ingredients.push(query_res.rows[i]);
       }
-      const data = {teammembers: teammembers};
+      const data = {ingredient: ingredients};
       // console.log(teammembers);
       res.send(data);
 
       const FileSystem = require("fs");
-      FileSystem.writeFile('../local_data/example.json', JSON.stringify(data), (error) => {
+      FileSystem.writeFile('../local_data/ingredients.json', JSON.stringify(data), (error) => {
         (err) => {  if (err) throw err; } 
       });
     });

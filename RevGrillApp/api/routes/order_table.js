@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const { Pool } = require('pg');
+// const { getOrders } = require('./backend_functions/Order');
 const dotenv = require('dotenv').config();
 
 // Create pool
@@ -21,20 +22,24 @@ process.on('SIGINT', function() {
   process.exit(0);
 });
 
+// router.get('/', function(req, res, next) {
+//   res.send('message from orders');
+// });
+
 router.get('/', (req, res, next) => {
-  teammembers = []
+  orders = []
   pool
-    .query('SELECT * FROM teammembers;')
+    .query("SELECT * FROM orders ORDER BY order_number;")
     .then(query_res => {
       for (let i = 0; i < query_res.rowCount; i++){
-        teammembers.push(query_res.rows[i]);
+        orders.push(query_res.rows[i]);
       }
-      const data = {teammembers: teammembers};
-      // console.log(teammembers);
+      const data = {order: orders};
+      console.log(orders);
       res.send(data);
 
       const FileSystem = require("fs");
-      FileSystem.writeFile('../local_data/example.json', JSON.stringify(data), (error) => {
+      FileSystem.writeFile('../local_data/orders.json', JSON.stringify(data), (error) => {
         (err) => {  if (err) throw err; } 
       });
     });

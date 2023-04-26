@@ -1,55 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import './pages/Manager_Side/Manager_Employee'
+import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
+import './pages/Manager_Side/manager.css';
 
 function App() {
 
-  const [hello, setHello] = useState('No data')
-  const [hello2, setHello2] = useState('No data2')
+  const [ingredients, setIngredients] = useState('No data - Ingredients')
+  const [orders, setOrders] = useState('No data - Orders')
 
-  const callAPI = () => {
-    fetch("http://localhost:9000/newroute")
-      .then(r => r.text())
-      .then(resp => {
-        setHello(resp)
-      });
-  }
-
-  const callAPI2 = () => {
+  const callAPIIngredients = () => {
     fetch("http://localhost:9000/users")
       .then(r => r.text())
       .then(resp => {
-        setHello2(resp)
+        setIngredients(resp)
+      });
+  }
+
+  const callAPIOrders = () => {
+    fetch("http://localhost:9000/orders")
+      .then(r => r.text())
+      .then(resp => {
+        setOrders(resp)
       });
   }
 
   useEffect(() => {
-    callAPI()
+    callAPIIngredients()
   }, [])
 
   useEffect(() => {
-    callAPI2()
+    callAPIOrders()
   }, [])
 
   return (
     <div className="App">
+      <Manager_Employee></Manager_Employee>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>{hello}</p>
-        <p>{hello2}</p>
-        
+        <h1>Example of accessing all the tables:</h1>
       </header>
+             
+        <p>{ingredients}</p>
+        <p>{orders}</p>
     </div>
   );
 }
