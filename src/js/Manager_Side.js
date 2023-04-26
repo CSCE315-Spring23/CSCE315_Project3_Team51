@@ -14,11 +14,11 @@ async function getMostUsedItems() {
         console.log(res.rows);
         return res.rows;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
-getMostUsedItems();
+//getMostUsedItems();
 
 async function getSellsTogether() {
     try {
@@ -71,7 +71,7 @@ async function getSellsTogether() {
         console.log(sellsTogether);
         return sellsTogether;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
@@ -91,30 +91,49 @@ async function restockReport() {
         console.log(res.rows);
         return res.rows;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
 async function salesReport() {
-    console.log("Work in progress");
+    try {
+        console.log('Creating sales report');
+        const res = await pool.query(
+            "WITH all_items AS (SELECT array_agg(c) AS arr FROM (SELECT UNNEST(items_ordered) FROM orders) AS dt(c)), " + 
+            "row_items AS (SELECT UNNEST(arr) AS items FROM all_items) SELECT (SELECT item_name FROM menu_items WHERE item_number = items), " +
+            "ROUND(CAST(count(*) * (SELECT price FROM menu_items WHERE item_number = items ORDER BY items) AS NUMERIC), 2) " + 
+            "AS total_profit FROM row_items GROUP BY items ORDER BY total_profit DESC"
+        );
+        console.log(res.rows);
+        return res.rows;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-async function excessReport() {
-    console.log("Work in progress");
+async function excessReport(daysAgo) {
+    try {
+        console.log('Creating excess report');
+        const excess = {};
+        console.log(res.rows);
+        return res.rows;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function xReport() {
     try {
         console.log('Creating X report');
         const res = await pool.query(
-            "SELECT menu_items.item_name, COUNT(orders.items_ordered) AS times_ordered FROM orders " + 
-            "INNER JOIN menu_items ON menu_items.item_number = ANY(orders.items_ordered) WHERE orders.current_day = TRUE " +
-            "GROUP BY UNNEST(orders.items_ordered), menu_items.item_number ORDER BY times_ordered DESC"
+            "WITH all_items AS (SELECT array_agg(c) AS arr FROM (SELECT UNNEST(items_ordered) FROM orders) AS dt(c)), " + 
+            "row_items AS (SELECT UNNEST(arr) AS items FROM all_items) SELECT (SELECT item_name FROM menu_items WHERE item_number = items), " +
+            "COUNT(*) AS times_ordered FROM row_items GROUP BY items ORDER BY items"
         );
         console.log(res.rows);
         return res.rows;
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
