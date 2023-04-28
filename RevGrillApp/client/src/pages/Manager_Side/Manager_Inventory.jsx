@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './manager.css';
-import { getMostUsedItems } from '../../backend_functions/Manager_Side';
+import './Manager_Side';
+import { fun } from './Manager_Side';
+
 export class Manager_Inventory extends Component {
 
   render() {
@@ -42,7 +44,7 @@ export class Manager_Inventory extends Component {
                         </tr>
                     </table>
                     <div className="button-div">
-                        <button onClick = {getMostUsedItems}>Update Inventory</button>
+                        <button onClick={fun}>Update Inventory</button>
                     </div>
                 </form>
             </div>
