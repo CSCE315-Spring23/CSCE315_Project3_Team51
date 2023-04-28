@@ -44,7 +44,23 @@ function App() {
     <div className="App">
       <Manager_Inventory></Manager_Inventory>
       <header className="App-header">
-        <h1>Example of accessing all the tables:</h1>
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>What are you doing here today?</h1>
+        
+        {/* <Router>
+        <ul>
+          <li><button href="/">Main</button></li>
+          <li><button href="/menu">Menu</button></li>
+          <li><button href="/customer">Customer</button></li>
+          <li><button href="/server">Server</button></li>
+          <li><button href="/manager">Manager</button></li>
+        </ul>
+        <Route path="/" render={() => <h1>Welcome!</h1>} />
+        <Route render={() => <h1>404: page not found</h1>} />
+        </Router> */}
+        <p>{hello}</p>
+        <p>{hello2}</p>
+        
       </header>
              
         <p>{ingredients}</p>
