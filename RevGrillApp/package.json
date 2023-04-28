@@ -1,0 +1,36 @@
+{
+  "name": "rev-grill-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm i && npm --prefix ./frontend i && npm --prefix ./backend i",
+    "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client start\" \"yarn --cwd ./api start\"",
+    "dev-front": "yarn --cwd ./client start",
+    "dev-back": "yarn --prefix ./api start"
+  },
+  "keywords": [],
+  "author": "CSCE 315-331 Team 51",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "pg": "^8.10.0",
+    "react-router-dom": "^6.10.0",
+    "sort-by": "^1.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSCE315-Spring23/CSCE315_Project3_Team51.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CSCE315-Spring23/CSCE315_Project3_Team51/issues"
+  },
+  "homepage": "https://github.com/CSCE315-Spring23/CSCE315_Project3_Team51#readme"
+}
