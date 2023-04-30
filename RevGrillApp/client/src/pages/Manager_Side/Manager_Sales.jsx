@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './manager.css';
+import {}
 
 export class Manager_Sales extends Component {
 

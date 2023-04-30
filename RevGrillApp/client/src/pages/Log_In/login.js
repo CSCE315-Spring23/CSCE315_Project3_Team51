@@ -1,7 +1,6 @@
 import React, {useRef,useState} from 'react'
 import { useAuth2 } from './auth_context';
-
-
+import './login.css';
 
 export default function Login() {
   const emailRef = useRef();
@@ -23,7 +22,7 @@ export default function Login() {
     } catch {
       setError("Customer Log In Failed")
     }
-    alert("Log In Success");
+    //alert("Log In Success");
     setLoading(false);
   }
 
@@ -32,7 +31,16 @@ export default function Login() {
     try {
         setLoading(true);
         setError('');
-        await empLogIn(idRef.current.value);
+        console.log("Starting Server Submit")
+        try {
+          const isManager = await fetch("http://localhost:8080/server_sub");
+          console.log(isManager);
+          
+        } catch(error) {
+          console.log(error);
+        }
+        
+        
       } catch {
         setError("Server Log In Failed")
       }
@@ -45,7 +53,12 @@ export default function Login() {
     try {
         setLoading(true);
         setError('');
-        await mannLogIn(idRef.current.value);
+        const isManager = await fetch("http://localhost:9000/is_manager");
+        if(isManager) {
+          //route to the manager side
+        } else {
+          console.alert("INVALID CREDENTIALS");
+        }
       } catch {
         setError("Manager Log In Failed")
       }
@@ -68,54 +81,76 @@ export default function Login() {
   return (
     <>
       <div className = "signup_wrap">
+      <div id = "logo">
+          <div id = "actual_img">rev</div>
+        </div>
         <form>
         {error && alert(error)}
+       
+        <div id = "regSig" >
         
-        <label id = "username_box">
-          Email: 
-          <input 
-            type = "email"
-            ref = {emailRef}
+                 <label id = "username_box">
             
-          />
-        </label>
-
-        <label id = "pass_reg_box">
-          Password: 
-          <input 
-            type = "password"
-            ref = {passRef}
-            
-          />
-        </label>  
-
-
-        <button disabled = {loading} onClick = {submit} id = "signup-but" type = "signup">
-          Log In!
-        </button>
-
-        <button disabled = {loading} onClick = {oAuthSub} id = "oauth-but" type = "submit">
-            OAuth
-        </button>
-
-        <label id = "emp_auth">
-            Employee ID:
             <input 
-                type = "number"
-                ref = {idRef}
+            placeholder = "Email"
+              type = "email"
+              ref = {emailRef}
+            
             />
-        </label>
-        <div className = "empButtons">
-            <button disabled = {loading} onClick = {servSub} id = "signup-but" type = "signup">
-                Server
-            </button>
-            <button disabled = {loading} onClick = {manSub} id = "signup-but" type = "signup">
-                Manager
-            </button>
-        </div>
+          </label>
+
+       
+
+          <label id = "pass_reg_box">
+            
+            <input 
+              placeholder = "Password"
+              type = "password"
+              ref = {passRef}
+            
+            />
+          </label>  
+
+        
+          <br></br>
+          <button disabled = {loading} onClick = {submit} id = "signup-but" type = "signup">
+            Log In!
+          </button>
+          </div>
+          
+
+       <div id = "emp">
+          <label id = "emp_auth">
+              
+              <input
+                  placeholder = "Employee ID" 
+                  type = "number"
+                  ref = {idRef}
+              />
+            </label>
+            <br></br>
+            <div className = "empButtons">
+                <button disabled = {loading} onClick = {servSub} id = "emp-but" type = "signup">
+                    Server
+                </button>
+                <button disabled = {loading} onClick = {manSub} id = "emp-but" type = "signup">
+                    Manager
+                </button>
+            </div>
+       </div>
+       
         
 
+         <button disabled = {loading} onClick = {oAuthSub} id = "oauth-but" type = "submit">
+            Sign in with Google
+        </button>
+
+
+        <button id = "sign-up">
+          Sign Up!
+        </button>
         </form>
+        
       </div>
     </>
   )

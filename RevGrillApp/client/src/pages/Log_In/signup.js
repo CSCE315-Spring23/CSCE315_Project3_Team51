@@ -1,5 +1,6 @@
 import React, {useRef,useState} from 'react'
 import { useAuth2 } from './auth_context';
+import './signup.css';
 
 export default function Signup() {
   const emailRef = useRef();
@@ -30,14 +31,20 @@ export default function Signup() {
 
   return (
     <>
-      Oranges
+      
       <div className = "signup_wrap">
+      <div id = "logo">
+          <div id = "actual_img">rev</div>
+        </div>
         <form onSubmit = {sumbit}>
         {error && alert(error)}
-        
+        <div>
+          Sign Up!
+        </div>
         <label id = "username_box">
-          Email: 
-          <input 
+           
+          <input
+            placeholder = "Email" 
             type = "email"
             ref = {emailRef}
             required
@@ -45,8 +52,9 @@ export default function Signup() {
         </label>
 
         <label id = "pass_reg_box">
-          Password: 
-          <input 
+           
+          <input
+            placeholder = "Password" 
             type = "password"
             ref = {passRef}
             required
@@ -54,8 +62,9 @@ export default function Signup() {
         </label>  
 
         <label id = "pass_con_box">
-          Password Confirmation: 
-          <input 
+          
+          <input
+            placeholder = "Password Confirmation" 
             type = "password"
             ref = {passRefCon}
             required

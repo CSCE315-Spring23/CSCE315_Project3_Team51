@@ -19,16 +19,11 @@
     "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-<<<<<<< HEAD
-    "firebase": "^9.20.0",
-    "pg": "^8.10.0"
-=======
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "pg": "^8.10.0",
     "react-router-dom": "^6.10.0",
     "sort-by": "^1.2.0"
->>>>>>> 7bcbb3a0a989135ceaa3cffb9a8759b65097a66d
   },
   "repository": {
     "type": "git",

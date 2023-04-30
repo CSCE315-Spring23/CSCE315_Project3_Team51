@@ -2,7 +2,11 @@ const {pool} = require("./Conn.js");
 
 
 async function isEmployee(id) {
-    console.log("Work in progress");
+    if(id === 4) {
+        return "true"
+    } else {
+        throw "Not Right homie"
+    }
 }
 
 async function isManager(id) {
