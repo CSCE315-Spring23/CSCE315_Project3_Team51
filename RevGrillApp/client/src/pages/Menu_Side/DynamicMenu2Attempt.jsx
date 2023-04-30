@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { MenuList } from './menu_tile.jsx';
+import { SimpleMenuList } from './menu_tile.jsx';
+import { FeaturedMenuItem } from './menu_tile.jsx';
 import './style.css';
 
 export class Menu2 extends Component {
@@ -23,24 +25,10 @@ export class Menu2 extends Component {
     
             <div className = 'body'>
                 <div className = 'left'> 
-                    <div className = 'larger-card special'> 
-                        <div className = 'title'> Featured Item Name </div>
-                        <img src="./cat_burgers.png" alt="menu item"/>
-                        <div className = 'text bold'> $5.99 </div>
-                        <div className = 'text'> Tasty /category/ with /ingredients_list/ </div>
-                        <div className = 'text bold larger'> Try our best-selling menu item! </div>
-                    </div>
+                    <div> <FeaturedMenuItem category="Burgers" /> </div>
     
                     <div className = 'menu-list' style = 'width: 350px'> 
-                        <div className = 'title'> Sweet Treats </div>
-                        <ul> 
-                            <li> cookie </li>
-                            <li> vanilla shake </li>
-                            <li> chocolate shake </li>
-                            <li> strawberry shake </li>
-                            <li> cappuccino shake </li>
-                            <li> ice cream </li>
-                        </ul>
+                        <SimpleMenuList category='desserts' />
                     </div>
                 </div>
                 
