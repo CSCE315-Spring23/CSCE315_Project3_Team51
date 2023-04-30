@@ -42,6 +42,8 @@ function App() {
   return (
     <div className="App">
       <Manager_Inventory></Manager_Inventory>
+      <Manager_Employee></Manager_Employee>
+      <Manager_Sales></Manager_Sales>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>What are you doing here today?</h1>
