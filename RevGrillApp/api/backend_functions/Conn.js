@@ -14,4 +14,12 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 });
 
+app.get("/api", (req, res) => {
+    res.json({ message: "Hello from server!" });
+});
+
+app.listen(port, () => {
+    console.log('test');
+});
+
 module.exports = {pool};
