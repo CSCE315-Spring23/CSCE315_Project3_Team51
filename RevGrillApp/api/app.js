@@ -15,6 +15,7 @@ var ingredientsRoute = require('./routes/ingredient_table');
 var itemsRoute = require('./routes/item_table');
 var employeesRoute = require('./routes/employee_table');
 
+// manager side
 var mostUsedRoute = require('./routes/most_used_items');
 var sellsTogetherRoute = require('./routes/get_sells_together');
 var restockRepRoute = require('./routes/restock_report');
@@ -31,6 +32,7 @@ var newDayRoute = require('./routes/new_day');
 var employeeInfoRoute = require('./routes/employee_info');
 var salesRoute = require('./routes/get_sales');
 
+// server/customer/menu side
 var lastOrderNumRoute = require('./routes/last_order_number');
 var updateInvRoute = require('./routes/update_inventory');
 var getMenuRoute = require('./routes/get_menu');
@@ -38,6 +40,10 @@ var getIngrRoute = require('./routes/get_ingredients');
 var getCategoryRoute = require('./routes/get_category_items');
 var getOrdersRoute = require('./routes/get_orders');
 var getOrderByNumRoute = require('./routes/get_order_by_num');
+
+// login page
+var isEmployeeRoute = require('./routes/is_employee');
+var isManagerRoute = require('./routes/is_manager');
 
 var app = express();
 
@@ -78,7 +84,7 @@ app.use('/new_day', newDayRoute);
 app.use('/employee_info', employeeInfoRoute);
 app.use('/get_sales', salesRoute);
 
-// Server/Customer side functions
+// Server/Customer/Menu side functions
 app.use('/last_order_number', lastOrderNumRoute);
 app.use('/update_inventory', updateInvRoute);
 app.use('/get_menu', getMenuRoute);
@@ -86,6 +92,10 @@ app.use('/get_ingredients', getIngrRoute);
 app.use('/get_category_items', getCategoryRoute);
 app.use('/get_orders', getOrdersRoute);
 app.use('/get_order_by_num', getOrderByNumRoute);
+
+// Login page functions
+app.use('/is_employee', isEmployeeRoute);
+app.use('/is_manager', isManagerRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
