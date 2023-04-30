@@ -14,6 +14,7 @@ var ordersRoute = require('./routes/order_table');
 var ingredientsRoute = require('./routes/ingredient_table');
 var itemsRoute = require('./routes/item_table');
 var employeesRoute = require('./routes/employee_table');
+
 var mostUsedRoute = require('./routes/most_used_items');
 var sellsTogetherRoute = require('./routes/get_sells_together');
 var restockRepRoute = require('./routes/restock_report');
@@ -21,13 +22,13 @@ var salesRepRoute = require('./routes/sales_report');
 var excessRepRoute = require('./routes/excess_report');
 var xRepRoute = require('./routes/x_report');
 var zRepRoute = require('./routes/z_report');
-//editItem
-//addItem
-//removeItem
+var editItemRoute = require('./routes/edit_item');
+var addItemRoute = require('./routes/add_item');
+var removeItemRoute = require('./routes/remove_item');
 var inventoryRoute = require('./routes/get_inventory');
-//editInventory
-//signalNewDay
-//employeeInfo
+var editInvRoute = require('./routes/edit_inventory');
+var newDayRoute = require('./routes/new_day');
+var employeeInfoRoute = require('./routes/employee_info');
 var salesRoute = require('./routes/get_sales');
 
 var app = express();
@@ -51,6 +52,7 @@ app.use('/orders', ordersRoute);
 app.use('/ingredients', ingredientsRoute);
 app.use('/items', itemsRoute);
 app.use('/employees', employeesRoute);
+
 app.use('/most_used_items', mostUsedRoute);
 app.use('/get_sells_together', sellsTogetherRoute);
 app.use('/restock_report', restockRepRoute);
@@ -58,13 +60,13 @@ app.use('/sales_report', salesRepRoute);
 app.use('/excess_report', excessRepRoute);
 app.use('/x_report', xRepRoute);
 app.use('/z_report', zRepRoute);
-//editItem
-//addItem
-//removeItem
+app.use('./routes/edit_item', editItemRoute);
+app.use('./routes/add_item', addItemRoute);
+app.use('./routes/remove_item', removeItemRoute);
 app.use('/get_inventory', inventoryRoute);
-//editInventory
-//signalNewDay
-//employeeInfo
+app.use('./routes/edit_inventory', editInvRoute);
+app.use('./routes/new_day', newDayRoute);
+app.use('./routes/employee_info', employeeInfoRoute);
 app.use('/get_sales', salesRoute);
 
 // catch 404 and forward to error handler
