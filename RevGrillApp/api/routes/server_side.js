@@ -19,7 +19,7 @@ router.put('/update_inventory', (req, res, next) => {
     }
 });
 
-router.put('/get_menu', (req, res, next) => {
+router.get('/get_menu', (req, res, next) => {
     try {
         const data = SS.getMenu();
         res.send(data);
@@ -46,7 +46,7 @@ router.put('/get_category_items', (req, res, next) => {
     }
 });
 
-router.put('/get_orders', (req, res, next) => {
+router.get('/get_orders', (req, res, next) => {
     try {
         const data = SS.getOrders();
         res.send(data);
