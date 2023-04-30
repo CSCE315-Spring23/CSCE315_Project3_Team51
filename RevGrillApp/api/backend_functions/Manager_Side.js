@@ -100,7 +100,7 @@ async function salesReport() {
             "WITH all_items AS (SELECT array_agg(c) AS arr FROM (SELECT UNNEST(items_ordered) FROM orders) AS dt(c)), " + 
             "row_items AS (SELECT UNNEST(arr) AS items FROM all_items) SELECT (SELECT item_name FROM menu_items WHERE item_number = items), " +
             "ROUND(CAST(count(*) * (SELECT price FROM menu_items WHERE item_number = items ORDER BY items) AS NUMERIC), 2) " + 
-            "AS total_profit FROM row_items GROUP BY items ORDER BY total_profit DESC"
+            "AS total_sales FROM row_items GROUP BY items ORDER BY total_sales DESC"
         );
         console.log(res.rows);
         return res.rows;
@@ -109,7 +109,7 @@ async function salesReport() {
     }
 }
 
-async function excessReport(daysAgo) {
+async function excessReport() {
     try {
         console.log('Creating excess report');
         const excess = {};
@@ -126,7 +126,7 @@ async function xReport() {
         const res = await pool.query(
             "WITH all_items AS (SELECT array_agg(c) AS arr FROM (SELECT UNNEST(items_ordered) FROM orders) AS dt(c)), " + 
             "row_items AS (SELECT UNNEST(arr) AS items FROM all_items) SELECT (SELECT item_name FROM menu_items WHERE item_number = items), " +
-            "COUNT(*) AS times_ordered FROM row_items GROUP BY items ORDER BY items"
+            "COUNT(*) AS times_ordered FROM row_items GROUP BY items ORDER BY times_ordered DESC"
         );
         console.log(res.rows);
         return res.rows;
