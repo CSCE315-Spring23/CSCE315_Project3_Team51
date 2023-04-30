@@ -13,6 +13,19 @@ async function getOrders() {
         console.error(error)
     }
 }
+async function getOrderByNum(orderNum) {
+    try {
+        console.log('Getting order ' + orderNum);
+        const res = await pool.query(
+            "SELECT * FROM orders WHERE order_number = $1",
+            [orderNum]
+        );
+        console.log(res.rows[0]);
+        return res.rows[0];
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 async function getSales() {
     try {
@@ -28,4 +41,5 @@ async function getSales() {
 }
 
 exports.getOrders = getOrders;
+exports.getOrderByNum = getOrderByNum;
 exports.getSales = getSales;

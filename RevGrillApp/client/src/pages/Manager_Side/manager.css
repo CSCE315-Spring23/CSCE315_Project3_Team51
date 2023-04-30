@@ -1,3 +1,7 @@
+:root {
+  background-color: #ebe7e7;
+}
+
 /* NAV BAR */
 
 .nav {
@@ -130,4 +134,23 @@ h2 {
 
 .m-form {
   padding: 0% 20%;
+}
+
+.s-form input {
+  width: 80%;
+  margin: auto;
+}
+
+.s-form {
+  text-align: left;
+}
+
+.s-form button {
+  margin-left: 30%;
+}
+
+.s-form h2 {
+  text-align: left;
+  margin-bottom: 3%;
+  margin-left: 27%;
 }

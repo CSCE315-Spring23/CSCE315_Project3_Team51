@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './manager.css';
+// import './Manager_Side';
+// import { fun } from './Manager_Side';
 
 export class Manager_Inventory extends Component {
 
@@ -42,7 +44,7 @@ export class Manager_Inventory extends Component {
                         </tr>
                     </table>
                     <div className="button-div">
-                        <button>Update Inventory</button>
+                        {/* <button onClick={fun}>Update Inventory</button> */}
                     </div>
                 </form>
             </div>
