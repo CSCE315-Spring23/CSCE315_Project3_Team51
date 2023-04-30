@@ -31,6 +31,14 @@ var newDayRoute = require('./routes/new_day');
 var employeeInfoRoute = require('./routes/employee_info');
 var salesRoute = require('./routes/get_sales');
 
+var lastOrderNumRoute = require('./routes/last_order_number');
+var updateInvRoute = require('./routes/update_inventory');
+var getMenuRoute = require('./routes/get_menu');
+var getIngrRoute = require('./routes/get_ingredients');
+var getCategoryRoute = require('./routes/get_category_items');
+var getOrdersRoute = require('./routes/get_orders');
+var getOrderByNumRoute = require('./routes/get_order_by_num');
+
 var app = express();
 
 // view engine setup
@@ -53,6 +61,7 @@ app.use('/ingredients', ingredientsRoute);
 app.use('/items', itemsRoute);
 app.use('/employees', employeesRoute);
 
+// Manager side functions
 app.use('/most_used_items', mostUsedRoute);
 app.use('/get_sells_together', sellsTogetherRoute);
 app.use('/restock_report', restockRepRoute);
@@ -60,14 +69,23 @@ app.use('/sales_report', salesRepRoute);
 app.use('/excess_report', excessRepRoute);
 app.use('/x_report', xRepRoute);
 app.use('/z_report', zRepRoute);
-app.use('./routes/edit_item', editItemRoute);
-app.use('./routes/add_item', addItemRoute);
-app.use('./routes/remove_item', removeItemRoute);
+app.use('/edit_item', editItemRoute);
+app.use('/add_item', addItemRoute);
+app.use('/remove_item', removeItemRoute);
 app.use('/get_inventory', inventoryRoute);
-app.use('./routes/edit_inventory', editInvRoute);
-app.use('./routes/new_day', newDayRoute);
-app.use('./routes/employee_info', employeeInfoRoute);
+app.use('/edit_inventory', editInvRoute);
+app.use('/new_day', newDayRoute);
+app.use('/employee_info', employeeInfoRoute);
 app.use('/get_sales', salesRoute);
+
+// Server/Customer side functions
+app.use('/last_order_number', lastOrderNumRoute);
+app.use('/update_inventory', updateInvRoute);
+app.use('/get_menu', getMenuRoute);
+app.use('/get_ingredients', getIngrRoute);
+app.use('/get_category_items', getCategoryRoute);
+app.use('/get_orders', getOrdersRoute);
+app.use('/get_order_by_num', getOrderByNumRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

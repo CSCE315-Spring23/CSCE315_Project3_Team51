@@ -13,6 +13,7 @@ async function getOrders() {
         console.error(error)
     }
 }
+
 async function getOrderByNum(orderNum) {
     try {
         console.log('Getting order ' + orderNum);
