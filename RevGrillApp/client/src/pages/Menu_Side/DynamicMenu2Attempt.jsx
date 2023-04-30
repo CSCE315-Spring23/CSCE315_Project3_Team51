@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MenuList } from './Menu';
+import { MenuList } from './menu_tile.jsx';
 import './style.css';
 
 export class Menu2 extends Component {

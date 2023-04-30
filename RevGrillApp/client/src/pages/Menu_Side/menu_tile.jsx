@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getMenu } from '../../../../api/routes/backend_functions/Item';
 import './style.css';
 
 async function fetchData() {
