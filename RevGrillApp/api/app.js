@@ -16,34 +16,34 @@ var itemsRoute = require('./routes/item_table');
 var employeesRoute = require('./routes/employee_table');
 
 // manager side
-var mostUsedRoute = require('./routes/most_used_items');
-var sellsTogetherRoute = require('./routes/get_sells_together');
-var restockRepRoute = require('./routes/restock_report');
-var salesRepRoute = require('./routes/sales_report');
-var excessRepRoute = require('./routes/excess_report');
-var xRepRoute = require('./routes/x_report');
-var zRepRoute = require('./routes/z_report');
-var editItemRoute = require('./routes/edit_item');
-var addItemRoute = require('./routes/add_item');
-var removeItemRoute = require('./routes/remove_item');
-var inventoryRoute = require('./routes/get_inventory');
-var editInvRoute = require('./routes/edit_inventory');
-var newDayRoute = require('./routes/new_day');
-var employeeInfoRoute = require('./routes/employee_info');
-var salesRoute = require('./routes/get_sales');
+var mostUsedRoute = require('./routes/manager_side/most_used_items');
+var sellsTogetherRoute = require('./routes/manager_side/get_sells_together');
+var restockRepRoute = require('./routes/manager_side/restock_report');
+var salesRepRoute = require('./routes/manager_side/sales_report');
+var excessRepRoute = require('./routes/manager_side/excess_report');
+var xRepRoute = require('./routes/manager_side/x_report');
+var zRepRoute = require('./routes/manager_side/z_report');
+var editItemRoute = require('./routes/manager_side/edit_item');
+var addItemRoute = require('./routes/manager_side/add_item');
+var removeItemRoute = require('./routes/manager_side/remove_item');
+var inventoryRoute = require('./routes/manager_side/get_inventory');
+var editInvRoute = require('./routes/manager_side/edit_inventory');
+var newDayRoute = require('./routes/manager_side/new_day');
+var employeeInfoRoute = require('./routes/manager_side/employee_info');
+var salesRoute = require('./routes/manager_side/get_sales');
 
 // server/customer/menu side
-var lastOrderNumRoute = require('./routes/last_order_number');
-var updateInvRoute = require('./routes/update_inventory');
-var getMenuRoute = require('./routes/get_menu');
-var getIngrRoute = require('./routes/get_ingredients');
-var getCategoryRoute = require('./routes/get_category_items');
-var getOrdersRoute = require('./routes/get_orders');
-var getOrderByNumRoute = require('./routes/get_order_by_num');
+var lastOrderNumRoute = require('./routes/server_side/last_order_number');
+var updateInvRoute = require('./routes/server_side/update_inventory');
+var getMenuRoute = require('./routes/server_side/get_menu');
+var getIngrRoute = require('./routes/server_side/get_ingredients');
+var getCategoryRoute = require('./routes/server_side/get_category_items');
+var getOrdersRoute = require('./routes/server_side/get_orders');
+var getOrderByNumRoute = require('./routes/server_side/get_order_by_num');
 
 // login page
-var isEmployeeRoute = require('./routes/is_employee');
-var isManagerRoute = require('./routes/is_manager');
+var isEmployeeRoute = require('./routes/login/is_employee');
+var isManagerRoute = require('./routes/login/is_manager');
 
 var app = express();
 
