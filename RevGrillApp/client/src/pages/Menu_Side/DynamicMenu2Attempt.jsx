@@ -68,7 +68,7 @@ export class Menu2 extends Component {
         </div>
     
         <div className = 'navigate'> 
-            <button className = "button"> <a href="./menu2.html" style="text-decoration: none"> </a> </button>
+            <button className = "button"> <a href="./menu2.html" style="text-decoration: none"> </a> </button> // ROUTING: NAVIGATE TO MENU1 ON CLICK
         </div>
     
     </div>
