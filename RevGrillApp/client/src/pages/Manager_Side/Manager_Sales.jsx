@@ -45,7 +45,7 @@ export class Manager_Sales extends Component {
                         <label for="end_time">For Sales and Pairing Reports, enter the end time here: </label>
                         <input type="text" id="end_time" name="end_time" placeholder="end time (YYYY-MM-DD HH:MM)" />
                         <p></p>
-                        <button onclick= "fun()">Generate Report</button>
+                        <button>Generate Report</button>
                     </form>
                 </div>
                 <div class="ms-display">
