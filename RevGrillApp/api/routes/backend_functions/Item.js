@@ -103,6 +103,7 @@ async function addItem(name, price, category, ingredients) {
 
 async function removeItem(item, newName = "", newPrice = -1, newCategory = "", newIngredients = []) {
     try {
+        let identifier;
         if(typeof item == "string") {
             console.log("Deleting " + item);
             identifier = "item_name";

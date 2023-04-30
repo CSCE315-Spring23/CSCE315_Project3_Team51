@@ -9,7 +9,6 @@ import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
 import { Manager_Inventory } from './pages/Manager_Side/Manager_Inventory';
 import {Manager_Sales} from './pages/Manager_Side/Manager_Sales';
 import './pages/Manager_Side/manager.css';
-import { Manager_Inventory} from './pages/Manager_Side/Manager_Inventory.jsx';
 
 function App() {
 
@@ -58,9 +57,6 @@ function App() {
         <Route path="/" render={() => <h1>Welcome!</h1>} />
         <Route render={() => <h1>404: page not found</h1>} />
         </Router> */}
-        <p>{hello}</p>
-        <p>{hello2}</p>
-        
       </header>
              
         <p>{ingredients}</p>
