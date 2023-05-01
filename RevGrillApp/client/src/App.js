@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
 import Manager_Sales from './pages/Manager_Side/Manager_Sales';
 import Manager_Employee from './pages/Manager_Side/Manager_Employee';
