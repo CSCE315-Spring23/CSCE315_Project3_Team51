@@ -4,19 +4,8 @@ import { useEffect, useState } from 'react';
 
 export default function Manager_Sales() {
 
-    const [report, setReport] = useState('No Data - Report')
-  
-    // const callAPIIngredients = () => {
-    //   fetch("http://localhost:9000/users")
-    //     .then(r => r.text())
-    //     .then(resp => {
-    //       setIngredients(resp)
-    //     });
-    // }
-
-    // useEffect(() => {
-    //     callAPIIngredients()
-    // }, [])
+    const [heading, setHeading] = useState('Display Report')
+    const [report, setReport] = useState('Report Will Display Here')
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -26,12 +15,13 @@ export default function Manager_Sales() {
         const endTime = event.target.end_time.value;
 
         event.target.reset();
+        setHeading(reportType.charAt(0).toUpperCase() + reportType.slice(1) + " Report");
 
         fetch("http://localhost:9000/manager_side/" + reportType + "_report")
             .then(r => r.text())
             .then(r => {
                 setReport(r)
-            })
+            });
     };
 
     return(
@@ -79,7 +69,7 @@ export default function Manager_Sales() {
                     </form>
                 </div>
                 <div class="ms-display">
-                    <h2>Display Report</h2>
+                    <h2> { heading } </h2>
                     <p>{ report }</p>
                 </div>
             </div>
