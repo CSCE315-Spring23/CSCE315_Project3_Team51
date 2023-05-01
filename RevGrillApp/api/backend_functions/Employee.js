@@ -24,7 +24,7 @@ async function isManager(id) {
     try {
         console.log('Checking if id ' + id + ' is a manager');
         const res = await pool.query(
-            "SELECT is_manager FROM employees WHERE employee_id = $1",
+            "SELECT is_manager, employee_name FROM employees WHERE employee_id = $1",
             [id]
         );
         if(res.rowCount == 0) {
@@ -32,9 +32,11 @@ async function isManager(id) {
             return -1;
         } else if(res.rows[0].is_manager) {
             console.log('Manager found: ' + res.rows[0].employee_name);
+            console.log(res.rows[0]);
             return res.rows[0];
         } else {
             console.error('Non-manager found: ' + res.rows[0].employee_name);
+            console.log(res.rows[0]);
             return res.rows[0];
         }
     } catch (error) {

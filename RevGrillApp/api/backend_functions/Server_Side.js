@@ -16,7 +16,7 @@ async function lastOrderNumber() {
     }
 }
 
-//lastOrderNumber();
+//async function createOrder
 
 async function updateInventory(orderNum) {
     try {
