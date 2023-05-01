@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import './style.css';
+import burgerPic from './../../assets/categories/cat_burgers.png';
+import dessertPic from './../../assets/categories/cat_dessert.png';
+import drinkPic from './../../assets/categories/cat_drink.png';
+import sandwichPic from './../../assets/categories/cat_sandwich.png';
+import shakePic from './../../assets/categories/cat_shake.png';
+import sidesPic from './../../assets/categories/cat_sides.png';
+import tendersPic from './../../assets/categories/cat_tenders.png';
 
 function buildDescription(category, ingredients) {
   let description = '';
@@ -19,22 +26,22 @@ function buildDescription(category, ingredients) {
 }
 
 function buildImage(category) {
-    let imageSrc = '';
-    switch (category) {
-      case 'Burger':
-        imageSrc = './cat_burgers.png';
-        break;
-      case 'Sandwich':
-        imageSrc = './cat_sandwich.png';
-        break;
-      case 'Tenders':
-        imageSrc = './cat_tenders.png';
-        break;
-      default:
-        imageSrc = './cat_sides.png';
-        break;
-    }
-    return imageSrc;
+  let imageSrc = '';
+  switch (category) {
+    case 'Burger':
+      imageSrc = burgerPic;
+      break;
+    case 'Sandwich':
+      imageSrc = sandwichPic;
+      break;
+    case 'Tenders':
+      imageSrc = tendersPic;
+      break;
+    default:
+      imageSrc = sidesPic;
+      break;
+  }
+  return imageSrc;
 }
 
 export default class Menu extends Component {
@@ -93,14 +100,14 @@ export default class Menu extends Component {
             <div className = 'page'> 
                 <div className = 'header'>
                     <div className = 'weather'> 
-                        <img src="./cat_burgers.png" alt="menu item"/>
+                        <img src= {burgerPic} alt="menu item"/>
                         <div className = 'stacked'> 
                             <p> 68 F </p>
                             <p> Sunny </p>
                         </div>
                     </div>
                     <div className = 'welcome'> Welcome to Rev's! </div>
-                    <div className = 'date'> <em> April 2 2023 06:43 PM </em> </div>
+                    <div className = 'date'> <em>            </em> </div>
                 </div>
 
                 <div className = 'body'>
@@ -114,7 +121,7 @@ export default class Menu extends Component {
                             {firstThreeCombos.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_burgers.png" alt="burger"/>
+                                    <img src= {burgerPic} alt="burger"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} + side + drink </div>
                                 </div>
@@ -125,7 +132,7 @@ export default class Menu extends Component {
                             {secondThreeCombos.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_burgers.png" alt="burger"/>
+                                    <img src= {burgerPic} alt="burger"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} + side + drink </div>
                                 </div>
@@ -136,7 +143,7 @@ export default class Menu extends Component {
                             {lastThreeCombos.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_burgers.png" alt="burger"/>
+                                    <img src= {burgerPic} alt="burger"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} + side + drink </div>
                                 </div>
