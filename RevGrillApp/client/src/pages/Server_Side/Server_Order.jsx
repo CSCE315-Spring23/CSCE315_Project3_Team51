@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Server_Order extends Component {
+export default function Server_Order() {
 
-  render() {
-    return(
-    <h1>
-      Server Order
-    </h1>
-    )
-  }
-
+  return(
+  <h1>
+    Server Order
+  </h1>
+  )
 }
+

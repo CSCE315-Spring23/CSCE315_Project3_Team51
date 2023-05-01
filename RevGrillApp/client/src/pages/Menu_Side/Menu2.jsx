@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import './style.css';
+import burgerPic from './../../assets/categories/cat_burgers.png';
+import dessertPic from './../../assets/categories/cat_dessert.png';
+import drinkPic from './../../assets/categories/cat_drink.png';
+import sandwichPic from './../../assets/categories/cat_sandwich.png';
+import shakePic from './../../assets/categories/cat_shake.png';
+import sidesPic from './../../assets/categories/cat_sides.png';
+import tendersPic from './../../assets/categories/cat_tenders.png';
 
 function buildDescription(category, ingredients) {
   let description = '';
@@ -22,16 +29,16 @@ function buildImage(category) {
     let imageSrc = '';
     switch (category) {
       case 'Burger':
-        imageSrc = './cat_burgers.png';
+        imageSrc = burgerPic;
         break;
       case 'Sandwich':
-        imageSrc = './cat_sandwich.png';
+        imageSrc = sandwichPic;
         break;
       case 'Tenders':
-        imageSrc = './cat_tenders.png';
+        imageSrc = tendersPic;
         break;
       default:
-        imageSrc = './cat_sides.png';
+        imageSrc = sidesPic;
         break;
     }
     return imageSrc;
@@ -95,14 +102,13 @@ export default class Menu extends Component {
             <div className = 'page'> 
                 <div className = 'header'>
                     <div className = 'weather'> 
-                        <img src="./cat_burgers.png" alt="menu item"/>
+                        <img src= {burgerPic} alt="menu item"/>
                         <div className = 'stacked'> 
                             <p> 68 F </p>
                             <p> Sunny </p>
                         </div>
                     </div>
                     <div className = 'welcome'> Welcome to Rev's! </div>
-                    <div className = 'date'> <em> April 2 2023 06:43 PM </em> </div>
                 </div>
         
                 <div className = 'body'>
@@ -133,7 +139,7 @@ export default class Menu extends Component {
                             {Burgers.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_burgers.png" alt="burger"/>
+                                    <img src= {burgerPic} alt="burger"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
@@ -145,7 +151,7 @@ export default class Menu extends Component {
                             {Sandwiches.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_sandwich.png" alt="sandwich"/>
+                                    <img src={sandwichPic} alt="sandwich"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
@@ -157,7 +163,7 @@ export default class Menu extends Component {
                             {Tenders.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_tenders.png" alt="tenders"/>
+                                    <img src= {tendersPic} alt="tenders"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
@@ -169,7 +175,7 @@ export default class Menu extends Component {
                             {Desserts.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src="./cat_dessert.png" alt="dessert"/>
+                                    <img src= {dessertPic} alt="dessert"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>

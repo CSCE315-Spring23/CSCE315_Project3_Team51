@@ -2,11 +2,133 @@
   background-color: #ebe7e7;
 }
 
+header {
+  background-color: var(--custom-primary);
+  color: var(--custom-secondary);
+  height: 5em;
+  width: 100%;
+  position: fixed;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+#server_side {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#cat_display {
+  display: flex;
+  min-width: 50%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* align-items: upper;  */
+  gap: 0.5em;
+}
+
+@media (max-width: 800px) {
+  #cat_display {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center; 
+    gap: 0.5em;
+    margin: 5% 5% 5% 5%;
+  }
+}
+
+.RHS {
+  flex: 70%;
+  justify-content: center;
+}
+
+.curOrder_box {
+  background-color: aquamarine;
+  width: 100%;
+  height: 100 px;
+  padding: 5% 5% 5% 5%;
+  margin: 5% 5% 5% 5%;
+}
+
+#category_tile {
+  height: 100px;
+  width: 100px;
+  background-color: var(--custom-secondary-light);
+  border-radius: 20px;
+  border: 3px solid var(--custom-dark);
+  font-size: medium;
+  line-height: 10px;
+  color: var(--custom-primary);
+}
+
+#cat_img {
+  height: 50px;
+  width: 50px;
+  transform: translate(0px, -10px);
+  z-index: -5;
+}
+
+#category_tile:hover {
+  animation: focus 0.2s ease-in;
+  border-radius: 30px;
+  color: var(--custom-primary-light)
+}
+
+#category_tile:hover #cat_img {
+  height: 55px;
+  width: 55px;
+  animation: img_lift 0.2s ease-in;
+  animation-fill-mode: forwards;
+  z-index: -5;
+}
+
+@keyframes img_lift {
+  0%    {   
+          transform: translate(0px,  -10px); 
+          height: 50px;
+          width: 50px;
+        }
+  100%  { 
+          transform: translate(0px,  -15px); 
+          height: 55px;
+          width: 55px;
+        }
+}
+
+@keyframes focus {
+  0%    {   
+          border-radius: 20px; 
+          color: var(--custom-primary);
+        }
+  100%  { 
+          border-radius: 30px; 
+          color: var(--custom-primary-light);
+        }
+}
+
+
+.progress_bar {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
+.order_bar {
+  flex:30%;
+  min-height: 550px;
+  background-color: var(--custom-light);
+}
+
 /* NAV BAR */
 
 .nav {
   background-color: var(--custom-primary);
-  position: static;
+  position: absolute;
   list-style-type: none;
   text-align: right;
   margin: 0;

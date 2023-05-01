@@ -1,4 +1,3 @@
-// import React, { Component } from 'react';
 import './manager.css';
 import { useEffect, useState } from 'react';
 import JsonToTable from './Display_Inventory';
