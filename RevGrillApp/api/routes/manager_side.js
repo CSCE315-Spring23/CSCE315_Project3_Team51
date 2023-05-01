@@ -113,7 +113,7 @@ router.get('/get_inventory', async (req, res, next) => {
     }
 });
 
-router.put('/edit_inventory', async (req, res, next) => {
+router.post('/edit_inventory', async (req, res, next) => {
     try {
         var ingredient = req.body.ingredient;
         var newQuantity = -1;
