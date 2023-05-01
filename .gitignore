@@ -1,2 +1,3 @@
 /.metadata/
 node_modules/
+.gitignore
