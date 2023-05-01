@@ -45,11 +45,20 @@ header {
 }
 
 .curOrder_box {
-  background-color: aquamarine;
-  width: 100%;
-  height: 100 px;
-  padding: 5% 5% 5% 5%;
-  margin: 5% 5% 5% 5%;
+  background-color: var(--custom-light);
+  border: 2px solid var(--custom-dark);
+  /* width: 100%;
+  height: 100px;
+  padding: 20px;
+  margin: 20px; */
+  padding: 10px 10px 10px 10px;
+  margin: 0px 30px;
+  bottom: 0px;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+
+  text-align: left;
 }
 
 #category_tile {

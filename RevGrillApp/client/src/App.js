@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
 import Server_Categories from './pages/Server_Side/Server_Categories';
 
