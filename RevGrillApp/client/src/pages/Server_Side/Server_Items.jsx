@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Server_Items extends Component {
+export default function Server_Items() {
 
-  render() {
-    return(
-    <h1>
-      Server Items
-    </h1>
-    )
-  }
-
+  return(
+  <h1>
+    Server Items
+  </h1>
+  )
 }
+
