@@ -7,46 +7,46 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var newRoute = require('./routes/newRoute');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
+// var newRoute = require('./routes/newRoute');
 
 // tables
-var ordersRoute = require('./routes/order_table');
-var ingredientsRoute = require('./routes/ingredient_table');
-var itemsRoute = require('./routes/item_table');
-var employeesRoute = require('./routes/employee_table');
+// var ordersRoute = require('./routes/order_table');
+// var ingredientsRoute = require('./routes/ingredient_table');
+// var itemsRoute = require('./routes/item_table');
+// var employeesRoute = require('./routes/employee_table');
 
 // manager side
-var mostUsedRoute = require('./routes/manager_side/most_used_items');
-var sellsTogetherRoute = require('./routes/manager_side/get_sells_together');
-var restockRepRoute = require('./routes/manager_side/restock_report');
-var salesRepRoute = require('./routes/manager_side/sales_report');
-var excessRepRoute = require('./routes/manager_side/excess_report');
-var xRepRoute = require('./routes/manager_side/x_report');
-var zRepRoute = require('./routes/manager_side/z_report');
-var editItemRoute = require('./routes/manager_side/edit_item');
-var addItemRoute = require('./routes/manager_side/add_item');
-var removeItemRoute = require('./routes/manager_side/remove_item');
-var inventoryRoute = require('./routes/manager_side/get_inventory');
-var editInvRoute = require('./routes/manager_side/edit_inventory');
-var newDayRoute = require('./routes/manager_side/new_day');
-var employeeInfoRoute = require('./routes/manager_side/employee_info');
-var salesRoute = require('./routes/manager_side/get_sales');
+var mostUsedRoute = require('./routes/manager_side');
+var sellsTogetherRoute = require('./routes/manager_side');
+var restockRepRoute = require('./routes/manager_side');
+var salesRepRoute = require('./routes/manager_side');
+var excessRepRoute = require('./routes/manager_side');
+var xRepRoute = require('./routes/manager_side');
+var zRepRoute = require('./routes/manager_side');
+var editItemRoute = require('./routes/manager_side');
+var addItemRoute = require('./routes/manager_side');
+var removeItemRoute = require('./routes/manager_side');
+var inventoryRoute = require('./routes/manager_side');
+var editInvRoute = require('./routes/manager_side');
+var newDayRoute = require('./routes/manager_side');
+var employeeInfoRoute = require('./routes/manager_side');
+var salesRoute = require('./routes/manager_side');
 
 // server/customer/menu side
-var lastOrderNumRoute = require('./routes/server_side/last_order_number');
-var createOrderRoute = require('./routes/server_side/create_order');
-var updateInvRoute = require('./routes/server_side/update_inventory');
-var getMenuRoute = require('./routes/server_side/get_menu');
-var getIngrRoute = require('./routes/server_side/get_ingredients');
-var getCategoryRoute = require('./routes/server_side/get_category_items');
-var getOrdersRoute = require('./routes/server_side/get_orders');
-var getOrderByNumRoute = require('./routes/server_side/get_order_by_num');
+var lastOrderNumRoute = require('./routes/server_side');
+var createOrderRoute = require('./routes/server_side');
+var updateInvRoute = require('./routes/server_side');
+var getMenuRoute = require('./routes/server_side');
+var getIngrRoute = require('./routes/server_side');
+var getCategoryRoute = require('./routes/server_side');
+var getOrdersRoute = require('./routes/server_side');
+var getOrderByNumRoute = require('./routes/server_side');
 
 // login page
-var isEmployeeRoute = require('./routes/login/is_employee');
-var isManagerRoute = require('./routes/login/is_manager');
+var isEmployeeRoute = require('./routes/login');
+var isManagerRoute = require('./routes/login');
 
 var app = express();
 
@@ -62,16 +62,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/newRoute', newRoute);
-app.use('/employee',empRoute);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+// app.use('/newRoute', newRoute);
 
-
-app.use('/orders', ordersRoute);
-app.use('/ingredients', ingredientsRoute);
-app.use('/items', itemsRoute);
-app.use('/employees', employeesRoute);
+// app.use('/orders', ordersRoute);
+// app.use('/ingredients', ingredientsRoute);
+// app.use('/items', itemsRoute);
+// app.use('/employees', employeesRoute);
 
 // Manager side functions
 app.use('/most_used_items', mostUsedRoute);
@@ -105,7 +103,7 @@ app.use('/is_employee', isEmployeeRoute);
 app.use('/is_manager', isManagerRoute);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
@@ -134,7 +132,7 @@ try {
 })
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
