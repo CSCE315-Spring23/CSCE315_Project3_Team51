@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
 import './style_menu.css';
 
-export class Customer_Categories extends Component {
+export default function Customer_Categories() {
 
-  render() {
-    return(
-    <h1>
-      Customer Categories (home)
-    </h1>
-    )
-  }
-  299.576
+  return(
+  <h1>
+    Customer Categories (home)
+  </h1>
+  )
+
 }

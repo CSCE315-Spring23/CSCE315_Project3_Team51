@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
 import './style_menu.css';
 
-export class Customer_Options extends Component {
+export default function Customer_Options() {
 
-  render() {
     return (
     <div className = 'body'>
         <div className="left"> 
@@ -80,7 +78,7 @@ export class Customer_Options extends Component {
     </div>
     
     )
-  }
-
 }
+
+
 
