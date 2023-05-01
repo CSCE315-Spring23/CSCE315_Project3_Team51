@@ -1,7 +1,4 @@
-// import React, { Component } from 'react';
 import './manager.css';
-// import './Manager_Side';
-// import { fun } from './Manager_Side';
 import { useEffect, useState } from 'react';
 
 export default function Manager_Inventory() {
