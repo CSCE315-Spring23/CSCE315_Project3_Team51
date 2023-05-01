@@ -67,7 +67,7 @@ router.get('/z_report', async (req, res, next) => {
     }
 });
 
-router.put('/edit_item', async (req, res, next) => {
+router.post('/edit_item', async (req, res, next) => {
     try {
         var item = req.body.item;
         var newName = "";
@@ -88,7 +88,7 @@ router.put('/edit_item', async (req, res, next) => {
     }
 });
 
-router.put('/add_item', async (req, res, next) => {
+router.post('/add_item', async (req, res, next) => {
     try {
         await MS.addItem(req.body.name, req.body.price, req.body.category, req.body.ingredients);
     } catch (err) {
@@ -96,7 +96,7 @@ router.put('/add_item', async (req, res, next) => {
     }
 });
 
-router.put('/remove_item', async (req, res, next) => {
+router.post('/remove_item', async (req, res, next) => {
     try {
         await MS.removeItem(req.body.item);
     } catch (err) {
@@ -128,7 +128,7 @@ router.post('/edit_inventory', async (req, res, next) => {
     }
 });
 
-router.put('/new_day', async (req, res, next) => {
+router.post('/new_day', async (req, res, next) => {
     try {
         await MS.signalNewDay();
     } catch (err) {
@@ -136,7 +136,7 @@ router.put('/new_day', async (req, res, next) => {
     }
 });
 
-router.put('/employee_info', async (req, res, next) => {
+router.post('/employee_info', async (req, res, next) => {
     try {
         const data = await MS.employeeInfo(req.body.id);
         res.send(data);

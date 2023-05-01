@@ -11,7 +11,7 @@ router.get('/last_order_number', async (req, res, next) => {
     }
 });
 
-router.put('/create_order', async (req, res, next) => {
+router.post('/create_order', async (req, res, next) => {
     try {
         var modifications = [];
         var orderTaker = -1;
@@ -28,7 +28,7 @@ router.put('/create_order', async (req, res, next) => {
     }
 });
 
-router.put('/update_inventory', async (req, res, next) => {
+router.post('/update_inventory', async (req, res, next) => {
     try {
         await SS.updateInventory(req.body.orderNum);
     } catch (err) {
@@ -45,7 +45,7 @@ router.get('/get_menu', async (req, res, next) => {
     }
 });
 
-router.put('/get_ingredients', async (req, res, next) => {
+router.post('/get_ingredients', async (req, res, next) => {
     try {
         const data = await SS.getIngredients(req.body.item);
         res.send(data);
@@ -54,7 +54,7 @@ router.put('/get_ingredients', async (req, res, next) => {
     }
 });
 
-router.put('/get_category_items', async (req, res, next) => {
+router.post('/get_category_items', async (req, res, next) => {
     try {
         const data = await SS.getCategoryItems(req.body.category);
         res.send(data);
@@ -72,7 +72,7 @@ router.get('/get_orders', async (req, res, next) => {
     }
 });
 
-router.put('/get_order_by_num', async (req, res, next) => {
+router.post('/get_order_by_num', async (req, res, next) => {
     try {
         const data = await SS.getOrderByNum(req.body.orderNum);
         res.send(data);
