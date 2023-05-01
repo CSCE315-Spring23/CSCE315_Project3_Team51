@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
-
 import './pages/Manager_Side/manager.css';
 
 function App() {
