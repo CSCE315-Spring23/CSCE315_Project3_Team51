@@ -1,11 +1,26 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import './manager.css';
 // import './Manager_Side';
 // import { fun } from './Manager_Side';
+import { useEffect, useState } from 'react';
 
-export class Manager_Inventory extends Component {
+export default function Manager_Inventory() {
 
-  render() {
+    const [ingredients, setIngredients] = useState('No data - Ingredients')
+  
+    const callAPIIngredients = () => {
+      fetch("http://localhost:9000/users")
+        .then(r => r.text())
+        .then(resp => {
+          setIngredients(resp)
+        });
+    }
+
+    useEffect(() => {
+        callAPIIngredients()
+    }, [])
+
+
     return(
       <div>
         <div className="header">
@@ -44,6 +59,7 @@ export class Manager_Inventory extends Component {
                         </tr>
                     </table>
                     <div className="button-div">
+                        {ingredients}
                         {/* <button onClick={fun}>Update Inventory</button> */}
                     </div>
                 </form>
@@ -70,7 +86,6 @@ export class Manager_Inventory extends Component {
       </div>
     
     )
-  }
-
+  
 }
 
