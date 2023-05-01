@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 export default function Manager_Inventory() {
 
     const [ingredients, setIngredients] = useState('No data - Ingredients')
+    // const yay = "yay!"
   
     const callAPIIngredients = () => {
       fetch("http://localhost:9000/users")
@@ -20,6 +21,10 @@ export default function Manager_Inventory() {
         callAPIIngredients()
     }, [])
 
+    function fun() {
+        const obj = JSON.parse(ingredients)
+        window.alert(obj.teammembers[0].section);
+    }
 
     return(
       <div>
@@ -59,8 +64,9 @@ export default function Manager_Inventory() {
                         </tr>
                     </table>
                     <div className="button-div">
-                        {ingredients}
-                        {/* <button onClick={fun}>Update Inventory</button> */}
+                        {/* {yay} */}
+                        {/* {ingredients} */}
+                        <button onClick={fun}>Update Inventory</button>
                     </div>
                 </form>
             </div>
