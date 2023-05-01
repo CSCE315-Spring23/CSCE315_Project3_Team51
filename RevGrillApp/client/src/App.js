@@ -1,14 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-// import './pages/Manager_Side/Manager_Employee';
-// import './pages/Manager_Side/Manager_Inventory';
-// import './pages/Manager_Side/Manager_Sales';
-// import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
-// import {Manager_Sales} from './pages/Manager_Side/Manager_Sales';
 import './pages/Manager_Side/manager.css';
 
 function App() {
@@ -39,14 +31,14 @@ function App() {
   useEffect(() => {
     callAPIOrders()
   }, [])
+  
 
   
 
   return (
     <div className="App">
       <Manager_Inventory></Manager_Inventory>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      
         <h1>What are you doing here today?</h1>
         
         {/* <Router>
@@ -60,8 +52,7 @@ function App() {
         <Route path="/" render={() => <h1>Welcome!</h1>} />
         <Route render={() => <h1>404: page not found</h1>} />
         </Router> */}
-      </header>
-             
+      
         <p>{ingredients}</p>
         <p>{orders}</p>
     </div>
