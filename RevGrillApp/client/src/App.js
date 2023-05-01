@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <Server_Categories></Server_Categories>
+      <Manager_Inventory></Manager_Inventory>
       
         <h1>What are you doing here today?</h1>
         
