@@ -53,11 +53,10 @@ export default function Manager_Inventory() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            // body: JSON.stringify({ ingredient: itemName, newQuantity: itemQty, minQuantity: itemMin })
-            body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
+            body: JSON.stringify({ ingredient: itemName, newQuantity: itemQty, minQuantity: itemMin })
+            // body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
         };
-        fetch("http://localhost:9000/manager_side/edit_inventory", requestOptions)
-            .then(r => getInventory());
+        fetch("http://localhost:9000/manager_side/edit_inventory", requestOptions);
     };
 
     useEffect(() => {
