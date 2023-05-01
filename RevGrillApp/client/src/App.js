@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
+
 import './pages/Manager_Side/manager.css';
 
 
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <Manager_Inventory></Manager_Inventory>
+      <Server_Categories></Server_Categories>
       
         <h1>What are you doing here today?</h1>
         
