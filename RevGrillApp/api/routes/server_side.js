@@ -2,16 +2,16 @@ var express = require('express');
 const SS = require('../backend_functions/Server_Side.js');
 var router = express.Router();
 
-router.get('/last_order_number', (req, res, next) => {
+router.get('/last_order_number', async (req, res, next) => {
     try {
-        const data = SS.lastOrderNumber();
+        const data = await SS.lastOrderNumber();
         res.send(data);
     } catch (err) {
         res.status(500).send('lastOrderNumber failed');
     }
 });
 
-router.put('/create_order', (req, res, next) => {
+router.put('/create_order', async (req, res, next) => {
     try {
         var modifications = [];
         var orderTaker = -1;
@@ -22,59 +22,59 @@ router.put('/create_order', (req, res, next) => {
             orderTaker = req.body.orderTaker;
         if(req.body.hasOwnProperty(tip))
             tip = req.body.tip;
-        SS.createOrder(req.body.itemsOrdered, req.body.totalPrice, modifications, orderTaker, tip);
+        await SS.createOrder(req.body.itemsOrdered, req.body.totalPrice, modifications, orderTaker, tip);
     } catch (err) {
         res.status(500).send('createOrder failed');
     }
 });
 
-router.put('/update_inventory', (req, res, next) => {
+router.put('/update_inventory', async (req, res, next) => {
     try {
-        SS.updateInventory(req.body.orderNum);
+        await SS.updateInventory(req.body.orderNum);
     } catch (err) {
         res.status(500).send('updateInventory failed');
     }
 });
 
-router.get('/get_menu', (req, res, next) => {
+router.get('/get_menu', async (req, res, next) => {
     try {
-        const data = SS.getMenu();
+        const data = await SS.getMenu();
         res.send(data);
     } catch (err) {
         res.status(500).send('getMenu failed');
     }
 });
 
-router.put('/get_ingredients', (req, res, next) => {
+router.put('/get_ingredients', async (req, res, next) => {
     try {
-        const data = SS.getIngredients(req.body.item);
+        const data = await SS.getIngredients(req.body.item);
         res.send(data);
     } catch (err) {
         res.status(500).send('getIngredients failed');
     }
 });
 
-router.put('/get_category_items', (req, res, next) => {
+router.put('/get_category_items', async (req, res, next) => {
     try {
-        const data = SS.getCategoryItems(req.body.category);
+        const data = await SS.getCategoryItems(req.body.category);
         res.send(data);
     } catch (err) {
         res.status(500).send('getCategoryItems failed');
     }
 });
 
-router.get('/get_orders', (req, res, next) => {
+router.get('/get_orders', async (req, res, next) => {
     try {
-        const data = SS.getOrders();
+        const data = await SS.getOrders();
         res.send(data);
     } catch (err) {
         res.status(500).send('getOrders failed');
     }
 });
 
-router.put('/get_order_by_num', (req, res, next) => {
+router.put('/get_order_by_num', async (req, res, next) => {
     try {
-        const data = SS.getOrderByNum(req.body.orderNum);
+        const data = await SS.getOrderByNum(req.body.orderNum);
         res.send(data);
     } catch (err) {
         res.status(500).send('getOrderByNum failed');
