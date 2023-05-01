@@ -3,7 +3,7 @@ import { getMenu } from '../../../../api/routes/backend_functions/Item';
 import './style.css';
 
 async function fetchData() {
-  const menuItems = await getMenu();
+  const menuItems = await fetch("http://localhost:9000/get_menu"); 
   console.log(menuItems); // logs the resulting rows of the query
   return menuItems;
 }
