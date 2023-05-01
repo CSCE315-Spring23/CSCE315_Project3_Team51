@@ -89,6 +89,7 @@ export default class Menu extends Component {
         }
 
         return (
+          <div className = 'body'> 
             <div className = 'page'> 
                 <div className = 'header'>
                     <div className = 'weather'> 
@@ -166,6 +167,7 @@ export default class Menu extends Component {
                     </div>
                 </div>
     
+        </div>
         </div>
 
         // <div>
