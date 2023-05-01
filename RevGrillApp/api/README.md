@@ -3,14 +3,14 @@ MANAGER SIDE
 
 
 # getMostUsedItems
-Route: [/most_used_items]
+Route: [/manager_side/most_used_items]
 Input: None
 Output: Array of JSONs
     - ingredient_name (string)
     - amt_used (integer)
 
 # getSellsTogether
-Route: [/get_sells_together]
+Route: [/manager_side/get_sells_together]
 Input: None
 Output: Array of JSONs
     - item_1 (string)
@@ -18,7 +18,7 @@ Output: Array of JSONs
     - times_sold (integer)
 
 # restockReport
-Route: [/restock_report]
+Route: [/manager_side/restock_report]
 Input: None
 Output: Array of JSONs
     - ingredient_name (string)
@@ -26,35 +26,35 @@ Output: Array of JSONs
     - min_q (string, same as above)
 
 # salesReport
-Route: [/sales_report]
+Route: [/manager_side/sales_report]
 Input: None
 Output: Array of JSONs
     - item_name (string)
     - total_sales (double)
 
 # excessReport NOTE: NOT FINISHED YET
-Route: [/excess_report]
+Route: [/manager_side/excess_report]
 Input: None
 Output: Array of JSONs
     - ingredient_name (string)
     - amt_sold (integer)
 
 # xReport
-Route: [/x_report]
+Route: [/manager_side/x_report]
 Input: None
 Output: Array of JSONs
     - item_name (string)
     - times_ordered (integer)
 
 # zReport
-Route: [/z_report]
+Route: [/manager_side/z_report]
 Input: None
 Output: Array of JSONs
     - item_name (string)
     - total_sales (double)
 
 # editItem
-Route: [/edit_item]
+Route: [/manager_side/edit_item]
 Input: 
     - item (string or number)
     - newName (optional, string)
@@ -64,7 +64,7 @@ Input:
 Output: None
 
 # addItem
-Route: [/add_item]
+Route: [/manager_side/add_item]
 Input:
     - name (string)
     - price (double)
@@ -73,13 +73,13 @@ Input:
 Output: None
 
 # removeItem
-Route: [/remove_item]
+Route: [/manager_side/remove_item]
 Input: 
     - item (string or number)
 Output: None
 
 # getInventory
-Route: [/get_inventory]
+Route: [/manager_side/get_inventory]
 Input: None
 Output: Array of JSONs
     - ingredient_name (string)
@@ -92,7 +92,7 @@ Output: Array of JSONs
     - min_q (integer)
 
 # editInventory
-Route: [/edit_inventory]
+Route: [/manager_side/edit_inventory]
 Input: 
     - ingredient (string)
     - newQuantity (optional, integer)
@@ -101,12 +101,12 @@ Output: None
 
 # signalNewDay
 # Shifts all quantities in inventory_data over a column
-Route: [/new_day]
+Route: [/manager_side/new_day]
 Input: None
 Output: None
 
 # employeeInfo
-Route: [/employee_info]
+Route: [/manager_side/employee_info]
 Input: 
     - id (integer)
 Output: Single JSON
@@ -117,7 +117,7 @@ Output: Single JSON
     - is_manager (boolean)
 
 # getSales
-Route: [/get_sales]
+Route: [/manager_side/get_sales]
 Input: None
 Output: Single JSON
     - total_sales (double)
@@ -130,14 +130,14 @@ SERVER/CUSTOMER/MENU SIDE
 
 # lastOrderNumber
 # Gets the largest order number. If making a new order, add one
-Route: [/last_order_number]
+Route: [/server_side/last_order_number]
 Input: None
 Output: Single JSON
     - last_number (integer)
 
 # createOrder
 # Creates a new order with the given information and returns its unique order number
-Route: [/create_order]
+Route: [/server_side/create_order]
 Input: 
     - itemsOrdered (array of integers referring to menu item number)
     - totalPrice (double)
@@ -149,13 +149,13 @@ Output: Single JSON
 
 # updateInventory
 # Updates the inventory based on the contents of a given order. Call this after an order is submitted
-Route: [/update_inventory]
+Route: [/server_side/update_inventory]
 Input: 
     - orderNum (integer)
 Output: None
 
 # getMenu
-Route: [/get_menu]
+Route: [/server_side/get_menu]
 Input: None
 Output: Array of JSONs (ordered by item number)
     - item_number (integer)
@@ -165,7 +165,7 @@ Output: Array of JSONs (ordered by item number)
     - ingredients (array of strings with format `{number} {ingredient name}`)
 
 # getIngredients
-Route: [/get_ingredients]
+Route: [/server_side/get_ingredients]
 Input: 
     - item (integer or string)
 Output: Single JSON
@@ -173,7 +173,7 @@ Output: Single JSON
 
 # getCategoryItems
 # Gets all menu items with the matching category
-Route: [/get_category_items]
+Route: [/server_side/get_category_items]
 Input: 
     - category (string)
 Output: Array of JSONs
@@ -184,7 +184,7 @@ Output: Array of JSONs
     - ingredients (array of strings with format `{number} {ingredient name}`)
 
 # getOrders
-Route: [/get_orders]
+Route: [/server_side/get_orders]
 Input: None
 Output: Array of JSONs
     - order_number (integer)
@@ -198,7 +198,7 @@ Output: Array of JSONs
     - order_time (timestamp, refer to psql timestamp for format)
 
 # getOrderByNum
-Route: [/get_order_by_num]
+Route: [/server_side/get_order_by_num]
 Input: 
     - orderNum (integer)
 Output: Single JSON
@@ -212,7 +212,7 @@ LOGIN PAGE
 
 # isEmployee
 # Will throw error if employee is not found, otherwise returns their name
-Route: [/is_employee]
+Route: [/login/is_employee]
 Input: 
     - id (integer)
 Output: Single JSON 
@@ -220,7 +220,7 @@ Output: Single JSON
 
 # isManager
 # Will throw error if employee is not found, otherwise returns name and manager status
-Route: [/is_manager]
+Route: [/login/is_manager]
 Input: 
     - id (integer)
 Output: Single JSON
