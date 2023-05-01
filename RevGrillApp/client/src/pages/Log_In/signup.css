@@ -1,0 +1,15 @@
+#signup-but{
+    border-radius: 10px;
+    background-color: maroon;
+    color: white;
+    height: 3vh;
+    font-weight: bold;
+    border: none;
+    padding-left: 7vh;
+    padding-right: 7vh;
+    transition: all .3s ease;
+    &:hover{
+        transform:  translateY(-7px) ;
+    };
+  }
+

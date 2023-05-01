@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import React, { Component } from 'react';
 import './manager.css';
 // import './Manager_Side';
@@ -21,6 +22,16 @@ export default function Manager_Inventory() {
     }, [])
 
 
+=======
+import React, { Component } from 'react';
+import './manager.css';
+import './Manager_Side';
+import { fun } from './Manager_Side';
+
+export class Manager_Inventory extends Component {
+
+  render() {
+>>>>>>> auth
     return(
       <div>
         <div className="header">
@@ -59,8 +70,12 @@ export default function Manager_Inventory() {
                         </tr>
                     </table>
                     <div className="button-div">
+<<<<<<< HEAD
                         {ingredients}
                         {/* <button onClick={fun}>Update Inventory</button> */}
+=======
+                        <button onClick={fun}>Update Inventory</button>
+>>>>>>> auth
                     </div>
                 </form>
             </div>
@@ -86,6 +101,11 @@ export default function Manager_Inventory() {
       </div>
     
     )
+<<<<<<< HEAD
   
+=======
+  }
+
+>>>>>>> auth
 }
 

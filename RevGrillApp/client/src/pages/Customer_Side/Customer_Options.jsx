@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 import './style_menu.css';
 
 export default function Customer_Options() {
 
+=======
+import React, { Component } from 'react';
+import './style_menu.css';
+
+export class Customer_Options extends Component {
+
+  render() {
+>>>>>>> auth
     return (
     <div className = 'body'>
         <div className="left"> 
@@ -78,7 +87,14 @@ export default function Customer_Options() {
     </div>
     
     )
+<<<<<<< HEAD
 }
 
 
 
+=======
+  }
+
+}
+
+>>>>>>> auth

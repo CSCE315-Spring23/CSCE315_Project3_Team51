@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
+<<<<<<< HEAD
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
 
 import './pages/Manager_Side/manager.css';
@@ -11,6 +12,30 @@ function App() {
   const [orders, setOrders] = useState('No data - Orders')
 
   const callAPIIngredients = () => {
+=======
+import Signup from './pages/Log_In/signup'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import './pages/Manager_Side/Manager_Employee'
+import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
+import { Manager_Inventory } from './pages/Manager_Side/Manager_Inventory';
+import './pages/Manager_Side/manager.css';
+import Login from './pages/Log_In/login';
+
+function App() {
+
+  const [hello, setHello] = useState('No data')
+  const [hello2, setHello2] = useState('No data2')
+/*
+  const callAPI = () => {
+    fetch("http://localhost:9000/newroute")
+      .then(r => r.text())
+      .then(resp => {
+        setHello(resp)
+      });
+  }
+
+  const callAPI2 = () => {
+>>>>>>> auth
     fetch("http://localhost:9000/users")
       .then(r => r.text())
       .then(resp => {
@@ -33,6 +58,7 @@ function App() {
   useEffect(() => {
     callAPIOrders()
   }, [])
+<<<<<<< HEAD
   
 
   
@@ -57,6 +83,16 @@ function App() {
       
         <p>{ingredients}</p>
         <p>{orders}</p>
+=======
+  */
+
+  return (
+    <div className="App">
+      
+        <Login/>
+        
+      
+>>>>>>> auth
     </div>
   );
 }
