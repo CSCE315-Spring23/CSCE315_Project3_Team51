@@ -1,6 +1,8 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
+import Manager_Sales from './pages/Manager_Side/Manager_Sales';
+import Manager_Employee from './pages/Manager_Side/Manager_Employee';
 import './pages/Manager_Side/manager.css';
 
 
@@ -39,6 +41,8 @@ function App() {
   return (
     <div className="App">
       <Manager_Inventory></Manager_Inventory>
+      <Manager_Sales></Manager_Sales>
+      <Manager_Employee></Manager_Employee>
       
         <h1>What are you doing here today?</h1>
         

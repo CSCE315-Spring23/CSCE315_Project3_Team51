@@ -84,6 +84,19 @@ button {
   font-size: 17px;
 }
 
+/* TABLES */
+
+td {
+  text-align: left;
+}
+
+.scroll-div {
+  overflow: scroll;
+  height: 500px;
+  width: 546px;
+  margin-left: 35%;
+}
+
 /* INVENTORY */
 
 .i-grid {
@@ -122,7 +135,7 @@ h2 {
 
 .i-display {
   height: 600px;
-  width: 600px;
+  width: 550px;
   /* background-color: var(--custom-light); */
   grid-row-start: 1;
   grid-row-end: 3;
