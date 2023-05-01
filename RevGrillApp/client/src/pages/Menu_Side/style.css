@@ -95,7 +95,8 @@
 }
 .row {
     display: flex;
-    padding: 20px;
+    padding: 40px;
+    justify-content: center;
 }
 .smaller-card {
     margin-left: 30px;
@@ -172,7 +173,7 @@
     padding: 20px;
     align-items: center !important;
     display: grid;
-    width: 200px;
+    width: 350px;
     border-style: solid;
     border-radius: 10px;
     border-color: black;
@@ -180,7 +181,13 @@
     border-width: 1px;
     box-shadow: 1px 2px 3px 0 rgba(0,0,0,0.4);
     background-color: ghostwhite;
+    text-align: center;
 }
+.menu-list ul {
+    list-style: none;
+    padding: 0;
+}
+
 .item-number {
     color: #732626;
     text-shadow: 1px 1px 0px #391313;
