@@ -70,10 +70,10 @@ export default function Manager_Sales() {
                         </select>
                         <p></p>
                         <label for="start_time">For Sales, Pairing, and Excess Reports, enter the start time here: </label>
-                        <input type="text" id="start_time" name="start_time" placeholder="start time (YYYY-MM-DD HH:MM)" />
+                        <input type="datetime-local" id="start_time" name="start_time" placeholder="start time (YYYY-MM-DD HH:MM)" />
                         <p></p>
                         <label for="end_time">For Sales and Pairing Reports, enter the end time here: </label>
-                        <input type="text" id="end_time" name="end_time" placeholder="end time (YYYY-MM-DD HH:MM)" />
+                        <input type="datetime-local" id="end_time" name="end_time" placeholder="end time (YYYY-MM-DD HH:MM)" />
                         <p></p>
                         <button type="submit">Generate Report</button>
                     </form>
