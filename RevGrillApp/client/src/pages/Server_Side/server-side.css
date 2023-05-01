@@ -81,6 +81,7 @@ header {
 
 #category_tile:hover {
   animation: focus 0.2s ease-in;
+  animation-fill-mode: both;
   border-radius: 30px;
   color: var(--custom-primary-light)
 }
@@ -89,7 +90,7 @@ header {
   height: 55px;
   width: 55px;
   animation: img_lift 0.2s ease-in;
-  animation-fill-mode: forwards;
+  animation-fill-mode: both;
   z-index: -5;
 }
 

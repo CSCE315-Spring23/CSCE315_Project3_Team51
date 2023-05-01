@@ -46,4 +46,29 @@ footer {
   align-items: center; /* align vertical */
 }
 
+button {
+  background-color: var(--custom-primary);
+  display:flex;
+  align-items: center;
+}
+
+button:hover {
+  animation: button-focus 0.3s ease-in;
+  animation-fill-mode: both;
+  cursor: pointer;
+}
+
+@keyframes button-focus {
+  0%    {   
+    transform: translate(0px,  0px); 
+    background-color: var(--custom-primary);
+  }
+100%  { 
+    transform: translate(0px,  -1px); 
+    background-color: var(--custom-primary-light);
+
+  }
+}
+
+
 

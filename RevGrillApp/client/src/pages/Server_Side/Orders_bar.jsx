@@ -16,7 +16,7 @@ export default function OrdersBar() {
 
     return (
         <div className="order_bar">
-            <h2> <span class="material-symbols-outlined">receipt_long</span> CURRENT ORDERS</h2>
+            <h2> <span class="material-symbols-outlined">receipt_long</span> ONGOING ORDERS</h2>
             {/* <p>{orders}</p> */}
         </div>
     )
