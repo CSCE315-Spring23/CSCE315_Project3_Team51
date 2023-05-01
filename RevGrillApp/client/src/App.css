@@ -8,10 +8,12 @@
 
 :root {
   --custom-primary: #4c0000; /* aggie maroon  */
+  --custom-primary-light: #b10101; /* aggie maroon  */
   --custom-light: #d1c7c6;
   --custom-secondary: #f8cf00;
+  --custom-secondary-light: #f7db85;
   --custom-tertiary: #422437;
-  --custom-dark: #403636;
+  --custom-dark: #251212;
   --speed: 0.5s;
   font-family: 'Open Sans', sans-serif;
   background-color: #f9f9f9;

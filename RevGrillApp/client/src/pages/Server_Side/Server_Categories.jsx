@@ -1,11 +1,13 @@
 import React from 'react';
 import OrdersBar from './Orders_Bar';
 import CatDisplay from './Cat_Display';
+import CurrentOrder from './Current_Order';
 import './server-side.css';
 import prog0 from '../../assets/progress/prog0.png';
 import prog1 from '../../assets/progress/prog1.png';
 import prog2 from '../../assets/progress/prog2.png';
 import prog3 from '../../assets/progress/prog3.png';
+import { WrapAroundEnding } from 'three';
 
 
 export default function Server_Categories() {
@@ -27,14 +29,19 @@ export default function Server_Categories() {
         
         <div id="server_side">
           <OrdersBar></OrdersBar>
-          <div>
-            <h1>Pick an Item!</h1>
-            {/* <div id="item_categories">things to generate the categories from JSON</div> */}
-            <CatDisplay> hello </CatDisplay>
+          <div className="RHS">
+            <h1>Start with an Item Category</h1>
+            <div style={{display:'flex', justifyContent:'center'}}>
+              <CatDisplay> hello </CatDisplay>
+            </div>
+            <div style={{ height: 20,}}></div> 
+            <div>
+              <CurrentOrder></CurrentOrder>
+            </div>
+            
             
           </div>
         </div>
-
         
     </body>
     

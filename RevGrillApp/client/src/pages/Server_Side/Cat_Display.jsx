@@ -1,4 +1,5 @@
 import React from 'react';
+import './server-side.css';
 import burgerPic from './../../assets/categories/cat_burgers.png';
 import dessertPic from './../../assets/categories/cat_dessert.png';
 import drinkPic from './../../assets/categories/cat_drink.png';
@@ -52,24 +53,21 @@ const CATEGORIES = [{
 },];
 
 const Cat_Tile = category => 
-    `<div className="category_tile">
+    `<div id="category_tile">
         <h3>${category.name}</h3>
         <img src=${category.pic} alt=${category.alt}
-            style={{ width:50, maxHeight:50}}
+            id='cat_img'
         />
     </div>`
 ;
 
 export default function CatDisplay() {
-    // fetch('./data.json')
-    // .then((response) => response.json())
-    // .then((json) => console.log(json));
 
     const mappedCategories =  { __html: CATEGORIES.map(item => Cat_Tile(item)).join('') };
 
     return (
         <div>
-            <div className="cat_display" dangerouslySetInnerHTML={ mappedCategories }></div>
+            <div id="cat_display" dangerouslySetInnerHTML={ mappedCategories }></div>
             
         </div>
         
