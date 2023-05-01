@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
 import './pages/Manager_Side/manager.css';
 
+
 function App() {
 
   const [ingredients, setIngredients] = useState('No data - Ingredients')
@@ -60,3 +61,17 @@ function App() {
 }
 
 export default App;
+
+
+
+// BELOW: FOR MENU
+//import Menu from './pages/Menu_Side/Menu';
+
+// function App() {
+//   return (
+//     <Menu />
+//   );
+// }
+
+// export default App;
+>>>>>>> Stashed changes
