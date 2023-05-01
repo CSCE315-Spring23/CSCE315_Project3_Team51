@@ -112,9 +112,14 @@ async function salesReport() {
 async function excessReport() {
     try {
         console.log('Creating excess report');
-        const excess = {};
-        //console.log(res.rows);
-        //return res.rows;
+        const hardCoded = ["0", "1", "2", "3", "4", "5", "6", "7"];
+        const res = await pool.query(
+            "SELECT ingredient_name, (prev_q" + hardCoded[1] + " - quantity) AS amt_sold FROM inventory_data " + 
+            "WHERE prev_q" + hardCoded[1] + " - quantity < 0.1 * prev_q" + hardCoded[1] + " AND " + 
+            "prev_q" + hardCoded[1] + " - quantity > 0"
+        );
+        console.log(res.rows);
+        return res.rows;
     } catch (error) {
         console.error(error);
     }
