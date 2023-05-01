@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import './manager.css';
-<<<<<<< HEAD
-=======
-import {}
->>>>>>> auth
 
 export class Manager_Sales extends Component {
 
@@ -12,7 +8,6 @@ export class Manager_Sales extends Component {
       <div>
 
         <body>
-<<<<<<< HEAD
             <div class="header">
                 <ul class="nav nav-ls">
                     <div class="nav-home">
@@ -26,26 +21,10 @@ export class Manager_Sales extends Component {
                     </div>
                     <div class="nav-item">
                         <li><a class="nav-link nav-curr" href="Manager_Sales.html">Sales</a></li>
-=======
-            <div className="header">
-                <ul className="nav nav-ls">
-                    <div className="nav-home">
-                        <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
-                    </div>
-                    <div className="nav-item">
-                        <li><a className="nav-link" href="Manager_Inventory.html">Inventory</a></li>
-                    </div>
-                    <div className="nav-item">
-                        <li><a className="nav-link" href="Manager_Employee.html">Menu</a></li>
-                    </div>
-                    <div className="nav-item">
-                        <li><a className="nav-link nav-curr" href="Manager_Sales.html">Sales</a></li>
->>>>>>> auth
                     </div>
                 </ul>
             </div>
 
-<<<<<<< HEAD
             <div class="ms-grid">
                 <div class="s-form">
                     <h2>Select Report</h2>
@@ -70,14 +49,6 @@ export class Manager_Sales extends Component {
                     </form>
                 </div>
                 <div class="ms-display">
-=======
-            <div className="ms-grid">
-                <div className="s-form">
-                    <h2>Select Report</h2>
-                    <p> form/buttons for report</p>
-                </div>
-                <div className="ms-display">
->>>>>>> auth
                     <h2>Display Report</h2>
                     <p>report will display here</p>
                 </div>
@@ -88,10 +59,6 @@ export class Manager_Sales extends Component {
             Made with 🤍 by CSCE 315 Team 51
         </footer>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> auth
       </div>
 
     
