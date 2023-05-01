@@ -7,7 +7,8 @@
     "setup": "npm i && npm --prefix ./frontend i && npm --prefix ./backend i",
     "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client start\" \"yarn --cwd ./api start\"",
     "dev-front": "yarn --cwd ./client start",
-    "dev-back": "yarn --prefix ./api start"
+    "dev-back": "yarn --prefix ./api start",
+    "build": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client build\" \"yarn --cwd ./api build\""
   },
   "keywords": [],
   "author": "CSCE 315-331 Team 51",

@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemInOrder from './Item_inOrder';
 import './server-side.css'
 
 export default function CurrentOrder(order_num) {
@@ -9,6 +10,7 @@ export default function CurrentOrder(order_num) {
             <h3 style={{marginLeft:'30px',}}>Current Order:</h3>
             <div className="curOrder_box">
                 Add first item!
+                <ItemInOrder></ItemInOrder>
             </div>
             <div style={{ display:'flex', justifyContent:'space-between', marginRight:'20px', }}>
                 <div></div>
