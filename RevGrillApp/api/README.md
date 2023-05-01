@@ -32,7 +32,7 @@ Output: Array of JSONs
     - item_name (string)
     - total_sales (double)
 
-# excessReport NOTE: NOT FINISHED YET
+# excessReport
 Route: [/manager_side/excess_report]
 Input: None
 Output: Array of JSONs
