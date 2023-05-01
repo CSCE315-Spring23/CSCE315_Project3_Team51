@@ -2,14 +2,14 @@ MANAGER SIDE
 ------------
 
 
-# getMostUsedItems()
+# getMostUsedItems
 Route: [/most_used_items]
 Input: None
 Output: Array of JSONs
     - ingredient_name (string)
     - amt_used (integer)
 
-# getSellsTogether()
+# getSellsTogether
 Route: [/get_sells_together]
 Input: None
 Output: Array of JSONs
@@ -17,7 +17,7 @@ Output: Array of JSONs
     - item_2 (string)
     - times_sold (integer)
 
-# restockReport()
+# restockReport
 Route: [/restock_report]
 Input: None
 Output: Array of JSONs
@@ -25,35 +25,35 @@ Output: Array of JSONs
     - quantity (string in format of `{integer} {units}` ex. `84 slices`)
     - min_q (string, same as above)
 
-# salesReport()
+# salesReport
 Route: [/sales_report]
 Input: None
 Output: Array of JSONs
     - item_name (string)
     - total_sales (double)
 
-# excessReport() NOTE: NOT FINISHED YET
+# excessReport NOTE: NOT FINISHED YET
 Route: [/excess_report]
 Input: None
 Output: Array of JSONs
     - ingredient_name (string)
     - amt_sold (integer)
 
-# xReport()
+# xReport
 Route: [/x_report]
 Input: None
 Output: Array of JSONs
     - item_name (string)
     - times_ordered (integer)
 
-# zReport()
+# zReport
 Route: [/z_report]
 Input: None
 Output: Array of JSONs
     - item_name (string)
     - total_sales (double)
 
-# editItem()
+# editItem
 Route: [/edit_item]
 Input: 
     - item (string or number)
@@ -63,7 +63,7 @@ Input:
     - newIngredients (optional, array of strings)
 Output: None
 
-# addItem()
+# addItem
 Route: [/add_item]
 Input:
     - name (string)
@@ -72,13 +72,13 @@ Input:
     - ingredients (array of strings)
 Output: None
 
-# removeItem()
+# removeItem
 Route: [/remove_item]
 Input: 
     - item (string or number)
 Output: None
 
-# getInventory()
+# getInventory
 Route: [/get_inventory]
 Input: None
 Output: Array of JSONs
@@ -91,7 +91,7 @@ Output: Array of JSONs
     - prev_q7 (integer)
     - min_q (integer)
 
-# editInventory()
+# editInventory
 Route: [/edit_inventory]
 Input: 
     - ingredient (string)
@@ -99,13 +99,13 @@ Input:
     - minQuantity (optional, integer)
 Output: None
 
-# signalNewDay()
+# signalNewDay
 # Shifts all quantities in inventory_data over a column
 Route: [/new_day]
 Input: None
 Output: None
 
-# employeeInfo()
+# employeeInfo
 Route: [/employee_info]
 Input: 
     - id (integer)
@@ -116,7 +116,7 @@ Output: Single JSON
     - hours_worked (integer)
     - is_manager (boolean)
 
-# getSales()
+# getSales
 Route: [/get_sales]
 Input: None
 Output: Single JSON
@@ -128,21 +128,33 @@ SERVER/CUSTOMER/MENU SIDE
 -------------------------
 
 
-# lastOrderNumber()
+# lastOrderNumber
 # Gets the largest order number. If making a new order, add one
 Route: [/last_order_number]
 Input: None
 Output: Single JSON
     - last_number (integer)
 
-# updateInventory()
+# createOrder
+# Creates a new order with the given information and returns its unique order number
+Route: [/create_order]
+Input: 
+    - itemsOrdered (array of integers referring to menu item number)
+    - totalPrice (double)
+    - modifications (optional, array of strings with format `{index of item in items_ordered}{either + or -}{ingredient name}` ex. `0+ketchup` means add ketchup to the first item in the order)
+    - orderTaker (optional, integer)
+    - tip (optional, double)
+Output: Single JSON
+    - order_number (integer)
+
+# updateInventory
 # Updates the inventory based on the contents of a given order. Call this after an order is submitted
 Route: [/update_inventory]
 Input: 
     - orderNum (integer)
 Output: None
 
-# getMenu()
+# getMenu
 Route: [/get_menu]
 Input: None
 Output: Array of JSONs (ordered by item number)
@@ -152,14 +164,14 @@ Output: Array of JSONs (ordered by item number)
     - category (string)
     - ingredients (array of strings with format `{number} {ingredient name}`)
 
-# getIngredients()
+# getIngredients
 Route: [/get_ingredients]
 Input: 
     - item (integer or string)
 Output: Single JSON
     - ingredients (array of strings with format `{number} {ingredient name}`)
 
-# getCategoryItems()
+# getCategoryItems
 # Gets all menu items with the matching category
 Route: [/get_category_items]
 Input: 
@@ -171,7 +183,7 @@ Output: Array of JSONs
     - category (string)
     - ingredients (array of strings with format `{number} {ingredient name}`)
 
-# getOrders()
+# getOrders
 Route: [/get_orders]
 Input: None
 Output: Array of JSONs
@@ -185,7 +197,7 @@ Output: Array of JSONs
     - current_day (boolean, true by default, set to false when signalNewDay is called)
     - order_time (timestamp, refer to psql timestamp for format)
 
-# getOrderByNum()
+# getOrderByNum
 Route: [/get_order_by_num]
 Input: 
     - orderNum (integer)
@@ -198,7 +210,7 @@ LOGIN PAGE
 ----------
 
 
-# isEmployee()
+# isEmployee
 # Will throw error if employee is not found, otherwise returns their name
 Route: [/is_employee]
 Input: 
@@ -206,7 +218,7 @@ Input:
 Output: Single JSON 
     - employee_name (string)
 
-# isManager()
+# isManager
 # Will throw error if employee is not found, otherwise returns name and manager status
 Route: [/is_manager]
 Input: 

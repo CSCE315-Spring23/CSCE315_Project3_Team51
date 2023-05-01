@@ -93,7 +93,8 @@ async function addItem(name, price, category, ingredients) {
     try {
         console.log("Adding new item: " + name);
         pool.query(
-            "INSERT INTO menu_items (item_number, item_name, price, category, ingredients) VALUES ((SELECT MAX(item_number) FROM menu_items) + 1, $1, $2, $3, $4)",
+            "INSERT INTO menu_items (item_number, item_name, price, category, ingredients) " +
+            "VALUES ((SELECT MAX(item_number) FROM menu_items) + 1, $1, $2, $3, $4)",
             [name, price, category, ingredients]
         );
     } catch (error) {

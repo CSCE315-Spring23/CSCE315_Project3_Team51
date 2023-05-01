@@ -11,6 +11,23 @@ router.get('/last_order_number', (req, res, next) => {
     }
 });
 
+router.put('/create_order', (req, res, next) => {
+    try {
+        var modifications = [];
+        var orderTaker = -1;
+        var tip = 0;
+        if(req.body.hasOwnProperty(modifications))
+            modifications = req.body.modifications;
+        if(req.body.hasOwnProperty(orderTaker))
+            orderTaker = req.body.orderTaker;
+        if(req.body.hasOwnProperty(tip))
+            tip = req.body.tip;
+        SS.createOrder(req.body.itemsOrdered, req.body.totalPrice, modifications, orderTaker, tip);
+    } catch (err) {
+        res.status(500).send('createOrder failed');
+    }
+});
+
 router.put('/update_inventory', (req, res, next) => {
     try {
         SS.updateInventory(req.body.orderNum);

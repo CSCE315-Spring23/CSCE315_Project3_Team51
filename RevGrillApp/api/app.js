@@ -34,6 +34,7 @@ var salesRoute = require('./routes/manager_side/get_sales');
 
 // server/customer/menu side
 var lastOrderNumRoute = require('./routes/server_side/last_order_number');
+var createOrderRoute = require('./routes/server_side/create_order');
 var updateInvRoute = require('./routes/server_side/update_inventory');
 var getMenuRoute = require('./routes/server_side/get_menu');
 var getIngrRoute = require('./routes/server_side/get_ingredients');
@@ -86,6 +87,7 @@ app.use('/get_sales', salesRoute);
 
 // Server/Customer/Menu side functions
 app.use('/last_order_number', lastOrderNumRoute);
+app.use('/create_order', createOrderRoute);
 app.use('/update_inventory', updateInvRoute);
 app.use('/get_menu', getMenuRoute);
 app.use('/get_ingredients', getIngrRoute);
