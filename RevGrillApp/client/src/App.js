@@ -39,8 +39,7 @@ function App() {
   return (
     <div className="App">
       <Manager_Inventory></Manager_Inventory>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      
         <h1>What are you doing here today?</h1>
         
         {/* <Router>
@@ -54,8 +53,7 @@ function App() {
         <Route path="/" render={() => <h1>Welcome!</h1>} />
         <Route render={() => <h1>404: page not found</h1>} />
         </Router> */}
-      </header>
-             
+      
         <p>{ingredients}</p>
         <p>{orders}</p>
     </div>
