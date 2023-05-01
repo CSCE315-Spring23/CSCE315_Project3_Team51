@@ -1,6 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react'
+import Signup from './pages/Log_In/signup'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import './pages/Manager_Side/Manager_Employee'
+import { Manager_Employee } from './pages/Manager_Side/Manager_Employee';
+import { Manager_Inventory } from './pages/Manager_Side/Manager_Inventory';
+import './pages/Manager_Side/manager.css';
+import Login from './pages/Log_In/login';
 
 function App() {
 
@@ -30,26 +37,11 @@ function App() {
   useEffect(() => {
     callAPI2()
   }, [])
+  
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>{hello}</p>
-        <p>{hello2}</p>
-        
-      </header>
+        <Login/>
     </div>
   );
 }
