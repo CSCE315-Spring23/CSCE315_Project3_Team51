@@ -74,13 +74,13 @@ router.post('/edit_item', async (req, res, next) => {
         var newPrice = -1;
         var newCategory = "";
         var newIngredients = [];
-        if(req.body.hasOwnProperty(newName))
+        if(req.body.hasOwnProperty("newName"))
             newName = req.body.newName;
-        if(req.body.hasOwnProperty(newPrice))
+        if(req.body.hasOwnProperty("newPrice"))
             newPrice = req.body.newPrice;
-        if(req.body.hasOwnProperty(newCategory))
+        if(req.body.hasOwnProperty("newCategory"))
             newCategory = req.body.newCategory;
-        if(req.body.hasOwnProperty(newIngredients))
+        if(req.body.hasOwnProperty("newIngredients"))
             newIngredients = req.body.newIngredients;
         await MS.editItem(item, newName, newPrice, newCategory, newIngredients);
     } catch (err) {
@@ -118,9 +118,9 @@ router.post('/edit_inventory', async (req, res, next) => {
         var ingredient = req.body.ingredient;
         var newQuantity = -1;
         var minQuantity = -1;
-        if(req.body.hasOwnProperty(newQuantity))
+        if(req.body.hasOwnProperty("newQuantity"))
             newQuantity = req.body.newQuantity;
-        if(req.body.hasOwnProperty(minQuantity))
+        if(req.body.hasOwnProperty("minQuantity"))
             minQuantity = req.body.minQuantity;
         await MS.editInventory(ingredient, newQuantity, minQuantity);
     } catch (err) {
