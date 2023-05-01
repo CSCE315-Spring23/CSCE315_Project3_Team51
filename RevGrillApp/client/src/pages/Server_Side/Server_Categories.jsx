@@ -1,30 +1,19 @@
 import React from 'react';
+import './server-side.css';
+import '../../assets/progress/progress_0';
 
 export default function Server_Categories() {
 
   return(
     <div>
     <body>
-        <div className="header">
-            <ul className="nav nav-ls">
-                <div className="nav-home">
-                    <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
-                </div>
-                <div className="nav-item">
-                    <li><a className="nav-link" href="Manager_Inventory.html">Inventory</a></li>
-                </div>
-                <div className="nav-item">
-                    <li><a className="nav-link nav-curr" href="Manager_Employee.html">Menu</a></li>
-                </div>
-                <div className="nav-item">
-                    <li><a className="nav-link" href="Manager_Sales.html">Sales</a></li>
-                </div>
-            </ul>
-        </div>
+        <header>
+          <img></img>
+        </header>
     
         <div className="ms-grid">
             <div className="m-form">
-                <h2>Update Menu</h2>
+                <h2>Create new order</h2>
                 <form>
                     <table>
                         <tr>
