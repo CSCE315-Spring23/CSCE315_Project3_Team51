@@ -18,7 +18,7 @@ async function getMostUsedItems() {
     }
 }
 
-async function getSellsTogether() {
+async function pairingsReport() {
     try {
         console.log('Getting items sold together');
         const res = await pool.query(
@@ -157,7 +157,7 @@ async function zReport() {
 }
 
 exports.getMostUsedItems = getMostUsedItems;
-exports.getSellsTogether = getSellsTogether;
+exports.pairingsReport = pairingsReport;
 exports.restockReport = restockReport;
 exports.salesReport = salesReport;
 exports.excessReport = excessReport;
