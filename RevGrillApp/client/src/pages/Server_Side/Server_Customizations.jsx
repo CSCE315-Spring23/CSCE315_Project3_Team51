@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Server_Customizations extends Component {
-
-  render() {
-    return(
-    <h1>
-      Server Customizations
-    </h1>
-    )
-  }
-
+export default function Server_Customizations() {
+  return(
+  <h1>
+    Server Customizations
+  </h1>
+  )
 }

@@ -2,7 +2,7 @@ var express = require('express');
 const Log = require('../backend_functions/Login.js');
 var router = express.Router();
 
-router.put('/is_employee', async (req, res, next) => {
+router.post('/is_employee', async (req, res, next) => {
     try {
         const data = await Log.isEmployee(req.body.id);
         res.send(data);
@@ -11,7 +11,7 @@ router.put('/is_employee', async (req, res, next) => {
     }
 });
 
-router.put('/is_manager', async (req, res, next) => {
+router.post('/is_manager', async (req, res, next) => {
     try {
         const data = await Log.isManager(req.body.id);
         res.send(data);
