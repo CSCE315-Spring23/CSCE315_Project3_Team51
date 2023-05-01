@@ -150,6 +150,7 @@ async function zReport() {
             "FROM row_items GROUP BY items ORDER BY items"
         );
         console.log(res.rows);
+        Ingredient.signalNewDay();
         return res.rows;
     } catch (error) {
         console.error(error);
