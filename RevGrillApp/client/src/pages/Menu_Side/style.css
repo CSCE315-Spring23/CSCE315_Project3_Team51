@@ -1,31 +1,32 @@
+body {
+    background-color: ghostwhite;
+}
 .page {
-    justify-content: center !important;
+    justify-content: center;
     align-items: center;
-    padding: 30px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 20px;
     background-color: ghostwhite;
 }
 
 .header {
     display: flex;
-    padding: 10px;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    /* margin-left: auto;
-    margin-right: auto; */
+}
+.main {
+    display: flex;
+    font-family: Helvetica, sans-serif;
 }
 .weather {
     display: flex;
     align-items: center;
     justify-content: left;
     text-align: left;
-    margin-right: 150px;
-    /* width: 25%; */
+    margin-right: 50px;
     font-family: Poppins, sans-serif;
 }
 .weather img {
-    width: 100px !important;
+    width: 100px;
     flex-grow: 5;
     margin-right: 10px;
     border-radius: 10px;
@@ -35,9 +36,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 80px;
-    text-align: center;
-    /* width: 50%; */
+    font-size: 40px;
+    text-align: left;
     font-family: Poppins, sans-serif;
     color: #732626;
     text-shadow: 2px 2px 1px #391313;
@@ -57,22 +57,19 @@
 .body {
     display: flex;
     margin: 10px;
-    padding: 30px;
     justify-content: center;
     align-items: top;
     font-family: Helvetica, sans-serif;
+    background-color: ghostwhite;
 }
-
 .left {
-    display: grid;
-    align-items: center;
     justify-content: center;
-    padding: 30px;
+    text-align: center;
 }
 .title {
     align-items: center;
     justify-content: center;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
     margin-left: auto;
     margin-right: auto;
@@ -84,7 +81,7 @@
 .text {
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 20px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 5px;
@@ -95,7 +92,7 @@
 }
 .row {
     display: flex;
-    padding: 40px;
+    padding: 10px;
     justify-content: center;
 }
 .smaller-card {
@@ -106,8 +103,8 @@
     align-items: center !important;
     display: grid;
     text-align: center;
+    width: 200px;
     flex-grow: 0;
-    width: 150px;
 }
 .smaller-card img {
     width: 100px;
@@ -125,12 +122,6 @@
     margin: 5px;
 }
 
-.right {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-}
 .larger-card {
     margin: 15px;
     justify-content: center !important;
@@ -139,6 +130,9 @@
     padding: 50px;
     border-style: solid;
     text-align: center;
+}
+.larger-card img {
+    width: 10px;
 }
 .special {
     box-shadow: 0 2px 3px 1px rgba(0,0,0,0.4);
