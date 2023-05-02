@@ -1,9 +1,7 @@
 import './manager.css';
 import { useEffect, useState } from 'react';
-import JsonToTable from './Display_Inventory';
-// import './Manager_Side';
-// import { fun } from './Manager_Side';
 import { useNavigate } from 'react-router-dom';
+import JsonToTable3 from './Display_Table3';
 
 export default function Manager_Inventory() {
     const navigate = useNavigate();
@@ -22,14 +20,14 @@ export default function Manager_Inventory() {
       fetch("http://localhost:9000/manager_side/get_inventory")
         .then(r => r.text())
         .then(r => {
-            setInventory(JsonToTable(r))
+            setInventory(JsonToTable3("ingredient_name", "quantity", "min_q", "Ingredient", "Quantity", "Minimum Quantity", r))
         });  
     }
 
     function populateTop3(m_text) {
         const obj = JSON.parse(m_text);
         let text = ""
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < Math.min(3, obj.length); i++) {
             text += obj[i].ingredient_name + ": " + obj[i].amt_used + "\n";
         }
         return text;
@@ -38,26 +36,28 @@ export default function Manager_Inventory() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // let itemName = event.target.itemname.value;
-        // let itemQty = event.target.itemqty.value;
-        // let itemMin = event.target.itemmin.value;
+        let itemName = event.target.itemname.value;
+        let itemQty = event.target.itemqty.value;
+        let itemMin = event.target.itemmin.value;
 
-        // event.target.reset();
+        event.target.reset();
 
-        // if (itemQty == "") {
-        //     itemQty = -1;
-        // }
-        // if (itemMin == "") {
-        //     itemMin = -1;
-        // }
+        if (itemQty == "") {
+            itemQty = -1;
+        }
+        if (itemMin == "") {
+            itemMin = -1;
+        }
 
         const requestOptions = {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            // body: JSON.stringify({ ingredient: itemName, newQuantity: itemQty, minQuantity: itemMin })
-            body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
+            body: JSON.stringify({ ingredient: itemName, newQuantity: itemQty, minQuantity: itemMin })
+            // body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
         };
         fetch("http://localhost:9000/manager_side/edit_inventory", requestOptions);
+
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -138,8 +138,7 @@ export default function Manager_Inventory() {
             </div>
             <div className="i-display">
                 <h2>Display Inventory</h2>
-                {/* <p>{ inventory }</p> */}
-                { inventory }
+                <p> { inventory } </p>
             </div>
         </div>
 

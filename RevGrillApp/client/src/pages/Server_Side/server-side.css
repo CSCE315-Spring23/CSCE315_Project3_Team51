@@ -14,6 +14,26 @@ header {
   z-index: 100;
 }
 
+.circle-button{
+  color: var(--custom-light);
+  background-color: var(--custom-primary);
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  height:1em;
+  width:1em;
+}
+
+.circle-button:hover{
+  animation: circle-anim 0.3s ease forwards;
+  transition: all 0.4s ease;
+  color: white;
+  background-color: var(--custom-primary-light);
+  cursor: pointer;
+}
+
 #server_side {
   display: flex;
   flex-wrap: wrap;
@@ -40,7 +60,7 @@ header {
 }
 
 .RHS {
-  flex: 70%;
+  flex: 60%;
   justify-content: center;
 }
 
@@ -124,9 +144,26 @@ header {
 }
 
 .order_bar {
-  flex:30%;
+  display:block;
+  /* flex-wrap: wrap;
+  flex-direction: column; */
   min-height: 550px;
+  min-width: 30%;
+  max-width: 30%;
   background-color: var(--custom-light);
+  text-align: center;
+  /* justify-content: center; */
+  /* align-content: center; */
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+#order_tile {
+  display:block;
+  background-color: #ebe7e7;
+  border-color: -var(--custom-dark);
+  border: 1px solid;
+  line-height: 10px;
 }
 
 /* NAV BAR */
