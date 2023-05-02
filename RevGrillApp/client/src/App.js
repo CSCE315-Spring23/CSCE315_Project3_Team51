@@ -19,12 +19,15 @@ import Server_Categories from './pages/Server_Side/Server_Categories';
 import Login from './pages/Log_In/login';
 import Signup from './pages/Log_In/signup';
 
+// HOME
+import Home from './pages/Home/Home';
+
 // ROUTING
 import PrivateRoute from './PrivateRoute';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Auth_context } from './pages/Log_In/auth_context';
 
-
+//<Home/>
 
 function App() {
 
@@ -34,6 +37,7 @@ function App() {
       <BrowserRouter>
         <Auth_context>
           <Routes>
+            <Route path = "/" element = {<Home/>} />
             <Route path = "/signup" element = {<Signup/>} />
             <Route path = "/login" element = {<Login/>} />
             <Route exact path = "/manager_side" element = {<PrivateRoute/>} > 
