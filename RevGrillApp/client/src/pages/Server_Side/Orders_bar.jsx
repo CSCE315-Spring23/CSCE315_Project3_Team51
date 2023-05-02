@@ -43,7 +43,7 @@ export default function OrdersBar() {
     </div>`
     ;
 
-    // const mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
+    const mappedOrders = { __html: Orders.map(order => Order_Tile(order)).join('') };
 
     
 
@@ -51,7 +51,7 @@ export default function OrdersBar() {
 
         <div className="order_bar">
             <h2> 🧾 CURRENT ORDERS</h2>
-            {/* <div dangerouslySetInnerHTML={ mappedOrders }></div> */}
+            <div dangerouslySetInnerHTML={ mappedOrders }></div>
             {/* <p>{orders.stringify}</p> */}
         </div>
     );

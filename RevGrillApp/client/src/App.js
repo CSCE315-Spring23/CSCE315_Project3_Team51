@@ -104,7 +104,7 @@ import Options from './pages/Customer_Side/Options';
 function App() {
   return ( 
     <div>
-      {/* <Server_Categories></Server_Categories> */}
+      <Server_Categories></Server_Categories>
       {/* <Weather></Weather> */}
     </div>
   
