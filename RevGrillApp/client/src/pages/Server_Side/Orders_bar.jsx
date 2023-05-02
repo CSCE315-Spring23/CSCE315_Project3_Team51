@@ -7,7 +7,7 @@ export default function OrdersBar() {
 
 
     function getRunningOrders() {
-        fetch("https://revgrill-app.onrender.com/orders")
+        fetch("http://localhost:9000/orders")
             .then(r => r.text())
             .then(resp => {
                 setOrders(resp)
