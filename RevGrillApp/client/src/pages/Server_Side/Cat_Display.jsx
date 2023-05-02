@@ -66,9 +66,8 @@ export default function CatDisplay() {
     const mappedCategories =  { __html: CATEGORIES.map(item => Cat_Tile(item)).join('') };
 
     return (
-        <div>
+        <div style={{marginLeft:20,}}>
             <div id="cat_display" dangerouslySetInnerHTML={ mappedCategories }></div>
-            
         </div>
         
     )

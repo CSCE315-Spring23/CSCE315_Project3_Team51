@@ -102,7 +102,13 @@ function App() {
 /*
 import Options from './pages/Customer_Side/Options';
 function App() {
-  return ( <Options category='Burger' />);
+  return ( 
+    <div>
+      {/* <Server_Categories></Server_Categories> */}
+      {/* <Weather></Weather> */}
+    </div>
+  
+  );
 }
 */
 export default App;
