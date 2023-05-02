@@ -26,6 +26,10 @@ export default function Manager_Employee() {
     const [itemIngs, setItemIngs] = useState('');
     const [menu, setMenu] = useState('No Data - Menu');
 
+    /**
+     * Gets menu in JSON format from the backend and sets the menu state variable (with an HTML table generated from this data)
+     * @author Harini Kumar
+     */
     const getMenu = () => {
       fetch("http://localhost:9000/server_side/get_menu")
         .then(r => r.text())
@@ -62,6 +66,10 @@ export default function Manager_Employee() {
         setItemIngs(event.target.value);
     };
 
+    /**
+     * Called when the "Remove Item" button is clicked, makes the necessary call to the database to remove the item specified by its number
+     * @author Harini Kumar
+     */
     const handleRemove = () => {
         if (itemNum != "") {
             let requestOptions = {
@@ -78,6 +86,10 @@ export default function Manager_Employee() {
         // window.location.reload();
     };
 
+    /**
+     * Called when the "Add Item" button is clicked, makes the necessary call to the database to add the item with given properties
+     * @author Harini Kumar
+     */
     const handleAdd = () => {
         
         if (itemName == "" || itemPrice == "" || itemCat == "" || itemIngs == "") {
@@ -94,6 +106,10 @@ export default function Manager_Employee() {
         }
     }
 
+    /**
+     * Called when the "Edit Item" button is clicked, makes the necessary call to the database to edit the item specified by its number with the information provided
+     * @author Harini Kumar
+     */
     const handleEdit = () => {
         if (itemNum != "") {
             let requestOptions = {}

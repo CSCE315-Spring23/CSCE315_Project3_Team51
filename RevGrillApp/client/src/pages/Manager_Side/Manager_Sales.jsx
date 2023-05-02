@@ -22,7 +22,10 @@ export default function Manager_Sales() {
 
 
 
-
+    /**
+     * Called when the "Generate Report" button is clicked, makes the necessary call to the database to get the desired report and transform it into an HTML table
+     * @author Harini Kumar
+     */
     const handleSubmit = (event) => {
         event.preventDefault();
 

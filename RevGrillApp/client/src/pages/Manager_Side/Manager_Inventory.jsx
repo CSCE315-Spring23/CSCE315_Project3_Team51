@@ -8,6 +8,10 @@ export default function Manager_Inventory() {
     const [mostUsed, setMostUsed] = useState('No Data - Most Used');
     const [inventory, setInventory] = useState('No Data - Inventory');
   
+    /**
+     * Gets the most used ingredients in JSON format from the backend, sets the mostUsed state variable (with a string of the top 3 ingredients)
+     * @author Harini Kumar
+     */
     const getMostUsed = () => {
       fetch("http://localhost:9000/manager_side/most_used_items")
         .then(r => r.text())
@@ -16,6 +20,10 @@ export default function Manager_Inventory() {
         });
     }
 
+    /**
+     * Gets inventory in JSON format from the backend and sets the inventory state variable (with an HTML table generated from this data)
+     * @author Harini Kumar
+     */
     const getInventory = () => {
       fetch("http://localhost:9000/manager_side/get_inventory")
         .then(r => r.text())
@@ -24,6 +32,12 @@ export default function Manager_Inventory() {
         });  
     }
 
+    /**
+     * Parses the string JSON data to get the top 3 most used ingredients in string format
+     * @param {string} m_text - stringified JSON data from the backend
+     * @return {string} the top 3 items and their amounts used
+     * @author Harini Kumar
+     */
     function populateTop3(m_text) {
         const obj = JSON.parse(m_text);
         let text = ""
@@ -33,6 +47,10 @@ export default function Manager_Inventory() {
         return text;
     }
 
+    /**
+     * Called when the "Update Inventory" button is clicked, makes the necessary call to the database to update the desired ingredient's quantity/minimum
+     * @author Harini Kumar
+     */
     const handleSubmit = (event) => {
         event.preventDefault();
 
