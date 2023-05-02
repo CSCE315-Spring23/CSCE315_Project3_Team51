@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
 import Manager_Sales from './pages/Manager_Side/Manager_Sales';
-import Manager_Employee from './pages/Manager_Side/Manager_Employee';import Manager_Employee from './pages/Manager_Side/Manager_Employee';
+import Manager_Employee from './pages/Manager_Side/Manager_Employee';
 import PrivateRoute from './PrivateRoute';
 import './pages/Manager_Side/manager.css';
 import Login from './pages/Log_In/login';
@@ -29,7 +29,7 @@ function App() {
 //         setOrders(resp)
 //       });
 //   }
-
+/*
   useEffect(() => {
     callAPIIngredients()
   }, [])
@@ -38,7 +38,7 @@ function App() {
     callAPIOrders()
   }, [])
   
-
+*/
   
 
   return (
@@ -48,17 +48,26 @@ function App() {
           <Routes>
             <Route path = "/signup" element = {<Signup/>} />
             <Route path = "/login" element = {<Login/>} />
-            <Route path = "/manager_side" element = {<Manager_Inventory/>} > 
-                <Route path = "/manager_side/employee" element =  {<Manager_Employee/>} />
+            <Route exact path = "/manager_side" element = {<PrivateRoute/>} > 
+                <Route exact path = "/manager_side/inventory" element =  {<Manager_Inventory/>} />
+                <Route exact path = "/manager_side/employee" element =  {<Manager_Employee/>} />
+                <Route exact path = "/manager_side/sales" element =  {<Manager_Sales/>} />
             </Route>
+
+            <Route exact path = "/server_side" element = {<PrivateRoute/>} > 
+                <Route exact path = "/server_side/inventory" element =  {<Manager_Inventory/>} />
+                <Route exact path = "/server_side/employee" element =  {<Manager_Employee/>} />
+                <Route exact path = "/server_side/sales" element =  {<Manager_Sales/>} />
+            </Route>
+
           </Routes>
         </Auth_context>
       </BrowserRouter>
     
       
-//         <h1>What are you doing here today?</h1>
+
         
-//         {/* <Router>
+   {/* <Router>
 //         <ul>
 //           <li><button href="/">Main</button></li>
 //           <li><button href="/menu">Menu</button></li>

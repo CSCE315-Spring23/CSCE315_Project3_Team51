@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import JsonToTable from './Display_Inventory';
 // import './Manager_Side';
 // import { fun } from './Manager_Side';
+import { useNavigate } from 'react-router-dom';
 
 export default function Manager_Inventory() {
-
+    const navigate = useNavigate();
     const [mostUsed, setMostUsed] = useState('No Data - Most Used');
     const [inventory, setInventory] = useState('No Data - Inventory');
   
@@ -67,24 +68,37 @@ export default function Manager_Inventory() {
         getInventory()
     }, [])
 
+    function goInventory() {
+        navigate('/manager_side/inventory')
+    }
+
+    function goEmployee() {
+        navigate('/manager_side/employee')
+    } 
+
+    function goSales() {
+        navigate('/manager_side/sales')
+    }
+
     return(
-      <div>
-        <div className="header">
-            <ul className="nav nav-ls">
-                <div className="nav-home">
-                    <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
-                </div>
-                <div className="nav-item">
-                    <li><a className="nav-link nav-curr" href="Manager_Inventory.html">Inventory</a></li>
-                </div>
-                <div className="nav-item">
-                    <li><a className="nav-link" href="Manager_Employee.html">Menu</a></li>
-                </div>
-                <div className="nav-item">
-                    <li><a className="nav-link" href="Manager_Sales.html">Sales</a></li>
-                </div>
-            </ul>
-        </div>
+        <div>
+        
+            <div className="header">
+                <ul className="nav nav-ls">
+                    <div className="nav-home">
+                        <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
+                    </div>
+                    <div className="nav-item">
+                        <li><a className="nav-link" onClick={goInventory}>Inventory</a></li>
+                    </div>
+                    <div className="nav-item">
+                        <li><a className="nav-link nav-curr" onClick = {goEmployee}>Menu</a></li>
+                    </div>
+                    <div className="nav-item">
+                        <li><a className="nav-link" onClick = {goSales}>Sales</a></li>
+                    </div>
+                </ul>
+            </div>
 
         <div className="i-grid">
             <div className="i-form">

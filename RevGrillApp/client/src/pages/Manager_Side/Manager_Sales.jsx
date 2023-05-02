@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './manager.css';
 import { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 export default function Manager_Sales() {
-
+    const navigate = useNavigate();
     const [report, setReport] = useState('No Data - Report')
   
     // const callAPIIngredients = () => {
@@ -34,23 +34,34 @@ export default function Manager_Sales() {
             })
     };
 
-    return(
-      <div>
+    function goInventory() {
+        navigate('/manager_side/inventory')
+    }
 
+    function goEmployee() {
+        navigate('/manager_side/employee')
+    } 
+
+    function goSales() {
+        navigate('/manager_side/sales')
+    }
+
+    return(
+        <div>
         <body>
-            <div class="header">
-                <ul class="nav nav-ls">
-                    <div class="nav-home">
-                        <li><a class="nav-link link-home" href="">Rev's Grill</a></li>
+            <div className="header">
+                <ul className="nav nav-ls">
+                    <div className="nav-home">
+                        <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
                     </div>
-                    <div class="nav-item">
-                        <li><a class="nav-link" href="Manager_Inventory.html">Inventory</a></li>
+                    <div className="nav-item">
+                        <li><a className="nav-link" onClick={goInventory}>Inventory</a></li>
                     </div>
-                    <div class="nav-item">
-                        <li><a class="nav-link" href="Manager_Employee.html">Menu</a></li>
+                    <div className="nav-item">
+                        <li><a className="nav-link nav-curr" onClick = {goEmployee}>Menu</a></li>
                     </div>
-                    <div class="nav-item">
-                        <li><a class="nav-link nav-curr" href="Manager_Sales.html">Sales</a></li>
+                    <div className="nav-item">
+                        <li><a className="nav-link" onClick = {goSales}>Sales</a></li>
                     </div>
                 </ul>
             </div>

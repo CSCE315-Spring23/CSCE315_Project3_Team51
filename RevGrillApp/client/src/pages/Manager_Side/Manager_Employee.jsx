@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './manager.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Manager_Employee() {
-
+    const navigate = useNavigate();
     // const [ingredients, setIngredients] = useState('No data - Ingredients')
   
     // const callAPIIngredients = () => {
@@ -17,6 +18,17 @@ export default function Manager_Employee() {
     // useEffect(() => {
     //     callAPIIngredients()
     // }, [])
+    function goInventory() {
+        navigate('/manager_side/inventory')
+    }
+
+    function goEmployee() {
+        navigate('/manager_side/employee')
+    } 
+
+    function goSales() {
+        navigate('/manager_side/sales')
+    }
 
     return(
         <div>
@@ -27,13 +39,13 @@ export default function Manager_Employee() {
                         <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link" href="Manager_Inventory.html">Inventory</a></li>
+                        <li><a className="nav-link" onClick={goInventory}>Inventory</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link nav-curr" href="Manager_Employee.html">Menu</a></li>
+                        <li><a className="nav-link nav-curr" onClick = {goEmployee}>Menu</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link" href="Manager_Sales.html">Sales</a></li>
+                        <li><a className="nav-link" onClick = {goSales}>Sales</a></li>
                     </div>
                 </ul>
             </div>

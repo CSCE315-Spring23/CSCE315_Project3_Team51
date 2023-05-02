@@ -73,6 +73,8 @@ export default function Login() {
         setError("Manager Log In Failed")
       }
       setLoading(false);
+      navigate('/manaager_side/inventory');
+
   } 
 
   async function oAuthSub(e) {
@@ -85,10 +87,11 @@ export default function Login() {
         setError("OAUTH Log In Failed")
       }
       setLoading(false);
+      navigate('/server_side/dashboard');
   } 
 
   function goSignup(){
-      navigate('/Signup');
+      navigate('/signup');
   };
 
 
