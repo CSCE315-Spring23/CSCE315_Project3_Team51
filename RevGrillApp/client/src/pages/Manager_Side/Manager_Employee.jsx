@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './manager.css';
 import { useEffect, useState } from 'react';
+import JsonToMenu from './Display_Menu';
 
 export default function Manager_Employee() {
 
@@ -9,6 +10,19 @@ export default function Manager_Employee() {
     const [itemPrice, setItemPrice] = useState('');
     const [itemCat, setItemCat] = useState('');
     const [itemIngs, setItemIngs] = useState('');
+    const [menu, setMenu] = useState('No Data - Menu');
+
+    const getMenu = () => {
+      fetch("http://localhost:9000/server_side/get_menu")
+        .then(r => r.text())
+        .then(r => {
+            setMenu(JsonToMenu("item_number", "item_name", "price", "category", "ingredients", "Item Number", "Item Name", "Price", "Category", "Ingredients", r))
+        });  
+    }
+
+    useEffect(() => {
+        getMenu()
+    }, [])
 
     const numChange = (event) => {
         setItemNum(Number(event.target.value));
@@ -147,7 +161,7 @@ export default function Manager_Employee() {
                 </div>
                 <div className="ms-display">
                     <h2>Display Menu</h2>
-                    <p>menu will display here</p>
+                    <p> { menu } </p>
                 </div>
             </div>
         </body>

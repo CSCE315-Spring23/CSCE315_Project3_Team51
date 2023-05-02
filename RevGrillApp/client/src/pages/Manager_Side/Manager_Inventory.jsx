@@ -26,7 +26,7 @@ export default function Manager_Inventory() {
     function populateTop3(m_text) {
         const obj = JSON.parse(m_text);
         let text = ""
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < Math.min(3, obj.length); i++) {
             text += obj[i].ingredient_name + ": " + obj[i].amt_used + "\n";
         }
         return text;
@@ -124,8 +124,7 @@ export default function Manager_Inventory() {
             </div>
             <div className="i-display">
                 <h2>Display Inventory</h2>
-                {/* <p>{ inventory }</p> */}
-                { inventory }
+                <p> { inventory } </p>
             </div>
         </div>
 
