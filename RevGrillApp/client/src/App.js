@@ -1,7 +1,7 @@
 import './App.css';
 
 // STYLING
-import './pages/Manager_Side/manager.css';
+// import './pages/Manager_Side/manager.css';
 
 // MANAGER
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
@@ -51,7 +51,7 @@ function App() {
           </Routes>
         </Auth_context>
       </BrowserRouter>
-     
+
     </div>
   );
 }

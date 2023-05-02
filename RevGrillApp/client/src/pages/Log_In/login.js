@@ -73,7 +73,7 @@ export default function Login() {
         setError("Manager Log In Failed")
       }
       setLoading(false);
-      navigate('/manaager_side/inventory');
+      navigate('/manager_side/inventory');
 
   } 
 
