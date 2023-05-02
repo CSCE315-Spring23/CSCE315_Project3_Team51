@@ -14,6 +14,26 @@ header {
   z-index: 100;
 }
 
+.circle-button{
+  color: var(--custom-light);
+  background-color: var(--custom-primary);
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition: all 0.2s;
+
+  height:1em;
+  width:1em;
+}
+
+.circle-button:hover{
+  animation: circle-anim 0.3s ease forwards;
+  transition: all 0.4s ease;
+  color: white;
+  background-color: var(--custom-primary-light);
+  cursor: pointer;
+}
+
 #server_side {
   display: flex;
   flex-wrap: wrap;

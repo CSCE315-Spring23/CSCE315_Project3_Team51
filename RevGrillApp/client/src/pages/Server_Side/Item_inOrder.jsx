@@ -8,9 +8,15 @@ export default function ItemInOrder() {
                 item name :D
             </div>
             <div style={{ display:'flex', justifyContent:'space-between', }}>
-                <span class="material-symbols-outlined">add_box</span>
+                <div className="tooltip">
+                    <span className="tooltiptext">put me down!</span>
+                    <span className="circle-button material-symbols-outlined">add_circle</span>
+                    
+                </div>
                 <div style={{width:'10px'}}></div>
-                <span class="material-symbols-outlined">do_not_disturb_on</span>
+                <div>
+                    <span class="circle-button material-symbols-outlined">do_not_disturb_on</span>
+                </div>
             </div>
         </div>
     )
