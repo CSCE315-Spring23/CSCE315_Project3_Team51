@@ -77,8 +77,8 @@ import './pages/Manager_Side/manager.css';
 // export default App;
 
 // BELOW : FOR CUSTOMER
-import Options from './pages/Customer_Side/Options';
+import Customer_Categories from './pages/Customer_Side/Customer_Categories';
 function App() {
-  return ( <Options category='Burger' />);
+  return ( <Customer_Categories />);
 }
 export default App;

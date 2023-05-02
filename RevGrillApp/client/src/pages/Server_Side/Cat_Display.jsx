@@ -46,6 +46,12 @@ const CATEGORIES = [{
     "alt": "picture of sides",
 },
 {
+    "name": "Combos",
+    "nameLower": "combos",
+    "pic": burgerPic,
+    "alt": "picture of burger",
+},
+{
     "name": "Tenders",
     "nameLower": "tenders",
     "pic": tendersPic,
