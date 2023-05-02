@@ -11,7 +11,7 @@ export default function Manager_Employee() {
     const [itemIngs, setItemIngs] = useState('');
 
     const numChange = (event) => {
-        setItemNum(event.target.value);
+        setItemNum(Number(event.target.value));
     };
 
     const nameChange = (event) => {
@@ -19,7 +19,11 @@ export default function Manager_Employee() {
     };
 
     const priceChange = (event) => {
-        setItemPrice(event.target.value);
+        try {
+            setItemPrice(parseFloat(event.target.value));
+        } catch (error) {
+            setItemPrice('')
+        }
     };
 
     const catChange = (event) => {
@@ -31,14 +35,12 @@ export default function Manager_Employee() {
     };
 
     const handleRemove = () => {
-        let requestOptions = {
-            method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            // body: JSON.stringify({ item: 34})
-        };
-
         if (itemNum != "") {
-            requestOptions.body = JSON.stringify({ item: itemNum})
+            let requestOptions = {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ item: itemNum })
+            };
             fetch("http://localhost:9000/manager_side/remove_item", requestOptions);
         }
         else {
@@ -57,7 +59,7 @@ export default function Manager_Employee() {
             let requestOptions = {
                 method: 'POST',
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                // body: JSON.stringify({ name: "Chocolate Cake", price: 10.25, category: "Dessert", ingredients: "[10 sugar, 1 bread]"})
+                // body: JSON.stringify({ name: "Pumpkin Pie", price: 10.59, category: "Dessert", ingredients: "1 pumpkin, 10 sugar, 1 bread"})
                 body: JSON.stringify({ name: itemName, price: itemPrice, category: itemCat, ingredients: itemIngs})
             };
             fetch("http://localhost:9000/manager_side/add_item", requestOptions);
@@ -66,13 +68,23 @@ export default function Manager_Employee() {
 
     const handleEdit = () => {
         if (itemNum != "") {
-            // handle no price, set to -1
-            let requestOptions = {
-                method: 'POST',
-                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                body: JSON.stringify({ item: itemNum, newName: "Vanilla Cake", newPrice: 10.11, newCategory: "Dessert"})
-                // body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: itemPrice, newCategory: itemCat, newIngredients: itemIngs})
-            };
+            let requestOptions = {}
+            if (itemPrice == "") {
+                requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    // body: JSON.stringify({ item: itemNum, newName: "Vanilla Cake", newPrice: 10.11, newCategory: itemCat, newIngredients: itemIngs})
+                    body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: -1, newCategory: itemCat, newIngredients: itemIngs})
+                };               
+            }
+            else {
+                requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    // body: JSON.stringify({ item: itemNum, newName: "Vanilla Cake", newPrice: 10.11, newCategory: itemCat, newIngredients: itemIngs})
+                    body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: itemPrice, newCategory: itemCat, newIngredients: itemIngs})
+                };
+            }
             fetch("http://localhost:9000/manager_side/edit_item", requestOptions);
         }
         else {
