@@ -5,17 +5,21 @@ var router = express.Router();
 router.get('/most_used_items', async (req, res, next) => {
     try {
         const data = await MS.getMostUsedItems();
-        console.log("Inside router");
-        console.log(data);
         res.send(data);
     } catch (err) {
         res.status(500).send('getMostUsedItems failed');
     }
 });
 
-router.get('/pairings_report', async (req, res, next) => {
+router.post('/pairings_report', async (req, res, next) => {
     try {
-        const data = await MS.pairingsReport();
+        var startTime = "";
+        var endTime = "";
+        if(req.body.hasOwnProperty("startTime"))
+            startTime = req.body.startTime;
+        if(req.body.hasOwnProperty("endTime"))
+            endTime = req.body.endTime;
+        const data = await MS.pairingsReport(startTime, endTime);
         res.send(data);
     } catch (err) {
         res.status(500).send('pairingsReport failed');
@@ -31,18 +35,27 @@ router.get('/restock_report', async (req, res, next) => {
     }
 });
 
-router.get('/sales_report', async (req, res, next) => {
+router.post('/sales_report', async (req, res, next) => {
     try {
-        const data = await MS.salesReport();
+        var startTime = "";
+        var endTime = "";
+        if(req.body.hasOwnProperty("startTime"))
+            startTime = req.body.startTime;
+        if(req.body.hasOwnProperty("endTime"))
+            endTime = req.body.endTime;
+        const data = await MS.salesReport(startTime, endTime);
         res.send(data);
     } catch (err) {
         res.status(500).send('salesReport failed');
     }
 });
 
-router.get('/excess_report', async (req, res, next) => {
+router.post('/excess_report', async (req, res, next) => {
     try {
-        const data = await MS.excessReport();
+        var startTime = "";
+        if(req.body.hasOwnProperty("startTime"))
+            startTime = req.body.startTime;
+        const data = await MS.excessReport(startTime);
         res.send(data);
     } catch (err) {
         res.status(500).send('excessReport failed');
