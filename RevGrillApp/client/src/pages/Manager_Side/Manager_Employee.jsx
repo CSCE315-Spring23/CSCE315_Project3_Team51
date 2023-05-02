@@ -39,25 +39,45 @@ export default function Manager_Employee() {
 
         if (itemNum != "") {
             requestOptions.body = JSON.stringify({ item: itemNum})
-        }
-        else if (itemName != "") {
-            requestOptions.body = JSON.stringify({ item: itemName})
+            fetch("http://localhost:9000/manager_side/remove_item", requestOptions);
         }
         else {
-            window.alert("Please enter an item name or number to delete an item.")
+            window.alert("Please enter an item number to delete an item.")
         }
-        fetch("http://localhost:9000/manager_side/remove_item", requestOptions);
 
         // window.location.reload();
     };
 
     const handleAdd = () => {
-        let requestOptions = {
-            method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: "Chocolate Cake", price: 10.25, category: "Dessert", ingredients: "[10 sugar, 1 bread]"})
-        };
-        fetch("http://localhost:9000/manager_side/add_item", requestOptions);
+        
+        if (itemName == "" || itemPrice == "" || itemCat == "" || itemIngs == "") {
+            window.alert("Please enter an item name, price, category, and ingredient list to add an item.")
+        }
+        else {  
+            let requestOptions = {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                // body: JSON.stringify({ name: "Chocolate Cake", price: 10.25, category: "Dessert", ingredients: "[10 sugar, 1 bread]"})
+                body: JSON.stringify({ name: itemName, price: itemPrice, category: itemCat, ingredients: itemIngs})
+            };
+            fetch("http://localhost:9000/manager_side/add_item", requestOptions);
+        }
+    }
+
+    const handleEdit = () => {
+        if (itemNum != "") {
+            // handle no price, set to -1
+            let requestOptions = {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ item: itemNum, newName: "Vanilla Cake", newPrice: 10.11, newCategory: "Dessert"})
+                // body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: itemPrice, newCategory: itemCat, newIngredients: itemIngs})
+            };
+            fetch("http://localhost:9000/manager_side/edit_item", requestOptions);
+        }
+        else {
+            window.alert("Please enter an item name or number to edit an item.")
+        }
     }
 
     return(
@@ -87,7 +107,7 @@ export default function Manager_Employee() {
                         <table>
                             <tr>
                                 <td><label for="item_num">Item number:</label></td>
-                                <td><input type="number" id="item_num" name="item_num" onChange={numChange}/></td>
+                                <td><input type="number" id="item_num" name="item_num" onChange={numChange} placeholder="to edit/remove"/></td>
                             </tr>
                             <tr>
                                 <td><label for="item_name">Item name:</label></td>
@@ -108,7 +128,7 @@ export default function Manager_Employee() {
                         </table>
                         <div className="button-div">
                             <button onClick = { handleAdd }>Add Item</button>
-                            <button>Edit Item</button>
+                            <button onClick = { handleEdit }>Edit Item</button>
                             <button onClick = { handleRemove }>Remove Item</button>
                         </div>
                     </form>
