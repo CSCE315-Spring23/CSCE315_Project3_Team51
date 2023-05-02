@@ -10,6 +10,7 @@
   --custom-primary: #4c0000; /* aggie maroon  */
   --custom-primary-light: #b10101; /* aggie maroon  */
   --custom-light: #d1c7c6;
+  --custom-extra-light: #ede5e5;
   --custom-secondary: #f8cf00;
   --custom-secondary-light: #f7db85;
   --custom-tertiary: #422437;
@@ -17,6 +18,7 @@
   --speed: 0.5s;
   font-family: 'Open Sans', sans-serif;
   background-color: #f9f9f9;
+  text-align: center;
 
   background-attachment: fixed;
   background-position: center;
@@ -45,31 +47,29 @@ footer {
   align-items: center; /* align vertical */
 }
 
-.App {
-  text-align: center;
+button {
+  background-color: var(--custom-primary);
+  display:flex;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button:hover {
+  animation: button-focus 0.3s ease-in;
+  animation-fill-mode: both;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes button-focus {
+  0%    {   
+    transform: translate(0px,  0px); 
+    background-color: var(--custom-primary);
+  }
+100%  { 
+    transform: translate(0px,  -1px); 
+    background-color: var(--custom-primary-light);
+
   }
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
