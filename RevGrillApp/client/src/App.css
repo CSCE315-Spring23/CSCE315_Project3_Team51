@@ -47,6 +47,10 @@ footer {
   align-items: center; /* align vertical */
 }
 
+#google_translate_element {
+  transform: translate(-20px, 0px);
+}
+
 button {
   background-color: var(--custom-primary);
   display:flex;
@@ -91,8 +95,8 @@ button:hover {
   opacity: 0;
   transition: opacity 0.5s;
   
-  top: 80%;
-  left: 80%; 
+  top: -140%;
+  left: -200%; 
   
   /* Position the tooltip text - see examples below! */
   position: absolute;

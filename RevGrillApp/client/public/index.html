@@ -27,7 +27,27 @@
     <title>Rev Grill Site</title>
   </head>
   <body>
-    
+    <header style="z-index:9">
+      <div style="display:flex; align-items:center;">
+        <div>
+          <a style="margin:20px; font-size:50px;" class="nav-link link-home" href="">Rev's Grill</a>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <div style="padding-left:20px; padding-right:20px;">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div style="text-align:left;display:block;">
+            <a href="https://time.is/College_Station" id="time_is_link" rel="nofollow" style="font-size:15px;color:rgb(255, 222, 7);background:rgb(74, 3, 3);">Time in College Station:</a>
+            <span id="College_Station_z123" style="font-size:15px;color:rgb(255, 210, 31);background:rgb(74, 3, 3)"></span>
+            <script src="//widget.time.is/en.js"></script>
+            <script>
+            time_is_widget.init({College_Station_z123:{template:"TIME<br>DATE", time_format:"12hours:minutesAMPM", date_format:"dayname, monthname dnum, year"}});
+            </script>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </header>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- <img href="../assets/logo192.png" /> -->
@@ -41,7 +61,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <div id="google_translate_element"></div>
+    <footer style="display:flex; justify-content: space-between;">
+      <div style="padding-left: 20px;">Made with 🤍 by CSCE 315 Team 51</div>
+      <div id="google_translate_element"></div>
+    </footer>
 
     <script type="text/javascript">
     function googleTranslateElementInit() {

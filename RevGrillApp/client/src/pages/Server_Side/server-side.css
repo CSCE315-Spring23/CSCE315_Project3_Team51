@@ -60,7 +60,7 @@ header {
 }
 
 .RHS {
-  flex: 70%;
+  flex: 60%;
   justify-content: center;
 }
 
@@ -144,9 +144,26 @@ header {
 }
 
 .order_bar {
-  flex:30%;
+  display:block;
+  /* flex-wrap: wrap;
+  flex-direction: column; */
   min-height: 550px;
+  min-width: 30%;
+  max-width: 30%;
   background-color: var(--custom-light);
+  text-align: center;
+  /* justify-content: center; */
+  /* align-content: center; */
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+#order_tile {
+  display:block;
+  background-color: #ebe7e7;
+  border-color: -var(--custom-dark);
+  border: 1px solid;
+  line-height: 10px;
 }
 
 /* NAV BAR */

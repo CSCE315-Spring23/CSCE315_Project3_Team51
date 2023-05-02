@@ -14,7 +14,7 @@ export default function Server_Categories() {
   return(
     <div>
     <body>
-        <header>
+        {/* <header>
           <a style={{ margin: 20, }} className="nav-link link-home" href="">Rev's Grill</a>
           <div className="progress_bar" style={{ margin: 20, }}>
             <div> ADDING ITEMS </div>
@@ -22,36 +22,33 @@ export default function Server_Categories() {
             <img style={{ maxHeight: 50, }} src={prog2} alt="progress 0" />  
             <div style={{ width: 20, }}></div> 
           </div>  
-        </header>
+        </header> */}
 
         <div style={{ height: 80, }}> filling behind the header</div>
         
         <div id="server_side">
           <OrdersBar></OrdersBar>
           <div className="RHS" style={{textAlign:'left',}}>
-            {/* <div>
+
+            <div style={{display:'block'}}>
+              <h1 style={{marginLeft:'30px',}}>Start with an Item Category</h1>
+              <div style={{display:'flex', justifyContent:'center', textAlign:'center',}}>
+                <CatDisplay> hello </CatDisplay>
+              </div>
+              <div style={{ height: 20,}}></div> 
+              <div>
+                <CurrentOrder></CurrentOrder>
+              </div>
+            </div>
+            
+            <div style={{display:'none'}}>
               <Options category='Burger' />
-            </div> */}
-            
-
-
-            <h1 style={{marginLeft:'30px',}}>Start with an Item Category</h1>
-            <div style={{display:'flex', justifyContent:'center', textAlign:'center',}}>
-              <CatDisplay> hello </CatDisplay>
             </div>
-            <div style={{ height: 20,}}></div> 
-            <div>
-              <CurrentOrder></CurrentOrder>
-            </div>
-            
+
           </div>
         </div>
         
     </body>
-    
-    <footer>
-        Made with 🤍 by CSCE 315 Team 51
-    </footer>
     </div>
   )
 
