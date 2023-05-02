@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "npm install concurrently && npm install yarn",
     "setup": "npm i && npm --prefix ./client i && npm --prefix ./api i",
-    "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client start\" \"yarn --cwd ./api start\"",
+    "dev": "npm run prebuild && concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"yarn --cwd ./client start\" \"yarn --cwd ./api start\"",
     "dev-front": "yarn --cwd ./client start",
     "dev-back": "yarn --prefix ./api start",
     "build": "npm --prefix ./client run build && npm --prefix ./api run build"
@@ -24,7 +25,8 @@
     "match-sorter": "^6.3.1",
     "pg": "^8.10.0",
     "react-router-dom": "^6.10.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "yarn": "^1.22.19"
   },
   "repository": {
     "type": "git",

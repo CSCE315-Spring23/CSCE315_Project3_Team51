@@ -4,8 +4,9 @@
     "private": true,
     "scripts": {
         "prebuild": "npm install",
-        "start": "node ./bin/www",
-        "build": "node ./bin/www"
+        "start": "node app.js",
+        "build": "npm run prebuild && npm run build:app",
+        "build:app": "echo 'Build the app here'"
     },
     "dependencies": {
         "api": "file:",
