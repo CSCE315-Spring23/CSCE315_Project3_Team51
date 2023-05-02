@@ -7,7 +7,7 @@ import prog0 from '../../assets/progress/prog0.png';
 import prog1 from '../../assets/progress/prog1.png';
 import prog2 from '../../assets/progress/prog2.png';
 import prog3 from '../../assets/progress/prog3.png';
-
+import Options from './Options';
 
 export default function Server_Categories() {
 
@@ -21,14 +21,20 @@ export default function Server_Categories() {
             <div style={{ width: 20, }}></div>    
             <img style={{ maxHeight: 50, }} src={prog2} alt="progress 0" />  
             <div style={{ width: 20, }}></div> 
-          </div>
-          
+          </div>  
         </header>
+
         <div style={{ height: 80, }}> filling behind the header</div>
         
         <div id="server_side">
           <OrdersBar></OrdersBar>
           <div className="RHS" style={{textAlign:'left',}}>
+            {/* <div>
+              <Options category='Burger' />
+            </div> */}
+            
+
+
             <h1 style={{marginLeft:'30px',}}>Start with an Item Category</h1>
             <div style={{display:'flex', justifyContent:'center', textAlign:'center',}}>
               <CatDisplay> hello </CatDisplay>
@@ -37,7 +43,6 @@ export default function Server_Categories() {
             <div>
               <CurrentOrder></CurrentOrder>
             </div>
-            
             
           </div>
         </div>
