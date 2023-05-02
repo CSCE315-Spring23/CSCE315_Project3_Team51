@@ -5,7 +5,7 @@ import Weather from './WeatherCard/weather';
 function App() {
   return ( 
     <div>
-      {/* <Server_Categories></Server_Categories> */}
+      <Server_Categories></Server_Categories>
       {/* <Weather></Weather> */}
     </div>
   
