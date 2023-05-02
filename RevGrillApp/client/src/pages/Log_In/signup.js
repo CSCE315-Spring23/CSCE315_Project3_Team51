@@ -1,6 +1,8 @@
 import React, {useRef,useState} from 'react'
 import { useAuth2 } from './auth_context';
 import './signup.css';
+const logo = require("../../assets/views/customer_side.png");
+
 
 export default function Signup() {
   const emailRef = useRef();
@@ -34,7 +36,7 @@ export default function Signup() {
       
       <div className = "signup_wrap">
       <div id = "logo">
-          <div id = "actual_img">rev</div>
+          <img src = {logo}/>
         </div>
         <form onSubmit = {sumbit}>
         {error && alert(error)}

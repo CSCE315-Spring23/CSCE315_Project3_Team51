@@ -1,10 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react'
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
-
+import Manager_Employee from './pages/Manager_Side/Manager_Employee';
+import PrivateRoute from './PrivateRoute';
 import './pages/Manager_Side/manager.css';
-
-
+import Login from './pages/Log_In/login';
+import Signup from './pages/Log_In/signup';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Auth_context } from './pages/Log_In/auth_context';
 function App() {
 
   const [ingredients, setIngredients] = useState('No data - Ingredients')
@@ -39,9 +42,20 @@ function App() {
 
   return (
     <div className="App">
-      <Manager_Inventory></Manager_Inventory>
+      <BrowserRouter>
+        <Auth_context>
+          <Routes>
+            <Route path = "/signup" element = {<Signup/>} />
+            <Route path = "/login" element = {<Login/>} />
+            <Route path = "/manager_side" element = {<Manager_Inventory/>} > 
+                <Route path = "/manager_side/employee" element =  {<Manager_Employee/>} />
+            </Route>
+          </Routes>
+        </Auth_context>
+      </BrowserRouter>
+    
       
-        <h1>What are you doing here today?</h1>
+       
         
         {/* <Router>
         <ul>
@@ -55,8 +69,7 @@ function App() {
         <Route render={() => <h1>404: page not found</h1>} />
         </Router> */}
       
-        <p>{ingredients}</p>
-        <p>{orders}</p>
+       
     </div>
   );
 }

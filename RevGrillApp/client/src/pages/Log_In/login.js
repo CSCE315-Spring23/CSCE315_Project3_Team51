@@ -1,16 +1,22 @@
 import React, {useRef,useState} from 'react'
 import { useAuth2 } from './auth_context';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
+const logo = require("../../assets/views/customer_side.png");
+
 
 export default function Login() {
   const emailRef = useRef();
   const passRef = useRef();
   const idRef = useRef();
+  const navigate = useNavigate();
 
   const {login,empLogIn,mannLogIn,oAuth} = useAuth2();
 
   const [error,setError] = useState("");
   const [loading,setLoading] = useState(false);
+
+
 
   async function submit(e) {
     e.preventDefault();
@@ -33,8 +39,12 @@ export default function Login() {
         setError('');
         console.log("Starting Server Submit")
         try {
-          const isManager = await fetch("http://localhost:8080/server_sub");
-          console.log(isManager);
+          const isManager = await fetch("http://localhost:8080/is_employee",{
+            body: JSON.stringify({
+              id: idRef
+            })
+          });
+          
           
         } catch(error) {
           console.log(error);
@@ -53,12 +63,12 @@ export default function Login() {
     try {
         setLoading(true);
         setError('');
-        const isManager = await fetch("http://localhost:9000/is_manager");
-        if(isManager) {
-          //route to the manager side
-        } else {
-          console.alert("INVALID CREDENTIALS");
-        }
+        const isManager = await fetch("http://localhost:9000/is_manager",{
+          body: JSON.stringify({
+            id: idRef
+          })
+        });
+        
       } catch {
         setError("Manager Log In Failed")
       }
@@ -77,12 +87,16 @@ export default function Login() {
       setLoading(false);
   } 
 
+  function goSignup(){
+      navigate('/Signup');
+  };
+
 
   return (
     <>
       <div className = "signup_wrap">
-      <div id = "logo">
-          <div id = "actual_img">rev</div>
+        <div id = "logo">
+          <img src = {logo}/>
         </div>
         <form>
         {error && alert(error)}
@@ -146,7 +160,7 @@ export default function Login() {
         </button>
 
 
-        <button id = "sign-up">
+        <button id = "sign-up" onClick = {goSignup}>
           Sign Up!
         </button>
         </form>
