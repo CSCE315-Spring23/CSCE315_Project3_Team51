@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "prebuild": "npm install && npm install http-errors",
+        "prebuild": "npm install",
         "start": "node app.js",
         "build": "npm run prebuild && npm run build:app",
         "build:app": "echo 'Build the app here'"
