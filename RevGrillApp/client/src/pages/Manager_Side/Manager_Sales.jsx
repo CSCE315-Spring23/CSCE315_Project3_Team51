@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import './manager.css';
 import { useEffect, useState } from 'react';
+import JsonToTable2 from './Display_Table2';
+import JsonToTable3 from './Display_Table3';
+import { isFunction } from 'lodash';
 
 export default function Manager_Sales() {
 
     const [heading, setHeading] = useState('Display Report')
     const [report, setReport] = useState('Report Will Display Here')
+    const tableFuncs = {
+        "sales": [2, "item_name", "total_sales", "Item", "Sales"],
+        "pairings": [3, "item_1", "item_2", "times_sold", "Item 1", "Item 2", "Times Sold"],
+        "x": [2, "item_name", "times_ordered", "Item Name", "Times Ordered"],
+        "z": [2, "item_name", "total_sales", "Item Name", "Total Sales"],
+        "restock": [3, "ingredient_name", "quantity", "min_q", "Ingredient", "Quantity", "Minimum Quantity"],
+        "excess": ["TODO"]
+    }
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,12 +28,22 @@ export default function Manager_Sales() {
 
         event.target.reset();
         setHeading(reportType.charAt(0).toUpperCase() + reportType.slice(1) + " Report");
-
-        fetch("http://localhost:9000/manager_side/" + reportType + "_report")
-            .then(r => r.text())
-            .then(r => {
-                setReport(r)
-            });
+        
+        let params = tableFuncs[reportType]
+        if (params[0] == 2) {
+            fetch("http://localhost:9000/manager_side/" + reportType + "_report")
+                .then(r => r.text())
+                .then(r =>
+                    setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
+                )
+        }
+        else if (params[0] == 3) {
+            fetch("http://localhost:9000/manager_side/" + reportType + "_report")
+                .then(r => r.text())
+                .then(r =>
+                    setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
+                )           
+        }
     };
 
     return(

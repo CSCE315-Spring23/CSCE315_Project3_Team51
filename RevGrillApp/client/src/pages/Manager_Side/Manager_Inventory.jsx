@@ -1,8 +1,6 @@
 import './manager.css';
 import { useEffect, useState } from 'react';
-import JsonToTable from './Display_Inventory';
-// import './Manager_Side';
-// import { fun } from './Manager_Side';
+import JsonToTable3 from './Display_Table3';
 
 export default function Manager_Inventory() {
 
@@ -21,7 +19,7 @@ export default function Manager_Inventory() {
       fetch("http://localhost:9000/manager_side/get_inventory")
         .then(r => r.text())
         .then(r => {
-            setInventory(JsonToTable(r))
+            setInventory(JsonToTable3("ingredient_name", "quantity", "min_q", "Ingredient", "Quantity", "Minimum Quantity", r))
         });  
     }
 
@@ -57,6 +55,8 @@ export default function Manager_Inventory() {
             // body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
         };
         fetch("http://localhost:9000/manager_side/edit_inventory", requestOptions);
+
+        window.location.reload();
     };
 
     useEffect(() => {

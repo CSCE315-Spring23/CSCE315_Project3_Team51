@@ -1,5 +1,6 @@
 :root {
   background-color: #ebe7e7;
+  overflow: scroll;
 }
 
 h2 {
@@ -10,6 +11,13 @@ label,
 p,
 input {
   font-size: 20px;
+}
+
+body {
+  min-height: 600px;
+  margin-bottom: 100px;
+  clear: both;
+  overflow-y: scroll;
 }
 
 /* NAV BAR */
@@ -74,6 +82,10 @@ input {
   text-align: center;
 }
 
+.button-div button {
+  display: inline;
+}
+
 button {
   background-color: var(--custom-primary);
   padding: 7px 8px;
@@ -86,15 +98,16 @@ button {
 
 /* TABLES */
 
-td {
+td,
+th {
   text-align: left;
+  height: 35px;
 }
 
-.scroll-div {
-  overflow: scroll;
-  height: 500px;
-  width: 546px;
-  margin-left: 35%;
+.table3,
+.table2 {
+  width: 100%;
+  padding-left: 40px;
 }
 
 /* INVENTORY */
@@ -180,4 +193,17 @@ h2 {
   text-align: left;
   margin-bottom: 3%;
   margin-left: 30%;
+}
+
+/* FOOTER */
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+#google_translate_element {
+  position: fixed;
+  bottom: 0;
 }
