@@ -82,7 +82,7 @@ async function editItem(item, newName = "", newPrice = -1, newCategory = "", new
             newIngredients = prevData.ingredients;
         pool.query(
             "UPDATE menu_items SET item_name = $1, price = $2, category = $3, ingredients = $4 WHERE " + identifier + " = $5",
-            [newName, newPrice, newCategory, new Array(newIngredients), item]
+            [newName, newPrice, newCategory, newIngredients, item]
         );
     } catch (error) {
         console.error(error)
@@ -95,7 +95,7 @@ async function addItem(name, price, category, ingredients) {
         pool.query(
             "INSERT INTO menu_items (item_number, item_name, price, category, ingredients) " +
             "VALUES ((SELECT MAX(item_number) FROM menu_items) + 1, $1, $2, $3, $4)",
-            [name, price, category, new Array(ingredients)]
+            [name, price, category, ingredients]
         );
     } catch (error) {
         console.error(error)

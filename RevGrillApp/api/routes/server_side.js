@@ -17,12 +17,12 @@ router.post('/create_order', async (req, res, next) => {
         var orderTaker = -1;
         var tip = 0;
         if(req.body.hasOwnProperty("modifications"))
-            modifications = req.body.modifications;
+            modifications = req.body.modifications.split(",").map(s => s.trim());
         if(req.body.hasOwnProperty("orderTaker"))
             orderTaker = req.body.orderTaker;
         if(req.body.hasOwnProperty("tip"))
             tip = req.body.tip;
-        await SS.createOrder(req.body.itemsOrdered, req.body.totalPrice, modifications, orderTaker, tip);
+        await SS.createOrder(req.body.itemsOrdered.split(",").map(s => s.trim()), req.body.totalPrice, modifications, orderTaker, tip);
     } catch (err) {
         res.status(500).send('createOrder failed');
     }

@@ -81,7 +81,7 @@ router.post('/edit_item', async (req, res, next) => {
         if(req.body.hasOwnProperty("newCategory"))
             newCategory = req.body.newCategory;
         if(req.body.hasOwnProperty("newIngredients"))
-            newIngredients = req.body.newIngredients;
+            newIngredients = req.body.newIngredients.split(",").map(s => s.trim());
         await MS.editItem(item, newName, newPrice, newCategory, newIngredients);
     } catch (err) {
         res.status(500).send('editItem failed');
@@ -90,7 +90,7 @@ router.post('/edit_item', async (req, res, next) => {
 
 router.post('/add_item', async (req, res, next) => {
     try {
-        await MS.addItem(req.body.name, req.body.price, req.body.category, req.body.ingredients);
+        await MS.addItem(req.body.name, req.body.price, req.body.category, req.body.ingredients.split(",").map(s => s.trim()));
     } catch (err) {
         res.status(500).send('addItem failed');
     }
