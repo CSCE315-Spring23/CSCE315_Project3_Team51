@@ -1,9 +1,14 @@
 import './App.css';
 import Server_Categories from './pages/Server_Side/Server_Categories';
+import Weather from './WeatherCard/weather';
 
 function App() {
   return ( 
-  <Server_Categories></Server_Categories>
+    <div>
+      {/* <Server_Categories></Server_Categories> */}
+      {/* <Weather></Weather> */}
+    </div>
+  
   );
 }
 export default App;

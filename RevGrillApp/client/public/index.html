@@ -10,6 +10,7 @@
       content="Web site to help Rev Grill customers, servers, and managers!"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="stylesheet" href="./weather.css">
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -27,8 +28,8 @@
     <title>Rev Grill Site</title>
   </head>
   <body>
-    <header style="z-index:9">
-      <div style="display:flex; align-items:center;">
+    <header style="z-index:9;">
+      <div style="display:flex; align-items:center; justify-content: space-between;">
         <div>
           <a style="margin:20px; font-size:50px;" class="nav-link link-home" href="">Rev's Grill</a>
         </div>
@@ -46,7 +47,22 @@
           </div>
         </div>
       </div>
-      <div></div>
+      <div>
+        <div style="margin-right: 20px;" class="main-wrapper">
+          <div class="content-container">
+            <div style="margin: 5px;">
+              <div id="temp-icon"></div>
+              <p id="temp" alt="average tempature"></p>
+            </div>  
+            <div class="lo-hi">
+              <p id="lo" alt="low tempature"></p>
+              <p id="hi" alt="high tempature"></p>
+            </div>
+          </div>
+        </div>
+        <script src="weather.js"></script>
+      </div>
+      
     </header>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

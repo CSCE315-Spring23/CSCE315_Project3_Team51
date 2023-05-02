@@ -1,0 +1,45 @@
+.main-wrapper {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 2px;
+    background-color: #320b0b;
+    color:white;
+    border-radius: 1rem;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+
+#city-name {
+    margin: 0px;
+}
+
+#temp {
+    margin: 0px;
+}
+
+.content-container p[alt="city name"] {
+    font-weight: bold;
+}
+
+.lo-hi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1px;
+    font-size: small;
+    color:beige;
+}
+
+#lo {
+    margin: 1px;
+    padding-right: 0.5rem;
+}
+
+#hi {
+    margin: 1px;
+}
