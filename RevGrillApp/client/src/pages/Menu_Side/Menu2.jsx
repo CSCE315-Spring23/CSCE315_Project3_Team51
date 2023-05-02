@@ -100,7 +100,7 @@ export default class Menu extends Component {
         return (
             <div className = 'body'>
             <div className = 'page'> 
-                <div className = 'header'>
+                {/* <div className = 'header'>
                     <div className = 'weather'> 
                         <img src= {burgerPic} alt="menu item"/>
                         <div className = 'stacked'> 
@@ -109,7 +109,7 @@ export default class Menu extends Component {
                         </div>
                     </div>
                     <div className = 'welcome'> Welcome to Rev's! </div>
-                </div>
+                </div> */}
         
                 <div className = 'body'>
                     <div className = 'left'> 
@@ -123,7 +123,7 @@ export default class Menu extends Component {
                         ))}
         
                         <div className = 'menu-list'> 
-                            <div className = 'title'> Handcrafted Shakes </div>
+                            <div className = 'title'> Milkshakes </div>
                             {Shakes.map((menuItem, index) => (
                                 <ul key={index}>
                                     <li> <div className = 'bold'> {menuItem.item_name} </div> {menuItem.price} </li>
@@ -134,7 +134,7 @@ export default class Menu extends Component {
                     
                     <div className = 'right'>
                         <div className = 'grid'> 
-                            <div className = 'title'> Burgers </div>
+                            {/* <div className = 'title'> Burgers </div> */}
                             <div className = 'row'>
                             {Burgers.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
@@ -146,7 +146,7 @@ export default class Menu extends Component {
                             ))}
                             </div>
                             
-                            <div className = 'title'> Sandwiches </div>
+                            {/* <div className = 'title'> Sandwiches </div> */}
                             <div className = 'row'>
                             {Sandwiches.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
@@ -156,10 +156,6 @@ export default class Menu extends Component {
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
                             ))}
-                            </div>
-                            
-                            <div className = 'title'> Tenders </div>
-                            <div className = 'row'>
                             {Tenders.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
@@ -170,7 +166,7 @@ export default class Menu extends Component {
                             ))}
                             </div>
 
-                            <div className = 'title'> Sweets </div>
+                            {/* <div className = 'title'> Sweets </div> */}
                             <div className = 'row'>
                             {Desserts.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>

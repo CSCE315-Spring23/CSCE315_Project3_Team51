@@ -7,6 +7,7 @@ import sandwichPic from './../../assets/categories/cat_sandwich.png';
 import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
+import logo from './logo.gif';
 
 function buildDescription(category, ingredients) {
   let description = '';
@@ -80,9 +81,8 @@ export default class Menu extends Component {
     render() {
         const { isLoading, menuItems, error } = this.state;
         const Combos = menuItems.filter((menuItem) => menuItem.category === 'Combo');
-        const firstThreeCombos = Combos.slice(0, 3);
-        const secondThreeCombos = Combos.slice(4, 7);
-        const lastThreeCombos = Combos.slice(Math.max(Combos.length - 3, 0));
+        const firstFiveCombos = Combos.slice(0, 5);
+        const lastCombos = Combos.slice(5, Combos.length);
 
         const Sides = menuItems.filter((menuItem) => menuItem.category === 'Sides');
         const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Shrimp Cookie');
@@ -100,17 +100,12 @@ export default class Menu extends Component {
             <div className = 'page'> 
                 <div className = 'header'>
                     <div className = 'weather'> 
-                        <img src= {burgerPic} alt="menu item"/>
-                        <div className = 'stacked'> 
-                            <p> 68 F </p>
-                            <p> Sunny </p>
-                        </div>
+                        <img src= {logo} alt="menu item"/>
                     </div>
                     <div className = 'welcome'> Welcome to Rev's! </div>
-                    <div className = 'date'> <em>            </em> </div>
                 </div>
 
-                <div className = 'body'>
+                <div className = 'main'>
                     <div className = 'left'>
                         <div className = 'title'> Combos </div>
                         <div className = "small-divider"> </div>
@@ -118,7 +113,7 @@ export default class Menu extends Component {
                         <div className = 'text'> Upgrade your meal by adding your choice of a side and a drink! </div>
                         <div className = 'grid'> 
                             <div className = 'row'>
-                            {firstThreeCombos.map((menuItem, index) => (
+                            {firstFiveCombos.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
                                     <img src= {burgerPic} alt="burger"/>
@@ -129,18 +124,7 @@ export default class Menu extends Component {
                             </div>
 
                             <div className = 'row'>
-                            {secondThreeCombos.map((menuItem, index) => (
-                                <div className = 'smaller-card' key={index}>
-                                    <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {burgerPic} alt="burger"/>
-                                    <div className = 'text bold'> {menuItem.price} </div>
-                                    <div className = 'text'> {menuItem.item_name} + side + drink </div>
-                                </div>
-                            ))}
-                            </div>
-
-                            <div className = 'row'>
-                            {lastThreeCombos.map((menuItem, index) => (
+                            {lastCombos.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
                                     <img src= {burgerPic} alt="burger"/>
