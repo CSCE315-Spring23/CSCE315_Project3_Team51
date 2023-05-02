@@ -26,6 +26,18 @@
   background-size: cover;
 }
 
+header {
+  background-color: var(--custom-primary);
+  color: var(--custom-secondary);
+  height: 5em;
+  width: 100%;
+  position: fixed;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;

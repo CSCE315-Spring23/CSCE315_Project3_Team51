@@ -67,35 +67,35 @@ form {
   background-color: white;
   background-repeat: no-repeat;
   background-position: 12px 11px;
-  
-  &:hover {
-    box-shadow: 0 10px 0 rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .25);
-  }
-  
-  &:active {
-    background-color: #eeeeee;
-  }
-  
-  &:focus {
-    outline: none;
-    box-shadow: 
-      0 -1px 0 rgba(0, 0, 0, .04),
-      0 2px 4px rgba(0, 0, 0, .25),
-      0 0 0 3px #c8dafc;
-  }
-  
-  &:disabled {
-    filter: grayscale(100%);
-    background-color: #ebebeb;
-    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
-    cursor: not-allowed;
-  }
 
-  &:hover {
-    cursor: pointer;
-    box-shadow: 4px;
-  }
+}
 
+#oauth-but:hover {
+  box-shadow: 0 10px 0 rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .25);
+}
+
+#oauth-but:active {
+  background-color: #eeeeee;
+}
+
+#oauth-but:focus {
+  outline: none;
+  box-shadow: 
+    0 -1px 0 rgba(0, 0, 0, .04),
+    0 2px 4px rgba(0, 0, 0, .25),
+    0 0 0 3px #c8dafc;
+}
+
+#oauth-but:disabled {
+  filter: grayscale(100%);
+  background-color: #ebebeb;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+  cursor: not-allowed;
+}
+
+#oauth-but:hover {
+  cursor: pointer;
+  box-shadow: 4px;
 }
 
 input {
@@ -111,11 +111,13 @@ input {
     color:  #000; 
     font-weight:  400;
     -webkit-appearance:  none; 
-    &:focus {
-      border-bottom:  solid 1px $primary; 
-      outline: 0; 
-      box-shadow:  0 2px 6px -8px rgba($primary, .45);
-    }
+    
+  }
+
+  input:focus {
+    border-bottom: solid 1px var(--custom-primary); 
+    outline: 0; 
+    box-shadow:  0 2px 6px -8px rgba(var(--custom-primary), .45);
   }
 
   #login-but {
@@ -127,9 +129,10 @@ input {
     border:none;
     transition: all .3s ease;
     margin-top: 5px;
-    &:hover{
-        transform:  translateY(-7px) ;
-    }
+  }
+
+  #login-but:hover{
+    transform:  translateY(-7px) ;
   }
      
   #emp-but {
@@ -141,9 +144,11 @@ input {
     border: none;
     transition: all .3s ease;
     margin-top: 3px;
-    &:hover{
-        transform:  translateY(-7px) ;
-    };
+    
+  }
+
+  #emp-but:hover{
+    transform:  translateY(-7px) ;
   }
   
   #sign-up{
@@ -156,9 +161,11 @@ input {
     padding-left: 7vh;
     padding-right: 7vh;
     transition: all .3s ease;
-    &:hover{
-        transform:  translateY(-7px) ;
-    };
+    
+  }
+
+  #sign-up:hover{
+    transform:  translateY(-7px) ;
   }
 
 

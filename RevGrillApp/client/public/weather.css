@@ -31,8 +31,9 @@
     justify-content: center;
     flex-direction: column;
     margin: 1px;
-    font-size: small;
-    color:beige;
+    font-size: 0.5em;
+    line-height: 20px;
+    color:rgb(215, 165, 166);
 }
 
 #lo {
