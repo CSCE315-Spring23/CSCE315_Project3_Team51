@@ -7,6 +7,8 @@ import sandwichPic from './../../assets/categories/cat_sandwich.png';
 import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
+import AddItem from './shoppingCart.jsx'
+import removeItem from './shoppingCart.jsx'
 
 function buildDescription(category, ingredients) {
   let description = '';
@@ -94,6 +96,16 @@ export default class Options extends Component {
         });
     }
 
+    addItem = item => {
+        // Add the selected item to the cart
+        console.log(`Added item: ${item.item_name}`);
+    };
+    
+    removeItem = item => {
+        // Remove the selected item from the cart
+        console.log(`Removed item: ${item.item_name}`);
+    };
+    
     componentDidMount() {
         this.fetchMenuItems();
     }
@@ -146,8 +158,8 @@ export default class Options extends Component {
                                         <div className = 'text'> {menuItem.item_name} </div>
                                     </div>
                                     <div className="edit-button"> 
-                                        <button> + </button>
-                                        <button> - </button>
+                                        <button onClick={() => this.addItem(selectedItem)}> + </button>
+                                        <button onClick={() => this.removeItem(selectedItem)}> - </button>
                                     </div>
                                 </div>
                             ))}                      
@@ -162,8 +174,8 @@ export default class Options extends Component {
                                         <div className = 'text'> {menuItem.item_name} </div>
                                     </div>
                                     <div className="edit-button"> 
-                                        <button> + </button>
-                                        <button> - </button>
+                                        <button onClick={() => this.addItem(selectedItem)}> + </button>
+                                        <button onClick={() => this.removeItem(selectedItem)}> - </button>
                                     </div>
                                 </div>
                             ))}                      
@@ -175,8 +187,8 @@ export default class Options extends Component {
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
                                     <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
-                                    <div className = 'text bold'> {menuItem.price} </div>
-                                    <div className = 'text'> {menuItem.item_name} </div>
+                                    <button onClick={() => this.addItem(selectedItem)}> + </button>
+                                    <button onClick={() => this.removeItem(selectedItem)}> - </button>
                                 </div>
                                 <div className="edit-button"> 
                                     <button> + </button>
