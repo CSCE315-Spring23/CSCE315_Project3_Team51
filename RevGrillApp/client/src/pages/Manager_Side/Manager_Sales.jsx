@@ -17,8 +17,10 @@ export default function Manager_Sales() {
         "x": [2, "item_name", "times_ordered", "Item Name", "Times Ordered"],
         "z": [2, "item_name", "total_sales", "Item Name", "Total Sales"],
         "restock": [3, "ingredient_name", "quantity", "min_q", "Ingredient", "Quantity", "Minimum Quantity"],
-        "excess": ["TODO"]
+        "excess": [2, "ingredient_name", "amt_sold", "Ingredient Name", "Amount Sold"]
     }
+
+
 
 
     const handleSubmit = (event) => {
@@ -32,19 +34,73 @@ export default function Manager_Sales() {
         setHeading(reportType.charAt(0).toUpperCase() + reportType.slice(1) + " Report");
         
         let params = tableFuncs[reportType]
-        if (params[0] == 2) {
-            fetch("http://localhost:9000/manager_side/" + reportType + "_report")
-                .then(r => r.text())
-                .then(r =>
-                    setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
-                )
+
+        if (reportType == "sales") {
+            if (startTime == "" || endTime == "") {
+                window.alert("Please provide start and end time for the sales report.")
+            }
+            else {
+                let requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ startTime: startTime, endTime: endTime})
+                };
+                fetch("http://localhost:9000/manager_side/" + reportType + "_report", requestOptions)
+                    .then(r => r.text())
+                    .then(r =>
+                        setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
+                    )
+            }
         }
-        else if (params[0] == 3) {
-            fetch("http://localhost:9000/manager_side/" + reportType + "_report")
-                .then(r => r.text())
-                .then(r =>
-                    setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
-                )           
+        else if (reportType == "pairings") {
+            if (startTime == "" || endTime == "") {
+                window.alert("Please provide start and end time for the pairings report.")
+            }
+            else {
+                let requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ startTime: startTime, endTime: endTime})
+                };
+                fetch("http://localhost:9000/manager_side/" + reportType + "_report", requestOptions)
+                    .then(r => r.text())
+                    .then(r =>
+                        setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
+                    )
+            }
+        }
+        else if (reportType == "excess") {
+            if (startTime == "") {
+                window.alert("Please provide start time for the excess report.")
+            }
+            else {
+                let requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ startTime: startTime })
+                };
+                fetch("http://localhost:9000/manager_side/" + reportType + "_report", requestOptions)
+                    .then(r => r.text())
+                    .then(r =>
+                        setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
+                    )
+            }
+        }
+        else {
+            if (params[0] == 2) {
+                fetch("http://localhost:9000/manager_side/" + reportType + "_report")
+                    .then(r => r.text())
+                    .then(r =>
+                        setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
+                    )
+            }
+            else if (params[0] == 3) {
+                fetch("http://localhost:9000/manager_side/" + reportType + "_report")
+                    .then(r => r.text())
+                    .then(r =>
+                        setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
+                    )           
+            }
         }
     };
 
