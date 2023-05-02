@@ -11,6 +11,15 @@ router.get('/last_order_number', async (req, res, next) => {
     }
 });
 
+router.post('/get_total_price', async (req, res, next) => {
+    try {
+        const data = await SS.getTotalPrice(req.body.itemsOrdered);
+        res.send(data);
+    } catch (err) {
+        res.status(500).send('getTotalPrice failed');
+    }
+});
+
 router.post('/create_order', async (req, res, next) => {
     try {
         var modifications = [];

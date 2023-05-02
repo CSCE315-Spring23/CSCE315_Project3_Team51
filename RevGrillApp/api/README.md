@@ -135,6 +135,14 @@ Input: None
 Output: Single JSON
     - last_number (integer)
 
+# getTotalPrice
+# Returns the total price of a provided order
+Route: [/server_side/get_total_price]
+Input:
+    - itemsOrdered (array of integers referring to menu item number)
+Output: Single JSON
+    - total_price (double)
+
 # createOrder
 # Creates a new order with the given information and returns its unique order number
 Route: [/server_side/create_order]

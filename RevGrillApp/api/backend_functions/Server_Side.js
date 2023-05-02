@@ -16,6 +16,20 @@ async function lastOrderNumber() {
     }
 }
 
+async function getTotalPrice(itemsOrdered) {
+    try {
+        console.log('Getting total price of an order');
+        const res = await pool.query(
+            "SELECT ROUND(CAST(SUM(price) AS NUMERIC), 2) AS total_price FROM menu_items " +
+            "WHERE item_number IN (SELECT UNNEST(items_ordered) FROM orders WHERE order_number = 1)"
+        );
+        console.log(res.rows[0]);
+        return res.rows[0];
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 async function createOrder(items_ordered, total_price, modifications = [], order_taker = -1, tip = 0) {
     try {
         console.log('Creating new order');
@@ -27,6 +41,7 @@ async function createOrder(items_ordered, total_price, modifications = [], order
         var oNum = await lastOrderNumber();
         Order.getOrderByNum(oNum.last_number);
         console.log({"order_number": oNum.last_number});
+        updateInventory(oNum.last_number);
         return {"order_number": oNum.last_number};
     } catch (error) {
         console.error(error)
@@ -115,6 +130,7 @@ async function updateInventory(orderNum) {
 // }
 
 exports.lastOrderNumber = lastOrderNumber;
+exports.getTotalPrice = getTotalPrice;
 exports.createOrder = createOrder;
 exports.updateInventory = updateInventory;
 exports.getMenu = Item.getMenu;
