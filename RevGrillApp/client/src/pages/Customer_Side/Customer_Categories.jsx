@@ -1,5 +1,4 @@
 import React from 'react';
-import OrdersBar from '../Server_Side/Orders_bar';
 import CatDisplay from '../Server_Side/Cat_Display';
 import CurrentOrder from '../Server_Side/Current_Order';
 import './server-side.css';
