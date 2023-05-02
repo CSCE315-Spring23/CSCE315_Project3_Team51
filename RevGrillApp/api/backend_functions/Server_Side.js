@@ -20,8 +20,9 @@ async function getTotalPrice(itemsOrdered) {
     try {
         console.log('Getting total price of an order');
         const res = await pool.query(
-            "SELECT ROUND(CAST(SUM(price) AS NUMERIC), 2) AS total_price FROM menu_items " +
-            "WHERE item_number IN (SELECT UNNEST(items_ordered) FROM orders WHERE order_number = 1)"
+            "SELECT total_price FROM (SELECT UNNEST($1::int[]), SUM(price) AS total_price FROM UNNEST($1::int[]) " +
+            "AS item_number INNER JOIN menu_items USING (item_number)) AS inner_table GROUP BY total_price",
+            [new Array(itemsOrdered)]
         );
         console.log(res.rows[0]);
         return res.rows[0];
