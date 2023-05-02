@@ -7,8 +7,6 @@ import sandwichPic from './../../assets/categories/cat_sandwich.png';
 import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
-import ShoppingCart from './shoppingCart';
-import Cat_Display from './Cat_Display';
 import logo from '../Menu_Side/logo.gif';
 import Customer_Confirm from './Customer_Confirm';
 
@@ -109,20 +107,23 @@ export default class Options extends Component {
     }
 
     placeOrder = (items, price) => {
-        const url = new URL('http://localhost:9000/server_side/place_order');
-        const params = new URLSearchParams();
-        items.forEach(item => params.append('itemsOrdered', item));
-        params.append('totalPrice', price);
-        url.search = params.toString();
-
-        fetch(url)
-          .then(response => response.json())
-          .then(result => {
-            this.setState({ orderNum: result.order_number, cartItems: [], isReadytoSubmit: false, orderPlaced: true });
-          })
-          .catch(error => {
-            this.setState({ error: error });
-          });
+        const url = 'http://localhost:9000/server_side/place_order';
+        const data = { itemsOrdered: items.map(i => i.item_number), totalPrice: price };
+      
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+          this.setState({ orderNum: result.order_number, cartItems: [], isReadytoSubmit: false, orderPlaced: true });
+        })
+        .catch(error => {
+          this.setState({ error: error });
+        });
     }
     
     componentDidMount() {
@@ -160,9 +161,7 @@ export default class Options extends Component {
             this.setState({isReadytoSubmit: true});
         else {
             const items = this.state.cartItems;
-            const nums = [1, 2, 3];
-            const params = nums.map(num => ['item_number', num]);
-            this.placeOrder(params, this.getTotalPrice(items));
+            this.placeOrder(items, this.getTotalPrice(items));
         }
     }
 
@@ -174,7 +173,7 @@ export default class Options extends Component {
         const Items = menuItems.filter((menuItem) => menuItem.category === this.state.category);
         const firstTwoItems = Items.slice(0, 3);
         const secondTwoItems = Items.slice(3, 6);
-        const lastItems = Items.slice(6, Items.length);
+        const lastItems = Items.slice(6);
         const Categories = ['Burger', 'Sandwich', 'Combo', 'Tenders', 'Sides', 'Dessert', 'Shake'];
 
         if (isLoading) {
