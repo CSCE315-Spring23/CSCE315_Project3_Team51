@@ -1,11 +1,15 @@
 import './App.css';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import Manager_Inventory from './pages/Manager_Side/Manager_Inventory';
-
+import Manager_Sales from './pages/Manager_Side/Manager_Sales';
+import Manager_Employee from './pages/Manager_Side/Manager_Employee';
+import PrivateRoute from './PrivateRoute';
 import './pages/Manager_Side/manager.css';
-
-
-// function App() {
+import Login from './pages/Log_In/login';
+import Signup from './pages/Log_In/signup';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { Auth_context } from './pages/Log_In/auth_context';
+function App() {
 
 //   const [ingredients, setIngredients] = useState('No data - Ingredients')
 //   const [orders, setOrders] = useState('No data - Orders')
@@ -25,25 +29,45 @@ import './pages/Manager_Side/manager.css';
 //         setOrders(resp)
 //       });
 //   }
+/*
+  useEffect(() => {
+    callAPIIngredients()
+  }, [])
 
-//   useEffect(() => {
-//     callAPIIngredients()
-//   }, [])
-
-//   useEffect(() => {
-//     callAPIOrders()
-//   }, [])
+  useEffect(() => {
+    callAPIOrders()
+  }, [])
+  
+*/
   
 
-  
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Auth_context>
+          <Routes>
+            <Route path = "/signup" element = {<Signup/>} />
+            <Route path = "/login" element = {<Login/>} />
+            <Route exact path = "/manager_side" element = {<PrivateRoute/>} > 
+                <Route exact path = "/manager_side/inventory" element =  {<Manager_Inventory/>} />
+                <Route exact path = "/manager_side/employee" element =  {<Manager_Employee/>} />
+                <Route exact path = "/manager_side/sales" element =  {<Manager_Sales/>} />
+            </Route>
 
-//   return (
-//     <div className="App">
-//       <Manager_Inventory></Manager_Inventory>
+            <Route exact path = "/server_side" element = {<PrivateRoute/>} > 
+                <Route exact path = "/server_side/inventory" element =  {<Manager_Inventory/>} />
+                <Route exact path = "/server_side/employee" element =  {<Manager_Employee/>} />
+                <Route exact path = "/server_side/sales" element =  {<Manager_Sales/>} />
+            </Route>
+
+          </Routes>
+        </Auth_context>
+      </BrowserRouter>
+    
       
-//         <h1>What are you doing here today?</h1>
+
         
-//         {/* <Router>
+   {/* <Router>
 //         <ul>
 //           <li><button href="/">Main</button></li>
 //           <li><button href="/menu">Menu</button></li>
@@ -55,12 +79,10 @@ import './pages/Manager_Side/manager.css';
 //         <Route render={() => <h1>404: page not found</h1>} />
 //         </Router> */}
       
-//         <p>{ingredients}</p>
-//         <p>{orders}</p>
-//     </div>
-//   );
-// }
-
+       
+    </div>
+  );
+}
 // export default App;
 
 
@@ -83,18 +105,17 @@ import './pages/Manager_Side/manager.css';
 // }
 // export default App;
 
-import Options from './pages/Customer_Side/Options';
-import ShoppingCart from './pages/Customer_Side/shoppingCart';
+// import Options from './pages/Customer_Side/Options';
+// import ShoppingCart from './pages/Customer_Side/shoppingCart';
 
-function App() {
-  const [cartItems, setCartItems] = useState();
+// function App() {
+//   const [cartItems, setCartItems] = useState();
 
-  return (
-    <div className="App">
-      <Options category='Burger' cartItems={cartItems}/>
-      {/* <ShoppingCart cartItems={cartItems} setCartItems = {setCartItems}/> */}
-    </div>
-  );
-}
-
-export default App;
+//   return (
+//     <div className="App">
+//       <Options category='Burger' cartItems={cartItems}/>
+//       {/* <ShoppingCart cartItems={cartItems} setCartItems = {setCartItems}/> */}
+//     </div>
+//   );
+// }
+// export default App;

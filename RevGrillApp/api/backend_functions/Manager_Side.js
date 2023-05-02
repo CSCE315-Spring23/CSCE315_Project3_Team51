@@ -18,7 +18,7 @@ async function getMostUsedItems() {
     }
 }
 
-async function getSellsTogether() {
+async function pairingsReport() {
     try {
         console.log('Getting items sold together');
         const res = await pool.query(
@@ -150,6 +150,7 @@ async function zReport() {
             "FROM row_items GROUP BY items ORDER BY items"
         );
         console.log(res.rows);
+        Ingredient.signalNewDay();
         return res.rows;
     } catch (error) {
         console.error(error);
@@ -157,7 +158,7 @@ async function zReport() {
 }
 
 exports.getMostUsedItems = getMostUsedItems;
-exports.getSellsTogether = getSellsTogether;
+exports.pairingsReport = pairingsReport;
 exports.restockReport = restockReport;
 exports.salesReport = salesReport;
 exports.excessReport = excessReport;

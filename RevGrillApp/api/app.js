@@ -52,7 +52,7 @@ app.use('/employees', employeesRoute);
 // Manager side functions
 app.use('/manager_side', managerRoute);
 app.use('/most_used_items', managerRoute);
-app.use('/get_sells_together', managerRoute);
+app.use('/pairings_report', managerRoute);
 app.use('/restock_report', managerRoute);
 app.use('/sales_report', managerRoute);
 app.use('/excess_report', managerRoute);

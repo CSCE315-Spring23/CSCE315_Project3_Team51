@@ -13,12 +13,12 @@ router.get('/most_used_items', async (req, res, next) => {
     }
 });
 
-router.get('/get_sells_together', async (req, res, next) => {
+router.get('/pairings_report', async (req, res, next) => {
     try {
-        const data = await MS.getSellsTogether();
+        const data = await MS.pairingsReport();
         res.send(data);
     } catch (err) {
-        res.status(500).send('getSellsTogether failed');
+        res.status(500).send('pairingsReport failed');
     }
 });
 
