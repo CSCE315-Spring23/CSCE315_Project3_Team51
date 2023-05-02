@@ -4,8 +4,8 @@
     "private": true,
     "scripts": {
         "prebuild": "npm install",
-        "start": "node ./bin/www",
-        "build": "node ./bin/www"
+        "start": "node ./bin/https://revgrill-app.onrender.com/",
+        "build": "node ./bin/https://revgrill-app.onrender.com/"
     },
     "dependencies": {
         "api": "file:",
