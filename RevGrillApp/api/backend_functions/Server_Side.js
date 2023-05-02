@@ -22,7 +22,7 @@ async function createOrder(items_ordered, total_price, modifications = [], order
         await pool.query(
             "INSERT INTO orders (order_number, total_price, tip, order_taker, items_ordered, modifications, order_status, current_day, order_time) " +
             "VALUES ((SELECT MAX(order_number)+1 FROM orders), $1, $2, $3, $4, $5, $6, True, (SELECT NOW()::timestamp(0)))",
-            [total_price, tip, order_taker, items_ordered, modifications, "In Progress"]
+            [total_price, tip, order_taker, new Array(items_ordered), new Array(modifications), "In Progress"]
         );
         var oNum = await lastOrderNumber();
         Order.getOrderByNum(oNum.last_number);
