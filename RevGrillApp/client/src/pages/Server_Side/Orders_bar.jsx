@@ -21,13 +21,24 @@ export default function OrdersBar() {
     Orders.push(Order);
 
     const [orders, setOrders] = useState(Orders)
+    const [ordersText, setOrdersText] = useState("no data")
 
     function getRunningOrders() {
         fetch("http://localhost:9000/orders")
-            .then(r => r.json)
+            .then(r => r.text())
             .then(resp => {
-                setOrders(resp)
+                setOrders(JSON.parse(resp).order)
             });
+            
+    }
+
+    function getOrders() {
+        fetch("http://localhost:9000/orders")
+            .then(r => r.text())
+            .then(resp => {
+                setOrdersText(resp)
+            });
+            
     }
 
     // fetch the information for the item given the number
@@ -35,15 +46,25 @@ export default function OrdersBar() {
         getRunningOrders()
     }, []);
 
+    useEffect(() => {
+        getOrders()
+    }, []);
 
     const Order_Tile = order => 
     `<div id="order_tile">
-        <h4>Order: ${order.order_number}</h4>
-        <p>${order.order_status}</p>
+        <div style="line-height:0px; text-align:right;">
+            <h4>Order: ${order.order_number}</h4>
+            <p style="color:var(--custom-primary-light); padding-bottom:5px;">${order.order_status}</p>
+            <p>$${order.total_price}</p>
+        </div>
+        <div style="text-align:left;">
+            <p>🕒 ${order.order_time}</p>
+            <p>🍔 Items Ordered: ${order.items_ordered}</p>
+        </div>
     </div>`
     ;
 
-    const mappedOrders = { __html: Orders.map(order => Order_Tile(order)).join('') };
+    const mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
 
     
 
@@ -52,7 +73,6 @@ export default function OrdersBar() {
         <div className="order_bar">
             <h2> 🧾 CURRENT ORDERS</h2>
             <div dangerouslySetInnerHTML={ mappedOrders }></div>
-            {/* <p>{orders.stringify}</p> */}
         </div>
     );
 }

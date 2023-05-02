@@ -98,8 +98,13 @@ header {
 #category_tile:hover {
   animation: focus 0.2s ease-in;
   animation-fill-mode: both;
-  border-radius: 30px;
-  color: var(--custom-primary-light)
+  border-radius: 22px;
+  color: var(--custom-primary-light);
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,.2);
+}
+
+#category_tile:hover h3 {
+  color: var(--custom-primary-light);
 }
 
 #category_tile:hover #cat_img {
@@ -125,11 +130,11 @@ header {
 
 @keyframes focus {
   0%    {   
-          border-radius: 20px; 
+          transform: translate(0px,  1px); 
           color: var(--custom-primary);
         }
   100%  { 
-          border-radius: 30px; 
+          transform: translate(0px,  -5px); 
           color: var(--custom-primary-light);
         }
 }
@@ -159,7 +164,16 @@ header {
 }
 
 #order_tile {
-  display:block;
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction:row;
+  padding: 0px 5px 0px;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+
   background-color: #ebe7e7;
   border-color: -var(--custom-dark);
   border: 1px solid;
