@@ -66,19 +66,35 @@ import './pages/Manager_Side/manager.css';
 
 
 // BELOW: FOR MENU
-// import Menu2 from './pages/Menu_Side/Menu2';
+// import Options from './pages/Customer_Side/Options.jsx';
 
 // function App() {
 //   return (
-//     <Menu2 />
+//     <Options category = 'Burger' />
 //   );
 // }
 
 // export default App;
 
 // BELOW : FOR CUSTOMER
-import Customer_Categories from './pages/Customer_Side/Customer_Categories';
+// import Customer_Categories from './pages/Customer_Side/Customer_Categories';
+// function App() {
+//   return ( <Customer_Categories />);
+// }
+// export default App;
+
+import Options from './pages/Customer_Side/Options';
+import ShoppingCart from './pages/Customer_Side/shoppingCart';
+
 function App() {
-  return ( <Customer_Categories />);
+  const [cartItems, setCartItems] = useState();
+
+  return (
+    <div className="App">
+      <Options category='Burger' cartItems={cartItems}/>
+      {/* <ShoppingCart cartItems={cartItems} setCartItems = {setCartItems}/> */}
+    </div>
+  );
 }
+
 export default App;
