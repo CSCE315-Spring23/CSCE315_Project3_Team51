@@ -60,7 +60,6 @@ import './pages/Manager_Side/manager.css';
         <p>{orders}</p>
     </div>
   );
-}
 
 // export default App;
 
