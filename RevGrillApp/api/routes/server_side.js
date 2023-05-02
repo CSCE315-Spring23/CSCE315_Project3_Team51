@@ -22,6 +22,11 @@ router.post('/get_total_price', async (req, res, next) => {
 
 router.post('/create_order', async (req, res, next) => {
     try {
+        console.log('About to create order');
+        console.log('itemsOrdered:');
+        console.log(req.body.itemsOrdered);
+        console.log('totalPrice:');
+        console.log(req.body.totalPrice);
         var modifications = [];
         var orderTaker = -1;
         var tip = 0;
