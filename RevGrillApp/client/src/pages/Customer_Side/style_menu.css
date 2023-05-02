@@ -252,6 +252,9 @@ button:hover {
 .upgrade .grid {
     padding: 50px;
 }
+.larger-card {
+    font-size: 20px;
+}
 .upgrade .text {
     font-size: 20px;
 }

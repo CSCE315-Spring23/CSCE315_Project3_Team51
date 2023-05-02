@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import './manager.css';
+import { useEffect, useState } from 'react';
 
-export class Manager_Sales extends Component {
+export default function Manager_Sales() {
 
-  render() {
+    // const [ingredients, setIngredients] = useState('No data - Ingredients')
+  
+    // const callAPIIngredients = () => {
+    //   fetch("http://localhost:9000/users")
+    //     .then(r => r.text())
+    //     .then(resp => {
+    //       setIngredients(resp)
+    //     });
+    // }
+
+    // useEffect(() => {
+    //     callAPIIngredients()
+    // }, [])
+
     return(
       <div>
 
@@ -63,7 +77,5 @@ export class Manager_Sales extends Component {
 
     
     )
-  }
-
 }
 

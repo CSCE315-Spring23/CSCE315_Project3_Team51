@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import './manager.css';
+import { useEffect, useState } from 'react';
 
-export class Manager_Employee extends Component {
+export default function Manager_Employee() {
 
-  render() {
+    // const [ingredients, setIngredients] = useState('No data - Ingredients')
+  
+    // const callAPIIngredients = () => {
+    //   fetch("http://localhost:9000/users")
+    //     .then(r => r.text())
+    //     .then(resp => {
+    //       setIngredients(resp)
+    //     });
+    // }
+
+    // useEffect(() => {
+    //     callAPIIngredients()
+    // }, [])
+
     return(
         <div>
         <body>
@@ -67,7 +81,6 @@ export class Manager_Employee extends Component {
                 </div>
             </div>
         </body>
-        
         <footer>
             Made with 🤍 by CSCE 315 Team 51
         </footer>
@@ -76,7 +89,6 @@ export class Manager_Employee extends Component {
         </div>        
     
     )
-  }
 
 }
 
