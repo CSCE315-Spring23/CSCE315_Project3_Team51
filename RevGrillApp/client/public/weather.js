@@ -1,6 +1,17 @@
 const apiKey = 'a8c76ba01d2c7b018b419422ec66c09d';
 const url = `https://api.openweathermap.org/data/2.5/weather?q=College+Station&appid=${apiKey}&units=imperial`;
 
+/**
+*
+*   Retrieves weather data from an API and updates the DOM with the temperature, temperature icon, and high/low temperature range.
+*   @author Alan
+*
+*    @async
+*
+*    @function
+*
+*    @returns {Promise<void>}
+*/
 async function getWeather() {
     try {
         const response = await fetch(url);

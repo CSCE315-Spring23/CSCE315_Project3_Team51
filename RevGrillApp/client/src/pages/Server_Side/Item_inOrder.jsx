@@ -1,11 +1,11 @@
 import React from 'react';
 
 /**
-    A component representing an item in an order
-    @author Casey @peicasey
-
-    @param {Object} item - The item object containing its name and image
-    @returns {JSX.Element} - A JSX element that renders the item with buttons to add/remove it from the order
+*    A component representing an item in an order
+*    @author Casey @peicasey
+*
+*    @param {Object} item - The item object containing its name and image
+*    @returns {JSX.Element} - A JSX element that renders the item with buttons to add/remove it from the order
 */
 export default function ItemInOrder(item) {
 

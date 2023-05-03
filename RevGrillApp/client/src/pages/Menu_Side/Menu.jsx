@@ -1,6 +1,6 @@
 /**
  * React Component that displays the restaurant's menu.
- * @module Menu
+ * @module Menu_Side
  * @author Anna
  */
 import React, { Component } from 'react';

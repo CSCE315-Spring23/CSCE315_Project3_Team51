@@ -1,6 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
+/**
+  Retrieves all orders from the database, sends the data as a response, and writes the data to a local file.
+  @author Peter
+  @function 
+  @param {Object} req - The request object.
+  @param {Object} res - The response object.
+  @param {function} next - The next middleware function in the request-response cycle.
+  @throws {Error} If an error occurs while retrieving the orders or writing to the local file.
+  @returns {void}
+*/
+
 const { Pool } = require('pg');
 // const { getOrders } = require('./backend_functions/Order');
 const dotenv = require('dotenv').config();

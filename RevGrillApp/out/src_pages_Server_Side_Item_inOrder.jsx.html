@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/pages/Server_Side/Item_inOrder.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,54 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/pages/Server_Side/Item_inOrder.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 
+/**
+*    A component representing an item in an order
+*    @author Casey @peicasey
+*
+*    @param {Object} item - The item object containing its name and image
+*    @returns {JSX.Element} - A JSX element that renders the item with buttons to add/remove it from the order
+*/
+export default function ItemInOrder(item) {
 
-    <h3> </h3>
+    if (item == null) {
+        let item = {
+            "name": "empty",
+            "img": "missing"
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    return (
+        &lt;div style={{ display:'flex', justifyContent:'space-between', backgroundColor:'var(--custom-extra-light)', }}>
+            &lt;div style={{ textAlign:'right', }}>
+                {item.name}
+            &lt;/div>
+            &lt;div style={{ display:'flex', justifyContent:'space-between', }}>
+                &lt;div className="tooltip">
+                    &lt;span className="tooltiptext">add 1 more&lt;/span>
+                    &lt;span className="circle-button material-symbols-outlined">add_circle&lt;/span>
+                &lt;/div>
+                &lt;div style={{width:'10px'}}>&lt;/div>
+                &lt;div className="tooltip">
+                    &lt;span style={{left:"-250%"}} className="tooltiptext">remove 1&lt;/span>
+                    &lt;span class="circle-button material-symbols-outlined">do_not_disturb_on&lt;/span>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
 
 
 

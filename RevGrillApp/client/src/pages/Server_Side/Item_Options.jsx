@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react';
 import itemImages from '../../assets/items/item_img'
 
 /**
-    Renders a list of items in a chosen category with item details
-    @author Casey @peicasey
-
-    @param {Object} chosen_cat - The category object that was selected
-
-    @param {string} chosen_cat.category - The name of the category that was selected
-
-    @param {number} chosen_cat.catId - The ID of the category that was selected
-
-    @returns {JSX.Element} - The JSX element with the item options
+*    Renders a list of items in a chosen category with item details
+*    @author Casey @peicasey
+*
+*    @param {Object} chosen_cat - The category object that was selected
+*
+*    @param {string} chosen_cat.category - The name of the category that was selected
+*
+*    @param {number} chosen_cat.catId - The ID of the category that was selected
+*
+*    @returns {JSX.Element} - The JSX element with the item options
 */
 export default function ItemOptions({chosen_cat}) {
 

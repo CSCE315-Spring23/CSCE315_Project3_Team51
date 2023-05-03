@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/pages/Server_Side/Current_Order.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,56 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/pages/Server_Side/Current_Order.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import ItemInOrder from './Item_inOrder';
+import './server-side.css'
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
+/**
+*    Represents a component for displaying and managing the current order.
+*    @author Casey @peicasey
+*
+*    @param {number} order_num - The order number.
+*    @return {JSX.Element} - A JSX Element representing the component.
+*/
+export default function CurrentOrder(order_num) {
 
     
-
-
-
-
-
+    return (
+        &lt;div>
+            &lt;h3 style={{marginLeft:'30px',}}>Current Order:&lt;/h3>
+            &lt;div className="curOrder_box">
+                Add first item!
+                &lt;ItemInOrder>&lt;/ItemInOrder>
+            &lt;/div>
+            &lt;div style={{ display:'flex', justifyContent:'space-between', marginRight:'20px', }}>
+                &lt;div>&lt;/div>
+                &lt;div style={{ display:'flex', justifyContent:'space-between', }}>
+                &lt;button>
+                    &lt;span class="material-symbols-outlined">send&lt;/span>
+                    &lt;div style={{width:'5px'}}>&lt;/div>
+                    submit
+                &lt;/button>
+                &lt;button>
+                    &lt;span class="material-symbols-outlined">cancel&lt;/span>
+                    &lt;div style={{width:'5px'}}>&lt;/div>
+                    cancel
+                &lt;/button>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
 
 
 

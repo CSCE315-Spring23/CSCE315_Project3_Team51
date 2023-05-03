@@ -9,12 +9,12 @@ import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
 
 /**
-    Renders the list of categories with their respective images.
-    @author Casey @peicasey
-
-    @function
-
-    @returns {JSX.Element} - The React component that displays the categories.
+*    Renders the list of categories with their respective images.
+*    @author Casey @peicasey
+*
+*    @function
+*
+*    @returns {JSX.Element} - The React component that displays the categories.
 */
 const CATEGORIES = [{
     "name": "Burgers",
@@ -61,15 +61,15 @@ const CATEGORIES = [{
 
 
 /**
-    Renders a single category tile with its name and image.
-    @author Casey @peicasey
-
-    @function
-    @param {Object} category - The category object to be rendered.
-    @param {string} category.name - The name of the category.
-    @param {string} category.pic - The path to the image of the category.
-    @param {string} category.alt - The alternate text for the category image.
-    @returns {string} - The HTML code for the category tile.
+*    Renders a single category tile with its name and image.
+*    @author Casey @peicasey
+*
+*    @function
+*    @param {Object} category - The category object to be rendered.
+*    @param {string} category.name - The name of the category.
+*    @param {string} category.pic - The path to the image of the category.
+*    @param {string} category.alt - The alternate text for the category image.
+*    @returns {string} - The HTML code for the category tile.
 */
 const Cat_Tile = category => 
     `<div id="category_tile">
@@ -81,10 +81,10 @@ const Cat_Tile = category =>
 ;
 
 /**
-    Renders a display of categories using HTML and the CATEGORIES array.
-    @author Casey @peicasey
-
-    @return {JSX.Element} Returns the JSX code for displaying categories.
+*    Renders a display of categories using HTML and the CATEGORIES array.
+*    @author Casey @peicasey
+*
+*    @return {JSX.Element} Returns the JSX code for displaying categories.
 */
 export default function CatDisplay() {
 

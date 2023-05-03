@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/pages/Manager_Side/Display_Menu.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,60 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/pages/Manager_Side/Display_Menu.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * Takes in string JSON menu data and returns a formatted HTML menu table
+ * @param {string} c - c1-c5 are the names of JSON keys
+ * @param {string} h - h1-h5 are the desired column heading names corresponding to c1-c5
+ * @param {string} text_data - the stringified JSON data returned from the backend
+ * @author Harini Kumar
+ */
+export default function JsonToMenu(c1, c2, c3, c4, c5, h1, h2, h3, h4, h5, text_data){
+    const json_data = JSON.parse(text_data)
+    const table_display = json_data.map(
+        (data)=>{
+            return(
+                &lt;tr>
+                    &lt;td>{data[c1]}&lt;/td>
+                    &lt;td>{data[c2]}&lt;/td>
+                    &lt;td>{data[c3]}&lt;/td>
+                    &lt;td>{data[c4]}&lt;/td>
+                    &lt;td>{data[c5]}&lt;/td>
+                &lt;/tr>
+            )
+        }
+    )
+    return(
+        &lt;div>
+            &lt;table class="table3">
+                &lt;thead>
+                    &lt;tr>
+                    &lt;th>{ h1 }&lt;/th>
+                    &lt;th>{ h2 }&lt;/th>
+                    &lt;th>{ h3 }&lt;/th>
+                    &lt;th>{ h4 }&lt;/th>
+                    &lt;th>{ h5 }&lt;/th>
+                    &lt;/tr>
+                &lt;/thead>
+                &lt;tbody>
+                    { table_display }
+                &lt;/tbody>
+            &lt;/table>
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
 
 
 

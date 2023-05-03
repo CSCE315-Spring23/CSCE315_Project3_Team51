@@ -2,6 +2,16 @@ var express = require('express');
 const SS = require('../backend_functions/Server_Side.js');
 var router = express.Router();
 
+/**
+    POST request to create a new order with the given data.
+    @author Peter
+    @param {Object} req - The request object.
+    @param {Object} res - The response object.
+    @param {function} next - The next middleware function.
+    @returns {void}
+    @throws {Error} If createOrder fails.
+*/
+
 router.get('/last_order_number', async (req, res, next) => {
     try {
         const data = await SS.lastOrderNumber();

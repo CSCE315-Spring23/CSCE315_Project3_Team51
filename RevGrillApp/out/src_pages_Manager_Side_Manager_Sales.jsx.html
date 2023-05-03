@@ -1,4 +1,32 @@
-import React, { Component } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/pages/Manager_Side/Manager_Sales.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/pages/Manager_Side/Manager_Sales.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
 import './manager.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -126,62 +154,85 @@ export default function Manager_Sales() {
     }
 
     return(
-        <div>
-        <div className="manager-body">
-            <div className="header">
-                <ul className="nav nav-ls">
-                    <div className="nav-home">
-                        <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
-                    </div>
-                    <div className="nav-item">
-                        <li><a className="nav-link" onClick={goInventory}>Inventory</a></li>
-                    </div>
-                    <div className="nav-item">
-                        <li><a className="nav-link nav-curr" onClick = {goEmployee}>Menu</a></li>
-                    </div>
-                    <div className="nav-item">
-                        <li><a className="nav-link" onClick = {goSales}>Sales</a></li>
-                    </div>
-                </ul>
-            </div>
+        &lt;div>
+        &lt;div className="manager-body">
+            &lt;div className="header">
+                &lt;ul className="nav nav-ls">
+                    &lt;div className="nav-home">
+                        &lt;li>&lt;a className="nav-link link-home" href="">Rev's Grill&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link" onClick={goInventory}>Inventory&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link nav-curr" onClick = {goEmployee}>Menu&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link" onClick = {goSales}>Sales&lt;/a>&lt;/li>
+                    &lt;/div>
+                &lt;/ul>
+            &lt;/div>
 
-            <div class="ms-grid">
-                <div class="s-form">
-                    <h2>Select Report</h2>
-                    <form onSubmit={handleSubmit}>
-                        <label for="report_type">Choose a report type:</label>
-                        <select name="report_type" id="report_type">
-                            <option value="sales">Sales Report</option>
-                            <option value="pairings">Pairings Report</option>
-                            <option value="x">X Report</option>
-                            <option value="z">Z Report</option>
-                            <option value="excess">Excess Report</option>
-                            <option value="restock">Restock Report</option>
-                        </select>
-                        <p></p>
-                        <label for="start_time">For Sales, Pairing, and Excess Reports, enter the start time here: </label>
-                        <input type="datetime-local" id="start_time" name="start_time" placeholder="start time (YYYY-MM-DD HH:MM)" />
-                        <p></p>
-                        <label for="end_time">For Sales and Pairing Reports, enter the end time here: </label>
-                        <input type="datetime-local" id="end_time" name="end_time" placeholder="end time (YYYY-MM-DD HH:MM)" />
-                        <p></p>
-                        <button type="submit">Generate Report</button>
-                    </form>
-                </div>
-                <div class="ms-display">
-                    <h2> { heading } </h2>
-                    <p>{ report }</p>
-                </div>
-            </div>
-        </div>
+            &lt;div class="ms-grid">
+                &lt;div class="s-form">
+                    &lt;h2>Select Report&lt;/h2>
+                    &lt;form onSubmit={handleSubmit}>
+                        &lt;label for="report_type">Choose a report type:&lt;/label>
+                        &lt;select name="report_type" id="report_type">
+                            &lt;option value="sales">Sales Report&lt;/option>
+                            &lt;option value="pairings">Pairings Report&lt;/option>
+                            &lt;option value="x">X Report&lt;/option>
+                            &lt;option value="z">Z Report&lt;/option>
+                            &lt;option value="excess">Excess Report&lt;/option>
+                            &lt;option value="restock">Restock Report&lt;/option>
+                        &lt;/select>
+                        &lt;p>&lt;/p>
+                        &lt;label for="start_time">For Sales, Pairing, and Excess Reports, enter the start time here: &lt;/label>
+                        &lt;input type="datetime-local" id="start_time" name="start_time" placeholder="start time (YYYY-MM-DD HH:MM)" />
+                        &lt;p>&lt;/p>
+                        &lt;label for="end_time">For Sales and Pairing Reports, enter the end time here: &lt;/label>
+                        &lt;input type="datetime-local" id="end_time" name="end_time" placeholder="end time (YYYY-MM-DD HH:MM)" />
+                        &lt;p>&lt;/p>
+                        &lt;button type="submit">Generate Report&lt;/button>
+                    &lt;/form>
+                &lt;/div>
+                &lt;div class="ms-display">
+                    &lt;h2> { heading } &lt;/h2>
+                    &lt;p>{ report }&lt;/p>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
 
-        <footer>
+        &lt;footer>
             Made with 🤍 by CSCE 315 Team 51
-        </footer>
+        &lt;/footer>
 
-      </div>
+      &lt;/div>
 
     
     )
 }
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Customer_Side.html">Customer_Side</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Login.html">Login</a></li><li><a href="module-Manager_Side.html">Manager_Side</a></li><li><a href="module-Menu_Side.html">Menu_Side</a></li><li><a href="module-Server_Side.html">Server_Side</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu_Side.html">Menu_Side</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#getWeather">getWeather</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 04:35:08 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

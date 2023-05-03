@@ -7,6 +7,12 @@ import Menu_View from '../../assets/views/menu_side.png';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * React Component that displays the home page.
+ * @module Home
+ * @author Casey
+ */
+
 export default function Home() {
     const navigate = useNavigate();
 

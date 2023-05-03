@@ -9,6 +9,12 @@ import prog2 from '../../assets/progress/prog2.png';
 import prog3 from '../../assets/progress/prog3.png';
 import ItemOptions from './Item_Options';
 
+/**
+ * React Component that allows servers to make and keep track of orders.
+ * @module Server_Side
+ * @author Casey
+ */
+
 
 /**
   A component that displays server-side information and allows the user to select an item category.

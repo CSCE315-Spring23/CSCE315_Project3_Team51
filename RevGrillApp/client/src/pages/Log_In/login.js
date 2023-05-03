@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import './login.css';
 const logo = require("../../assets/views/customer_side.png");
 
+/**
+ * React Component that allows users to login and displays the login page.
+ * @module Login
+ * @author Matthew
+ */
 
 export default function Login() {
   const emailRef = useRef();

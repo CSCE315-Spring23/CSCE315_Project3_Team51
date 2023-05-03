@@ -3,11 +3,11 @@ import ItemInOrder from './Item_inOrder';
 import './server-side.css'
 
 /**
-    Represents a component for displaying and managing the current order.
-    @author Casey @peicasey
-
-    @param {number} order_num - The order number.
-    @return {JSX.Element} - A JSX Element representing the component.
+*    Represents a component for displaying and managing the current order.
+*    @author Casey @peicasey
+*
+*    @param {number} order_num - The order number.
+*    @return {JSX.Element} - A JSX Element representing the component.
 */
 export default function CurrentOrder(order_num) {
 

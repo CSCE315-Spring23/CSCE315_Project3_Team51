@@ -3,6 +3,7 @@ import {React, useState} from 'react';
 
 /**
 * loads customer side with necessary state values
+* @module Customer_Side
 * @author Anna Brooks
 */
 export default function Customer() {

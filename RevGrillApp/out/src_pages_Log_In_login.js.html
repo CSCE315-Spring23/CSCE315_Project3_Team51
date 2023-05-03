@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/pages/Log_In/login.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/pages/Log_In/login.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {useRef,useState} from 'react'
+import { useAuth2 } from './auth_context';
+import { useNavigate } from 'react-router-dom';
+import './login.css';
+const logo = require("../../assets/views/customer_side.png");
+
+/**
+ * React Component that allows users to login and displays the login page.
+ * @module Login
+ * @author Matthew
+ */
+
+export default function Login() {
+  const emailRef = useRef();
+  const passRef = useRef();
+  const idRef = useRef();
+  const navigate = useNavigate();
+
+  const {login,empLogIn,mannLogIn,oAuth} = useAuth2();
+
+  const [error,setError] = useState("");
+  const [loading,setLoading] = useState(false);
+
+
+
+  async function submit(e) {
+    e.preventDefault();
+    
+    try {
+      setLoading(true);
+      setError('');
+      await login(emailRef.current.value,passRef.current.value);
+    } catch {
+      setError("Customer Log In Failed")
+    }
+    //alert("Log In Success");
+    setLoading(false);
+  }
+
+  async function servSub(e) {
+    e.preventDefault();
+    try {
+        setLoading(true);
+        setError('');
+        console.log("Starting Server Submit")
+        try {
+          const isManager = await fetch("http://revgrill-app.onrender.com/is_employee",{
+            body: JSON.stringify({
+              id: idRef
+            })
+          });
+          
+          
+        } catch(error) {
+          console.log(error);
+        }
+        
+        
+      } catch {
+        setError("Server Log In Failed")
+      }
+      
+      setLoading(false);
+  } 
+
+  async function manSub(e) {
+    e.preventDefault();
+    try {
+        setLoading(true);
+        setError('');
+        const isManager = await fetch("http://revgrill-app.onrender.com/is_manager",{
+          body: JSON.stringify({
+            id: idRef
+          })
+        });
+        
+      } catch {
+        setError("Manager Log In Failed")
+      }
+      setLoading(false);
+      navigate('/manager_side/inventory');
+
+  } 
+
+  async function oAuthSub(e) {
+    e.preventDefault();
+    try {
+        setLoading(true);
+        setError('');
+        await oAuth();
+      } catch {
+        setError("OAUTH Log In Failed")
+      }
+      setLoading(false);
+      navigate('/server_side/dashboard');
+  } 
+
+  function goSignup(){
+      navigate('/signup');
+  };
+
+
+  return (
+    &lt;>
+      &lt;div className = "signup_wrap">
+        &lt;div id = "logo">
+          &lt;img src = {logo}/>
+        &lt;/div>
+        &lt;form>
+        {error &amp;&amp; alert(error)}
+       
+        &lt;div id = "regSig" >
+        
+                 &lt;label id = "username_box">
+            
+            &lt;input 
+            placeholder = "Email"
+              type = "email"
+              ref = {emailRef}
+            
+            />
+          &lt;/label>
+
+       
+
+          &lt;label id = "pass_reg_box">
+            
+            &lt;input 
+              placeholder = "Password"
+              type = "password"
+              ref = {passRef}
+            
+            />
+          &lt;/label>  
+
+        
+          &lt;br>&lt;/br>
+          &lt;button disabled = {loading} onClick = {submit} id = "signup-but" type = "signup">
+            Log In!
+          &lt;/button>
+          &lt;/div>
+          
+
+       &lt;div id = "emp">
+          &lt;label id = "emp_auth">
+              
+              &lt;input
+                  placeholder = "Employee ID" 
+                  type = "number"
+                  ref = {idRef}
+              />
+            &lt;/label>
+            &lt;br>&lt;/br>
+            &lt;div className = "empButtons">
+                &lt;button disabled = {loading} onClick = {servSub} id = "emp-but" type = "signup">
+                    Server
+                &lt;/button>
+                &lt;button disabled = {loading} onClick = {manSub} id = "emp-but" type = "signup">
+                    Manager
+                &lt;/button>
+            &lt;/div>
+       &lt;/div>
+       
+        
+
+         &lt;button disabled = {loading} onClick = {oAuthSub} id = "oauth-but" type = "submit">
+            Sign in with Google
+        &lt;/button>
+
+
+        &lt;button id = "sign-up" onClick = {goSignup}>
+          Sign Up!
+        &lt;/button>
+        &lt;/form>
+        
+      &lt;/div>
+    &lt;/>
+  )
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Customer_Side.html">Customer_Side</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Login.html">Login</a></li><li><a href="module-Manager_Side.html">Manager_Side</a></li><li><a href="module-Menu_Side.html">Menu_Side</a></li><li><a href="module-Server_Side.html">Server_Side</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu_Side.html">Menu_Side</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#getWeather">getWeather</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 04:35:08 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

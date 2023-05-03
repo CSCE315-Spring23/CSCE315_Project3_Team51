@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/pages/Home/Home.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/pages/Home/Home.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import Loading from '../../assets/loading.gif';
+import Customer_View from '../../assets/views/customer_side.png';
+import Manager_View from '../../assets/views/manager_side.png';
+import Server_View from '../../assets/views/server_side.png';
+import Menu_View from '../../assets/views/menu_side.png';
+import './Home.css';
+import { useNavigate } from 'react-router-dom';
+
+/**
+ * React Component that displays the home page.
+ * @module Home
+ * @author Casey
+ */
+
+export default function Home() {
+    const navigate = useNavigate();
+
+    function goManager() {
+        navigate('/manager_side')
+    }
+    
+    function goServer() {
+        navigate('/server_side/server_categories')
+    } 
+    
+    function goMenu() {
+        navigate('/menu_side/menu')
+    }
+    
+    function goCustomer() {
+        navigate('/customer_side')
+    }
+
+    return (
+        &lt;div style={{backgroundColor:"maroon"}}>
+            &lt;h1 className="intro-text">Welcome to Rev's!&lt;/h1>
+            &lt;div style={{display:'flex', justifyContent:'space-between', alignItems:'center', padding:'0px 50px 0px'}}>
+                &lt;img className='reasonable-size' src={Loading} alt="Reveille as a Rev's worker, flipping ingredients in a pan"/>
+                &lt;div style={{width:40,}}>&lt;/div>
+                &lt;div>
+                    &lt;h1 className="better-header">Who We Are 🐕‍🦺&lt;/h1>
+                    &lt;h2 className="description-text">
+                        A fun, casual dining area where you can grab a burger, root beer float, or catch the game. Invite your friends and relax on the outside patio!
+                    &lt;/h2>
+                &lt;/div>
+            &lt;/div>
+            &lt;div style={{display:'flex', backgroundColor:'var(--custom-primary)', padding:20, padding:'0px 50px 0px'}}>
+                &lt;div>
+                    &lt;h2 className="better-header">Location&lt;/h2>
+                    &lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.7598451443373!2d-96.34332198907488!3d30.61253637453673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8646839855edbe95%3A0xa6c8cc70fe38a127!2sRev&amp;#39;s%20American%20Grill!5e0!3m2!1sen!2sus!4v1683045370859!5m2!1sen!2sus" 
+                    style={{width:"1000", height:"1000", style:"border:0;", allowfullscreen:"", loading:"lazy", referrerpolicy:"no-referrer-when-downgrade", marginRight:'50',}}>&lt;/iframe>
+                    &lt;h3 style={{lineHeight:0.5,}} className="description-text">275 Joe Routt Blvd, College Station, TX 77840&lt;/h3>
+                    &lt;h3 style={{lineHeight:0.5, paddingBottom:'20px',}} className="description-text">Located in Student Memorial Center (MSC)&lt;/h3>
+                &lt;/div>
+                &lt;div style={{width:40,}}>&lt;/div>
+                &lt;div>
+                    &lt;h2 className="better-header">Hours of Operation&lt;/h2>
+                    &lt;h3 style={{lineHeight:0.5,}} className="description-text">
+                        &lt;p>Monday - 10 AM to 10 PM&lt;/p>
+                        &lt;p>Tuesday - 10 AM to 10 PM&lt;/p>
+                        &lt;p>Wednesday - 10 AM to 10 PM&lt;/p>
+                        &lt;p>Thursday - 10 AM to 10 PM&lt;/p>
+                        &lt;p>Friday - 10 AM to 8 PM&lt;/p>
+                        &lt;p>Saturday - 10 AM to 8 PM&lt;/p>
+                        &lt;p>Sunday - 10 AM to 8 PM&lt;/p>
+                    &lt;/h3>
+                &lt;/div>
+                &lt;div style={{width:40,}}>&lt;/div>
+                &lt;div>
+                    &lt;h2 className="better-header">Contact&lt;/h2>
+                    &lt;h3 className="description-text">
+                        &lt;p>🌐 http://dining.tamu.edu/&lt;/p>
+                        &lt;p>📞 979-845-3005&lt;/p>
+                    &lt;/h3>
+                &lt;/div>
+            &lt;/div>
+            &lt;div>
+                &lt;h1 style={{color:'white', marginTop:'50px',}}>What are you doing with us today?&lt;/h1>
+                &lt;div style={{display:'flex', alignItems:'center', justifyContent:'space-between', gap:'10px', padding:'0px 150px 0px'}}>
+                    &lt;div href={`signup`} className="view-button">
+                        &lt;img style={{ height:'150px', width:'150px', }} src={ Customer_View } alt="customer icon" onClick = {goCustomer}/>
+                        &lt;h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Customer&lt;/h2>
+                    &lt;/div>
+                    &lt;div href="/signup" className="view-button">
+                        &lt;img style={{ height:'150px', width:'150px', }} src={ Menu_View } alt="menu icon" onClick = {goMenu}/>
+                        &lt;h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Menu&lt;/h2>
+                    &lt;/div>
+                    &lt;div href="/login" className="view-button">
+                        &lt;img style={{ height:'150px', width:'150px', }} src={ Server_View } alt="server icon" onClick = {goServer}/>
+                        &lt;h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Server&lt;/h2>
+                    &lt;/div>
+                    &lt;div href="/login" className="view-button">
+                        &lt;img style={{ height:'150px', width:'150px', }} src={ Manager_View } alt="server icon" onClick = {goManager}/>
+                        &lt;h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Manager&lt;/h2>
+                    &lt;/div>
+                    
+                &lt;/div>
+                &lt;div style={{height:100}}>&lt;/div>
+            &lt;/div>
+            
+            
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Customer_Side.html">Customer_Side</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Login.html">Login</a></li><li><a href="module-Manager_Side.html">Manager_Side</a></li><li><a href="module-Menu_Side.html">Menu_Side</a></li><li><a href="module-Server_Side.html">Server_Side</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu_Side.html">Menu_Side</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#getWeather">getWeather</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 04:35:08 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
