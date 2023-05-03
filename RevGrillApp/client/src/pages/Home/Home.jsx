@@ -11,7 +11,7 @@ export default function Home() {
     const navigate = useNavigate();
 
     function goManager() {
-        navigate('/manager_side/inventory')
+        navigate('/manager_side')
     }
     
     function goServer() {
@@ -19,11 +19,11 @@ export default function Home() {
     } 
     
     function goMenu() {
-        navigate('/menu_side/menu')
+        navigate('/menu_side')
     }
     
     function goCustomer() {
-        navigate('/customer_side/categories')
+        navigate('/customer_side')
     }
 
     return (

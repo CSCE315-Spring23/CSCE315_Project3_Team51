@@ -21,8 +21,8 @@ export default function OrdersBar() {
 
     const [orders, setOrders] = useState(Orders)
 
-    function getRunningOrders() {
-        fetch("http://revgrill-app.onrender.com/orders")
+    async function getRunningOrders() {
+        fetch("http://revgrill-app.onrender.com/get_orders/get_orders")
             .then(r => r.text())
             .then(resp => {
                 setOrders(JSON.parse(resp).order)
