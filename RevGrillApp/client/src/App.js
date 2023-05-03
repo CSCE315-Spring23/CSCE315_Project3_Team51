@@ -60,16 +60,17 @@ function App() {
                 <Route exact path = "/server_side/server_categories" element =  {<Server_Categories/>} />
             </Route>
 
-            <Route exact path = "/customer_side"  >
-                <Route exact path = "" element =  {<Customer/>} /> 
-                <Route exact path = "/customer_side/categories" element =  {<Customer_Categories/>} />
+            <Route exact path = "/customer_side"
+                element =  {<Customer/>} >
             </Route>
 
             <Route exact path = "/customer_side" element = {<Customer/>} > </Route>
 
-            <Route exact path = "/menu_side" element = {<Menu/>} > 
-                <Route exact path = "/menu_side2" element = {<Menu2/>} > </Route>
+            <Route exact path = "/menu_side">
+                <Route exact path = "menu_side/menu" element = {<Menu/>} > </Route>
+                <Route exact path = "menu_side/menu2" element = {<Menu2/>} > </Route>
             </Route>
+
           </Routes>
         </Auth_context>
       </BrowserRouter>

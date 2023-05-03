@@ -84,7 +84,7 @@ export default class Menu extends Component {
 
     goMenu2 = () => {
       const navigate = useNavigate();
-      navigate('/menu_side2');
+      navigate('/menu_side/menu2');
     }
 
     render() {
