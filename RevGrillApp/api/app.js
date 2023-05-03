@@ -6,13 +6,6 @@ const logger = require('morgan');
 const cors = require('cors');
 //import * as Employee from './api_func/Employee.js'
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require("cors");
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const newRoute = require('./routes/newRoute');
