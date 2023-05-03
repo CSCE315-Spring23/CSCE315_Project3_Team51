@@ -46,7 +46,7 @@ function buildImage(category) {
 }
 
 export default class Menu extends Component {
-    constructor() {this.goMenu = this.goMenu.bind(this);}
+    constructor() {super(); this.goMenu = this.goMenu.bind(this);}
 
     state = {
       isLoading: true,
@@ -65,7 +65,7 @@ export default class Menu extends Component {
         .then(result => {
           this.setState({
             isLoading: false,
-            menuItems: result
+            menuItems: result[0]
           });
         })
         .catch(error => {
