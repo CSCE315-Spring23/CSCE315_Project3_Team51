@@ -5,8 +5,27 @@ import Manager_View from '../../assets/views/manager_side.png';
 import Server_View from '../../assets/views/server_side.png';
 import Menu_View from '../../assets/views/menu_side.png';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+    const navigate = useNavigate();
+
+    function goManager() {
+        navigate('/manager_side/inventory')
+    }
+    
+    function goServer() {
+        navigate('/server_side/server_categories')
+    } 
+    
+    function goMenu() {
+        navigate('/menu_side/menu')
+    }
+    
+    function goCustomer() {
+        navigate('/customer_side/customer_categories')
+    }
+
     return (
         <div style={{backgroundColor:"maroon"}}>
             <h1 className="intro-text">Welcome to Rev's!</h1>
@@ -54,19 +73,19 @@ export default function Home() {
                 <h1 style={{color:'white', marginTop:'50px',}}>What are you doing with us today?</h1>
                 <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', gap:'10px', padding:'0px 150px 0px'}}>
                     <div href={`signup`} className="view-button">
-                        <img style={{ height:'150px', width:'150px', }} src={ Customer_View } alt="customer icon"/>
+                        <img style={{ height:'150px', width:'150px', }} src={ Customer_View } alt="customer icon" onClick = {goCustomer}/>
                         <h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Customer</h2>
                     </div>
                     <div href="/signup" className="view-button">
-                        <img style={{ height:'150px', width:'150px', }} src={ Menu_View } alt="menu icon"/>
+                        <img style={{ height:'150px', width:'150px', }} src={ Menu_View } alt="menu icon" onClick = {goMenu}/>
                         <h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Menu</h2>
                     </div>
                     <div href="/login" className="view-button">
-                        <img style={{ height:'150px', width:'150px', }} src={ Server_View } alt="server icon"/>
+                        <img style={{ height:'150px', width:'150px', }} src={ Server_View } alt="server icon" onClick = {goServer}/>
                         <h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Server</h2>
                     </div>
                     <div href="/login" className="view-button">
-                        <img style={{ height:'150px', width:'150px', }} src={ Manager_View } alt="server icon"/>
+                        <img style={{ height:'150px', width:'150px', }} src={ Manager_View } alt="server icon" onClick = {goManager}/>
                         <h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Manager</h2>
                     </div>
                     
