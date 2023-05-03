@@ -21,7 +21,7 @@ export default function Options({chosen_cat}) {
     const [items, setItems] = useState(Items)
 
     function getCatsItems() {
-        fetch("http://localhost:9000/get_menu/get_menu")
+        fetch("http://revgrill-app.onrender.com/get_menu/get_menu")
         .then(response => response.text())
         .then(result => {
             setItems(JSON.parse(result));
