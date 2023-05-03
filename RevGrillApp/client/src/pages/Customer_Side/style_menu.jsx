@@ -17,6 +17,8 @@
 }
 .bar {
     display: block;
+    justify-content: center;
+    text-align: center;
 }
 .total {
     font-weight: bold;
@@ -33,12 +35,14 @@
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
     min-width: 300px;
     min-height: 300px;
+    justify-content: center;
 }
 .shoppingCart ul {
     list-style: none;
 }
 .shoppingCart button {
     background-color: #C19797; 
+    justify-self: center;
 }
 
 .header {
@@ -178,6 +182,7 @@ body {
     padding: 50px;
     border-style: solid;
     text-align: center;
+    max-width: 50%;
 }
 .special {
     box-shadow: 0 2px 3px 1px rgba(0,0,0,0.4);

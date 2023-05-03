@@ -18,12 +18,20 @@ async function getMostUsedItems() {
     }
 }
 
-async function pairingsReport() {
+async function pairingsReport(startTime = "", endTime = "") {
     try {
-        console.log('Getting items sold together');
-        const res = await pool.query(
-            "SELECT items_ordered FROM orders"
-        );
+        console.log('Getting pairings report');
+        var res;
+        if(startTime.length == 0 || endTime.length == 0) {
+            res = await pool.query(
+                "SELECT items_ordered FROM orders"
+            );
+        } else {
+            res = await pool.query(
+                "SELECT items_ordered FROM orders WHERE order_time > (TO_TIMESTAMP($1)) AND order_time < (TO_TIMESTAMP($2))",
+                [Date.parse(startTime) / 1000.0, Date.parse(endTime) / 1000.0]
+            )
+        }
         const freq = new Map();
         for(let i = 0; i < res.rowCount; ++i) {
             const items = res.rows[i].items_ordered;
@@ -84,7 +92,8 @@ async function restockReport() {
     try {
         console.log('Creating restock report');
         const res = await pool.query(
-            "SELECT ingredient_name, (quantity || ' ' || units) AS \"quantity\", (min_q || ' ' || units) AS \"min_q\" FROM inventory_data WHERE quantity < min_q ORDER BY ingredient_name"
+            "SELECT ingredient_name, (quantity || ' ' || units) AS \"quantity\", (min_q || ' ' || units) " + 
+            "AS \"min_q\" FROM inventory_data WHERE quantity < min_q ORDER BY ingredient_name"
         );
         console.log(res.rows);
         return res.rows;
@@ -93,13 +102,21 @@ async function restockReport() {
     }
 }
 
-async function salesReport() {
+async function salesReport(startTime = "", endTime = "") {
     try {
         console.log('Creating sales report');
+        var tsString;
+        if(startTime.length == 0 || endTime.length == 0) {
+            tsString = "";
+        } else {
+            tsString = " WHERE order_time > (TO_TIMESTAMP(" + (Date.parse(startTime) / 1000.0).toString() +
+            ")) AND order_time < (TO_TIMESTAMP(" + (Date.parse(endTime) / 1000.0).toString() + "))";
+        }
         const res = await pool.query(
-            "WITH all_items AS (SELECT array_agg(c) AS arr FROM (SELECT UNNEST(items_ordered) FROM orders) AS dt(c)), " + 
-            "row_items AS (SELECT UNNEST(arr) AS items FROM all_items) SELECT (SELECT item_name FROM menu_items WHERE item_number = items), " +
-            "ROUND(CAST(count(*) * (SELECT price FROM menu_items WHERE item_number = items ORDER BY items) AS NUMERIC), 2) " + 
+            "WITH all_items AS (SELECT array_agg(c) AS arr FROM (SELECT UNNEST(items_ordered) FROM orders" + tsString + 
+            ") AS dt(c)), row_items AS (SELECT UNNEST(arr) AS items FROM all_items) " + 
+            "SELECT (SELECT item_name FROM menu_items WHERE item_number = items), ROUND(CAST(count(*) * " + 
+            "(SELECT price FROM menu_items WHERE item_number = items ORDER BY items) AS NUMERIC), 2) " + 
             "AS total_sales FROM row_items GROUP BY items ORDER BY total_sales DESC"
         );
         console.log(res.rows);
@@ -109,14 +126,19 @@ async function salesReport() {
     }
 }
 
-async function excessReport() {
+async function excessReport(startTime = "") {
     try {
-        console.log('Creating excess report');
-        const hardCoded = ["0", "1", "2", "3", "4", "5", "6", "7"];
+        const cDate = new Date();
+        const msAgo = cDate.getTime() - Date.parse(startTime);
+        console.log(msAgo);
+        var daysAgo = Math.floor(msAgo / 1000.0 / 60.0 / 60.0 / 24.0);
+        console.log('Creating excess report from ' + daysAgo + ' day(s) ago');
+        if(daysAgo > 7 || daysAgo < 1)
+            daysAgo = 1;
         const res = await pool.query(
-            "SELECT ingredient_name, (prev_q" + hardCoded[1] + " - quantity) AS amt_sold FROM inventory_data " + 
-            "WHERE prev_q" + hardCoded[1] + " - quantity < 0.1 * prev_q" + hardCoded[1] + " AND " + 
-            "prev_q" + hardCoded[1] + " - quantity > 0"
+            "SELECT ingredient_name, (prev_q" + daysAgo.toString() + " - quantity) AS amt_sold FROM inventory_data " + 
+            "WHERE prev_q" + daysAgo.toString() + " - quantity < 0.1 * prev_q" + daysAgo.toString() + " AND " + 
+            "prev_q" + daysAgo.toString() + " - quantity > 0"
         );
         console.log(res.rows);
         return res.rows;

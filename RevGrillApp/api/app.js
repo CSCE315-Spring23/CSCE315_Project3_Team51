@@ -70,6 +70,7 @@ app.use('/get_sales', managerRoute);
 // Server/Customer/Menu side functions
 app.use('/server_side', serverRoute);
 app.use('/last_order_number', serverRoute);
+app.use('/get_total_price', serverRoute);
 app.use('/create_order', serverRoute);
 app.use('/update_inventory', serverRoute);
 app.use('/get_menu', serverRoute);
