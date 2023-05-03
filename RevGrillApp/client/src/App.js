@@ -9,6 +9,14 @@ import Login from './pages/Log_In/login';
 import Signup from './pages/Log_In/signup';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Auth_context } from './pages/Log_In/auth_context';
+
+import {Customer_Categories} from './pages/Customer_Side/Customer_Categories';
+import { Customer_Items } from './pages/Customer_Side/Customer_Items';
+import {Custoemr_Upgrade} from './pages/Customer_Side/Customer_Upgrade';
+import { Customer_OrderSuccess } from './pages/Customer_Side/Customer_OrderSuccess';
+import {Customer_Confirm} from  './pages/Customer_Side/Customer_Confirm';
+
+
 function App() {
 
 //   const [ingredients, setIngredients] = useState('No data - Ingredients')
@@ -55,9 +63,9 @@ function App() {
             </Route>
 
             <Route exact path = "/server_side" element = {<PrivateRoute/>} > 
-                <Route exact path = "/server_side/inventory" element =  {<Manager_Inventory/>} />
-                <Route exact path = "/server_side/employee" element =  {<Manager_Employee/>} />
-                <Route exact path = "/server_side/sales" element =  {<Manager_Sales/>} />
+                <Route exact path = "/server_side/home" element =  {<Customer_Categories/>} />
+                <Route exact path = "/server_side/confirm" element =  {<Customer_Confirm/>} />
+                <Route exact path = "/server_side/items" element =  {<Customer_Items/>} />
             </Route>
 
           </Routes>

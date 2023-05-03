@@ -1,6 +1,6 @@
 import './style_menu.css';
 
-export default function Customer_Items() {
+export function Customer_Items() {
 
   return(
     <div>
