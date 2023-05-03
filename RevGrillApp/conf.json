@@ -4,7 +4,7 @@
     "source": {
         "include": [ "./client/src/pages/Customer_Side/", "./client/src/pages/Home/", "./client/src/pages/Log_In/",
                      "./client/src/pages/Manager_Side/", "./client/src/pages/Menu_Side/", "./client/src/pages/Server_Side/",
-                     "./client/public/", "./api/routes/", "./api/", "./api/backend_functions"      
+                     "./client/public/", "./api/routes/", "./api/", "./api/backend_functions/"      
         ],
         "exclude": [ ],
         "includePattern": ".+\\.js(doc|x)?$",

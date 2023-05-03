@@ -109,7 +109,8 @@ export default class Options extends Component {
         error: null
       });
   
-      fetch("http://revgrill-app.onrender.com/get_menu/get_menu")
+      fetch("localhost:9000/server_side/get_menu")
+    //   fetch("http://revgrill-app.onrender.com/server_side/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({
@@ -136,7 +137,8 @@ export default class Options extends Component {
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify({ itemsOrdered: items.map(i => parseInt(i.item_number)), totalPrice: price})
         };
-        const url = ' http://revgrill-app.onrender.com/server_side/create_order';
+        // const url = "localhost:9000/server_side/create_order"
+        const url = 'http://revgrill-app.onrender.com/server_side/create_order';
             
         fetch(url, requestOptions)
         .then(response => response.json())
@@ -259,12 +261,24 @@ export default class Options extends Component {
         const cartItems = this.state.cartItems;
 
         if (isLoading) {
-            return <div>Loading...</div>;
-        }
-
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        }
+            return (
+              <div style={{backgroundColor:"ghostwhite", textAlign:'center',}}>
+                <div style={{height:"10%",}}></div>
+                <h1>Loading...</h1>
+                <img style={{height:"40%", width:"40%"}} src= {logo} alt="Reveille flipping burgers"/>
+              </div>
+            );
+          }
+  
+          if (error) {
+              return (
+                <div style={{backgroundColor:"pink", textAlign:'center',}}>
+                  <div style={{height:"10%",}}></div>
+                  <h1>Error: {error.message}</h1>
+                  <img style={{height:"40%", width:"40%"}} src= {logo} alt="Reveille flipping burgers"/>
+                </div>
+              );
+          }
 
         if (this.state.selectedItem.item_name === "Example Item") {
             this.setState({ selectedItem: Items[0] });

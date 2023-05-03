@@ -46,9 +46,6 @@ export default function ItemOptions({chosen_cat}) {
         getCatsItems()
     }, []);
 
-    function getItemPic(item) {
-        return ;
-    }
 
     const Item_Tile = item => 
         `<div id="item_tile">

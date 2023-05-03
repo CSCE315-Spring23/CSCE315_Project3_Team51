@@ -26,20 +26,33 @@ export default function OrdersBar() {
 
     Orders.push(Order);
 
-    const [orders, setOrders] = useState(Orders)
+    const [orders, setOrders] = useState(Orders);
+    const [ordersText, setOrdersText] = useState("no data :|")
 
     
-    const getRunningOrders = () => {
-        fetch("http://revgrill-app.onrender.com/get_orders/get_orders")
+    function getRunningOrders() {
+        fetch("http://revgrill-app.onrender.com/server_side/get_orders")
         .then(r => r.text())
         .then(resp => {
-            setOrders(JSON.parse(resp).order)
+            setOrders(JSON.parse(resp))
+        });
+    }
+
+    function getOrders() {
+        fetch("http://revgrill-app.onrender.com/server_side/get_orders")
+        .then(r => r.text())
+        .then(resp => {
+            setOrdersText(resp)
         });
     }
 
     // fetch the information for the item given the number
     useEffect(() => {
         getRunningOrders()
+    }, []);
+
+    useEffect(() => {
+        getOrders()
     }, []);
 
 
@@ -57,12 +70,15 @@ export default function OrdersBar() {
     </div>`
     ;
 
-    let mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
+    // const orderText = ordersText;
+
+    const mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
 
     return (
         <div className="order_bar">
             <h2> 🧾 CURRENT ORDERS</h2>
             <div dangerouslySetInnerHTML={ mappedOrders }></div>
+            <div>{ordersText}</div>
         </div>
     );
 }

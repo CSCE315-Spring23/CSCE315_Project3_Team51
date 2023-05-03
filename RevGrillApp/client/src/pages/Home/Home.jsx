@@ -32,6 +32,15 @@ export default function Home() {
         navigate('/customer_side')
     }
 
+    function goLogin() {
+        navigate('/login')
+    }
+
+    function goSignUp() {
+        navigate('/signup')
+    }
+
+
     return (
         <div style={{backgroundColor:"maroon"}}>
             <h1 className="intro-text">Welcome to Rev's!</h1>
@@ -95,6 +104,16 @@ export default function Home() {
                         <h2 style={{lineHeight:'15px', marginTop:'5px', color:'white'}}>Manager</h2>
                     </div>
                     
+                </div>
+                <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', gap:'10px', padding:'0px 200px 0px'}}>
+                    <div>
+                        <h2 style={{color:"var(--custom-secondary)", marginBottom:"0px",}}>Have an account?</h2>
+                        <button class="button-57" role="button"><span class="text">log-in</span><span onClick={goLogin}>logging in...</span></button>
+                    </div>
+                    <div>
+                        <h2 style={{color:"var(--custom-secondary)", marginBottom:"0px",}}>No account? Get Started</h2>
+                        <button class="button-57" role="button"><span class="text" >sign-up</span><span onClick={goSignUp}>Signing up...</span></button>
+                    </div>
                 </div>
                 <div style={{height:100}}></div>
             </div>
