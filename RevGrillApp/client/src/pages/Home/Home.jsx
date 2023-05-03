@@ -8,7 +8,7 @@ import './Home.css';
 
 export default function Home() {
     return (
-        <div>
+        <div style={{backgroundColor:"maroon"}}>
             <h1 className="intro-text">Welcome to Rev's!</h1>
             <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', padding:'0px 50px 0px'}}>
                 <img className='reasonable-size' src={Loading} alt="Reveille as a Rev's worker, flipping ingredients in a pan"/>
