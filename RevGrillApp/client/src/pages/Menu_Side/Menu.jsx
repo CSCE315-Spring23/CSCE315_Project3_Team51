@@ -1,3 +1,8 @@
+/**
+ * React Component that displays the restaurant's menu.
+ * @module Menu
+ * @author Anna
+ */
 import React, { Component } from 'react';
 import './style.css';
 import burgerPic from './../../assets/categories/cat_burgers.png';
@@ -10,6 +15,13 @@ import tendersPic from './../../assets/categories/cat_tenders.png';
 import logo from './logo.gif';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Helper function that returns the item description.
+ * @param {string} category - The category of the menu item.
+ * @param {string[]} ingredients - The ingredients of the menu item.
+ * @returns {string} The item description.
+ * @author Anna
+ */
 function buildDescription(category, ingredients) {
   let description = '';
   switch (category) {
@@ -27,6 +39,12 @@ function buildDescription(category, ingredients) {
   return description;
 }
 
+/**
+ * Helper function that returns the image source of the menu item.
+ * @param {string} category - The category of the menu item.
+ * @returns {string} The image source.
+ * @author Anna
+ */
 function buildImage(category) {
   let imageSrc = '';
   switch (category) {
@@ -46,16 +64,30 @@ function buildImage(category) {
   return imageSrc;
 }
 
+/**
+ * A class that displays the restaurant's menu.
+ * @author Anna
+ */
 export default class Menu extends Component {
     navigate = () => {useNavigate()}
     constructor() {super(); this.goMenu2 = this.goMenu2.bind(this);}
 
+    /**
+     * The component's state.
+     * @type {object}
+     * @property {boolean} isLoading - Indicates if the component is currently loading.
+     * @property {object[]} menuItems - The restaurant's menu items.
+     * @property {object} error - The error that occurred during the component's lifecycle, if any.
+     */
     state = {
       isLoading: true,
       menuItems: [],
       error: null
     };
-    
+
+    /**
+     * Fetches the restaurant's menu items from the server.
+     */    
     fetchMenuItems = () => {
       this.setState({
         isLoading: true,
@@ -78,15 +110,26 @@ export default class Menu extends Component {
         });
     }
 
+    /**
+     * Lifecycle method called after the component mounts.
+     */
     componentDidMount() {
         this.fetchMenuItems();
     }
 
+    /**
+     * Navigates to the second menu.
+     */
     goMenu2 = () => {
       const navigate = useNavigate();
       navigate('/menu_side/menu2');
     }
-
+    
+    /**
+     * This method renders the component.
+     * 
+     * @returns {JSX.Element} - The JSX element to be rendered.
+     */  
     render() {
         const { isLoading, menuItems, error } = this.state;
         const Combos = menuItems.filter((menuItem) => menuItem.category === 'Combo');

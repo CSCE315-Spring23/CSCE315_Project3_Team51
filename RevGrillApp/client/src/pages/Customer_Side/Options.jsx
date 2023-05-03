@@ -10,6 +10,13 @@ import tendersPic from './../../assets/categories/cat_tenders.png';
 import logo from '../Menu_Side/logo.gif';
 import Customer_Confirm from './Customer_Confirm';
 
+/**
+ * Returns a string description of a menu item given its category and list of ingredients
+ * @author Anna Brooks
+ * @param {string} category - the category of the menu item
+ * @param {string} ingredients - the list of ingredients in the menu item, separated by commas
+ * @returns {string} - a description of the menu item
+ */
 function buildDescription(category, ingredients) {
   let description = '';
   switch (category) {
@@ -33,6 +40,12 @@ function buildDescription(category, ingredients) {
     return description;
 }
 
+/**
+ * Returns the image source file name for a menu item given its category
+ * @author Anna Brooks
+ * @param {string} category - the category of the menu item
+ * @returns {string} - the file name of the image for the category
+ */
 function buildImage(category) {
     let imageSrc = '';
     switch (category) {
@@ -55,7 +68,10 @@ function buildImage(category) {
     return imageSrc;
 }
 
-
+/**
+ * Component for displaying menu options and handling user interaction
+ * @author Anna Brooks
+ */
 export default class Options extends Component {
     constructor(props) {
         super(props);
@@ -83,7 +99,10 @@ export default class Options extends Component {
             orderPlaced: false
         };
     }
-  
+
+    /**
+     * Fetches menu items from the server and updates the state accordingly
+     */
     fetchMenuItems = () => {
       this.setState({
         isLoading: true,
@@ -105,6 +124,12 @@ export default class Options extends Component {
           });
         });
     }
+
+    /**
+    Sends a POST request to the server to place an order with the given items and price.
+    * @param {Array} items - An array of items to be ordered.
+    * @param {Number} price - The total price of the items.
+    */
     placeOrder = (items, price) => {
         let requestOptions = {
             method: 'POST',
@@ -121,20 +146,44 @@ export default class Options extends Component {
         });
         });
     }
-    
+
+    /**
+     * This method fetches the menu items when the component is mounted.
+     * 
+     * @returns {void}
+     */
     componentDidMount() {
         this.fetchMenuItems();
     }
-  
+    
+    /**
+     * This method sets the selected item in the state.
+     * 
+     * @param {Object} item - The selected item object.
+     * @returns {void}
+     */
     handleItemClick = (item) => {
         this.setState({ selectedItem: item });
     }
 
+    /**
+     * This method adds an item to the cart in the state.
+     * 
+     * @param {Object} item - The item object to be added to the cart.
+     * @returns {void}
+     */
     handleAddItem = (item) => {
         const currentCartItems = this.state.cartItems;
         this.setState({Item: item, cartItems: [...currentCartItems, item]});
     }
 
+    /**
+     * This method removes an item from the cart in the state.
+     * 
+     * @param {number} index - The index of the item to be removed.
+     * @param {Object} item - The item object to be removed.
+     * @returns {void}
+     */
     removeItem = (index, item) => {
         if (this.state.cartItems.includes(item)) {
             const currentCartItems = this.state.cartItems;
@@ -144,14 +193,33 @@ export default class Options extends Component {
         }
     }
 
+    /**
+     * This method removes an item from the cart in the state.
+     * 
+     * @param {number} index - The index of the item to be removed.
+     * @param {Object} item - The item object to be removed.
+     * @returns {void}
+     */
     getTotalPrice = (cartItems) => {
         let total = 0;
         {cartItems.map(item => (total += item.price))}
         return total.toFixed(2);
     }
 
+    /**
+     * This method sets the category in the state.
+     * 
+     * @param {string} cat - The category to be set.
+     * @returns {void}
+     */
     handleNav = (cat) => {this.setState({category: cat})}
 
+    /**
+     * This method handles the order placement.
+     * 
+     * @param {Array} cart - The array of cart item objects.
+     * @returns {void}
+     */
     handleOrder = (cart) => {
         if (this.state.isReadytoSubmit == false)
             this.setState({isReadytoSubmit: true});
@@ -161,10 +229,25 @@ export default class Options extends Component {
         }
     }
 
+    /**
+     * This method handles the return to the menu after placing an order.
+     * 
+     * @returns {void}
+     */
     handleReturn = () => {this.setState({orderPlaced: false})};
 
+    /**
+     * This method handles the cancellation of an order.
+     * 
+     * @returns {void}
+     */
     handleCancel = () => {this.setState({isReadytoSubmit: false});}
-      
+    
+    /**
+     * This method renders the component.
+     * 
+     * @returns {JSX.Element} - The JSX element to be rendered.
+     */     
     render() {
         const category = this.state.category;
         const { isLoading, menuItems, error } = this.state;
