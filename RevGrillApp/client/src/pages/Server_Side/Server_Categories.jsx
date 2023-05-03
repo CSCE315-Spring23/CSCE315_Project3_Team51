@@ -14,15 +14,6 @@ export default function Server_Categories() {
   return(
     <div>
     <body>
-        {/* <header>
-          <a style={{ margin: 20, }} className="nav-link link-home" href="">Rev's Grill</a>
-          <div className="progress_bar" style={{ margin: 20, }}>
-            <div> ADDING ITEMS </div>
-            <div style={{ width: 20, }}></div>    
-            <img style={{ maxHeight: 50, }} src={prog2} alt="progress 0" />  
-            <div style={{ width: 20, }}></div> 
-          </div>  
-        </header> */}
 
         <div style={{ height: 80, }}> filling behind the header</div>
         
@@ -36,7 +27,7 @@ export default function Server_Categories() {
                 <CatDisplay> hello </CatDisplay>
               </div>
               <div>
-                <Options category='Burger' />
+                <Options chosen_cat={'Burger'}/>
               </div>
               <div style={{ height: 20,}}></div> 
               <div>
