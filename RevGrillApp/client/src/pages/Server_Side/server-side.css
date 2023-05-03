@@ -2,18 +2,6 @@
   background-color: #ebe7e7;
 }
 
-header {
-  background-color: var(--custom-primary);
-  color: var(--custom-secondary);
-  height: 5em;
-  width: 100%;
-  position: fixed;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 100;
-}
-
 .circle-button{
   color: var(--custom-light);
   background-color: var(--custom-primary);
