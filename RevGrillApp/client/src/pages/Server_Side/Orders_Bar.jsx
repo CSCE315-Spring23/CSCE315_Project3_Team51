@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 export default function OrdersBar() {
 
     var Orders = [];
+    var mappedOrders;
 
     const Order = {
         "order_number":-1,
@@ -27,7 +28,7 @@ export default function OrdersBar() {
             .then(resp => {
                 setOrders(JSON.parse(resp).order)
             });
-            
+        mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
     }
 
     // fetch the information for the item given the number
@@ -50,7 +51,6 @@ export default function OrdersBar() {
     </div>`
     ;
 
-    const mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
 
 
     return (
