@@ -9,6 +9,14 @@ import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Builds a description of a menu item based on its category and ingredients.
+ *
+ * @param {string} category - The category of the menu item (e.g. Burger, Sandwich, etc.).
+ * @param {string[]} ingredients - An array of ingredients in the menu item.
+ * @returns {string} A description of the menu item.
+ * @author Anna
+ */
 function buildDescription(category, ingredients) {
   let description = '';
   switch (category) {
@@ -26,6 +34,13 @@ function buildDescription(category, ingredients) {
   return description;
 }
 
+/**
+ * Builds the image source URL of a menu item based on its category.
+ *
+ * @author anna
+ * @param {string} category - The category of the menu item (e.g. Burger, Sandwich, etc.).
+ * @returns {string} The URL of the menu item's image.
+ */
 function buildImage(category) {
     let imageSrc = '';
     switch (category) {
@@ -45,6 +60,10 @@ function buildImage(category) {
     return imageSrc;
 }
 
+/**
+ * React component class for the Menu.
+ * @author Anna
+ */
 export default class Menu extends Component {
     constructor() {super(); this.goMenu = this.goMenu.bind(this);}
 
@@ -53,7 +72,10 @@ export default class Menu extends Component {
       menuItems: [],
       error: null
     };
-  
+
+    /**
+     * Fetches the menu items from the backend API.
+     */
     fetchMenuItems = () => {
       this.setState({
         isLoading: true,
@@ -80,11 +102,17 @@ export default class Menu extends Component {
         this.fetchMenuItems();
     }
 
+    /**
+     * Redirects to the first Menu page.
+     */
     goMenu = () => {
       const navigate = useNavigate();
       navigate('/menu_side/menu');
     };
 
+    /**
+     * Renders the jsx element
+     */
     render() {
         const { isLoading, menuItems, error } = this.state;
         const Burgers = menuItems.filter((menuItem) => menuItem.category === 'Burger');
