@@ -16,7 +16,7 @@ import Menu2 from './pages/Menu_Side/Menu2';
 import Customer from './pages/Customer_Side/Customer';
 import {Customer_Categories} from './pages/Customer_Side/Customer_Categories';
 import { Customer_Items } from './pages/Customer_Side/Customer_Items';
-import {Custoemr_Upgrade} from './pages/Customer_Side/Customer_Upgrade';
+import {Customer_Upgrade} from './pages/Customer_Side/Customer_Upgrade';
 import { Customer_OrderSuccess } from './pages/Customer_Side/Customer_OrderSuccess';
 import {Customer_Confirm} from  './pages/Customer_Side/Customer_Confirm';
 

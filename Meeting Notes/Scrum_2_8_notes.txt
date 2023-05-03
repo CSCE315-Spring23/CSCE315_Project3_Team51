@@ -1,0 +1,59 @@
+﻿SCRUM Meeting 8 for Rev’s Grill
+Prepared by: Casey Pei
+Meeting Date:  4/26/2023
+Meeting Attendees
+1. Anna Brooks
+2. Casey Pei
+3. Peter Just
+4. Matthew Want
+5. Harini Kumar
+6. Alan Perez
+Meeting Agenda Items
+* rework sprint deadlines due to upcoming exams
+* discuss bugs
+* decide on hosting
+Status Update Since Last Meeting
+Accomplishments:
+* Functional customer side
+* Functional server side
+* Google Translate API
+
+
+Tasks Completed:
+Task Description
+	Assigned to
+	Completed? (yes/no)
+	Customer side
+	Alan, Peter
+	yes
+	Server side
+	Anna
+	yes
+	Google Translate API
+	Casey
+	yes
+	Before The Next Meeting
+Plans:
+* Ingredients be loaded from database
+* Test API for accessibility
+* Finish hosting
+
+
+Task Assignments:
+Task Description
+	Assigned to
+	Start code documentation
+	Casey
+	Hosting
+	Alan
+	Fix bugs and handle errors
+	Harini
+	Test accessibility
+	Anna
+	Load ingredients from database
+	Peter
+	Hosting
+	Matthew
+	Minutes from Previous Meeting
+* Came to decisions about hosting
+* Need to start thinking about documentation

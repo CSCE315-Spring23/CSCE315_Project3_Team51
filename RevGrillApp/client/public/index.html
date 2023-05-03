@@ -31,7 +31,13 @@
     <header style="z-index:9;  position:fixed;">
       <div style="display:flex; align-items:center; justify-content: space-between;">
         <div>
-          <a style="margin:20px; font-size:50px;" class="nav-link link-home" href="">Rev's Grill</a>
+          <script>
+            const navigate = useNavigate();
+            function goHome() {
+                navigate('/');
+            }
+          </script>
+          <a style="margin:20px; font-size:50px; cursor:pointer;" class="nav-link link-home" href="javascript:history.back()">Rev's Grill</a>
         </div>
         <div style="display:flex; align-items:center;">
           <div style="padding-left:20px; padding-right:20px;">
@@ -48,7 +54,7 @@
         </div>
       </div>
       <div>
-        <div style="margin-right: 15px;" class="main-wrapper">
+        <div style="margin-right: 15px; z-index: 1000;" class="main-wrapper">
           <div class="content-container">
             <div style="margin: 5px;">
               <div id="temp-icon"></div>
