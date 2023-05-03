@@ -1,0 +1,335 @@
+.page {
+    justify-content: center !important;
+    align-items: center;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: ghostwhite;
+}
+
+.navbar {
+    justify-items: center;
+    text-align: center;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+}
+.bar {
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+.total {
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
+    max-height: 20px;
+}
+.shoppingCart {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
+    min-width: 300px;
+    min-height: 300px;
+    justify-content: center;
+}
+.shoppingCart ul {
+    list-style: none;
+}
+.shoppingCart button {
+    background-color: #C19797; 
+    justify-self: center;
+}
+
+.header {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+.weather {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    margin-right: 150px;
+    /* width: 25%; */
+    font-family: Poppins, sans-serif;
+}
+.welcome img {
+    width: 200px;
+    margin-right: 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    color: #732626;
+    text-shadow: 2px 2px 1px #391313;
+    font-weight: bold;
+}
+.date {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    text-align: right;
+    margin-left: 150px;
+    /* width: 25%; */
+    font-family: Poppins, sans-serif;
+    text-decoration-style: italic;
+}
+body {
+    background-color: #E6E6E6;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    padding: auto;
+}
+.body {
+    display: flex;
+    margin: 10px;
+    padding: 30px;
+    justify-content: center;
+    align-items: top;
+    font-family: Helvetica, sans-serif;
+}
+
+.left {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.title {
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Poppins, sans-serif;
+    color: #9D5C5C;
+    text-shadow: 2px 1px 0px black;
+}
+.text {
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    font-family: Helvetica, sans-serif;
+}
+.bold {
+    font-weight: bold;
+}
+.row {
+    display: flex;
+}
+.column {
+    justify-content: center;
+    align-items: center;
+}
+.smaller-card {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    justify-content: center !important;
+    align-items: center !important;
+    display: grid;
+    text-align: center;
+    flex-grow: 0;
+    width: 150px;
+}
+.smaller-card img {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
+    border-color: black;
+    border-width: 1px;
+}
+.small-divider {
+    margin: 5px;
+}
+
+.right {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.larger-card {
+    margin: 15px;
+    justify-content: center !important;
+    align-items: center !important;
+    display: grid;
+    padding: 50px;
+    border-style: solid;
+    text-align: center;
+    max-width: 50%;
+}
+.special {
+    box-shadow: 0 2px 3px 1px rgba(0,0,0,0.4);
+    border-radius: 10px;
+    border-color: black;
+    border-width: 1px;
+    background-color: ghostwhite;
+}
+.larger-card img {
+    width: 200px;
+    margin: 15px;
+    border-radius: 10px;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: black;
+    border-width: 1px;
+    border: 5px black;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
+}
+.larger-card ul {
+    list-style: none;
+    justify-content: left;
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+}
+.menu-list{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 20px;
+    align-items: center !important;
+    display: grid;
+    width: 200px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 1px 2px 3px 0 rgba(0,0,0,0.4);
+    background-color: ghostwhite;
+}
+.item-number {
+    color: #732626;
+    text-shadow: 1px 1px 0px #391313;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+button {
+    align-items: center;
+    justify-content: center;
+    background-color: #9d5C5C;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px;
+}
+button:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.8);
+}
+
+.edit-button {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+.edit-button button {
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    background-color: #C19797;
+}
+.row img:hover {
+    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.8);
+}
+.upgrade {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+}
+.upgrade img {
+    display: flex;
+    width: 300px;
+    margin: 30px;
+}
+.column-wide {
+    margin-left: 200px;
+    margin-right: 200px;
+    justify-content: center;
+    align-items: center;
+}
+.upgrade button {
+    width: 200px;
+    align-self: center;
+    justify-self: center;
+    font-size: 15px;
+    margin-top: 40px;
+}
+.upgrade .grid {
+    padding: 50px;
+}
+.larger-card {
+    font-size: 20px;
+}
+.upgrade .text {
+    font-size: 20px;
+}
+.upgrade .item-number {
+    font-size: 40px;
+}
+
+.no-thanks {
+    justify-content: center;
+    display: grid;
+    padding: 0px;
+    margin: 0px;
+}
+.no-thanks button {
+    background-color: white;
+    align-self: center;
+    justify-self: center;
+}
+
+.small-window {
+    display: grid;
+}
+.small-window .text{
+    font-size: 20px;
+    margin: 20px;
+    justify-self: center;
+}
+.small-window .title {
+    margin: 20px;
+    justify-self: center;
+    font-size: 80px;
+}
+.small-window button {
+    width: 200px;
+    justify-self: center;
+}
+.black {
+    color: black;
+}
