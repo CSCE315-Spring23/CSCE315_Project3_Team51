@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react';
 export default function OrdersBar() {
 
     var Orders = [];
-    var mappedOrders;
 
     const Order = {
         "order_number":-1,
@@ -29,13 +28,13 @@ export default function OrdersBar() {
 
     const [orders, setOrders] = useState(Orders)
 
-    async function getRunningOrders() {
+    
+    const getRunningOrders = () => {
         fetch("http://revgrill-app.onrender.com/get_orders/get_orders")
-            .then(r => r.text())
-            .then(resp => {
-                setOrders(JSON.parse(resp).order)
-            });
-        mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
+        .then(r => r.text())
+        .then(resp => {
+            setOrders(JSON.parse(resp).order)
+        });
     }
 
     // fetch the information for the item given the number
@@ -58,7 +57,7 @@ export default function OrdersBar() {
     </div>`
     ;
 
-
+    let mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
 
     return (
         <div className="order_bar">

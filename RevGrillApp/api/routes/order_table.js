@@ -1,4 +1,5 @@
 var express = require('express');
+const SS = require('../backend_functions/Server_Side.js');
 var router = express.Router();
 
 /**
@@ -37,23 +38,14 @@ process.on('SIGINT', function() {
 //   res.send('message from orders');
 // });
 
-router.get('/', (req, res, next) => {
-  orders = []
-  pool
-    .query("SELECT * FROM orders ORDER BY order_number;")
-    .then(query_res => {
-      for (let i = 0; i < query_res.rowCount; i++){
-        orders.push(query_res.rows[i]);
-      }
-      const data = {order: orders};
-      console.log(orders);
-      res.send(data);
 
-      const FileSystem = require("fs");
-      FileSystem.writeFile('../local_data/orders.json', JSON.stringify(data), (error) => {
-        (err) => {  if (err) throw err; } 
-      });
-    });
+router.get('/get_orders', async (req, res, next) => {
+  try {
+      const data = await SS.getOrders();
+      res.send(data);
+  } catch (err) {
+      res.status(500).send('getOrders failed');
+  }
 });
 
 module.exports = router;
