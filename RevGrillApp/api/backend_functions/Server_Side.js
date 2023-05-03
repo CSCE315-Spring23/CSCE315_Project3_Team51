@@ -53,16 +53,16 @@ async function getTotalPrice(itemsOrdered) {
 async function createOrder(items_ordered, total_price, modifications = [], order_taker = -1, tip = 0) {
     try {
         console.log('Creating new order');
-        await pool.query(
+        const res = await pool.query(
             "INSERT INTO orders (order_number, total_price, tip, order_taker, items_ordered, modifications, order_status, current_day, order_time) " +
-            "VALUES ((SELECT MAX(order_number)+1 FROM orders), $1, $2, $3, $4, $5, $6, True, (SELECT NOW()::timestamp(0)))",
+            "VALUES ((SELECT MAX(order_number)+1 FROM orders), $1, $2, $3, $4, $5, $6, True, (SELECT NOW()::timestamp(0))) RETURNING order_number",
             [total_price, tip, order_taker, items_ordered, modifications, "In Progress"]
         );
         var oNum = await lastOrderNumber();
         Order.getOrderByNum(oNum.last_number);
-        console.log({"order_number": oNum.last_number});
+        console.log(res.rows[0]);
         updateInventory(oNum.last_number);
-        return {"order_number": oNum.last_number};
+        return res.rows[0];
     } catch (error) {
         console.error(error)
     }
