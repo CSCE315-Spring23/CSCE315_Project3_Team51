@@ -1,6 +1,6 @@
 import './style_menu.css';
 
-export default function Customer_Confirm() {
+export function Customer_Confirm() {
 
   return(
     <div>

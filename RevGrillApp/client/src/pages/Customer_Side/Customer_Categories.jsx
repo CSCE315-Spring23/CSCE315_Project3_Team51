@@ -1,6 +1,6 @@
 import './style_menu.css';
 
-export default function Customer_Categories() {
+export function Customer_Categories() {
 
   return(
   <h1>
