@@ -26,7 +26,7 @@
 }
 
 .view-button:hover img{
-    animation: img_lift 0.3s ease forwards;
+    animation: img_lift_home 0.3s ease forwards;
     transition: all 0.4s ease;
     cursor: pointer;
 }
@@ -37,7 +37,7 @@
     cursor: pointer;
 }
 
-@keyframes img_lift {
+@keyframes img_lift_home {
 0%    {   
         transform: translate(0px,  -5px); 
         border-radius: 45%;

@@ -11,6 +11,7 @@ import Manager_Employee from './pages/Manager_Side/Manager_Employee';
 // MENU
 
 // CUSTOMER
+import Customer from './pages/Customer_Side/Customer';
 import {Customer_Categories} from './pages/Customer_Side/Customer_Categories';
 import { Customer_Items } from './pages/Customer_Side/Customer_Items';
 import {Custoemr_Upgrade} from './pages/Customer_Side/Customer_Upgrade';
@@ -37,30 +38,38 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{height:100}}></div>
+      <div style={{height:75}}></div>
       <BrowserRouter>
         <Auth_context>
           <Routes>
+
             <Route path = "/" element = {<Home/>} />
             <Route path = "/signup" element = {<Signup/>} />
             <Route path = "/login" element = {<Login/>} />
 
-            <Route exact path = "/manager_side" element = {<PrivateRoute/>} > 
+            <Route exact path = "/manager_side"  > 
                 <Route exact path = "" element =  {<Manager_Inventory/>} />
                 <Route exact path = "/manager_side/employee" element =  {<Manager_Employee/>} />
                 <Route exact path = "/manager_side/sales" element =  {<Manager_Sales/>} />
             </Route>
 
-            <Route exact path = "/server_side" element = {<PrivateRoute/>} > 
-                <Route exact path = "/server_side/categories" element =  {<Server_Categories/>} />
+            <Route exact path = "/server_side"  > 
+                <Route exact path = "/server_side/server_categories" element =  {<Server_Categories/>} />
+            </Route>
+
+            <Route exact path = "/customer_side"  >
+                <Route exact path = "" element =  {<Customer/>} /> 
+                <Route exact path = "/customer_side/categories" element =  {<Customer_Categories/>} />
             </Route>
 
           </Routes>
         </Auth_context>
       </BrowserRouter>
-
+      <div style={{height:100}}></div>
     </div>
   );
 }
+
+//element = {<PrivateRoute/>}
 
 export default App;
