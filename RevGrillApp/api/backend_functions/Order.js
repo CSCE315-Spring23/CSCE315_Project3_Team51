@@ -1,6 +1,10 @@
 const {pool} = require("./Conn.js");
 
-
+/**
+ * Gets all orders
+ * @return {JSON} order data
+ * @author Peter Just
+ */
 async function getOrders() {
     try {
         console.log('Getting all orders');
@@ -14,6 +18,12 @@ async function getOrders() {
     }
 }
 
+/**
+ * Gets an order by given number
+ * @param {int} orderNum - number of order to get
+ * @return {JSON} order data
+ * @author Peter Just
+ */
 async function getOrderByNum(orderNum) {
     try {
         console.log('Getting order ' + orderNum);
@@ -28,6 +38,11 @@ async function getOrderByNum(orderNum) {
     }
 }
 
+/**
+ * Gets total sales
+ * @return {JSON} total sales
+ * @author Peter Just
+ */
 async function getSales() {
     try {
         console.log('Getting total sales from today');

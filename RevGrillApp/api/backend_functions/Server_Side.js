@@ -2,7 +2,11 @@ const {pool} = require("./Conn.js");
 const Item = require("./Item.js");
 const Order = require("./Order.js");
 
-
+/**
+ * Finds the last order number
+ * @return {JSON} largest order number
+ * @author Peter Just
+ */
 async function lastOrderNumber() {
     try {
         console.log('Getting last order number');
@@ -16,6 +20,12 @@ async function lastOrderNumber() {
     }
 }
 
+/**
+ * Calculates total price of given order
+ * @param {array} itemsOrdered - menu item numbers in the order
+ * @return {JSON} price data
+ * @author Peter Just
+ */
 async function getTotalPrice(itemsOrdered) {
     try {
         console.log('Getting total price of an order');
@@ -31,6 +41,15 @@ async function getTotalPrice(itemsOrdered) {
     }
 }
 
+/**
+ * Creates an order in the database
+ * @param {array} items_ordered - menu item numbers in the order
+ * @param {float} total_price - price of order
+ * @param {array} modifications - modifications to order
+ * @param {int} order_taker - employee id taking the order
+ * @param {float} tip - optional tip on order
+ * @author Peter Just
+ */
 async function createOrder(items_ordered, total_price, modifications = [], order_taker = -1, tip = 0) {
     try {
         console.log('Creating new order');
@@ -49,6 +68,11 @@ async function createOrder(items_ordered, total_price, modifications = [], order
     }
 }
 
+/**
+ * Updates inventory based on contents of given order
+ * @param {int} orderNum - order number
+ * @author Peter Just
+ */
 async function updateInventory(orderNum) {
     try {
         console.log('UPDATING INVENTORY BEGIN');

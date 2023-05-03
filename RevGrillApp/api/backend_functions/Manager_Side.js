@@ -4,7 +4,11 @@ const Ingredient = require("./Ingredient.js");
 const Employee = require("./Employee.js");
 const Order = require("./Order.js");
 
-
+/**
+ * Gets the most used items
+ * @return {JSON} item data
+ * @author Peter Just
+ */
 async function getMostUsedItems() {
     try {
         console.log('Getting most used ingredients');
@@ -18,6 +22,13 @@ async function getMostUsedItems() {
     }
 }
 
+/**
+ * Makes the pairings report
+ * @param {string} startTime - start time window
+ * @param {string} endTime - end time window
+ * @return {JSON} report data
+ * @author Peter Just
+ */
 async function pairingsReport(startTime = "", endTime = "") {
     try {
         console.log('Getting pairings report');
@@ -88,6 +99,11 @@ function arrayCompare(a, b) {
         return (a[2] > b[2]) ? -1 : 1;
 }
 
+/**
+ * Makes the restock report
+ * @return {JSON} report data
+ * @author Peter Just
+ */
 async function restockReport() {
     try {
         console.log('Creating restock report');
@@ -102,6 +118,13 @@ async function restockReport() {
     }
 }
 
+/**
+ * Makes the sales report
+ * @param {string} startTime - start time window
+ * @param {string} endTime - end time window
+ * @return {JSON} report data
+ * @author Peter Just
+ */
 async function salesReport(startTime = "", endTime = "") {
     try {
         console.log('Creating sales report');
@@ -126,6 +149,12 @@ async function salesReport(startTime = "", endTime = "") {
     }
 }
 
+/**
+ * Makes the excess report
+ * @param {string} startTime - start time window
+ * @return {JSON} report data
+ * @author Peter Just
+ */
 async function excessReport(startTime = "") {
     try {
         const cDate = new Date();
@@ -147,6 +176,11 @@ async function excessReport(startTime = "") {
     }
 }
 
+/**
+ * Makes the x report
+ * @return {JSON} report data
+ * @author Peter Just
+ */
 async function xReport() {
     try {
         console.log('Creating X report');
@@ -162,6 +196,11 @@ async function xReport() {
     }
 }
 
+/**
+ * Makes the z report
+ * @return {JSON} report data
+ * @author Peter Just
+ */
 async function zReport() {
     try {
         console.log('Creating Z report');

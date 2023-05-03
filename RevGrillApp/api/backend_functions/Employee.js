@@ -1,6 +1,11 @@
 const {pool} = require("./Conn.js");
 
-
+/**
+ * Checks if the id is a valid employee id
+ * @param {int} id - id to check validity
+ * @return {JSON} employee name 
+ * @author Peter Just
+ */
 async function isEmployee(id) {
     try {
         console.log('Checking if id ' + id + ' is an employee');
@@ -20,6 +25,12 @@ async function isEmployee(id) {
     }
 }
 
+/**
+ * Checks if the id is a valid manager id
+ * @param {int} id - id to check validity
+ * @return {JSON} boolean if valid or not, employee name 
+ * @author Peter Just
+ */
 async function isManager(id) {
     try {
         console.log('Checking if id ' + id + ' is a manager');

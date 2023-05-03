@@ -1,6 +1,10 @@
 const {pool} = require("./Conn.js");
 
-
+/**
+ * Gets the inventory
+ * @return {JSON} inventory data
+ * @author Peter Just
+ */
 async function getInventory() {
     try {
         console.log('Getting all inventory items');
@@ -14,6 +18,14 @@ async function getInventory() {
     }
 }
 
+/**
+ * Edits the inventory
+ * @param {string} ingredient - name of ingredient to edit
+ * @param {int} newQuantity - new quantity of ingredient in stock
+ * @param {int} minQuantity - new minimum quantity of ingredient needed
+ * @return {JSON} inventory data
+ * @author Peter Just
+ */
 async function editInventory(ingredient, newQuantity = -1, minQuantity = -1) {
     try {
         console.log('Editing stock for ' + ingredient);
@@ -34,6 +46,10 @@ async function editInventory(ingredient, newQuantity = -1, minQuantity = -1) {
     }
 }
 
+/**
+ * Signals a new day by updating the inventory table and changing the current day
+ * @author Peter Just
+ */
 async function signalNewDay() {
     try {
         console.log('Shifting inventory data');

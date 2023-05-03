@@ -1,6 +1,10 @@
 const {pool} = require("./Conn.js");
 
-
+/**
+ * Gets the menu
+ * @return {JSON} menu data
+ * @author Peter Just
+ */
 async function getMenu() {
     try {
         console.log('Getting all menu items');
@@ -14,6 +18,12 @@ async function getMenu() {
     }
 }
 
+/**
+ * Gets the ingredients for a given item
+ * @param {int} item - item number
+ * @return {JSON} ingredient data
+ * @author Peter Just
+ */
 async function getIngredients(item) {
     try {
         if(typeof item == "string") {
@@ -40,6 +50,12 @@ async function getIngredients(item) {
     }
 }
 
+/**
+ * Gets the items in a given category
+ * @param {string} category - category chosen
+ * @return {JSON} item data
+ * @author Peter Just
+ */
 async function getCategoryItems(category) {
     try {
         console.log('Getting menu items from category: ' + category);
@@ -54,6 +70,15 @@ async function getCategoryItems(category) {
     }
 }
 
+/**
+ * Edits an existing item
+ * @param {int} item - number of item to edit
+ * @param {string} newName - new name of item
+ * @param {float} newPrice - new price of item
+ * @param {string} newCategory - new category of item
+ * @param {string} newIngredients - new ingredient list for item
+ * @author Peter Just
+ */
 async function editItem(item, newName = "", newPrice = -1, newCategory = "", newIngredients = []) {
     try {
         let identifier = "";
@@ -89,6 +114,14 @@ async function editItem(item, newName = "", newPrice = -1, newCategory = "", new
     }
 }
 
+/**
+ * Edits the inventory
+ * @param {string} name - name of item to add
+ * @param {float} price - price of item to add
+ * @param {string} category - category of item to add
+ * @param {string} ingredients - ingredient list of item to add
+ * @author Peter Just
+ */
 async function addItem(name, price, category, ingredients) {
     try {
         console.log("Adding new item: " + name);
@@ -102,6 +135,11 @@ async function addItem(name, price, category, ingredients) {
     }
 }
 
+/**
+ * Removes an existing item
+ * @param {int} item - number of item to remove
+ * @author Peter Just
+ */
 async function removeItem(item) {
     try {
         let identifier;
