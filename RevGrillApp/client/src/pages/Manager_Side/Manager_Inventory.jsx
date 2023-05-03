@@ -44,6 +44,9 @@ export default function Manager_Inventory() {
         for (let i = 0; i < Math.min(3, obj.length); i++) {
             text += obj[i].ingredient_name + ": " + obj[i].amt_used + "\n";
         }
+        if (text == "") {
+            text = 'No Data - Most Used'
+        }
         return text;
     }
 
@@ -120,7 +123,7 @@ export default function Manager_Inventory() {
 
         <div className="i-grid">
             <div className="i-form">
-                <h2>Update Inventory</h2>
+                <h2 class="form-heading">Update Inventory</h2>
                 <form onSubmit={handleSubmit}>
                     <table>
                         <tr>

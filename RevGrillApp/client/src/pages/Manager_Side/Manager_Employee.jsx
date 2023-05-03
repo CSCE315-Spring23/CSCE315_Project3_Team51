@@ -158,7 +158,7 @@ export default function Manager_Employee() {
         
             <div className="ms-grid">
                 <div className="m-form">
-                    <h2>Update Menu</h2>
+                    <h2 class="form-heading">Update Menu</h2>
                     <form>
                         <table>
                             <tr>
