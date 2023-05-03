@@ -90,7 +90,7 @@ export default class Options extends Component {
         error: null
       });
   
-      fetch("http://localhost:9000/get_menu/get_menu")
+      fetch(" http://revgrill-app.onrender.com/get_menu/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({
@@ -111,13 +111,13 @@ export default class Options extends Component {
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify({ itemsOrdered: items.map(i => parseInt(i.item_number)), totalPrice: price})
         };
-        const url = 'http://localhost:9000/server_side/create_order';
+        const url = ' http://revgrill-app.onrender.com/server_side/create_order';
             
         fetch(url, requestOptions)
         .then(response => response.json())
         .then(result => {
             this.setState({ 
-            orderNum: result, 
+            orderNum: result.order_number 
         });
         });
     }

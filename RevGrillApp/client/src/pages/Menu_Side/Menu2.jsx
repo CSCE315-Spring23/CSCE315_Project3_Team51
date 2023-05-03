@@ -7,6 +7,7 @@ import sandwichPic from './../../assets/categories/cat_sandwich.png';
 import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
+import { useNavigate } from 'react-router-dom';
 
 function buildDescription(category, ingredients) {
   let description = '';
@@ -45,6 +46,8 @@ function buildImage(category) {
 }
 
 export default class Menu extends Component {
+    constructor() {this.goMenu = this.goMenu.bind(this);}
+
     state = {
       isLoading: true,
       menuItems: [],
@@ -76,7 +79,12 @@ export default class Menu extends Component {
     componentDidMount() {
         this.fetchMenuItems();
     }
-  
+
+    goMenu = () => {
+      const navigate = useNavigate();
+      navigate('/menu_side');
+    };
+
     render() {
         const { isLoading, menuItems, error } = this.state;
         const Burgers = menuItems.filter((menuItem) => menuItem.category === 'Burger');
@@ -182,12 +190,12 @@ export default class Menu extends Component {
                     </div>
                     
                 </div>
-        
+                              
             </div>
             
             {/* FOR ROUTING */}
             <div className = 'navigate'> 
-                <button className = "button"> <a href="./menu2.html"> </a> </button>
+                <button onClick={this.goMenu}> Go Back </button>
             </div>
         
         </div>

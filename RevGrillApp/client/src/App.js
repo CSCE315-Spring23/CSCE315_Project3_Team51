@@ -9,8 +9,11 @@ import Manager_Sales from './pages/Manager_Side/Manager_Sales';
 import Manager_Employee from './pages/Manager_Side/Manager_Employee';
 
 // MENU
+import Menu from './pages/Menu_Side/Menu';
+import Menu2 from './pages/Menu_Side/Menu2';
 
 // CUSTOMER
+import Customer from './pages/Customer_Side/Customer';
 
 //SERVER
 import Server_Categories from './pages/Server_Side/Server_Categories';
@@ -57,6 +60,11 @@ function App() {
                 <Route exact path = "/server_side/sales" element =  {<Manager_Sales/>} />
             </Route>
 
+            <Route exact path = "/customer_side" element = {<Customer/>} > </Route>
+
+            <Route exact path = "/menu_side" element = {<Menu/>} > 
+                <Route exact path = "/menu_side2" element = {<Menu2/>} > </Route>
+            </Route>
           </Routes>
         </Auth_context>
       </BrowserRouter>

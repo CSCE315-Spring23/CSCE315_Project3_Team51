@@ -8,6 +8,7 @@ import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
 import logo from './logo.gif';
+import { useNavigate } from 'react-router-dom';
 
 function buildDescription(category, ingredients) {
   let description = '';
@@ -46,12 +47,15 @@ function buildImage(category) {
 }
 
 export default class Menu extends Component {
+    navigate = () => {useNavigate()}
+    constructor() {this.goMenu2 = this.goMenu2.bind(this);}
+
     state = {
       isLoading: true,
       menuItems: [],
       error: null
     };
-  
+    
     fetchMenuItems = () => {
       this.setState({
         isLoading: true,
@@ -77,7 +81,12 @@ export default class Menu extends Component {
     componentDidMount() {
         this.fetchMenuItems();
     }
-  
+
+    goMenu2 = () => {
+      const navigate = useNavigate();
+      navigate('/menu_side2');
+    }
+
     render() {
         const { isLoading, menuItems, error } = this.state;
         const Combos = menuItems.filter((menuItem) => menuItem.category === 'Combo');
@@ -103,6 +112,7 @@ export default class Menu extends Component {
                         <img src= {logo} alt="menu item"/>
                     </div>
                     <div className = 'welcome'> Welcome to Rev's! </div>
+                    <button onClick={this.goMenu2}> Go Back </button>
                 </div>
 
                 <div className = 'main'>
