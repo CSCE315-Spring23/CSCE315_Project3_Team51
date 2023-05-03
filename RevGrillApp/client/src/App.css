@@ -26,6 +26,18 @@
   background-size: cover;
 }
 
+header {
+  background-color: var(--custom-primary);
+  color: var(--custom-secondary);
+  height: 5em;
+  width: 100%;
+  position: fixed;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
@@ -45,6 +57,10 @@ footer {
   display:flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
+}
+
+#google_translate_element {
+  transform: translate(-20px, 0px);
 }
 
 button {
@@ -91,8 +107,8 @@ button:hover {
   opacity: 0;
   transition: opacity 0.5s;
   
-  top: 80%;
-  left: 80%; 
+  top: -140%;
+  left: -200%; 
   
   /* Position the tooltip text - see examples below! */
   position: absolute;

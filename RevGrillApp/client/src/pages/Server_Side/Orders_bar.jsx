@@ -20,9 +20,11 @@ export default function OrdersBar() {
     }, []);
 
     return (
+
         <div className="order_bar">
-            <h2> <span class="material-symbols-outlined">receipt_long</span> CURRENT ORDERS</h2>
-            <p>{orders}</p>
+            <h2> 🧾 CURRENT ORDERS</h2>
+            <div dangerouslySetInnerHTML={ mappedOrders }></div>
+            {/* <p>{orders.stringify}</p> */}
         </div>
     );
 }
