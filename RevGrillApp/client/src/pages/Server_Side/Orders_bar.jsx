@@ -23,7 +23,7 @@ export default function OrdersBar() {
     const [orders, setOrders] = useState(Orders)
 
     function getRunningOrders() {
-        fetch("http://localhost:9000/orders")
+        fetch("https://revgrill-app.onrender.com/orders")
             .then(r => r.json)
             .then(resp => {
                 setOrders(resp)
