@@ -67,8 +67,8 @@ function App() {
             <Route exact path = "/customer_side" element = {<Customer/>} > </Route>
 
             <Route exact path = "/menu_side">
-                <Route exact path = "menu_side/menu" element = {<Menu/>} > </Route>
-                <Route exact path = "menu_side/menu2" element = {<Menu2/>} > </Route>
+                <Route exact path = "/menu_side/menu" element = {<Menu/>} > </Route>
+                <Route exact path = "/menu_side/menu2" element = {<Menu2/>} > </Route>
             </Route>
 
           </Routes>

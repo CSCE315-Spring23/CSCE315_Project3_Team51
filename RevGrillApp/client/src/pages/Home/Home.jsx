@@ -19,7 +19,7 @@ export default function Home() {
     } 
     
     function goMenu() {
-        navigate('/menu_side')
+        navigate('/menu_side/menu')
     }
     
     function goCustomer() {
