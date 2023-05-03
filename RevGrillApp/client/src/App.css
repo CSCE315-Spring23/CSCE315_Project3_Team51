@@ -36,6 +36,9 @@ header {
   align-items: center;
   justify-content: space-between;
   z-index: 100;
+
+  overflow: hidden;
+  top: 0;
 }
 
 @font-face {

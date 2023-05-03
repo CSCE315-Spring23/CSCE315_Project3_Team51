@@ -27,43 +27,43 @@
     -->
     <title>Rev Grill Site</title>
   </head>
-  <header style="z-index:9; transform: translate(0px, -760px); position:fixed;">
-    <div style="display:flex; align-items:center; justify-content: space-between;">
-      <div>
-        <a style="margin:20px; font-size:50px;" class="nav-link link-home" href="">Rev's Grill</a>
-      </div>
-      <div style="display:flex; align-items:center;">
-        <div style="padding-left:20px; padding-right:20px;">
-          <span class="material-symbols-outlined">schedule</span>
+  <body style="background-color: maroon;">
+    <header style="z-index:9;  position:fixed;">
+      <div style="display:flex; align-items:center; justify-content: space-between;">
+        <div>
+          <a style="margin:20px; font-size:50px;" class="nav-link link-home" href="">Rev's Grill</a>
         </div>
-        <div style="text-align:left;display:block;">
-          <a href="https://time.is/College_Station" id="time_is_link" rel="nofollow" style="font-size:15px;color:rgb(255, 222, 7);background:rgb(74, 3, 3);">Time in College Station:</a>
-          <span id="College_Station_z123" style="font-size:15px;color:rgb(255, 210, 31);background:rgb(74, 3, 3)"></span>
-          <script src="//widget.time.is/en.js"></script>
-          <script>
-          time_is_widget.init({College_Station_z123:{template:"TIME<br>DATE", time_format:"12hours:minutesAMPM", date_format:"dayname, monthname dnum, year"}});
-          </script>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div style="margin-right: 15px;" class="main-wrapper">
-        <div class="content-container">
-          <div style="margin: 5px;">
-            <div id="temp-icon"></div>
-            <p id="temp" alt="average tempature"></p>
-          </div>  
-          <div class="lo-hi">
-            <p id="lo" alt="low tempature"></p>
-            <p id="hi" alt="high tempature"></p>
+        <div style="display:flex; align-items:center;">
+          <div style="padding-left:20px; padding-right:20px;">
+            <span class="material-symbols-outlined">schedule</span>
+          </div>
+          <div style="text-align:left;display:block;">
+            <a href="https://time.is/College_Station" id="time_is_link" rel="nofollow" style="font-size:15px;color:rgb(255, 222, 7);background:rgb(74, 3, 3);">Time in College Station:</a>
+            <span id="College_Station_z123" style="font-size:15px;color:rgb(255, 210, 31);background:rgb(74, 3, 3)"></span>
+            <script src="//widget.time.is/en.js"></script>
+            <script>
+            time_is_widget.init({College_Station_z123:{template:"TIME<br>DATE", time_format:"12hours:minutesAMPM", date_format:"dayname, monthname dnum, year"}});
+            </script>
           </div>
         </div>
       </div>
-      <script src="weather.js"></script>
-    </div>
-    
-  </header>
-  <body style="background-color: maroon;">
+      <div>
+        <div style="margin-right: 15px;" class="main-wrapper">
+          <div class="content-container">
+            <div style="margin: 5px;">
+              <div id="temp-icon"></div>
+              <p id="temp" alt="average tempature"></p>
+            </div>  
+            <div class="lo-hi">
+              <p id="lo" alt="low tempature"></p>
+              <p id="hi" alt="high tempature"></p>
+            </div>
+          </div>
+        </div>
+        <script src="weather.js"></script>
+      </div>
+      
+    </header>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- <img href="../assets/logo192.png" /> -->
