@@ -2,18 +2,6 @@
   background-color: #ebe7e7;
 }
 
-header {
-  background-color: var(--custom-primary);
-  color: var(--custom-secondary);
-  height: 5em;
-  width: 100%;
-  position: fixed;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 100;
-}
-
 .circle-button{
   color: var(--custom-light);
   background-color: var(--custom-primary);
@@ -185,6 +173,7 @@ header {
   width: 55px;
   animation: img_lift 0.2s ease-in;
   animation-fill-mode: both;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0);
   z-index: -5;
 }
 
@@ -268,38 +257,6 @@ header {
   cursor: zoom-in;
 }
 
-/* NAV BAR */
-
-.nav {
-  background-color: var(--custom-primary);
-  position: absolute;
-  list-style-type: none;
-  text-align: right;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  display: inline-block;
-  padding: 20px;
-}
-
-.nav-link {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 18px;
-  color: white;
-  padding: 0px 10px;
-}
-
-.nav-link:hover {
-  color: var(--custom-light);
-}
-
-.nav-curr,
-.nav-curr:hover {
-  color: var(--custom-secondary);
-}
 
 .nav-home {
   position: absolute;
@@ -311,29 +268,3 @@ header {
   font-size: 25px;
   letter-spacing: 3px;
 }
-
-/* FORM */
-
-label,
-input {
-  margin-bottom: 10%;
-}
-
-input {
-  margin-left: 5%;
-  width: 150%;
-}
-
-.button-div {
-  text-align: center;
-}
-
-button {
-  background-color: var(--custom-primary);
-  padding: 7px 8px;
-  border: 1px solid var(--custom-primary);
-  border-radius: 10px;
-  color: white;
-  margin: 10px 7px;
-}
-

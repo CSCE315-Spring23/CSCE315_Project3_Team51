@@ -12,11 +12,8 @@ import Options from './Options';
 export default function Server_Categories() {
 
   return(
-    <div>
-    <body>
+    <div style={{backgroundColor:"white",}}>
 
-        <div style={{ height: 80, }}> filling behind the header</div>
-        
         <div id="server_side">
           <OrdersBar></OrdersBar>
           <div className="RHS" style={{textAlign:'left',}}>
@@ -37,8 +34,7 @@ export default function Server_Categories() {
 
           </div>
         </div>
-        
-    </body>
+
     </div>
   )
 

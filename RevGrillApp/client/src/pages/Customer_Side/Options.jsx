@@ -90,7 +90,7 @@ export default class Options extends Component {
         error: null
       });
   
-      fetch(" http://revgrill-app.onrender.com/get_menu/get_menu")
+      fetch("http://revgrill-app.onrender.com/get_menu/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({

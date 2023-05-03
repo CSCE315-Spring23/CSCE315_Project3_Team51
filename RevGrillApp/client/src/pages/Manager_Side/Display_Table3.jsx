@@ -1,5 +1,12 @@
 import React from 'react'
 
+/**
+ * Takes in string JSON data and returns a formatted HTML table with the given information in three columns
+ * @param {string} c - c1-c3 are the names of JSON keys
+ * @param {string} h - h1-h3 are the desired column heading names corresponding to c1-c3
+ * @param {string} text_data - the stringified JSON data returned from the backend
+ * @author Harini Kumar
+ */
 export default function JsonToTable3(c1, c2, c3, h1, h2, h3, text_data){
     const json_data = JSON.parse(text_data)
     const table_display = json_data.map(

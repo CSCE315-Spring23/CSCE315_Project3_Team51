@@ -13,7 +13,8 @@ input {
   font-size: 20px;
 }
 
-body {
+.manager-body {
+  background-color: #ebe7e7;
   min-height: 600px;
   margin-bottom: 100px;
   clear: both;

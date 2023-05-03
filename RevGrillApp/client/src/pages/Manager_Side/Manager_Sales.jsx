@@ -22,7 +22,10 @@ export default function Manager_Sales() {
 
 
 
-
+    /**
+     * Called when the "Generate Report" button is clicked, makes the necessary call to the database to get the desired report and transform it into an HTML table
+     * @author Harini Kumar
+     */
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -45,7 +48,7 @@ export default function Manager_Sales() {
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startTime: startTime, endTime: endTime})
                 };
-                fetch("http://localhost:9000/manager_side/" + reportType + "_report", requestOptions)
+                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report", requestOptions)
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
@@ -62,7 +65,7 @@ export default function Manager_Sales() {
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startTime: startTime, endTime: endTime})
                 };
-                fetch("http://localhost:9000/manager_side/" + reportType + "_report", requestOptions)
+                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report", requestOptions)
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
@@ -79,7 +82,7 @@ export default function Manager_Sales() {
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startTime: startTime })
                 };
-                fetch("http://localhost:9000/manager_side/" + reportType + "_report", requestOptions)
+                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report", requestOptions)
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
@@ -88,14 +91,14 @@ export default function Manager_Sales() {
         }
         else {
             if (params[0] == 2) {
-                fetch("http://localhost:9000/manager_side/" + reportType + "_report")
+                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report")
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
                     )
             }
             else if (params[0] == 3) {
-                fetch("http://localhost:9000/manager_side/" + reportType + "_report")
+                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report")
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
@@ -118,7 +121,7 @@ export default function Manager_Sales() {
 
     return(
         <div>
-        <body>
+        <div className="manager-body">
             <div className="header">
                 <ul className="nav nav-ls">
                     <div className="nav-home">
@@ -164,7 +167,7 @@ export default function Manager_Sales() {
                     <p>{ report }</p>
                 </div>
             </div>
-        </body>
+        </div>
 
         <footer>
             Made with 🤍 by CSCE 315 Team 51

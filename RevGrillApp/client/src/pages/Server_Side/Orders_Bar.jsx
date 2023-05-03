@@ -22,7 +22,7 @@ export default function OrdersBar() {
     const [orders, setOrders] = useState(Orders)
 
     function getRunningOrders() {
-        fetch("http://localhost:9000/orders")
+        fetch("http://revgrill-app.onrender.com/orders")
             .then(r => r.text())
             .then(resp => {
                 setOrders(JSON.parse(resp).order)
@@ -54,7 +54,6 @@ export default function OrdersBar() {
 
 
     return (
-
         <div className="order_bar">
             <h2> 🧾 CURRENT ORDERS</h2>
             <div dangerouslySetInnerHTML={ mappedOrders }></div>
