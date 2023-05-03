@@ -54,7 +54,6 @@ export default function OrdersBar() {
 
 
     return (
-
         <div className="order_bar">
             <h2> 🧾 CURRENT ORDERS</h2>
             <div dangerouslySetInnerHTML={ mappedOrders }></div>

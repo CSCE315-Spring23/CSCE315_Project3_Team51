@@ -121,7 +121,7 @@ export default function Manager_Sales() {
 
     return(
         <div>
-        <body>
+        <div className="manager-body">
             <div className="header">
                 <ul className="nav nav-ls">
                     <div className="nav-home">
@@ -167,7 +167,7 @@ export default function Manager_Sales() {
                     <p>{ report }</p>
                 </div>
             </div>
-        </body>
+        </div>
 
         <footer>
             Made with 🤍 by CSCE 315 Team 51

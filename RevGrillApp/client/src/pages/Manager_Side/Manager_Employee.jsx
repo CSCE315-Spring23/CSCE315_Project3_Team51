@@ -138,7 +138,7 @@ export default function Manager_Employee() {
 
     return(
         <div>
-        <body>
+        <div className="manager-body">
             <div className="header">
                 <ul className="nav nav-ls">
                     <div className="nav-home">
@@ -194,7 +194,7 @@ export default function Manager_Employee() {
                     <p> { menu } </p>
                 </div>
             </div>
-        </body>
+        </div>
         <footer>
             Made with 🤍 by CSCE 315 Team 51
         </footer>
