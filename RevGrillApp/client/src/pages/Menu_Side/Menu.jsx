@@ -4,6 +4,7 @@
  * @author Anna
  */
 import React, { Component } from 'react';
+import '../Customer_Side/style_menu.css';
 import './style.css';
 import burgerPic from './../../assets/categories/cat_burgers.png';
 import dessertPic from './../../assets/categories/cat_dessert.png';
@@ -140,11 +141,23 @@ export default class Menu extends Component {
         const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Shrimp Cookie');
         
         if (isLoading) {
-            return <div>Loading...</div>;
+          return (
+            <div style={{backgroundColor:"ghostwhite", textAlign:'center',}}>
+              <div style={{height:"10%",}}></div>
+              <h1>Loading...</h1>
+              <img style={{height:"40%", width:"40%"}} src= {logo} alt="Reveille flipping burgers"/>
+            </div>
+          );
         }
 
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return (
+              <div style={{backgroundColor:"ghostwhite", textAlign:'center',}}>
+                <div style={{height:"10%",}}></div>
+                <h1>Error: {error.message}</h1>
+                <img style={{height:"40%", width:"40%"}} src= {logo} alt="Reveille flipping burgers"/>
+              </div>
+            );
         }
 
         return (
@@ -159,56 +172,54 @@ export default class Menu extends Component {
                 </div>
 
                 <div className = 'main'>
+                  <div style={{width:'5%',}}></div>
                     <div className = 'left'>
-                        <div className = 'title'> Combos </div>
-                        <div className = "small-divider"> </div>
-                        <div className = 'text bold'> Best Value Option! </div>
-                        <div className = 'text'> Upgrade your meal by adding your choice of a side and a drink! </div>
-                        <div className = 'grid'> 
-                            <div className = 'row'>
-                            {firstFiveCombos.map((menuItem, index) => (
-                                <div className = 'smaller-card' key={index}>
-                                    <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {burgerPic} alt="burger"/>
-                                    <div className = 'text bold'> {menuItem.price} </div>
-                                    <div className = 'text'> {menuItem.item_name} + side + drink </div>
-                                </div>
-                            ))}
-                            </div>
-
-                            <div className = 'row'>
-                            {lastCombos.map((menuItem, index) => (
-                                <div className = 'smaller-card' key={index}>
-                                    <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {burgerPic} alt="burger"/>
-                                    <div className = 'text bold'> {menuItem.price} </div>
-                                    <div className = 'text'> {menuItem.item_name} + side + drink </div>
-                                </div>
-                            ))}
-                            </div>
-        
-
-                        </div>
+                      <div className = 'title'> Combos </div>
+                      <div className = 'text bold'> Best Value Option! </div>
+                      <div className = 'text'> Upgrade your meal by adding your choice of a side and a drink! </div>
+                      <div className = 'grid'> 
+                          <div className = 'row'>
+                          {firstFiveCombos.map((menuItem, index) => (
+                              <div className = 'smaller-card' key={index}>
+                                  <div className = 'item-number'> #{menuItem.item_number} </div>
+                                  <img src= {burgerPic} alt="burger"/>
+                                  <div className = 'text bold'> {menuItem.price} </div>
+                                  <div className = 'text'> {menuItem.item_name} + side + drink </div>
+                              </div>
+                          ))}
+                          </div>
+                          <div className = 'row'>
+                          {lastCombos.map((menuItem, index) => (
+                              <div className = 'smaller-card' key={index}>
+                                  <div className = 'item-number'> #{menuItem.item_number} </div>
+                                  <img src= {burgerPic} alt="burger"/>
+                                  <div className = 'text bold'> {menuItem.price} </div>
+                                  <div className = 'text'> {menuItem.item_name} + side + drink </div>
+                              </div>
+                          ))}
+                          </div>
+                      </div>
                     </div>
                     <div className = 'right'> 
                         {Featured.map((menuItem) => (
-                            <div className = 'larger-card special'>
-                                <div className = 'title'> {menuItem.item_name} </div>
-                                <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
-                                <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
-                                <div className = 'text bold larger'> Get it before it's gone! </div>
-                            </div>
-                        ))}
-        
-                        <div className = 'menu-list'> 
-                        <div className = 'title'> Sides </div>
-                            {Sides.map((menuItem, index) => (
-                                <ul key={index}>
-                                    <li> <div className = 'bold'> {menuItem.item_name} </div> {menuItem.price} </li>
-                                </ul>
-                            ))}
-                        </div>
+                          <div className = 'larger-card special'>
+                              <div className = 'title'> {menuItem.item_name} </div>
+                              <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
+                              <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
+                              <div className = 'text bold larger'> Get it before it's gone! </div>
+                          </div>
+                      ))}
+      
+                      <div className = 'menu-list'> 
+                      <div className = 'title'> Sides </div>
+                          {Sides.map((menuItem, index) => (
+                              <ul key={index}>
+                                  <li> <div className = 'bold'> {menuItem.item_name} </div> {menuItem.price} </li>
+                              </ul>
+                          ))}
+                      </div>
                     </div>
+                  <div style={{width:'5%',}}></div>
                 </div>
     
         </div>

@@ -3,10 +3,10 @@ import OrdersBar from './Orders_Bar';
 import CatDisplay from './Cat_Display';
 import CurrentOrder from './Current_Order';
 import './server-side.css';
-import prog0 from '../../assets/progress/prog0.png';
-import prog1 from '../../assets/progress/prog1.png';
-import prog2 from '../../assets/progress/prog2.png';
-import prog3 from '../../assets/progress/prog3.png';
+// import prog0 from '../../assets/progress/prog0.png';
+// import prog1 from '../../assets/progress/prog1.png';
+// import prog2 from '../../assets/progress/prog2.png';
+// import prog3 from '../../assets/progress/prog3.png';
 import ItemOptions from './Item_Options';
 
 /**

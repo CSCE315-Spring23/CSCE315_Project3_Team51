@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.css';
+import '../Customer_Side/style_menu.css';
 import burgerPic from './../../assets/categories/cat_burgers.png';
 import dessertPic from './../../assets/categories/cat_dessert.png';
 import drinkPic from './../../assets/categories/cat_drink.png';
@@ -7,6 +7,7 @@ import sandwichPic from './../../assets/categories/cat_sandwich.png';
 import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
+import logo from './logo.gif';
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -126,11 +127,23 @@ export default class Menu extends Component {
         const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Rev\'s Burger Entree');
         
         if (isLoading) {
-            return <div>Loading...</div>;
+          return (
+            <div style={{backgroundColor:"ghostwhite", textAlign:'center',}}>
+              <div style={{height:"10%",}}></div>
+              <h1>Loading...</h1>
+              <img style={{height:"40%", width:"40%"}} src= {logo} alt="Reveille flipping burgers"/>
+            </div>
+          );
         }
 
         if (error) {
-            return <div>Error: {error.message}</div>;
+            return (
+              <div style={{backgroundColor:"ghostwhite", textAlign:'center',}}>
+                <div style={{height:"10%",}}></div>
+                <h1>Error: {error.message}</h1>
+                <img style={{height:"40%", width:"40%"}} src= {logo} alt="Reveille flipping burgers"/>
+              </div>
+            );
         }
 
         return (
