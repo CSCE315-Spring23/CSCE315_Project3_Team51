@@ -9,7 +9,7 @@ async function getOrders() {
     try {
         console.log('Getting all orders');
         const res = await pool.query(
-            "SELECT * FROM orders ORDER BY order_number"
+            "SELECT * FROM orders ORDER BY order_number;"
         );
         console.log(res.rows);
         return res.rows;

@@ -10,7 +10,7 @@ export default function Customer() {
   const [cartItems, setCartItems] = useState();
 
   return (
-    <div>
+    <div style={{backgroundColor:"ghostwhite"}}>
       <Options category='Burger' cartItems={cartItems}/>
     </div>
   );

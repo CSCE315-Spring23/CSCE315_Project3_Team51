@@ -8,6 +8,7 @@ import './server-side.css';
 // import prog2 from '../../assets/progress/prog2.png';
 // import prog3 from '../../assets/progress/prog3.png';
 import ItemOptions from './Item_Options';
+import { useEffect, useState } from 'react';
 
 /**
  * React Component that allows servers to make and keep track of orders.
@@ -23,6 +24,8 @@ import ItemOptions from './Item_Options';
   @returns The rendered component.
 */
 export default function Server_Categories() {
+
+  const [selected, setSelected] = useState("Burgers");
 
   return(
     <div style={{backgroundColor:"white",}}>

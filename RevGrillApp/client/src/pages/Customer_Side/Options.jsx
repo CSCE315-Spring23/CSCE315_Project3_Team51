@@ -109,8 +109,8 @@ export default class Options extends Component {
         error: null
       });
   
-      fetch("localhost:9000/server_side/get_menu")
-    //   fetch("http://revgrill-app.onrender.com/server_side/get_menu")
+    //   fetch("localhost:9000/server_side/get_menu")
+      fetch("https://revgrill-app.onrender.com/server_side/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({
@@ -138,7 +138,7 @@ export default class Options extends Component {
             body: JSON.stringify({ itemsOrdered: items.map(i => parseInt(i.item_number)), totalPrice: price})
         };
         // const url = "localhost:9000/server_side/create_order"
-        const url = 'http://revgrill-app.onrender.com/server_side/create_order';
+        const url = 'https://revgrill-app.onrender.com/server_side/create_order';
             
         fetch(url, requestOptions)
         .then(response => response.json())
