@@ -23,7 +23,7 @@ export default function Home() {
     }
     
     function goCustomer() {
-        navigate('/customer_side/customer_categories')
+        navigate('/customer_side/categories')
     }
 
     return (
