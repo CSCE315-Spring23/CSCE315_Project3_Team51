@@ -35,14 +35,13 @@ export default function Server_Categories() {
               <div style={{display:'flex', justifyContent:'center', textAlign:'center',}}>
                 <CatDisplay> hello </CatDisplay>
               </div>
+              <div>
+                <Options category='Burger' />
+              </div>
               <div style={{ height: 20,}}></div> 
               <div>
                 <CurrentOrder></CurrentOrder>
               </div>
-            </div>
-            
-            <div style={{display:'none'}}>
-              <Options category='Burger' />
             </div>
 
           </div>

@@ -1,196 +1,95 @@
-import React, { Component } from 'react';
-import './style_menu.css';
-import burgerPic from './../../assets/categories/cat_burgers.png';
-import dessertPic from './../../assets/categories/cat_dessert.png';
-import drinkPic from './../../assets/categories/cat_drink.png';
-import sandwichPic from './../../assets/categories/cat_sandwich.png';
-import shakePic from './../../assets/categories/cat_shake.png';
-import sidesPic from './../../assets/categories/cat_sides.png';
-import tendersPic from './../../assets/categories/cat_tenders.png';
+import React from 'react';
+import { useEffect, useState } from 'react';
 
-function buildDescription(category, ingredients) {
-  let description = '';
-  switch (category) {
-    case 'Burger':
-      description += 'Juicy beef patty with';
-      break;
-    case 'Sandwich':
-      description += 'Satisfying sandwich with';
-      break;
-    case 'Tenders':
-      description += 'Crispy tenders with';
-      break;
-   }
+// this is literally the most stupid thing that i have ever done
+// import i1 from '../../assets/items/i1.png';
+// import i2 from '../../assets/items/i2.png';
+// import i3 from '../../assets/items/i3.png';
+// import i4 from '../../assets/items/i4.png';
+// import i5 from '../../assets/items/i5.png';
+// import i6 from '../../assets/items/i6.png';
+// import i7 from '../../assets/items/i7.png';
+// import i8 from '../../assets/items/i8.png';
+// import i9 from '../../assets/items/i9.png';
+// import i10 from '../../assets/items/i10.png';
+// import i11 from '../../assets/items/i11.png';
+// import i12 from '../../assets/items/i12.png';
+// import i13 from '../../assets/items/i13.png';
+// import i14 from '../../assets/items/i14.png';
+// import i15 from '../../assets/items/i15.png';
+// import i16 from '../../assets/items/i16.png';
+// import i17 from '../../assets/items/i17.png';
+// import i18 from '../../assets/items/i18.png';
+// import i19 from '../../assets/items/i19.png';
+// import i20 from '../../assets/items/i20.png';
+// import i21 from '../../assets/items/i21.png';
+// import i22 from '../../assets/items/i22.png';
+// import i23 from '../../assets/items/i23.png';
+// import i24 from '../../assets/items/i24.png';
+// import i25 from '../../assets/items/i25.png';
+// import i26 from '../../assets/items/i26.png';
+// import i27 from '../../assets/items/i27.png';
+// import i28 from '../../assets/items/i28.png';
+// import i29 from '../../assets/items/i29.png';
+// import i31 from '../../assets/items/i31.png';
+// import i32 from '../../assets/items/i32.png';
+// import inew from '../../assets/items/inew.png';
 
-    // Convert ingredients to an array if it's a string
-    if (typeof ingredients === 'string') {
-        ingredients = ingredients.split(', ');
-    }
+export default function Options() {
 
-    description += ` ${ingredients.join(', ')}.`;
-    return description;
-}
+    var Items = [];
 
-function buildImage(category) {
-    let imageSrc = '';
-    switch (category) {
-      case 'Burger':
-        imageSrc = burgerPic;
-        break;
-      case 'Combo':
-        imageSrc = burgerPic;
-        break;
-      case 'Sandwich':
-        imageSrc = sandwichPic;
-        break;
-      case 'Tenders':
-        imageSrc = tendersPic;
-        break;
-      default:
-        imageSrc = sidesPic;
-        break;
-    }
-    return imageSrc;
-}
+    const Item = {
+        "item_number":-1,
+        "item_name":"No Burger",
+        "price":9.99,
+        "category":"Burger",
+        "ingredients":["none"]
+    };
 
+    Items.push(Item);
 
-export default class Options extends Component {
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-            isLoading: true,
-            menuItems: [],
-            error: null,
-            category: props.category,
-            Item: {
-                item_name: 'Example Item',
-                category: 'example',
-                price: '$10.00',
-                ingredients: 'Example ingredients'
-            }
-        };
-    }
-  
-    fetchMenuItems = () => {
-      this.setState({
-        isLoading: true,
-        error: null
-      });
-  
-      fetch("http://localhost:9000/get_menu/get_menu")
-        .then(response => response.json())
+    const [items, setItems] = useState(Items)
+
+    function getCatsItems() {
+        fetch("http://localhost:9000/get_menu/get_menu")
+        .then(response => response.text())
         .then(result => {
-          this.setState({
-            isLoading: false,
-            menuItems: result
-          });
+            setItems(JSON.parse(result));
         })
         .catch(error => {
-          this.setState({
-            isLoading: false,
-            error: error
-          });
+            setItems(Items);
         });
     }
 
-    componentDidMount() {
-        this.fetchMenuItems();
+    // fetch the information for the item given the number
+    useEffect(() => {
+        getCatsItems()
+    }, []);
+
+    function getItemPic(item) {
+        return ;
     }
-  
-    handleItemClick = (item) => {
-        this.setState({ Item: item });
-    }
-      
-    render() {
-        const category = this.state.category;
-        const { isLoading, menuItems, error } = this.state;
-        const Items = menuItems.filter((menuItem) => menuItem.category === this.state.category);
-        const firstTwoItems = Items.slice(0, 3);
-        const secondTwoItems = Items.slice(3, 6);
-        const lastItems = Items.slice(6, Items.size);
 
-        if (isLoading) {
-            return <div>Loading...</div>;
-        }
 
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        }
+    const Item_Tile = item => 
+        `<div id="item_tile">
+            <h3>${item.item_name}</h3>
+            <img src=i${item.item_number} alt=${item.item_name}></img>
+            <p>$${item.price}</p>
+            <p>${item.ingredients}</p>
+        </div>`
+    ;
 
-        if (this.state.Item.item_name === "Example Item") {
-            this.setState({ Item: Items[0] });
-        }
+    const mappedItems = { __html: items.map(item => Item_Tile(item)).join('') };
 
-        return (
-            <div>
-            <div className = 'body'>
-            <div className="left"> 
-                <div className = 'larger-card special'> 
-                    <div className = 'title'> {this.state.Item.item_name} </div>
-                    <img src={buildImage(this.state.Item.category)} alt={this.state.Item.item_name} />
-                    <div className = 'text bold'> {this.state.Item.price} </div>
-                    <div className = 'text'> {buildDescription(this.state.Item.category, this.state.Item.ingredients)} </div>
-                    <button> Add to Order </button>
-                </div>
+    return (
+        <div>
+            <h2 style={{marginLeft:'30px'}}>Items in Category</h2>
+            <div id="item_OptionBox">
+                Click an Item Category to see Available Items!
+                <div dangerouslySetInnerHTML={ mappedItems }></div>
             </div>
-            <div className = "right"> 
-                <div className = 'grid'> 
-                    <div className = 'row'>  
-                            {firstTwoItems.map((menuItem, index) => (
-                                <div className = 'column'> 
-                                    <div className = 'smaller-card' key={index}>
-                                        <div className = 'item-number'> #{menuItem.item_number} </div>
-                                        <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
-                                        <div className = 'text bold'> {menuItem.price} </div>
-                                        <div className = 'text'> {menuItem.item_name} </div>
-                                    </div>
-                                    <div className="edit-button"> 
-                                        <button> + </button>
-                                        <button> - </button>
-                                    </div>
-                                </div>
-                            ))}                      
-                    </div>
-                    <div className = 'row'>  
-                            {secondTwoItems.map((menuItem, index) => (
-                                <div className = 'column'> 
-                                    <div className = 'smaller-card' key={index}>
-                                        <div className = 'item-number'> #{menuItem.item_number} </div>
-                                        <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
-                                        <div className = 'text bold'> {menuItem.price} </div>
-                                        <div className = 'text'> {menuItem.item_name} </div>
-                                    </div>
-                                    <div className="edit-button"> 
-                                        <button> + </button>
-                                        <button> - </button>
-                                    </div>
-                                </div>
-                            ))}                      
-                    </div> 
-                    {lastItems.size != 0 ? 
-                    <div className = 'row'>  
-                        {lastItems.map((menuItem, index) => (
-                            <div className = 'column'> 
-                                <div className = 'smaller-card' key={index}>
-                                    <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
-                                    <div className = 'text bold'> {menuItem.price} </div>
-                                    <div className = 'text'> {menuItem.item_name} </div>
-                                </div>
-                                <div className="edit-button"> 
-                                    <button> + </button>
-                                    <button> - </button>
-                                </div>
-                            </div>
-                        ))}                      
-                    </div> : <div> </div>
-                    }
-                </div>
-            </div>
-            </div>
-            <button> go back</button>
-            </div>
-        );
-    }
+        </div>
+    );
 }

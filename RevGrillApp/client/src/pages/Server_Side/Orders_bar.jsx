@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-
 export default function OrdersBar() {
 
     var Orders = [];
@@ -21,7 +20,6 @@ export default function OrdersBar() {
     Orders.push(Order);
 
     const [orders, setOrders] = useState(Orders)
-    const [ordersText, setOrdersText] = useState("no data")
 
     function getRunningOrders() {
         fetch("http://localhost:9000/orders")
@@ -32,23 +30,11 @@ export default function OrdersBar() {
             
     }
 
-    function getOrders() {
-        fetch("http://localhost:9000/orders")
-            .then(r => r.text())
-            .then(resp => {
-                setOrdersText(resp)
-            });
-            
-    }
-
     // fetch the information for the item given the number
     useEffect(() => {
         getRunningOrders()
     }, []);
 
-    useEffect(() => {
-        getOrders()
-    }, []);
 
     const Order_Tile = order => 
     `<div id="order_tile">
@@ -66,7 +52,6 @@ export default function OrdersBar() {
 
     const mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
 
-    
 
     return (
 
