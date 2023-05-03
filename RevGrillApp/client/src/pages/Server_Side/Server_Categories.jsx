@@ -7,8 +7,15 @@ import prog0 from '../../assets/progress/prog0.png';
 import prog1 from '../../assets/progress/prog1.png';
 import prog2 from '../../assets/progress/prog2.png';
 import prog3 from '../../assets/progress/prog3.png';
-import Options from './Options';
+import ItemOptions from './Item_Options';
 
+
+/**
+  A component that displays server-side information and allows the user to select an item category.
+  @author Casey @peicasey
+
+  @returns The rendered component.
+*/
 export default function Server_Categories() {
 
   return(
@@ -24,7 +31,7 @@ export default function Server_Categories() {
                 <CatDisplay> hello </CatDisplay>
               </div>
               <div>
-                <Options chosen_cat={'Burger'}/>
+                <ItemOptions chosen_cat={'Burger'}/>
               </div>
               <div style={{ height: 20,}}></div> 
               <div>

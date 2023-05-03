@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Manager_Side/Manager_Inventory.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Manager_Side/Manager_Inventory.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import './manager.css';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import JsonToTable3 from './Display_Table3';
+
+export default function Manager_Inventory() {
+    const navigate = useNavigate();
+    const [mostUsed, setMostUsed] = useState('No Data - Most Used');
+    const [inventory, setInventory] = useState('No Data - Inventory');
+  
+    /**
+     * Gets the most used ingredients in JSON format from the backend, sets the mostUsed state variable (with a string of the top 3 ingredients)
+     * @author Harini Kumar
+     */
+    const getMostUsed = () => {
+      fetch("https://revgrill-app.onrender.com/manager_side/most_used_items")
+        .then(r => r.text())
+        .then(r => {
+            setMostUsed(populateTop3(r));
+        });
+    }
+
+    /**
+     * Gets inventory in JSON format from the backend and sets the inventory state variable (with an HTML table generated from this data)
+     * @author Harini Kumar
+     */
+    const getInventory = () => {
+      fetch("https://revgrill-app.onrender.com/manager_side/get_inventory")
+        .then(r => r.text())
+        .then(r => {
+            setInventory(JsonToTable3("ingredient_name", "quantity", "min_q", "Ingredient", "Quantity", "Minimum Quantity", r))
+        });  
+    }
+
+    /**
+     * Parses the string JSON data to get the top 3 most used ingredients in string format
+     * @param {string} m_text - stringified JSON data from the backend
+     * @return {string} the top 3 items and their amounts used
+     * @author Harini Kumar
+     */
+    function populateTop3(m_text) {
+        const obj = JSON.parse(m_text);
+        let text = ""
+        for (let i = 0; i &lt; Math.min(3, obj.length); i++) {
+            text += obj[i].ingredient_name + ": " + obj[i].amt_used + "\n";
+        }
+        return text;
+    }
+
+    /**
+     * Called when the "Update Inventory" button is clicked, makes the necessary call to the database to update the desired ingredient's quantity/minimum
+     * @author Harini Kumar
+     */
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        let itemName = event.target.itemname.value;
+        let itemQty = event.target.itemqty.value;
+        let itemMin = event.target.itemmin.value;
+
+        event.target.reset();
+
+        if (itemQty == "") {
+            itemQty = -1;
+        }
+        if (itemMin == "") {
+            itemMin = -1;
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ingredient: itemName, newQuantity: itemQty, minQuantity: itemMin })
+            // body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
+        };
+        fetch("https://revgrill-app.onrender.com/manager_side/edit_inventory", requestOptions);
+
+        window.location.reload();
+    };
+
+    useEffect(() => {
+        getMostUsed()
+    }, [])
+
+    useEffect(() => {
+        getInventory()
+    }, [])
+
+    function goInventory() {
+        navigate('/manager_side/inventory')
+    }
+
+    function goEmployee() {
+        navigate('/manager_side/employee')
+    } 
+
+    function goSales() {
+        navigate('/manager_side/sales')
+    }
+
+    return(
+        &lt;div>
+        
+            &lt;div className="header">
+                &lt;ul className="nav nav-ls">
+                    &lt;div className="nav-home">
+                        &lt;li>&lt;a className="nav-link link-home" href="">Rev's Grill&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link" onClick={goInventory}>Inventory&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link nav-curr" onClick = {goEmployee}>Menu&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link" onClick = {goSales}>Sales&lt;/a>&lt;/li>
+                    &lt;/div>
+                &lt;/ul>
+            &lt;/div>
+
+        &lt;div className="i-grid">
+            &lt;div className="i-form">
+                &lt;h2>Update Inventory&lt;/h2>
+                &lt;form onSubmit={handleSubmit}>
+                    &lt;table>
+                        &lt;tr>
+                            &lt;td>&lt;label for="itemname">Item name:&lt;/label>&lt;/td>
+                            &lt;td>&lt;input type="text" id="itemname" name="itemname"/>&lt;/td>
+                        &lt;/tr>
+                        &lt;tr>
+                            &lt;td>&lt;label for="itemqty">Item quantity:&lt;/label>&lt;/td>
+                            &lt;td>&lt;input type="number" id="itemqty" name="itemqty"/>&lt;/td>
+                        &lt;/tr>
+                        &lt;tr>
+                            &lt;td>&lt;label for="itemmin">Item minimum:&lt;/label>&lt;/td>
+                            &lt;td>&lt;input type="number" id="itemmin" name="itemmin"/>&lt;/td>
+                        &lt;/tr>
+                    &lt;/table>
+                    &lt;div className="button-div">
+                        &lt;button type="submit">Update Inventory&lt;/button>
+                    &lt;/div>
+                &lt;/form>
+            &lt;/div>
+            &lt;div className="i-mostused">
+                &lt;h2>Most Used Items Today&lt;/h2>
+                &lt;p id="most-used">
+                    { mostUsed.split('\n').map(function(item, key) {
+                        return (
+                            &lt;span key={key}>
+                            {item}
+                            &lt;br/>
+                            &lt;/span>
+                        )
+                    })}
+                &lt;/p>
+            &lt;/div>
+            &lt;div className="i-display">
+                &lt;h2>Display Inventory&lt;/h2>
+                &lt;p> { inventory } &lt;/p>
+            &lt;/div>
+        &lt;/div>
+
+        &lt;footer>
+            Made with 🤍 by CSCE 315 Team 51
+        &lt;/footer>
+
+      &lt;/div>
+    
+    )
+  
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Menu.html">Menu</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu.html">Menu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 03:07:50 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

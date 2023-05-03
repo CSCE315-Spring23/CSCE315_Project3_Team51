@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Menu_Side/Menu2.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Menu_Side/Menu2.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import './style.css';
+import burgerPic from './../../assets/categories/cat_burgers.png';
+import dessertPic from './../../assets/categories/cat_dessert.png';
+import drinkPic from './../../assets/categories/cat_drink.png';
+import sandwichPic from './../../assets/categories/cat_sandwich.png';
+import shakePic from './../../assets/categories/cat_shake.png';
+import sidesPic from './../../assets/categories/cat_sides.png';
+import tendersPic from './../../assets/categories/cat_tenders.png';
+import { useNavigate } from 'react-router-dom';
+
+/**
+ * Builds a description of a menu item based on its category and ingredients.
+ *
+ * @param {string} category - The category of the menu item (e.g. Burger, Sandwich, etc.).
+ * @param {string[]} ingredients - An array of ingredients in the menu item.
+ * @returns {string} A description of the menu item.
+ * @author Anna
+ */
+function buildDescription(category, ingredients) {
+  let description = '';
+  switch (category) {
+    case 'Burger':
+      description += 'Juicy beef patty with';
+      break;
+    case 'Sandwich':
+      description += 'Satisfying sandwich with';
+      break;
+    case 'Tenders':
+      description += 'Crispy tenders with';
+      break;
+  }
+  description += ` ${ingredients.join(', ')}.`;
+  return description;
+}
+
+/**
+ * Builds the image source URL of a menu item based on its category.
+ *
+ * @author anna
+ * @param {string} category - The category of the menu item (e.g. Burger, Sandwich, etc.).
+ * @returns {string} The URL of the menu item's image.
+ */
+function buildImage(category) {
+    let imageSrc = '';
+    switch (category) {
+      case 'Burger':
+        imageSrc = burgerPic;
+        break;
+      case 'Sandwich':
+        imageSrc = sandwichPic;
+        break;
+      case 'Tenders':
+        imageSrc = tendersPic;
+        break;
+      default:
+        imageSrc = sidesPic;
+        break;
+    }
+    return imageSrc;
+}
+
+/**
+ * React component class for the Menu.
+ * @author Anna
+ */
+export default class Menu extends Component {
+    constructor() {super(); this.goMenu = this.goMenu.bind(this);}
+
+    state = {
+      isLoading: true,
+      menuItems: [],
+      error: null
+    };
+
+    /**
+     * Fetches the menu items from the backend API.
+     */
+    fetchMenuItems = () => {
+      this.setState({
+        isLoading: true,
+        error: null
+      });
+  
+      fetch("http://revgrill-app.onrender.com/get_menu/get_menu")
+        .then(response => response.json())
+        .then(result => {
+          this.setState({
+            isLoading: false,
+            menuItems: result[0]
+          });
+        })
+        .catch(error => {
+          this.setState({
+            isLoading: false,
+            error: error
+          });
+        });
+    }
+
+    componentDidMount() {
+        this.fetchMenuItems();
+    }
+
+    /**
+     * Redirects to the first Menu page.
+     */
+    goMenu = () => {
+      const navigate = useNavigate();
+      navigate('/menu_side/menu');
+    };
+
+    /**
+     * Renders the jsx element
+     */
+    render() {
+        const { isLoading, menuItems, error } = this.state;
+        const Burgers = menuItems.filter((menuItem) => menuItem.category === 'Burger');
+        const Sandwiches = menuItems.filter((menuItem) => menuItem.category === 'Sandwich');
+        const Sides = menuItems.filter((menuItem) => menuItem.category === 'Sides');
+        const Desserts = menuItems.filter((menuItem) => menuItem.category === "Dessert");
+        const Shakes = menuItems.filter((menuItem) => menuItem.category === "Shake");
+        const Tenders = menuItems.filter((menuItem) => menuItem.category === 'Tenders');
+        const Combos = menuItems.filter((menuItem) => menuItem.category === 'Combo');
+
+        const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Rev\'s Burger Entree');
+        
+        if (isLoading) {
+            return &lt;div>Loading...&lt;/div>;
+        }
+
+        if (error) {
+            return &lt;div>Error: {error.message}&lt;/div>;
+        }
+
+        return (
+            &lt;div className = 'body'>
+            &lt;div className = 'page'> 
+                {/* &lt;div className = 'header'>
+                    &lt;div className = 'weather'> 
+                        &lt;img src= {burgerPic} alt="menu item"/>
+                        &lt;div className = 'stacked'> 
+                            &lt;p> 68 F &lt;/p>
+                            &lt;p> Sunny &lt;/p>
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;div className = 'welcome'> Welcome to Rev's! &lt;/div>
+                &lt;/div> */}
+        
+                &lt;div className = 'body'>
+                    &lt;div className = 'left'> 
+                        {Featured.map((menuItem) => (
+                                &lt;div className = 'larger-card special'>
+                                    &lt;div className = 'title'> {menuItem.item_name} &lt;/div>
+                                    &lt;img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
+                                    &lt;div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} &lt;/div>
+                                    &lt;div className = 'text bold larger'> Try our best-selling menu item! &lt;/div>
+                                &lt;/div>
+                        ))}
+        
+                        &lt;div className = 'menu-list'> 
+                            &lt;div className = 'title'> Milkshakes &lt;/div>
+                            {Shakes.map((menuItem, index) => (
+                                &lt;ul key={index}>
+                                    &lt;li> &lt;div className = 'bold'> {menuItem.item_name} &lt;/div> {menuItem.price} &lt;/li>
+                                &lt;/ul>
+                            ))}
+                        &lt;/div>
+                    &lt;/div>
+                    
+                    &lt;div className = 'right'>
+                        &lt;div className = 'grid'> 
+                            {/* &lt;div className = 'title'> Burgers &lt;/div> */}
+                            &lt;div className = 'row'>
+                            {Burgers.map((menuItem, index) => (
+                                &lt;div className = 'smaller-card' key={index}>
+                                    &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                    &lt;img src= {burgerPic} alt="burger"/>
+                                    &lt;div className = 'text bold'> {menuItem.price} &lt;/div>
+                                    &lt;div className = 'text'> {menuItem.item_name} &lt;/div>
+                                &lt;/div>
+                            ))}
+                            &lt;/div>
+                            
+                            {/* &lt;div className = 'title'> Sandwiches &lt;/div> */}
+                            &lt;div className = 'row'>
+                            {Sandwiches.map((menuItem, index) => (
+                                &lt;div className = 'smaller-card' key={index}>
+                                    &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                    &lt;img src={sandwichPic} alt="sandwich"/>
+                                    &lt;div className = 'text bold'> {menuItem.price} &lt;/div>
+                                    &lt;div className = 'text'> {menuItem.item_name} &lt;/div>
+                                &lt;/div>
+                            ))}
+                            {Tenders.map((menuItem, index) => (
+                                &lt;div className = 'smaller-card' key={index}>
+                                    &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                    &lt;img src= {tendersPic} alt="tenders"/>
+                                    &lt;div className = 'text bold'> {menuItem.price} &lt;/div>
+                                    &lt;div className = 'text'> {menuItem.item_name} &lt;/div>
+                                &lt;/div>
+                            ))}
+                            &lt;/div>
+
+                            {/* &lt;div className = 'title'> Sweets &lt;/div> */}
+                            &lt;div className = 'row'>
+                            {Desserts.map((menuItem, index) => (
+                                &lt;div className = 'smaller-card' key={index}>
+                                    &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                    &lt;img src= {dessertPic} alt="dessert"/>
+                                    &lt;div className = 'text bold'> {menuItem.price} &lt;/div>
+                                    &lt;div className = 'text'> {menuItem.item_name} &lt;/div>
+                                &lt;/div>
+                            ))}
+                            &lt;/div>
+
+                        &lt;/div>
+                    &lt;/div>
+                    
+                &lt;/div>
+                              
+            &lt;/div>
+            
+            {/* FOR ROUTING */}
+            &lt;div className = 'navigate'> 
+                &lt;button onClick={this.goMenu}> Go Back &lt;/button>
+            &lt;/div>
+        
+        &lt;/div>
+
+        // &lt;div>
+        //     {Desserts.map((menuItem, index) => (
+        //     &lt;div key={index}>
+        //         &lt;p>Item Number: {menuItem.item_number}&lt;/p>
+        //         &lt;p>Item Name: {menuItem.item_name}&lt;/p>
+        //         &lt;p>Price: {menuItem.price}&lt;/p>
+        //         &lt;p>Category: {menuItem.category}&lt;/p>
+        //         &lt;p>Ingredients: {menuItem.ingredients}&lt;/p>
+        //         &lt;p>Description: {buildDescription(menuItem.category, menuItem.ingredients)}&lt;/p>
+        //         &lt;img src={buildImage(menuItem.category)} />
+        //     &lt;/div>
+        //     ))}
+        // &lt;/div>
+        );
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Menu.html">Menu</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu.html">Menu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 03:07:50 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

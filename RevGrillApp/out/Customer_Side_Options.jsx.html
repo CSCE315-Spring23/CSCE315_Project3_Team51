@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Customer_Side/Options.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Customer_Side/Options.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import './style_menu.css';
+import burgerPic from './../../assets/categories/cat_burgers.png';
+import dessertPic from './../../assets/categories/cat_dessert.png';
+import drinkPic from './../../assets/categories/cat_drink.png';
+import sandwichPic from './../../assets/categories/cat_sandwich.png';
+import shakePic from './../../assets/categories/cat_shake.png';
+import sidesPic from './../../assets/categories/cat_sides.png';
+import tendersPic from './../../assets/categories/cat_tenders.png';
+import logo from '../Menu_Side/logo.gif';
+import Customer_Confirm from './Customer_Confirm';
+
+/**
+ * Returns a string description of a menu item given its category and list of ingredients
+ * @author Anna Brooks
+ * @param {string} category - the category of the menu item
+ * @param {string} ingredients - the list of ingredients in the menu item, separated by commas
+ * @returns {string} - a description of the menu item
+ */
+function buildDescription(category, ingredients) {
+  let description = '';
+  switch (category) {
+    case 'Burger':
+      description += 'Juicy beef patty with';
+      break;
+    case 'Sandwich':
+      description += 'Satisfying sandwich with';
+      break;
+    case 'Tenders':
+      description += 'Crispy tenders with';
+      break;
+   }
+
+    // Convert ingredients to an array if it's a string
+    if (typeof ingredients === 'string') {
+        ingredients = ingredients.split(', ');
+    }
+
+    description += ` ${ingredients.join(', ')}.`;
+    return description;
+}
+
+/**
+ * Returns the image source file name for a menu item given its category
+ * @author Anna Brooks
+ * @param {string} category - the category of the menu item
+ * @returns {string} - the file name of the image for the category
+ */
+function buildImage(category) {
+    let imageSrc = '';
+    switch (category) {
+      case 'Burger':
+        imageSrc = burgerPic;
+        break;
+      case 'Combo':
+        imageSrc = burgerPic;
+        break;
+      case 'Sandwich':
+        imageSrc = sandwichPic;
+        break;
+      case 'Tenders':
+        imageSrc = tendersPic;
+        break;
+      default:
+        imageSrc = sidesPic;
+        break;
+    }
+    return imageSrc;
+}
+
+/**
+ * Component for displaying menu options and handling user interaction
+ * @author Anna Brooks
+ */
+export default class Options extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+            isLoading: true,
+            menuItems: [],
+            error: null,
+            category: props.category,
+            Item: {
+                item_name: 'Example Item',
+                category: 'example',
+                price: '$10.00',
+                ingredients: 'Example ingredients'
+            },
+            cartItems: [],
+            selectedItem:  {
+                item_name: 'Example Item',
+                category: 'example',
+                price: '$10.00',
+                ingredients: 'Example ingredients'
+            },
+            isReadytoSubmit: false,
+            orderNum: 0,
+            orderPlaced: false
+        };
+    }
+
+    /**
+     * Fetches menu items from the server and updates the state accordingly
+     */
+    fetchMenuItems = () => {
+      this.setState({
+        isLoading: true,
+        error: null
+      });
+  
+      fetch("http://revgrill-app.onrender.com/get_menu/get_menu")
+        .then(response => response.json())
+        .then(result => {
+          this.setState({
+            isLoading: false,
+            menuItems: result
+          });
+        })
+        .catch(error => {
+          this.setState({
+            isLoading: false,
+            error: error
+          });
+        });
+    }
+
+    /**
+    Sends a POST request to the server to place an order with the given items and price.
+    * @param {Array} items - An array of items to be ordered.
+    * @param {Number} price - The total price of the items.
+    */
+    placeOrder = (items, price) => {
+        let requestOptions = {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            body: JSON.stringify({ itemsOrdered: items.map(i => parseInt(i.item_number)), totalPrice: price})
+        };
+        const url = ' http://revgrill-app.onrender.com/server_side/create_order';
+            
+        fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            this.setState({ 
+            orderNum: result.order_number 
+        });
+        });
+    }
+
+    /**
+     * This method fetches the menu items when the component is mounted.
+     * 
+     * @returns {void}
+     */
+    componentDidMount() {
+        this.fetchMenuItems();
+    }
+    
+    /**
+     * This method sets the selected item in the state.
+     * 
+     * @param {Object} item - The selected item object.
+     * @returns {void}
+     */
+    handleItemClick = (item) => {
+        this.setState({ selectedItem: item });
+    }
+
+    /**
+     * This method adds an item to the cart in the state.
+     * 
+     * @param {Object} item - The item object to be added to the cart.
+     * @returns {void}
+     */
+    handleAddItem = (item) => {
+        const currentCartItems = this.state.cartItems;
+        this.setState({Item: item, cartItems: [...currentCartItems, item]});
+    }
+
+    /**
+     * This method removes an item from the cart in the state.
+     * 
+     * @param {number} index - The index of the item to be removed.
+     * @param {Object} item - The item object to be removed.
+     * @returns {void}
+     */
+    removeItem = (index, item) => {
+        if (this.state.cartItems.includes(item)) {
+            const currentCartItems = this.state.cartItems;
+            const updatedCartItems = [...currentCartItems];
+            updatedCartItems.splice(index, 1);
+            this.setState({cartItems: updatedCartItems});
+        }
+    }
+
+    /**
+     * This method removes an item from the cart in the state.
+     * 
+     * @param {number} index - The index of the item to be removed.
+     * @param {Object} item - The item object to be removed.
+     * @returns {void}
+     */
+    getTotalPrice = (cartItems) => {
+        let total = 0;
+        {cartItems.map(item => (total += item.price))}
+        return total.toFixed(2);
+    }
+
+    /**
+     * This method sets the category in the state.
+     * 
+     * @param {string} cat - The category to be set.
+     * @returns {void}
+     */
+    handleNav = (cat) => {this.setState({category: cat})}
+
+    /**
+     * This method handles the order placement.
+     * 
+     * @param {Array} cart - The array of cart item objects.
+     * @returns {void}
+     */
+    handleOrder = (cart) => {
+        if (this.state.isReadytoSubmit == false)
+            this.setState({isReadytoSubmit: true});
+        else {
+            this.placeOrder(cart, this.getTotalPrice(cart));
+            this.setState({isReadytoSubmit: false, orderPlaced: true, cartItems: []})
+        }
+    }
+
+    /**
+     * This method handles the return to the menu after placing an order.
+     * 
+     * @returns {void}
+     */
+    handleReturn = () => {this.setState({orderPlaced: false})};
+
+    /**
+     * This method handles the cancellation of an order.
+     * 
+     * @returns {void}
+     */
+    handleCancel = () => {this.setState({isReadytoSubmit: false});}
+    
+    /**
+     * This method renders the component.
+     * 
+     * @returns {JSX.Element} - The JSX element to be rendered.
+     */     
+    render() {
+        const category = this.state.category;
+        const { isLoading, menuItems, error } = this.state;
+        const Items = menuItems.filter((menuItem) => menuItem.category === this.state.category);
+        const firstTwoItems = Items.slice(0, 3);
+        const secondTwoItems = Items.slice(3, 6);
+        const lastItems = Items.slice(6);
+        const Categories = ['Burger', 'Sandwich', 'Combo', 'Tenders', 'Sides', 'Dessert', 'Shake'];
+        const cartItems = this.state.cartItems;
+
+        if (isLoading) {
+            return &lt;div>Loading...&lt;/div>;
+        }
+
+        if (error) {
+            return &lt;div>Error: {error.message}&lt;/div>;
+        }
+
+        if (this.state.selectedItem.item_name === "Example Item") {
+            this.setState({ selectedItem: Items[0] });
+        }
+        if (this.state.Item.item_name === "Example Item") {
+            this.setState({ Item: Items[0] });
+        }
+
+        return (
+            &lt;div>
+                &lt;div class = 'welcome'> 
+                    &lt;img src = {logo} />
+                    Welcome to Rev's! 
+                &lt;/div>
+                &lt;div class = 'navbar'>
+                &lt;div className = 'row'> 
+                    {Categories.map(category => (
+                        &lt;div className = 'smaller-card'>
+                        &lt;img key={category} onClick={() => this.handleNav(category)} src={buildImage(category)} alt={category} />
+                        &lt;div className = 'text'> {category} &lt;/div>   
+                        &lt;/div> 
+                    ))}
+                &lt;/div>
+                &lt;/div>
+            &lt;div className = 'body'>
+                &lt;div className = 'bar'>
+                    &lt;div className = 'shoppingCart'> 
+                            &lt;ul>
+                                {this.state.cartItems.map((menuItem, index) => (
+                                    &lt;li key={index}>
+                                        {menuItem.item_name} - ${menuItem.price}
+                                        &lt;button onClick={() => this.removeItem(index, menuItem)}> - &lt;/button>
+                                    &lt;/li>
+                                ))}  
+                            &lt;/ul>
+                    &lt;/div>
+                    
+                    {this.state.isReadytoSubmit === false ? 
+                        &lt;div>
+                        &lt;div className = 'total'>  Total: ${this.getTotalPrice(this.state.cartItems)} &lt;/div>
+                        &lt;button onClick={() => this.handleOrder(this.state.cartItems)}> Submit &lt;/button>
+                        &lt;/div>
+                        :
+                        &lt;div>
+                        &lt;div className = 'total'>  Are you sure you're ready to submit? &lt;/div>
+                            &lt;button onClick={() => this.handleOrder(this.state.cartItems)}> Yes &lt;/button>
+                            &lt;button onClick={this.handleCancel}> No &lt;/button>
+                        &lt;/div>
+                    }
+
+                &lt;/div>
+            &lt;div className = "right"> 
+                &lt;div className = 'grid'> 
+                    &lt;div className = 'row'>  
+                            {firstTwoItems.map((menuItem, index) => (
+                                &lt;div className = 'column'> 
+                                    &lt;div className = 'smaller-card' key={index}>
+                                        &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                        &lt;img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                        &lt;div className = 'text bold'> {menuItem.price} &lt;/div>
+                                        &lt;div className = 'text'> {menuItem.item_name} &lt;/div>
+                                    &lt;/div>
+                                    &lt;div className="edit-button"> 
+                                        &lt;button onClick={() => { this.handleAddItem(menuItem) }}> + &lt;/button>
+                                        &lt;button onClick={() => this.removeItem(this.state.Item, menuItem)}> - &lt;/button>
+                                    &lt;/div>
+                                &lt;/div>
+                            ))}                      
+                    &lt;/div>
+                    &lt;div className = 'row'>  
+                            {secondTwoItems.map((menuItem, index) => (
+                                &lt;div className = 'column'> 
+                                    &lt;div className = 'smaller-card' key={index}>
+                                        &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                        &lt;img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                        &lt;div className = 'text bold'> {menuItem.price} &lt;/div>
+                                        &lt;div className = 'text'> {menuItem.item_name} &lt;/div>
+                                    &lt;/div>
+                                    &lt;div className="edit-button"> 
+                                        &lt;button onClick={() => { this.handleAddItem(menuItem) }}> + &lt;/button>
+                                        &lt;button onClick={() => this.removeItem(this.state.Item, menuItem)}> - &lt;/button>
+                                    &lt;/div>
+                                &lt;/div>
+                            ))}                      
+                    &lt;/div> 
+                    {lastItems.size != 0 ? 
+                    &lt;div className = 'row'>  
+                        {lastItems.map((menuItem, index) => (
+                            &lt;div className = 'column'> 
+                                &lt;div className = 'smaller-card' key={index}>
+                                    &lt;div className = 'item-number'> #{menuItem.item_number} &lt;/div>
+                                    &lt;img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                &lt;/div>
+                                &lt;div className="edit-button"> 
+                                    &lt;button onClick={() => { this.handleAddItem(menuItem) }}> + &lt;/button>
+                                    &lt;button onClick={() => this.removeItem(this.state.Item, menuItem)}> - &lt;/button>
+                                &lt;/div>
+                            &lt;/div>
+                        ))}                      
+                    &lt;/div> : &lt;div> &lt;/div>
+                    }
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="left"> 
+                    {this.state.orderPlaced == true ? 
+                        &lt;div className = 'larger-card special'> 
+                            &lt;div className='title'> Thank you! &lt;/div>
+                            &lt;div className='title black'> ORDER NO. &lt;/div>
+                            &lt;div className='title black'> {this.state.orderNum} &lt;/div>
+                            &lt;div className="text"> We'll call your number when it's ready. &lt;/div>
+                        &lt;/div> : 
+                    
+                        &lt;div className = 'larger-card special'> 
+                            &lt;div className = 'title'> {this.state.selectedItem.item_name} &lt;/div>
+                            &lt;img src={buildImage(this.state.selectedItem.category)} alt={this.state.selectedItem.item_name} />
+                            &lt;div className = 'text bold'> {this.state.Item.price} &lt;/div>
+                            &lt;div className = 'text'> {buildDescription(this.state.selectedItem.category, this.state.selectedItem.ingredients)} &lt;/div>
+                        &lt;/div>
+                    }
+            &lt;/div>
+            &lt;/div>
+            &lt;button onClick={this.handleReturn}> Go Back &lt;/button>
+            &lt;/div>
+        );
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Menu.html">Menu</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu.html">Menu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 03:07:50 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

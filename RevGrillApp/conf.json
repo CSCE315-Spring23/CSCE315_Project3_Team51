@@ -1,0 +1,23 @@
+{
+    "plugins": [],
+    "recurseDepth": 10,
+    "source": {
+        "include": [ "./client/src/pages/Customer_Side/", "./client/src/pages/Home/", "./client/src/pages/Log_In/",
+                     "./client/src/pages/Manager_Side/", "./client/src/pages/Menu_Side/", "./client/src/pages/Server_Side/",
+                     "./client/public/", "./api/routes/", "./api/"      
+        ],
+        "exclude": [ ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
+}
+

@@ -37,6 +37,11 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Auth_context } from './pages/Log_In/auth_context';
 
 
+/**
+  React component representing the root of the application.
+  @function
+  @returns {JSX.Element} The JSX representation of the root component.
+*/
 function App() {
 
   return (

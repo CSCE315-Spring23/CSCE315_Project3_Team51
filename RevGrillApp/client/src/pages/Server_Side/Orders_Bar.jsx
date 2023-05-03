@@ -1,6 +1,13 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
+
+/**
+    A component that displays a list of orders retrieved from an external source.
+    @author Casey @peicasey
+
+    @returns The `OrdersBar` component.
+*/
 export default function OrdersBar() {
 
     var Orders = [];

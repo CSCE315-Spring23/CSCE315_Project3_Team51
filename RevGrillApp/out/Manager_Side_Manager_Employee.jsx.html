@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Manager_Side/Manager_Employee.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Manager_Side/Manager_Employee.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react';
+import './manager.css';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import JsonToMenu from './Display_Menu';
+
+export default function Manager_Employee() {
+    const navigate = useNavigate();
+
+    function goInventory() {
+        navigate('/manager_side/inventory')
+    }
+
+    function goEmployee() {
+        navigate('/manager_side/employee')
+    } 
+
+    function goSales() {
+        navigate('/manager_side/sales')
+    }
+
+    const [itemNum, setItemNum] = useState('');
+    const [itemName, setItemName] = useState('');
+    const [itemPrice, setItemPrice] = useState('');
+    const [itemCat, setItemCat] = useState('');
+    const [itemIngs, setItemIngs] = useState('');
+    const [menu, setMenu] = useState('No Data - Menu');
+
+    /**
+     * Gets menu in JSON format from the backend and sets the menu state variable (with an HTML table generated from this data)
+     * @author Harini Kumar
+     */
+    const getMenu = () => {
+      fetch("https://revgrill-app.onrender.com/server_side/get_menu")
+        .then(r => r.text())
+        .then(r => {
+            setMenu(JsonToMenu("item_number", "item_name", "price", "category", "ingredients", "Item Number", "Item Name", "Price", "Category", "Ingredients", r))
+        });  
+    }
+
+    useEffect(() => {
+        getMenu()
+    }, [])
+
+    const numChange = (event) => {
+        setItemNum(Number(event.target.value));
+    };
+
+    const nameChange = (event) => {
+        setItemName(event.target.value);
+    };
+
+    const priceChange = (event) => {
+        try {
+            setItemPrice(parseFloat(event.target.value));
+        } catch (error) {
+            setItemPrice('')
+        }
+    };
+
+    const catChange = (event) => {
+        setItemCat(event.target.value);
+    };
+
+    const ingsChange = (event) => {
+        setItemIngs(event.target.value);
+    };
+
+    /**
+     * Called when the "Remove Item" button is clicked, makes the necessary call to the database to remove the item specified by its number
+     * @author Harini Kumar
+     */
+    const handleRemove = () => {
+        if (itemNum != "") {
+            let requestOptions = {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ item: itemNum })
+            };
+            fetch("https://revgrill-app.onrender.com/manager_side/remove_item", requestOptions);
+        }
+        else {
+            window.alert("Please enter an item number to delete an item.")
+        }
+
+        // window.location.reload();
+    };
+
+    /**
+     * Called when the "Add Item" button is clicked, makes the necessary call to the database to add the item with given properties
+     * @author Harini Kumar
+     */
+    const handleAdd = () => {
+        
+        if (itemName == "" || itemPrice == "" || itemCat == "" || itemIngs == "") {
+            window.alert("Please enter an item name, price, category, and ingredient list to add an item.")
+        }
+        else {  
+            let requestOptions = {
+                method: 'POST',
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                // body: JSON.stringify({ name: "Pumpkin Pie", price: 10.59, category: "Dessert", ingredients: "1 pumpkin, 10 sugar, 1 bread"})
+                body: JSON.stringify({ name: itemName, price: itemPrice, category: itemCat, ingredients: itemIngs})
+            };
+            fetch("https://revgrill-app.onrender.com/manager_side/add_item", requestOptions);
+        }
+    }
+
+    /**
+     * Called when the "Edit Item" button is clicked, makes the necessary call to the database to edit the item specified by its number with the information provided
+     * @author Harini Kumar
+     */
+    const handleEdit = () => {
+        if (itemNum != "") {
+            let requestOptions = {}
+            if (itemPrice == "") {
+                requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    // body: JSON.stringify({ item: itemNum, newName: "Vanilla Cake", newPrice: 10.11, newCategory: itemCat, newIngredients: itemIngs})
+                    body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: -1, newCategory: itemCat, newIngredients: itemIngs})
+                };               
+            }
+            else {
+                requestOptions = {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                    // body: JSON.stringify({ item: itemNum, newName: "Vanilla Cake", newPrice: 10.11, newCategory: itemCat, newIngredients: itemIngs})
+                    body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: itemPrice, newCategory: itemCat, newIngredients: itemIngs})
+                };
+            }
+            fetch("https://revgrill-app.onrender.com/manager_side/edit_item", requestOptions);
+        }
+        else {
+            window.alert("Please enter an item name or number to edit an item.")
+        }
+    }
+
+    return(
+        &lt;div>
+        &lt;div className="manager-body">
+            &lt;div className="header">
+                &lt;ul className="nav nav-ls">
+                    &lt;div className="nav-home">
+                        &lt;li>&lt;a className="nav-link link-home" href="">Rev's Grill&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link" onClick={goInventory}>Inventory&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link nav-curr" onClick = {goEmployee}>Menu&lt;/a>&lt;/li>
+                    &lt;/div>
+                    &lt;div className="nav-item">
+                        &lt;li>&lt;a className="nav-link" onClick = {goSales}>Sales&lt;/a>&lt;/li>
+                    &lt;/div>
+                &lt;/ul>
+            &lt;/div>
+        
+            &lt;div className="ms-grid">
+                &lt;div className="m-form">
+                    &lt;h2>Update Menu&lt;/h2>
+                    &lt;form>
+                        &lt;table>
+                            &lt;tr>
+                                &lt;td>&lt;label for="item_num">Item number:&lt;/label>&lt;/td>
+                                &lt;td>&lt;input type="number" id="item_num" name="item_num" onChange={numChange} placeholder="to edit/remove"/>&lt;/td>
+                            &lt;/tr>
+                            &lt;tr>
+                                &lt;td>&lt;label for="item_name">Item name:&lt;/label>&lt;/td>
+                                &lt;td>&lt;input type="text" id="item_name" name="item_name" onChange={nameChange}/>&lt;/td>
+                            &lt;/tr>
+                            &lt;tr>
+                                &lt;td>&lt;label for="item_price">Item price:&lt;/label>&lt;/td>
+                                &lt;td>&lt;input type="number" step="0.01" id="item_price" name="item_price" onChange={priceChange}/>&lt;/td>
+                            &lt;/tr>
+                            &lt;tr>
+                                &lt;td>&lt;label for="item_category">Item category:&lt;/label>&lt;/td>
+                                &lt;td>&lt;input type="text" id="item_category" name="item_category" onChange={catChange}/>&lt;/td>
+                            &lt;/tr>
+                            &lt;tr>
+                                &lt;td>&lt;label for="ing_list">Ingredient list:&lt;/label>&lt;/td>
+                                &lt;td>&lt;input type="text" id="ing_list" name="ing_list" onChange={ingsChange} placeholder="&lt;# Ingredient, # Ingredient, ...>"/>&lt;/td>
+                            &lt;/tr>
+                        &lt;/table>
+                        &lt;div className="button-div">
+                            &lt;button onClick = { handleAdd }>Add Item&lt;/button>
+                            &lt;button onClick = { handleEdit }>Edit Item&lt;/button>
+                            &lt;button onClick = { handleRemove }>Remove Item&lt;/button>
+                        &lt;/div>
+                    &lt;/form>
+                &lt;/div>
+                &lt;div className="ms-display">
+                    &lt;h2>Display Menu&lt;/h2>
+                    &lt;p> { menu } &lt;/p>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;footer>
+            Made with 🤍 by CSCE 315 Team 51
+        &lt;/footer>
+        
+        
+        &lt;/div>        
+    
+    )
+
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Menu.html">Menu</a></li></ul><h3>Classes</h3><ul><li><a href="module.html#.exports">exports</a></li><li><a href="module-Menu.html">Menu</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CATEGORIES">CATEGORIES</a></li><li><a href="global.html#Cat_Tile">Cat_Tile</a></li><li><a href="global.html#buildDescription">buildDescription</a></li><li><a href="global.html#buildImage">buildImage</a></li><li><a href="global.html#componentDidMount">componentDidMount</a></li><li><a href="global.html#render">render</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 03 2023 03:07:50 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
