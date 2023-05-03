@@ -99,7 +99,7 @@ export default function Manager_Inventory() {
     }
 
     return(
-        <div>
+        <div className='manager-body'>
         
             <div className="header">
                 <ul className="nav nav-ls">
@@ -107,10 +107,10 @@ export default function Manager_Inventory() {
                         <li><a className="nav-link link-home" href="">Rev's Grill</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link" onClick={goInventory}>Inventory</a></li>
+                        <li><a className="nav-link nav-curr" onClick={goInventory}>Inventory</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link nav-curr" onClick = {goEmployee}>Menu</a></li>
+                        <li><a className="nav-link" onClick = {goEmployee}>Menu</a></li>
                     </div>
                     <div className="nav-item">
                         <li><a className="nav-link" onClick = {goSales}>Sales</a></li>

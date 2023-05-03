@@ -55,8 +55,9 @@ function App() {
             <Route path = "/signup" element = {<Signup/>} />
             <Route path = "/login" element = {<Login/>} />
 
-            <Route exact path = "/manager_side"  > 
+            <Route exact path = "/manager_side" > 
                 <Route exact path = "" element =  {<Manager_Inventory/>} />
+                <Route exact path = "/manager_side/inventory" element =  {<Manager_Inventory/>} />
                 <Route exact path = "/manager_side/employee" element =  {<Manager_Employee/>} />
                 <Route exact path = "/manager_side/sales" element =  {<Manager_Sales/>} />
             </Route>

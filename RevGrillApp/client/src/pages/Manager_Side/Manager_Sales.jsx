@@ -137,10 +137,10 @@ export default function Manager_Sales() {
                         <li><a className="nav-link" onClick={goInventory}>Inventory</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link nav-curr" onClick = {goEmployee}>Menu</a></li>
+                        <li><a className="nav-link " onClick = {goEmployee}>Menu</a></li>
                     </div>
                     <div className="nav-item">
-                        <li><a className="nav-link" onClick = {goSales}>Sales</a></li>
+                        <li><a className="nav-link nav-curr" onClick = {goSales}>Sales</a></li>
                     </div>
                 </ul>
             </div>

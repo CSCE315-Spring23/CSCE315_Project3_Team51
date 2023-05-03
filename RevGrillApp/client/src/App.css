@@ -26,6 +26,10 @@
   background-size: cover;
 }
 
+.bg-white {
+  background-color: #ede5e5;
+}
+
 header {
   background-color: var(--custom-primary);
   color: var(--custom-secondary);
