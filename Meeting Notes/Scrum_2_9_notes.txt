@@ -1,0 +1,53 @@
+﻿SCRUM Meeting 9 for Rev’s Grill
+Prepared by: Casey Pei
+Meeting Date:  4/28/2023
+Meeting Attendees
+1. Anna Brooks
+2. Casey Pei
+3. Peter Just
+4. Matthew Want
+5. Harini Kumar
+6. Alan Perez
+Meeting Agenda Items
+* assigning tasks for code documentation
+* going over entire project
+Status Update Since Last Meeting
+Accomplishments:
+* Hosting
+
+
+Tasks Completed:
+Task Description
+	Assigned to
+	Completed? (yes/no)
+	Hosting
+	Matthew, Peter
+	yes
+	Before The Next Meeting
+Plans:
+* product backlog
+* code documentation
+
+
+Task Assignments:
+Task Description
+	Assigned to
+	Manager reports
+	Casey
+	Code documentation
+	Alan
+	Summary
+	Harini
+	Product backlog
+	Anna
+	Manager reports
+	Peter
+	Burn-down charts
+	Matthew
+	Minutes from Previous Meeting
+Discussed tasks
+* Summary: Harini
+* Burn-down charts: Matthew
+* Code documentation: Alan
+* Product backlog: Anna
+* Manager reports: Casey, Peter

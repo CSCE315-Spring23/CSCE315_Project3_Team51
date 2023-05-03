@@ -1,0 +1,61 @@
+﻿SCRUM Meeting 7 for Rev’s Grill
+Prepared by: Casey Pei
+Meeting Date:  4/24/2023
+Meeting Attendees
+1. Anna Brooks
+2. Casey Pei
+3. Peter Just
+4. Matthew Want
+5. Harini Kumar
+6. Alan Perez
+Meeting Agenda Items
+* receive updates on everyone’s parts
+* discuss results of hosting experiments
+Status Update Since Last Meeting
+Accomplishments:
+* Pages routed navigation
+* JS added to manager side
+
+
+Tasks Completed:
+Task Description
+	Assigned to
+	Completed? (yes/no)
+	Routing between pages
+	Casey
+	yes
+	Add JS to mangerside
+	Harini
+	yes
+	
+
+	
+
+	
+
+	Before The Next Meeting
+Plans:
+* continue adding JS functions
+* add Google Translate and weather APIs
+
+
+Task Assignments:
+Task Description
+	Assigned to
+	Google Translate API
+	Casey
+	Add JS to customer side
+	Alan
+	Weather API
+	Harini
+	add JS to server side
+	Anna
+	Add JS to customer side
+	Peter
+	Hosting
+	Matthew
+	Minutes from Previous Meeting
+* finish JS functions (add customizations for placing orders)
+* work with database
+   * load menu items
+   * load ingredients
