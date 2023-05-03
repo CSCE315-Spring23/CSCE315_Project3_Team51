@@ -48,7 +48,7 @@ function buildImage(category) {
 
 export default class Menu extends Component {
     navigate = () => {useNavigate()}
-    constructor() {this.goMenu2 = this.goMenu2.bind(this);}
+    constructor() {super(); this.goMenu2 = this.goMenu2.bind(this);}
 
     state = {
       isLoading: true,
