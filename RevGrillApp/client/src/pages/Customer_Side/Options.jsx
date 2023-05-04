@@ -303,10 +303,10 @@ export default class Options extends Component {
 
         return (
             <div class = 'page'>
-                <div class = 'welcome'> 
+                {/* <div class = 'welcome'> 
                     <img src = {logo} />
                     Welcome to Rev's! 
-                </div>
+                </div> */}
                 <div class = 'navbar'>
                 <div className = 'row'> 
                     {Categories.map(category => (
@@ -398,7 +398,7 @@ export default class Options extends Component {
                     }
                 </div>
             </div>
-            <div className="left"> 
+            <div className="bar"> 
                     {this.state.orderPlaced == true ? 
                         <div className = 'larger-card special'> 
                             <div className='title'> Thank you! </div>

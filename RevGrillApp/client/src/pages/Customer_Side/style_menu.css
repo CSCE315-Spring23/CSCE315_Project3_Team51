@@ -12,6 +12,9 @@
     justify-content: center;
     justify-self: center;
     display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
 }
 .navbar {
     justify-items: center;
@@ -25,7 +28,8 @@
     display: block;
     justify-content: center;
     align-items: center;
-    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 .total {
     font-weight: bold;
@@ -36,6 +40,9 @@
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.4);
     max-height: 20px;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 .shoppingCart {
     background-color: white;
@@ -46,6 +53,8 @@
     justify-content: center;
     display: grid;
     padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .shoppingCart ul {
     list-style: none;
@@ -117,8 +126,8 @@
     display: flex;
     /* margin: 10px; */
     /* padding: 30px; */
-    justify-content: center;
-    align-items: top;;
+    justify-content: top;
+    align-items: top;
     font-family: Helvetica, sans-serif;
     margin-left: auto;
     margin-right: auto;
@@ -128,6 +137,9 @@
     align-items: top;
     justify-content: top;
     max-width: 40%;
+    margin-top: 0;
+    display: block;
+    margin-bottom: auto;
 }
 .title {
     align-items: center;
@@ -147,6 +159,9 @@
     margin-left: auto;
     margin-right: auto;
     font-family: Helvetica, sans-serif;
+}
+.right {
+    padding: 50px;
 }
 .bold {
     font-weight: bold;
@@ -186,14 +201,15 @@
 }
 
 .larger-card {
-    margin: 15px;
-    justify-content: center !important;
-    align-items: center !important;
-    align-self: top;
-    display: grid;
+    margin-top: 0;
+    margin-bottom: 0;
+    /* justify-content: center !important;
+    align-items: center !important; */
+    display: block;
     padding: 50px;
     border-style: solid;
     text-align: center;
+    justify-self: center;
 }
 .special {
     box-shadow: 0 2px 3px 1px rgba(0,0,0,0.4);
