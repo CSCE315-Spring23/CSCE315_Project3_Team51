@@ -73,6 +73,7 @@ export default class Menu extends Component {
     constructor(props) {
       super(props);
       this.goMenu2 = this.goMenu2.bind(this);
+      // this.handleClick = this.handleClick.bind(this);
     }
     
     goMenu2() {
@@ -126,6 +127,12 @@ export default class Menu extends Component {
         this.fetchMenuItems();
     }
 
+    handleClick = () => {
+      this.setState({ispage1: true})
+    }
+    handleClick2 = () => {
+      this.setState({ispage1: false})
+    }
     /**
      * This method renders the component.
      * 
@@ -169,7 +176,7 @@ export default class Menu extends Component {
 
         return (
           <div className = 'body'> 
-          {ispage1 ? 
+          {this.state.ispage1 ? 
             <div className = 'page'> 
                 {/* <div className = 'header'>
                     <div className = 'weather'> 
@@ -217,7 +224,7 @@ export default class Menu extends Component {
                               <div className = 'text bold larger'> Get it before it's gone! </div>
                           </div>
                       ))}
-      
+
                       <div className = 'menu-list'> 
                       <div className = 'title'> Sides </div>
                           {Sides.map((menuItem, index) => (
@@ -226,119 +233,107 @@ export default class Menu extends Component {
                               </ul>
                           ))}
                       </div>
-                      <button onClick={this.goMenu2}> Go Back </button>
+                    
                     </div>
                   <div style={{width:'5%',}}></div>
+                {/* FOR ROUTING */}
+                <div className = 'navigate'> 
+                    <button onClick = {this.handleClick2} > </button>
+                </div>
                 </div>    
-          </div>
-        :
-        <div className = 'page'> 
-            {/* <div className = 'header'>
-                <div className = 'weather'> 
-                    <img src= {burgerPic} alt="menu item"/>
-                    <div className = 'stacked'> 
-                        <p> 68 F </p>
-                        <p> Sunny </p>
-                    </div>
-                </div>
-                <div className = 'welcome'> Welcome to Rev's! </div>
-            </div> */}
-    
-            <div className = 'body'>
-                <div className = 'left'> 
-                    {Featured.map((menuItem) => (
-                            <div className = 'larger-card special'>
-                                <div className = 'title'> {menuItem.item_name} </div>
-                                <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
-                                <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
-                                <div className = 'text bold larger'> Try our best-selling menu item! </div>
-                            </div>
-                    ))}
-    
-                    <div className = 'menu-list'> 
-                        <div className = 'title'> Milkshakes </div>
-                        {Shakes.map((menuItem, index) => (
-                            <ul key={index}>
-                                <li> <div className = 'bold'> {menuItem.item_name} </div> {menuItem.price} </li>
-                            </ul>
-                        ))}
-                    </div>
-                </div>
-                
-                <div className = 'right'>
-                    <div className = 'grid'> 
-                        {/* <div className = 'title'> Burgers </div> */}
-                        <div className = 'row'>
-                        {Burgers.map((menuItem, index) => (
-                            <div className = 'smaller-card' key={index}>
-                                <div className = 'item-number'> #{menuItem.item_number} </div>
-                                <img src= {burgerPic} alt="burger"/>
-                                <div className = 'text bold'> {menuItem.price} </div>
-                                <div className = 'text'> {menuItem.item_name} </div>
-                            </div>
-                        ))}
-                        </div>
-                        
-                        {/* <div className = 'title'> Sandwiches </div> */}
-                        <div className = 'row'>
-                        {Sandwiches.map((menuItem, index) => (
-                            <div className = 'smaller-card' key={index}>
-                                <div className = 'item-number'> #{menuItem.item_number} </div>
-                                <img src={sandwichPic} alt="sandwich"/>
-                                <div className = 'text bold'> {menuItem.price} </div>
-                                <div className = 'text'> {menuItem.item_name} </div>
-                            </div>
-                        ))}
-                        {Tenders.map((menuItem, index) => (
-                            <div className = 'smaller-card' key={index}>
-                                <div className = 'item-number'> #{menuItem.item_number} </div>
-                                <img src= {tendersPic} alt="tenders"/>
-                                <div className = 'text bold'> {menuItem.price} </div>
-                                <div className = 'text'> {menuItem.item_name} </div>
-                            </div>
-                        ))}
-                        </div>
-
-                        {/* <div className = 'title'> Sweets </div> */}
-                        <div className = 'row'>
-                        {Desserts.map((menuItem, index) => (
-                            <div className = 'smaller-card' key={index}>
-                                <div className = 'item-number'> #{menuItem.item_number} </div>
-                                <img src= {dessertPic} alt="dessert"/>
-                                <div className = 'text bold'> {menuItem.price} </div>
-                                <div className = 'text'> {menuItem.item_name} </div>
-                            </div>
-                        ))}
-                        </div>
-
-                    </div>
-                </div>
-                
             </div>
-                          
-        </div>
-        }
+          :
+            <div className = 'page'> 
+                {/* <div className = 'header'>
+                    <div className = 'weather'> 
+                        <img src= {burgerPic} alt="menu item"/>
+                        <div className = 'stacked'> 
+                            <p> 68 F </p>
+                            <p> Sunny </p>
+                        </div>
+                    </div>
+                    <div className = 'welcome'> Welcome to Rev's! </div>
+                </div> */}
+        
+                <div className = 'body'>
+                    <div className = 'left'> 
+                        {Featured.map((menuItem) => (
+                                <div className = 'larger-card special'>
+                                    <div className = 'title'> {menuItem.item_name} </div>
+                                    <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
+                                    <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
+                                    <div className = 'text bold larger'> Try our best-selling menu item! </div>
+                                </div>
+                        ))}
+        
+                        <div className = 'menu-list'> 
+                            <div className = 'title'> Milkshakes </div>
+                            {Shakes.map((menuItem, index) => (
+                                <ul key={index}>
+                                    <li> <div className = 'bold'> {menuItem.item_name} </div> {menuItem.price} </li>
+                                </ul>
+                            ))}
+                        </div>
+                    </div>
+                    
+                    <div className = 'right'>
+                        <div className = 'grid'> 
+                            {/* <div className = 'title'> Burgers </div> */}
+                            <div className = 'row'>
+                            {Burgers.map((menuItem, index) => (
+                                <div className = 'smaller-card' key={index}>
+                                    <div className = 'item-number'> #{menuItem.item_number} </div>
+                                    <img src= {burgerPic} alt="burger"/>
+                                    <div className = 'text bold'> {menuItem.price} </div>
+                                    <div className = 'text'> {menuItem.item_name} </div>
+                                </div>
+                            ))}
+                            </div>
+                            
+                            {/* <div className = 'title'> Sandwiches </div> */}
+                            <div className = 'row'>
+                            {Sandwiches.map((menuItem, index) => (
+                                <div className = 'smaller-card' key={index}>
+                                    <div className = 'item-number'> #{menuItem.item_number} </div>
+                                    <img src={sandwichPic} alt="sandwich"/>
+                                    <div className = 'text bold'> {menuItem.price} </div>
+                                    <div className = 'text'> {menuItem.item_name} </div>
+                                </div>
+                            ))}
+                            {Tenders.map((menuItem, index) => (
+                                <div className = 'smaller-card' key={index}>
+                                    <div className = 'item-number'> #{menuItem.item_number} </div>
+                                    <img src= {tendersPic} alt="tenders"/>
+                                    <div className = 'text bold'> {menuItem.price} </div>
+                                    <div className = 'text'> {menuItem.item_name} </div>
+                                </div>
+                            ))}
+                            </div>
 
-        {/* FOR ROUTING */}
-        <div className = 'navigate'> 
-            <button onClick = {this.setState(ispage1 = false)} > </button>
-        </div>
-    
-    </div>
+                            {/* <div className = 'title'> Sweets </div> */}
+                            <div className = 'row'>
+                            {Desserts.map((menuItem, index) => (
+                                <div className = 'smaller-card' key={index}>
+                                    <div className = 'item-number'> #{menuItem.item_number} </div>
+                                    <img src= {dessertPic} alt="dessert"/>
+                                    <div className = 'text bold'> {menuItem.price} </div>
+                                    <div className = 'text'> {menuItem.item_name} </div>
+                                </div>
+                            ))}
+                            </div>
 
-        // <div>
-        //     {Desserts.map((menuItem, index) => (
-        //     <div key={index}>
-        //         <p>Item Number: {menuItem.item_number}</p>
-        //         <p>Item Name: {menuItem.item_name}</p>
-        //         <p>Price: {menuItem.price}</p>
-        //         <p>Category: {menuItem.category}</p>
-        //         <p>Ingredients: {menuItem.ingredients}</p>
-        //         <p>Description: {buildDescription(menuItem.category, menuItem.ingredients)}</p>
-        //         <img src={buildImage(menuItem.category)} />
-        //     </div>
-        //     ))}
-        // </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {/* FOR ROUTING */}
+                <div className = 'navigate'> 
+                    <button onClick = {this.handleClick} > </button>
+                </div>
+                              
+            </div>
+          }
+          </div>
         );
     }
 }

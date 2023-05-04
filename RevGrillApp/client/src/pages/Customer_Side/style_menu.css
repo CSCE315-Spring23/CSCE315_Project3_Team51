@@ -85,10 +85,14 @@
     font-family: Poppins, sans-serif;
     text-decoration-style: italic;
 }
+.shoppingCart button {
+    
+}
 .body-menu {
     background-color: #E6E6E6;
     align-items: center;
-    justify-content: center;
+    justify-content: center !important;
+    text-align: center;
     display: grid;
     padding: auto;
 }
@@ -99,13 +103,15 @@
     justify-content: center;
     align-items: top;
     font-family: Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .left {
-    display: grid;
-    align-items: center;
+    align-items: top;
     justify-content: center;
     padding: 30px;
+    max-width: 40%;
 }
 .title {
     align-items: center;
@@ -167,6 +173,7 @@
     margin: 15px;
     justify-content: center !important;
     align-items: center !important;
+    align-self: top;
     display: grid;
     padding: 50px;
     border-style: solid;

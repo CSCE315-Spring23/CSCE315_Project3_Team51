@@ -61,8 +61,20 @@ function buildImage(category) {
       case 'Tenders':
         imageSrc = tendersPic;
         break;
-      default:
+      case 'Dessert':
+        imageSrc = dessertPic;
+        break;
+      case 'Shake' :
+        imageSrc = shakePic;
+        break;
+      case 'Drink' :
+        imageSrc = drinkPic;
+        break;
+      case 'Sides' :
         imageSrc = sidesPic;
+        break;
+      default:
+        imageSrc = logo;
         break;
     }
     return imageSrc;
@@ -145,7 +157,7 @@ export default class Options extends Component {
         .then(result => {
             this.setState({ 
             orderNum: result.order_number 
-        });
+            });
         });
     }
 
@@ -257,7 +269,7 @@ export default class Options extends Component {
         const firstTwoItems = Items.slice(0, 3);
         const secondTwoItems = Items.slice(3, 6);
         const lastItems = Items.slice(6);
-        const Categories = ['Burger', 'Sandwich', 'Combo', 'Tenders', 'Sides', 'Dessert', 'Shake'];
+        const Categories = ['Burger', 'Sandwich', 'Combo', 'Tenders', 'Sides', 'Dessert', 'Shake', 'Drink'];
         const cartItems = this.state.cartItems;
 
         if (isLoading) {
@@ -368,10 +380,12 @@ export default class Options extends Component {
                     <div className = 'row'>  
                         {lastItems.map((menuItem, index) => (
                             <div className = 'column'> 
-                                <div className = 'smaller-card' key={index}>
-                                    <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
-                                </div>
+                                    <div className = 'smaller-card' key={index}>
+                                        <div className = 'item-number'> #{menuItem.item_number} </div>
+                                        <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                        <div className = 'text bold'> {menuItem.price} </div>
+                                        <div className = 'text'> {menuItem.item_name} </div>
+                                    </div>
                                 <div className="edit-button"> 
                                     <button onClick={() => { this.handleAddItem(menuItem) }}> + </button>
                                     <button onClick={() => this.removeItem(this.state.Item, menuItem)}> - </button>
