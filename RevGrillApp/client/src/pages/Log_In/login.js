@@ -61,6 +61,7 @@ export default function Login() {
       }
       
       setLoading(false);
+      navigate('/server_side/server_categories');
   } 
 
   async function manSub(e) {
@@ -92,7 +93,7 @@ export default function Login() {
         setError("OAUTH Log In Failed")
       }
       setLoading(false);
-      navigate('/server_side/dashboard');
+      navigate('/server_side/server_categories');
   } 
 
   function goSignup(){
