@@ -147,16 +147,18 @@ export default class Options extends Component {
         let requestOptions = {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({ itemsOrdered: items.map(i => parseInt(i.item_number)), totalPrice: price})
+            body: JSON.stringify({ itemsOrdered: items.map(i => parseInt(i.item_number)).join(', '), totalPrice: price})
+            //body: JSON.stringify({itemsOrdered: "1, 2, 3", totalPrice: 9.99})
         };
         // const url = "localhost:9000/server_side/create_order"
         const url = 'https://revgrill-app.onrender.com/server_side/create_order';
             
-        fetch(url, requestOptions)
+        fetch(url, requestOptions);
+        fetch('https://revgrill-app.onrender.com/server_side/last_order_number')
         .then(response => response.json())
         .then(result => {
             this.setState({ 
-            orderNum: result.order_number 
+            orderNum: result.last_number + 1
             });
         });
     }
