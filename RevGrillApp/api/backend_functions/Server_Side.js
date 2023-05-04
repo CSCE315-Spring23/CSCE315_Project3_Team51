@@ -139,21 +139,6 @@ async function updateInventory(orderNum) {
     }
 }
 
-// async function createNewOrder() {
-//     try {
-//         console.log('Creating new order');
-//         let newNum = lastOrderNumber
-//         const res = await pool.query(
-//             "SELECT * FROM orders WHERE order_number = $1",
-//             [orderNum]
-//         );
-//         console.log(res.rows[0]);
-//         return res.rows[0];
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }
-
 exports.lastOrderNumber = lastOrderNumber;
 exports.getTotalPrice = getTotalPrice;
 exports.createOrder = createOrder;
