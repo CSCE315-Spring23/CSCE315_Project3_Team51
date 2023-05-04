@@ -103,7 +103,7 @@ export default class Menu extends Component {
         error: null
       });
   
-      fetch("https://revgrill-app.onrender.com/server_side/get_menu")
+      fetch("https://csce-315-project-3-backend.onrender.com/server_side/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({

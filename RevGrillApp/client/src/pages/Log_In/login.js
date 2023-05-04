@@ -44,7 +44,7 @@ export default function Login() {
         setError('');
         console.log("Starting Server Submit")
         try {
-          const isManager = await fetch("http://revgrill-app.onrender.com/is_employee",{
+          const isManager = await fetch("http://csce-315-project-3-backend.onrender.com/is_employee",{
             body: JSON.stringify({
               id: idRef
             })
@@ -69,7 +69,7 @@ export default function Login() {
     try {
         setLoading(true);
         setError('');
-        const isManager = await fetch("http://revgrill-app.onrender.com/is_manager",{
+        const isManager = await fetch("http://csce-315-project-3-backend.onrender.com/is_manager",{
           body: JSON.stringify({
             id: idRef
           })

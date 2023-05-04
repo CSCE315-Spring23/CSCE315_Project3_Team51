@@ -30,7 +30,7 @@ export default function OrdersBar() {
 
     
     const getRunningOrders = () => {
-        fetch("https://revgrill-app.onrender.com/server_side/get_orders", {method: "GET"}) 
+        fetch("https://csce-315-project-3-backend.onrender.com/server_side/get_orders", {method: "GET"}) 
         .then(response => response.text())
         .then(result => {
             setOrders(JSON.parse(result));

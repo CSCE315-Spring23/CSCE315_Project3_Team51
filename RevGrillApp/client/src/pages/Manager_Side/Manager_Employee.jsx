@@ -31,7 +31,7 @@ export default function Manager_Employee() {
      * @author Harini Kumar
      */
     const getMenu = () => {
-      fetch("https://revgrill-app.onrender.com/server_side/get_menu")
+      fetch("https://csce-315-project-3-backend.onrender.com/server_side/get_menu")
         .then(r => r.text())
         .then(r => {
             setMenu(JsonToMenu("item_number", "item_name", "price", "category", "ingredients", "Item Number", "Item Name", "Price", "Category", "Ingredients", r))
@@ -77,7 +77,7 @@ export default function Manager_Employee() {
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                 body: JSON.stringify({ item: itemNum })
             };
-            fetch("https://revgrill-app.onrender.com/manager_side/remove_item", requestOptions);
+            fetch("https://csce-315-project-3-backend.onrender.com/manager_side/remove_item", requestOptions);
         }
         else {
             window.alert("Please enter an item number to delete an item.")
@@ -102,7 +102,7 @@ export default function Manager_Employee() {
                 // body: JSON.stringify({ name: "Pumpkin Pie", price: 10.59, category: "Dessert", ingredients: "1 pumpkin, 10 sugar, 1 bread"})
                 body: JSON.stringify({ name: itemName, price: itemPrice, category: itemCat, ingredients: itemIngs.split(",")})
             };
-            fetch("https://revgrill-app.onrender.com/manager_side/add_item", requestOptions);
+            fetch("https://csce-315-project-3-backend.onrender.com/manager_side/add_item", requestOptions);
         }
     }
 
@@ -129,7 +129,7 @@ export default function Manager_Employee() {
                     body: JSON.stringify({ item: itemNum, newName: itemName, newPrice: itemPrice, newCategory: itemCat, newIngredients: itemIngs})
                 };
             }
-            fetch("https://revgrill-app.onrender.com/manager_side/edit_item", requestOptions);
+            fetch("https://csce-315-project-3-backend.onrender.com/manager_side/edit_item", requestOptions);
         }
         else {
             window.alert("Please enter an item name or number to edit an item.")

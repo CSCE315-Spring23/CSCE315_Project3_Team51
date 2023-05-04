@@ -54,7 +54,7 @@ export default function Manager_Sales() {
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startTime: startTime, endTime: endTime})
                 };
-                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report", requestOptions)
+                fetch("https://csce-315-project-3-backend.onrender.com/manager_side/" + reportType + "_report", requestOptions)
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
@@ -71,7 +71,7 @@ export default function Manager_Sales() {
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startTime: startTime, endTime: endTime})
                 };
-                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report", requestOptions)
+                fetch("https://csce-315-project-3-backend.onrender.com/manager_side/" + reportType + "_report", requestOptions)
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))
@@ -88,7 +88,7 @@ export default function Manager_Sales() {
                     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startTime: startTime })
                 };
-                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report", requestOptions)
+                fetch("https://csce-315-project-3-backend.onrender.com/manager_side/" + reportType + "_report", requestOptions)
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
@@ -97,14 +97,14 @@ export default function Manager_Sales() {
         }
         else {
             if (params[0] == 2) {
-                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report")
+                fetch("https://csce-315-project-3-backend.onrender.com/manager_side/" + reportType + "_report")
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable2(params[1], params[2], params[3], params[4], r))
                     )
             }
             else if (params[0] == 3) {
-                fetch("https://revgrill-app.onrender.com/manager_side/" + reportType + "_report")
+                fetch("https://csce-315-project-3-backend.onrender.com/manager_side/" + reportType + "_report")
                     .then(r => r.text())
                     .then(r =>
                         setReport(JsonToTable3(params[1], params[2], params[3], params[4], params[5], params[6], r))

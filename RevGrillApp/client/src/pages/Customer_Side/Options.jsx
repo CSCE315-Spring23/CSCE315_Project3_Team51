@@ -122,7 +122,7 @@ export default class Options extends Component {
       });
   
     //   fetch("localhost:9000/server_side/get_menu")
-      fetch("https://revgrill-app.onrender.com/server_side/get_menu")
+      fetch("https://csce-315-project-3-backend.onrender.com/server_side/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({
@@ -151,10 +151,10 @@ export default class Options extends Component {
             //body: JSON.stringify({itemsOrdered: "1, 2, 3", totalPrice: 9.99})
         };
         // const url = "localhost:9000/server_side/create_order"
-        const url = 'https://revgrill-app.onrender.com/server_side/create_order';
+        const url = 'https://csce-315-project-3-backend.onrender.com/server_side/create_order';
             
         fetch(url, requestOptions);
-        fetch('https://revgrill-app.onrender.com/server_side/last_order_number')
+        fetch('https://csce-315-project-3-backend.onrender.com/server_side/last_order_number')
         .then(response => response.json())
         .then(result => {
             this.setState({ 

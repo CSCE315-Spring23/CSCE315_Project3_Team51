@@ -31,7 +31,7 @@ export default function ItemOptions({chosen_cat}) {
     const [items, setItems] = useState(Items)
 
     function getCatsItems() {
-        fetch("https://revgrill-app.onrender.com/server_side/get_menu")
+        fetch("https://csce-315-project-3-backend.onrender.com/server_side/get_menu")
         .then(response => response.text())
         .then(result => {
             setItems(JSON.parse(result));

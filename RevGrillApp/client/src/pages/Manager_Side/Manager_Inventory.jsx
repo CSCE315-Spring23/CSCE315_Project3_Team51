@@ -13,7 +13,7 @@ export default function Manager_Inventory() {
      * @author Harini Kumar
      */
     const getMostUsed = () => {
-      fetch("https://revgrill-app.onrender.com/manager_side/most_used_items")
+      fetch("https://csce-315-project-3-backend.onrender.com/manager_side/most_used_items")
         .then(r => r.text())
         .then(r => {
             setMostUsed(populateTop3(r));
@@ -25,7 +25,7 @@ export default function Manager_Inventory() {
      * @author Harini Kumar
      */
     const getInventory = () => {
-      fetch("https://revgrill-app.onrender.com/manager_side/get_inventory")
+      fetch("https://csce-315-project-3-backend.onrender.com/manager_side/get_inventory")
         .then(r => r.text())
         .then(r => {
             setInventory(JsonToTable3("ingredient_name", "quantity", "min_q", "Ingredient", "Quantity", "Minimum Quantity", r))
@@ -76,7 +76,7 @@ export default function Manager_Inventory() {
             body: JSON.stringify({ ingredient: itemName, newQuantity: itemQty, minQuantity: itemMin })
             // body: JSON.stringify({ ingredient: "bacon", newQuantity: 400, minQuantity: 200 })
         };
-        fetch("https://revgrill-app.onrender.com/manager_side/edit_inventory", requestOptions);
+        fetch("https://csce-315-project-3-backend.onrender.com/manager_side/edit_inventory", requestOptions);
 
         window.location.reload();
     };
