@@ -3,7 +3,7 @@ const {Pool} = require('pg');
 const dotenv = require('dotenv').config();
 
 const app = express();
-const port = 4000;
+const port = 3033;
 
 const pool = new Pool({
     user: "csce315331_team_51_master",
