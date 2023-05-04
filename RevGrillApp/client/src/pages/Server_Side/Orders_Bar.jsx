@@ -62,7 +62,7 @@ export default function OrdersBar() {
 
     // const orderText = ordersText;
 
-    const mappedOrders = { __html: orders.map(order => Order_Tile(order)).join('') };
+    const mappedOrders = { __html: orders.filter(order => order.current_day).map(order => Order_Tile(order)).join('') };
 
     return (
         <div className="order_bar">
