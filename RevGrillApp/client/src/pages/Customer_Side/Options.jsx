@@ -302,7 +302,7 @@ export default class Options extends Component {
         }
 
         return (
-            <div>
+            <div class = 'page'>
                 <div class = 'welcome'> 
                     <img src = {logo} />
                     Welcome to Rev's! 
@@ -324,19 +324,19 @@ export default class Options extends Component {
                                 {this.state.cartItems.map((menuItem, index) => (
                                     <li key={index}>
                                         {menuItem.item_name} - ${menuItem.price}
-                                        <button onClick={() => this.removeItem(index, menuItem)}> - </button>
+                                        <button className = 'remove' onClick={() => this.removeItem(index, menuItem)}> - </button>
                                     </li>
                                 ))}  
                             </ul>
                     </div>
                     
                     {this.state.isReadytoSubmit === false ? 
-                        <div>
+                        <div className = 'button-submit'>
                         <div className = 'total'>  Total: ${this.getTotalPrice(this.state.cartItems)} </div>
                         <button onClick={() => this.handleOrder(this.state.cartItems)}> Submit </button>
                         </div>
                         :
-                        <div>
+                        <div className = 'button-submit'>
                         <div className = 'total'>  Are you sure you're ready to submit? </div>
                             <button onClick={() => this.handleOrder(this.state.cartItems)}> Yes </button>
                             <button onClick={this.handleCancel}> No </button>
