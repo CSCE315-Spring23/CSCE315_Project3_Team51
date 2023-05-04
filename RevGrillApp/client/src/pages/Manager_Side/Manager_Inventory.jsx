@@ -58,8 +58,8 @@ export default function Manager_Inventory() {
         event.preventDefault();
 
         let itemName = event.target.itemname.value;
-        let itemQty = event.target.itemqty.value;
-        let itemMin = event.target.itemmin.value;
+        let itemQty = Number(event.target.itemqty.value);
+        let itemMin = Number(event.target.itemmin.value);
 
         event.target.reset();
 
