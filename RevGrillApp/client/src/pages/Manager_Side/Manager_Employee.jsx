@@ -100,7 +100,7 @@ export default function Manager_Employee() {
                 method: 'POST',
                 headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
                 // body: JSON.stringify({ name: "Pumpkin Pie", price: 10.59, category: "Dessert", ingredients: "1 pumpkin, 10 sugar, 1 bread"})
-                body: JSON.stringify({ name: itemName, price: itemPrice, category: itemCat, ingredients: itemIngs})
+                body: JSON.stringify({ name: itemName, price: itemPrice, category: itemCat, ingredients: itemIngs.split(",")})
             };
             fetch("https://revgrill-app.onrender.com/manager_side/add_item", requestOptions);
         }
