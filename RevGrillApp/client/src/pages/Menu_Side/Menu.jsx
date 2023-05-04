@@ -152,7 +152,7 @@ export default class Menu extends Component {
         const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Rev\'s Burger Entree');
 
         const Sides = menuItems.filter((menuItem) => menuItem.category === 'Sides');
-        const Seasonal = menuItems.filter((menuItem) => menuItem.item_name === 'Shrimp Cookie');
+        const Seasonal = menuItems.filter((menuItem) => menuItem.item_name === 'Cappucino Shake');
         
         if (isLoading) {
           return (
@@ -219,8 +219,8 @@ export default class Menu extends Component {
                         {Seasonal.map((menuItem) => (
                           <div className = 'larger-card special'>
                               <div className = 'title'> {menuItem.item_name} </div>
-                              <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
-                              <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
+                              <img src= {shakePic}/>
+                              <div className = 'text'> Your morning pick-me-up and after-dinner dessert, all blended into one! </div>
                               <div>  ---- </div>
                               <div> </div>
                               <div className = 'text bold larger'> Get it before it's gone! </div>
