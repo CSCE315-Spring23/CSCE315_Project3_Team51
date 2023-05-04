@@ -78,7 +78,7 @@ async function editItem(item, newName = "", newPrice = -1, newCategory = "", new
             newPrice = prevData.price;
         if(newCategory.length == 0)
             newCategory = prevData.category;
-        if(newIngredients.length == 0 || newIngredients[0].length < 5)
+        if(newIngredients.length == 0)
             newIngredients = prevData.ingredients;
         pool.query(
             "UPDATE menu_items SET item_name = $1, price = $2, category = $3, ingredients = $4 WHERE " + identifier + " = $5",
