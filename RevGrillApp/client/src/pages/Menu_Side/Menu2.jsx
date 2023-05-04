@@ -65,9 +65,23 @@ function buildImage(category) {
  * React component class for the Menu.
  * @author Anna
  */
-export default class Menu extends Component {
-    constructor() {super(); this.goMenu = this.goMenu.bind(this);}
-
+export default class Menu2 extends Component {
+    constructor(props) {
+      super(props);
+      this.goMenu = this.goMenu.bind(this);
+    }
+    
+    goMenu() {
+      this.props.navigate('/menu_side/menu2');
+    }
+    
+    /**
+     * The component's state.
+     * @type {object}
+     * @property {boolean} isLoading - Indicates if the component is currently loading.
+     * @property {object[]} menuItems - The restaurant's menu items.
+     * @property {object} error - The error that occurred during the component's lifecycle, if any.
+     */
     state = {
       isLoading: true,
       menuItems: [],
@@ -75,20 +89,20 @@ export default class Menu extends Component {
     };
 
     /**
-     * Fetches the menu items from the backend API.
-     */
+     * Fetches the restaurant's menu items from the server.
+     */    
     fetchMenuItems = () => {
       this.setState({
         isLoading: true,
         error: null
       });
-  
+
       fetch("https://revgrill-app.onrender.com/server_side/get_menu")
         .then(response => response.json())
         .then(result => {
           this.setState({
             isLoading: false,
-            menuItems: result[0]
+            menuItems: result
           });
         })
         .catch(error => {
@@ -99,16 +113,11 @@ export default class Menu extends Component {
         });
     }
 
-    componentDidMount() {
-        this.fetchMenuItems();
-    }
-
     /**
      * Redirects to the first Menu page.
      */
     goMenu = () => {
-      const navigate = useNavigate();
-      navigate('/menu_side/menu');
+      this.props.navigate('/menu_side/menu');
     };
 
     /**
@@ -123,7 +132,6 @@ export default class Menu extends Component {
         const Shakes = menuItems.filter((menuItem) => menuItem.category === "Shake");
         const Tenders = menuItems.filter((menuItem) => menuItem.category === 'Tenders');
         const Combos = menuItems.filter((menuItem) => menuItem.category === 'Combo');
-
         const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Rev\'s Burger Entree');
         
         if (isLoading) {

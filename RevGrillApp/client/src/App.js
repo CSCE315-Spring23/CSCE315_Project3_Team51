@@ -11,6 +11,7 @@ import Manager_Employee from './pages/Manager_Side/Manager_Employee';
 // MENU
 import Menu from './pages/Menu_Side/Menu';
 import Menu2 from './pages/Menu_Side/Menu2';
+import {RenderMenu, RenderMenu2} from './pages/Menu_Side/menu_functions';
 
 // CUSTOMER
 import Customer from './pages/Customer_Side/Customer';
@@ -43,7 +44,6 @@ import { Auth_context } from './pages/Log_In/auth_context';
   @returns {JSX.Element} The JSX representation of the root component.
 */
 function App() {
-
   return (
     <div className="App">
       <div style={{height:75}}></div>
@@ -73,8 +73,8 @@ function App() {
             <Route exact path = "/customer_side" element = {<Customer/>} > </Route>
 
             <Route exact path = "/menu_side">
-                <Route exact path = "/menu_side/menu" element = {<Menu/>} > </Route>
-                <Route exact path = "/menu_side/menu2" element = {<Menu2/>} > </Route>
+                <Route exact path = "/menu_side/menu" element = {<RenderMenu/>} > </Route>
+                <Route exact path = "/menu_side/menu2" element = {<RenderMenu2/>} > </Route>
             </Route>
 
           </Routes>

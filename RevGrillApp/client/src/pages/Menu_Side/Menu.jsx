@@ -70,8 +70,14 @@ function buildImage(category) {
  * @author Anna
  */
 export default class Menu extends Component {
-    navigate = () => {useNavigate()}
-    constructor() {super(); this.goMenu2 = this.goMenu2.bind(this);}
+    constructor(props) {
+      super(props);
+      this.goMenu2 = this.goMenu2.bind(this);
+    }
+    
+    goMenu2() {
+      this.props.navigate('/menu_side/menu2');
+    }
 
     /**
      * The component's state.
@@ -83,7 +89,8 @@ export default class Menu extends Component {
     state = {
       isLoading: true,
       menuItems: [],
-      error: null
+      error: null,
+      ispage1: true
     };
 
     /**
@@ -110,6 +117,7 @@ export default class Menu extends Component {
           });
         });
     }
+    
 
     /**
      * Lifecycle method called after the component mounts.
@@ -118,14 +126,6 @@ export default class Menu extends Component {
         this.fetchMenuItems();
     }
 
-    /**
-     * Navigates to the second menu.
-     */
-    goMenu2 = () => {
-      const navigate = useNavigate();
-      navigate('/menu_side/menu2');
-    }
-    
     /**
      * This method renders the component.
      * 
@@ -137,8 +137,15 @@ export default class Menu extends Component {
         const firstFiveCombos = Combos.slice(0, 5);
         const lastCombos = Combos.slice(5, Combos.length);
 
+        const Burgers = menuItems.filter((menuItem) => menuItem.category === 'Burger');
+        const Sandwiches = menuItems.filter((menuItem) => menuItem.category === 'Sandwich');
+        const Desserts = menuItems.filter((menuItem) => menuItem.category === "Dessert");
+        const Shakes = menuItems.filter((menuItem) => menuItem.category === "Shake");
+        const Tenders = menuItems.filter((menuItem) => menuItem.category === 'Tenders');
+        const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Rev\'s Burger Entree');
+
         const Sides = menuItems.filter((menuItem) => menuItem.category === 'Sides');
-        const Featured = menuItems.filter((menuItem) => menuItem.item_name === 'Shrimp Cookie');
+        const Seasonal = menuItems.filter((menuItem) => menuItem.item_name === 'Shrimp Cookie');
         
         if (isLoading) {
           return (
@@ -162,21 +169,20 @@ export default class Menu extends Component {
 
         return (
           <div className = 'body'> 
+          {ispage1 ? 
             <div className = 'page'> 
-                <div className = 'header'>
+                {/* <div className = 'header'>
                     <div className = 'weather'> 
                         <img src= {logo} alt="menu item"/>
                     </div>
                     <div className = 'welcome'> Welcome to Rev's! </div>
                     <button onClick={this.goMenu2}> Go Back </button>
-                </div>
+                </div> */}
 
                 <div className = 'main'>
                   <div style={{width:'5%',}}></div>
                     <div className = 'left'>
-                      <div className = 'title'> Combos </div>
-                      <div className = 'text bold'> Best Value Option! </div>
-                      <div className = 'text'> Upgrade your meal by adding your choice of a side and a drink! </div>
+                      {/* <div className = 'title'> Combos </div> */}
                       <div className = 'grid'> 
                           <div className = 'row'>
                           {firstFiveCombos.map((menuItem, index) => (
@@ -198,10 +204,12 @@ export default class Menu extends Component {
                               </div>
                           ))}
                           </div>
+                          {/* <div className = 'text bold'> Best Value Option! </div>
+                          <div className = 'text'> Upgrade your meal by adding your choice of a side and a drink! </div> */}
                       </div>
                     </div>
                     <div className = 'right'> 
-                        {Featured.map((menuItem) => (
+                        {Seasonal.map((menuItem) => (
                           <div className = 'larger-card special'>
                               <div className = 'title'> {menuItem.item_name} </div>
                               <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
@@ -218,12 +226,105 @@ export default class Menu extends Component {
                               </ul>
                           ))}
                       </div>
+                      <button onClick={this.goMenu2}> Go Back </button>
                     </div>
                   <div style={{width:'5%',}}></div>
+                </div>    
+          </div>
+        :
+        <div className = 'page'> 
+            {/* <div className = 'header'>
+                <div className = 'weather'> 
+                    <img src= {burgerPic} alt="menu item"/>
+                    <div className = 'stacked'> 
+                        <p> 68 F </p>
+                        <p> Sunny </p>
+                    </div>
                 </div>
+                <div className = 'welcome'> Welcome to Rev's! </div>
+            </div> */}
     
+            <div className = 'body'>
+                <div className = 'left'> 
+                    {Featured.map((menuItem) => (
+                            <div className = 'larger-card special'>
+                                <div className = 'title'> {menuItem.item_name} </div>
+                                <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
+                                <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
+                                <div className = 'text bold larger'> Try our best-selling menu item! </div>
+                            </div>
+                    ))}
+    
+                    <div className = 'menu-list'> 
+                        <div className = 'title'> Milkshakes </div>
+                        {Shakes.map((menuItem, index) => (
+                            <ul key={index}>
+                                <li> <div className = 'bold'> {menuItem.item_name} </div> {menuItem.price} </li>
+                            </ul>
+                        ))}
+                    </div>
+                </div>
+                
+                <div className = 'right'>
+                    <div className = 'grid'> 
+                        {/* <div className = 'title'> Burgers </div> */}
+                        <div className = 'row'>
+                        {Burgers.map((menuItem, index) => (
+                            <div className = 'smaller-card' key={index}>
+                                <div className = 'item-number'> #{menuItem.item_number} </div>
+                                <img src= {burgerPic} alt="burger"/>
+                                <div className = 'text bold'> {menuItem.price} </div>
+                                <div className = 'text'> {menuItem.item_name} </div>
+                            </div>
+                        ))}
+                        </div>
+                        
+                        {/* <div className = 'title'> Sandwiches </div> */}
+                        <div className = 'row'>
+                        {Sandwiches.map((menuItem, index) => (
+                            <div className = 'smaller-card' key={index}>
+                                <div className = 'item-number'> #{menuItem.item_number} </div>
+                                <img src={sandwichPic} alt="sandwich"/>
+                                <div className = 'text bold'> {menuItem.price} </div>
+                                <div className = 'text'> {menuItem.item_name} </div>
+                            </div>
+                        ))}
+                        {Tenders.map((menuItem, index) => (
+                            <div className = 'smaller-card' key={index}>
+                                <div className = 'item-number'> #{menuItem.item_number} </div>
+                                <img src= {tendersPic} alt="tenders"/>
+                                <div className = 'text bold'> {menuItem.price} </div>
+                                <div className = 'text'> {menuItem.item_name} </div>
+                            </div>
+                        ))}
+                        </div>
+
+                        {/* <div className = 'title'> Sweets </div> */}
+                        <div className = 'row'>
+                        {Desserts.map((menuItem, index) => (
+                            <div className = 'smaller-card' key={index}>
+                                <div className = 'item-number'> #{menuItem.item_number} </div>
+                                <img src= {dessertPic} alt="dessert"/>
+                                <div className = 'text bold'> {menuItem.price} </div>
+                                <div className = 'text'> {menuItem.item_name} </div>
+                            </div>
+                        ))}
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+                          
         </div>
+        }
+
+        {/* FOR ROUTING */}
+        <div className = 'navigate'> 
+            <button onClick = {this.setState(ispage1 = false)} > </button>
         </div>
+    
+    </div>
 
         // <div>
         //     {Desserts.map((menuItem, index) => (
