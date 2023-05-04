@@ -186,9 +186,9 @@ export default class Menu extends Component {
                     <button onClick={this.goMenu2}> Go Back </button>
                 </div> */}
 
-                <div className = 'main'>
+                <div className = 'body'>
                   <div style={{width:'5%',}}></div>
-                    <div className = 'left'>
+                    <div className = 'combos'>
                       {/* <div className = 'title'> Combos </div> */}
                       <div className = 'grid'> 
                           <div className = 'row'>
@@ -221,6 +221,8 @@ export default class Menu extends Component {
                               <div className = 'title'> {menuItem.item_name} </div>
                               <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
                               <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
+                              <div>  ---- </div>
+                              <div> </div>
                               <div className = 'text bold larger'> Get it before it's gone! </div>
                           </div>
                       ))}
@@ -235,12 +237,11 @@ export default class Menu extends Component {
                       </div>
                     
                     </div>
-                  <div style={{width:'5%',}}></div>
-                {/* FOR ROUTING */}
-                <div className = 'navigate'> 
-                    <button onClick = {this.handleClick2} > </button>
-                </div>
+                  {/* <div style={{width:'5%',}}></div> */}
                 </div>    
+                <div className = 'navigate'> 
+                  <button onClick = {this.handleClick2} > </button>
+                </div>
             </div>
           :
             <div className = 'page'> 
