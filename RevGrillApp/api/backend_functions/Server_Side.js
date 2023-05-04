@@ -34,6 +34,8 @@ async function getTotalPrice(itemsOrdered) {
 async function createOrder(items_ordered, total_price, modifications = [], order_taker = -1, tip = 0) {
     try {
         console.log('Creating new order');
+        if(order_taker == -1)
+            order_taker =  36054590;
         await pool.query(
             "INSERT INTO orders (order_number, total_price, tip, order_taker, items_ordered, modifications, order_status, current_day, order_time) " +
             "VALUES ((SELECT MAX(order_number)+1 FROM orders), $1, $2, $3, $4, $5, $6, True, (SELECT NOW()::timestamp(0)))",
