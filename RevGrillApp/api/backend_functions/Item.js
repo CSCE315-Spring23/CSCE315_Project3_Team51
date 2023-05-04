@@ -7,7 +7,7 @@ async function getMenu() {
         const res = await pool.query(
             "SELECT * FROM menu_items ORDER BY item_number"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error)
@@ -47,7 +47,7 @@ async function getCategoryItems(category) {
             "SELECT * FROM menu_items WHERE category = $1 ORDER BY item_number",
             [category]
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error)

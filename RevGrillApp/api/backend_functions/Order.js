@@ -7,7 +7,7 @@ async function getOrders() {
         const res = await pool.query(
             "SELECT * FROM orders WHERE order_status = 'In Progress' ORDER BY order_number"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error)

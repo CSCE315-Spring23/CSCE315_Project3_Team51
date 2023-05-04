@@ -74,7 +74,7 @@ async function pairingsReport(startTime = "", endTime = "") {
             const entry = {"item_1": itemNames.get(parseInt(freqArr[i][0])), "item_2": itemNames.get(parseInt(freqArr[i][1])), "times_sold": freqArr[i][2]};
             sellsTogether.push(entry);
         }
-        console.log(sellsTogether);
+        console.log(sellsTogether[0]);
         return sellsTogether;
     } catch (error) {
         console.error(error);
@@ -95,7 +95,7 @@ async function restockReport() {
             "SELECT ingredient_name, (quantity || ' ' || units) AS \"quantity\", (min_q || ' ' || units) " + 
             "AS \"min_q\" FROM inventory_data WHERE quantity < min_q ORDER BY ingredient_name"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error);
@@ -119,7 +119,7 @@ async function salesReport(startTime = "", endTime = "") {
             "(SELECT price FROM menu_items WHERE item_number = items ORDER BY items) AS NUMERIC), 2) " + 
             "AS total_sales FROM row_items GROUP BY items ORDER BY total_sales DESC"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error);
@@ -130,7 +130,6 @@ async function excessReport(startTime = "") {
     try {
         const cDate = new Date();
         const msAgo = cDate.getTime() - Date.parse(startTime);
-        console.log(msAgo);
         var daysAgo = Math.floor(msAgo / 1000.0 / 60.0 / 60.0 / 24.0);
         console.log('Creating excess report from ' + daysAgo + ' day(s) ago');
         if(daysAgo > 7 || daysAgo < 1)
@@ -140,7 +139,7 @@ async function excessReport(startTime = "") {
             "WHERE prev_q" + daysAgo.toString() + " - quantity < 0.1 * prev_q" + daysAgo.toString() + " AND " + 
             "prev_q" + daysAgo.toString() + " - quantity > 0"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error);
@@ -155,7 +154,7 @@ async function xReport() {
             "row_items AS (SELECT UNNEST(arr) AS items FROM all_items) SELECT (SELECT item_name FROM menu_items WHERE item_number = items), " +
             "COUNT(*) AS times_ordered FROM row_items GROUP BY items ORDER BY times_ordered DESC"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error);
@@ -171,7 +170,7 @@ async function zReport() {
             "ROUND(CAST(count(*) * (SELECT price FROM menu_items WHERE item_number = items ORDER BY items) AS NUMERIC), 2) AS total_sales " + 
             "FROM row_items GROUP BY items ORDER BY items"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         Ingredient.signalNewDay();
         return res.rows;
     } catch (error) {

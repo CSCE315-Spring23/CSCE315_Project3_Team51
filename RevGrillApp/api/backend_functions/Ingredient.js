@@ -7,7 +7,7 @@ async function getInventory() {
         const res = await pool.query(
             "SELECT * FROM inventory_data ORDER BY ingredient_name"
         );
-        console.log(res.rows);
+        console.log(res.rows[0]);
         return res.rows;
     } catch (error) {
         console.error(error)
