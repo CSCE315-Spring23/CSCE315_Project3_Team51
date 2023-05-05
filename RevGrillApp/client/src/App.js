@@ -65,7 +65,7 @@ function App() {
 
             <Route exact path = "/server_side"  > 
                 {/* <Route exact path = "/server_side/server_categories" element =  {<Server_Categories/>} /> */}
-                <Route exact path = "/server_side/server" element =  {<Server/>} />
+                <Route exact path = "/server_side/server_categories" element =  {<Server/>} />
             </Route>
 
             <Route exact path = "/customer_side"
