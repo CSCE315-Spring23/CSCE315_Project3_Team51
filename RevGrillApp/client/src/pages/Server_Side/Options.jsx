@@ -8,7 +8,7 @@ import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
 import logo from '../Menu_Side/logo.gif';
 import itemImages from '../../assets/items/item_img'
-import OrdersBar from './Orders_bar';
+import OrdersBar from './Orders_Bar';
 import './server-side.css';
 // import ItemOptions from './Item_Options';
 // import maroon from '../Customer_Side/maroon.png';
