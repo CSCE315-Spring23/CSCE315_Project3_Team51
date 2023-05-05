@@ -24,6 +24,7 @@ import {Customer_Confirm} from  './pages/Customer_Side/Customer_Confirm';
 
 //SERVER
 import Server_Categories from './pages/Server_Side/Server_Categories';
+import Server from './pages/Server_Side/Server';
 
 // LOGIN
 import Login from './pages/Log_In/login';
@@ -64,6 +65,7 @@ function App() {
 
             <Route exact path = "/server_side"  > 
                 <Route exact path = "/server_side/server_categories" element =  {<Server_Categories/>} />
+                <Route exact path = "/server_side/server" element =  {<Server/>} />
             </Route>
 
             <Route exact path = "/customer_side"
