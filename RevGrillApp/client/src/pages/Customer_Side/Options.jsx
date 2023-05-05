@@ -8,6 +8,7 @@ import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
 import logo from '../Menu_Side/logo.gif';
+import maroon from '../Customer_Side/maroon.png';
 import Customer_Confirm from './Customer_Confirm';
 
 /**
@@ -74,7 +75,7 @@ function buildImage(category) {
         imageSrc = sidesPic;
         break;
       default:
-        imageSrc = logo;
+        imageSrc = maroon;
         break;
     }
     return imageSrc;
@@ -351,7 +352,7 @@ export default class Options extends Component {
                                 <div className = 'column'> 
                                     <div className = 'smaller-card' key={index}>
                                         <div className = 'item-number'> #{menuItem.item_number} </div>
-                                        <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                        <img src= {buildImage(menuItem.category)} alt={menuItem.category} onClick={() => this.handleItemClick(menuItem)}/>
                                         <div className = 'text bold'> {menuItem.price} </div>
                                         <div className = 'text'> {menuItem.item_name} </div>
                                     </div>
@@ -367,7 +368,7 @@ export default class Options extends Component {
                                 <div className = 'column'> 
                                     <div className = 'smaller-card' key={index}>
                                         <div className = 'item-number'> #{menuItem.item_number} </div>
-                                        <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                        <img src= {buildImage(menuItem.category)} alt={menuItem.category} onClick={() => this.handleItemClick(menuItem)}/>
                                         <div className = 'text bold'> {menuItem.price} </div>
                                         <div className = 'text'> {menuItem.item_name} </div>
                                     </div>
@@ -384,7 +385,7 @@ export default class Options extends Component {
                             <div className = 'column'> 
                                     <div className = 'smaller-card' key={index}>
                                         <div className = 'item-number'> #{menuItem.item_number} </div>
-                                        <img src= {buildImage({category})} alt={category} onClick={() => this.handleItemClick(menuItem)}/>
+                                        <img src= {buildImage(menuItem.category)} alt={menuItem.category} onClick={() => this.handleItemClick(menuItem)}/>
                                         <div className = 'text bold'> {menuItem.price} </div>
                                         <div className = 'text'> {menuItem.item_name} </div>
                                     </div>
