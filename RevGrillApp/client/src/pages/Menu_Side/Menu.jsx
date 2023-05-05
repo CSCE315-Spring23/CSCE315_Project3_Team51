@@ -14,7 +14,9 @@ import shakePic from './../../assets/categories/cat_shake.png';
 import sidesPic from './../../assets/categories/cat_sides.png';
 import tendersPic from './../../assets/categories/cat_tenders.png';
 import logo from './logo.gif';
+import itemImages from '../../assets/items/item_img';
 import { useNavigate } from 'react-router-dom';
+
 
 /**
  * Helper function that returns the item description.
@@ -195,7 +197,7 @@ export default class Menu extends Component {
                           {firstFiveCombos.map((menuItem, index) => (
                               <div className = 'smaller-card' key={index}>
                                   <div className = 'item-number'> #{menuItem.item_number} </div>
-                                  <img src= {burgerPic} alt="burger"/>
+                                  <img src= {itemImages[menuItem.item_number-1]} alt="burger"/>
                                   <div className = 'text bold'> {menuItem.price} </div>
                                   <div className = 'text'> {menuItem.item_name} + side + drink </div>
                               </div>
@@ -205,7 +207,7 @@ export default class Menu extends Component {
                           {lastCombos.map((menuItem, index) => (
                               <div className = 'smaller-card' key={index}>
                                   <div className = 'item-number'> #{menuItem.item_number} </div>
-                                  <img src= {burgerPic} alt="burger"/>
+                                  <img src= {itemImages[menuItem.item_number - 1]} alt="burger"/>
                                   <div className = 'text bold'> {menuItem.price} </div>
                                   <div className = 'text'> {menuItem.item_name} + side + drink </div>
                               </div>
@@ -219,7 +221,7 @@ export default class Menu extends Component {
                         {Seasonal.map((menuItem) => (
                           <div className = 'larger-card special'>
                               <div className = 'title'> {menuItem.item_name} </div>
-                              <img src= {shakePic}/>
+                              <img src= {itemImages[menuItem.item_number-1]}/>
                               <div className = 'text'> Your morning pick-me-up and after-dinner dessert, all blended into one! </div>
                               <div>  ---- </div>
                               <div> </div>
@@ -261,7 +263,7 @@ export default class Menu extends Component {
                         {Featured.map((menuItem) => (
                                 <div className = 'larger-card special'>
                                     <div className = 'title'> {menuItem.item_name} </div>
-                                    <img src= {buildImage(menuItem.category)} alt={menuItem.name}/>
+                                    <img src= {itemImages[menuItem.item_number-1]} alt={menuItem.name}/>
                                     <div className = 'text'> {buildDescription(menuItem.category, menuItem.ingredients)} </div>
                                     <div className = 'text bold larger'> Try our best-selling menu item! </div>
                                 </div>
@@ -284,7 +286,7 @@ export default class Menu extends Component {
                             {Burgers.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {burgerPic} alt="burger"/>
+                                    <img src= {itemImages[menuItem.item_number-1]} alt="burger"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
@@ -296,7 +298,7 @@ export default class Menu extends Component {
                             {Sandwiches.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src={sandwichPic} alt="sandwich"/>
+                                    <img src={itemImages[menuItem.item_number-1]} alt="sandwich"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
@@ -304,7 +306,7 @@ export default class Menu extends Component {
                             {Tenders.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {tendersPic} alt="tenders"/>
+                                    <img src= {itemImages[menuItem.item_number-1]} alt="tenders"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>
@@ -316,7 +318,7 @@ export default class Menu extends Component {
                             {Desserts.map((menuItem, index) => (
                                 <div className = 'smaller-card' key={index}>
                                     <div className = 'item-number'> #{menuItem.item_number} </div>
-                                    <img src= {dessertPic} alt="dessert"/>
+                                    <img src= {itemImages[menuItem.item_number-1]} alt="dessert"/>
                                     <div className = 'text bold'> {menuItem.price} </div>
                                     <div className = 'text'> {menuItem.item_name} </div>
                                 </div>

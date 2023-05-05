@@ -31,6 +31,9 @@ import i29 from '../../assets/items/i29.png';
 import i30 from '../../assets/items/i30.png';
 import i31 from '../../assets/items/i31.png';
 import i32 from '../../assets/items/i32.png';
+import i33 from '../../assets/items/i33.png';
+import i34 from '../../assets/items/i34.png';
+import i35 from '../../assets/items/i35.png';
 import inew from '../../assets/items/inew.png';
 
 
@@ -67,5 +70,8 @@ export default [
     i30,
     i31,
     i32,
+    i33,
+    i34,
+    i35,
     inew,
 ];
